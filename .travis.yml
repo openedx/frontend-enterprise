@@ -16,5 +16,5 @@ after_success:
   - npm run coveralls
 env:
   global:
-    - secure: POPULATE_NPM_TOKEN_PLEASE
-    - secure: POPULATE_GITHUB_TOKEN_PLEASE
+    - secure: POPULATE_NPM_TOKEN_PRETTY_PLEASE
+    - secure: POPULATE_GITHUB_TOKEN_PRETTY_PLEASE
