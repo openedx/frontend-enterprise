@@ -6,7 +6,6 @@
             {
                 "devDependencies": [
                     "webpack.config.js",
-                    "src/tests/setupTest.js",
                     "**/*.test.jsx",
                     "**/*.test.js"
                 ]
