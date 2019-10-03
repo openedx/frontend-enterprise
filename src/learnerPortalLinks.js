@@ -60,7 +60,11 @@ function getCachedLearnerPortalLinks(userId) {
 
 export default async function getLearnerPortalLinks(apiClient) {
   let learnerPortalLinks = [];
-  const accessToken = apiClient.getDecodedAccessToken();
+  let accessToken = apiClient.getDecodedAccessToken();
+  if (!accessToken) {
+    await apiClient.refreshAccessToken();
+    accessToken = apiClient.getDecodedAccessToken();
+  }
 
   if (isEnterpriseLearner(accessToken)) {
     const userId = accessToken.user_id;
