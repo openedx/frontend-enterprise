@@ -27,7 +27,7 @@ async function fetchLearnerPortalLinks(apiClient, userId) {
       const learnerPortalHostname = enterpriseCustomer.learner_portal_hostname;
       if (enableLearnerPortal && learnerPortalHostname) {
         learnerPortalLinks.push({
-          title: `${enterpriseCustomer.name} Dashboard`,
+          title: `${enterpriseCustomer.name}`,
           url: `https://${enterpriseCustomer.learner_portal_hostname}`,
         });
       }
