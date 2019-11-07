@@ -1,4 +1,4 @@
-import { getAuthenticatedUser } from '@edx/frontend-auth';
+import { getAuthenticatedUser } from '@edx/frontend-auth'; // eslint-disable-line
 import { fetchEnterpriseCustomers } from './service';
 import { isEnterpriseLearner } from './utils';
 
