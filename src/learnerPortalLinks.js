@@ -1,3 +1,4 @@
+import { getAuthenticatedUser } from '@edx/frontend-auth';
 import { fetchEnterpriseCustomers } from './service';
 import { isEnterpriseLearner } from './utils';
 
@@ -60,14 +61,10 @@ function getCachedLearnerPortalLinks(userId) {
 
 export default async function getLearnerPortalLinks(apiClient) {
   let learnerPortalLinks = [];
-  let accessToken = apiClient.getDecodedAccessToken();
-  if (!accessToken) {
-    await apiClient.refreshAccessToken();
-    accessToken = apiClient.getDecodedAccessToken();
-  }
+  const authenticatedUser = await getAuthenticatedUser();
 
-  if (isEnterpriseLearner(accessToken)) {
-    const userId = accessToken.user_id;
+  if (authenticatedUser !== null && isEnterpriseLearner(authenticatedUser)) {
+    const { userId } = authenticatedUser;
     const cachedLinks = getCachedLearnerPortalLinks(userId);
 
     if (cachedLinks != null) {
