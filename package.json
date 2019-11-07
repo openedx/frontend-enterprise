@@ -59,7 +59,7 @@
     "webpack-cli": "^3.1.0"
   },
   "peerDependencies": {
-    "@edx/frontend-auth": "^9.0.1"
+    "@edx/frontend-auth": "^9.0.0"
   },
   "jest": {
     "collectCoverageFrom": [
