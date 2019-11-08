@@ -16,6 +16,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  externals: {
+    '@edx/frontend-auth': {
+      commonjs: '@edx/frontend-auth',
+      commonjs2: '@edx/frontend-auth',
+    },
+  },
   plugins: [
     new UglifyJsPlugin({
       sourceMap: true,
