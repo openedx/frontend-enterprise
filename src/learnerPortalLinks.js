@@ -19,17 +19,21 @@ function cacheLinks(userId, links) {
 
 async function fetchLearnerPortalLinks(apiClient, userId) {
   const learnerPortalLinks = [];
+  const learnerPortalHostname = process.env.ENTERPRISE_LEARNER_PORTAL_HOSTNAME;
+  if (!learnerPortalHostname) {
+    return learnerPortalLinks;
+  }
   const response = await fetchEnterpriseCustomers(apiClient);
   const enterpriseCustomers = response.data.results;
   try {
     for (let i = 0; i < enterpriseCustomers.length; i += 1) {
       const enterpriseCustomer = enterpriseCustomers[i];
+      const enterpriseCustomerSlug = enterpriseCustomer.slug;
       const enableLearnerPortal = enterpriseCustomer.enable_learner_portal;
-      const learnerPortalHostname = enterpriseCustomer.learner_portal_hostname;
-      if (enableLearnerPortal && learnerPortalHostname) {
+      if (enableLearnerPortal && enterpriseCustomerSlug) {
         learnerPortalLinks.push({
           title: `${enterpriseCustomer.name}`,
-          url: `https://${enterpriseCustomer.learner_portal_hostname}`,
+          url: `https://${learnerPortalHostname}/${enterpriseCustomerSlug}`,
         });
       }
     }
