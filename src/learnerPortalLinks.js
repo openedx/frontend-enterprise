@@ -33,7 +33,7 @@ async function fetchLearnerPortalLinks(apiClient, userId) {
       if (enableLearnerPortal && enterpriseCustomerSlug) {
         learnerPortalLinks.push({
           title: `${enterpriseCustomer.name}`,
-          url: `${window.location.protocal}//${learnerPortalHostname}/${enterpriseCustomerSlug}`,
+          url: `${window.location.protocol}//${learnerPortalHostname}/${enterpriseCustomerSlug}`,
         });
       }
     }
