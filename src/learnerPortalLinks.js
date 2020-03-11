@@ -1,4 +1,3 @@
-import { getAuthenticatedUser } from '@edx/frontend-auth'; // eslint-disable-line
 import { fetchEnterpriseCustomers } from './service';
 import { isEnterpriseLearner } from './utils';
 
@@ -63,9 +62,8 @@ function getCachedLearnerPortalLinks(userId) {
   return null;
 }
 
-export default async function getLearnerPortalLinks(apiClient) {
+export default async function getLearnerPortalLinks(apiClient, authenticatedUser) {
   let learnerPortalLinks = [];
-  const authenticatedUser = await getAuthenticatedUser();
 
   if (authenticatedUser !== null && isEnterpriseLearner(authenticatedUser)) {
     const { userId } = authenticatedUser;
