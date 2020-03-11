@@ -9,18 +9,11 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    library: 'frontend-auth',
     libraryTarget: 'umd',
     globalObject: 'typeof self !== \'undefined\' ? self : this',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-  },
-  externals: {
-    '@edx/frontend-auth': {
-      commonjs: '@edx/frontend-auth',
-      commonjs2: '@edx/frontend-auth',
-    },
   },
   plugins: [
     new UglifyJsPlugin({
