@@ -29,10 +29,18 @@ async function fetchLearnerPortalLinks(apiClient, userId) {
       const enterpriseCustomer = enterpriseCustomers[i];
       const enterpriseCustomerSlug = enterpriseCustomer.slug;
       const enableLearnerPortal = enterpriseCustomer.enable_learner_portal;
+      const brandingConfiguration = enterpriseCustomer.branding_configuration;
       if (enableLearnerPortal && enterpriseCustomerSlug) {
         learnerPortalLinks.push({
           title: `${enterpriseCustomer.name}`,
           url: `${window.location.protocol}//${learnerPortalHostname}/${enterpriseCustomerSlug}`,
+          // branding_configuration is not always returned as part
+          // of the response so check if it exists before referencing fields
+          branding_configuration: brandingConfiguration ? {
+            logo: brandingConfiguration.logo || null,
+            banner_border_color: brandingConfiguration.banner_border_color || null,
+            banner_background_color: brandingConfiguration.banner_background_color || null,
+          } : null,
         });
       }
     }
