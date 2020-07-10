@@ -1,5 +1,5 @@
 import { fetchEnterpriseCustomers } from './service';
-import { isEnterpriseLearner } from './utils';
+import { isEnterpriseUser } from './utils';
 
 function getCacheKey(userId) {
   return `learnerPortalLinks:${userId}`;
@@ -32,8 +32,6 @@ async function fetchLearnerPortalLinks(apiClient, userId) {
       const brandingConfiguration = enterpriseCustomer.branding_configuration;
       if (enableLearnerPortal && enterpriseCustomerSlug) {
         learnerPortalLinks.push({
-          title: `${enterpriseCustomer.name}`,
-          url: `${window.location.protocol}//${learnerPortalHostname}/${enterpriseCustomerSlug}`,
           // branding_configuration is not always returned as part
           // of the response so check if it exists before referencing fields
           branding_configuration: brandingConfiguration ? {
@@ -41,6 +39,9 @@ async function fetchLearnerPortalLinks(apiClient, userId) {
             banner_border_color: brandingConfiguration.banner_border_color || null,
             banner_background_color: brandingConfiguration.banner_background_color || null,
           } : null,
+          title: enterpriseCustomer.name,
+          url: `${window.location.protocol}//${learnerPortalHostname}/${enterpriseCustomerSlug}`,
+          uuid: enterpriseCustomer.uuid,
         });
       }
     }
@@ -73,7 +74,7 @@ function getCachedLearnerPortalLinks(userId) {
 export default async function getLearnerPortalLinks(apiClient, authenticatedUser) {
   let learnerPortalLinks = [];
 
-  if (authenticatedUser !== null && isEnterpriseLearner(authenticatedUser)) {
+  if (authenticatedUser !== null && isEnterpriseUser(authenticatedUser)) {
     const { userId } = authenticatedUser;
     const cachedLinks = getCachedLearnerPortalLinks(userId);
 
