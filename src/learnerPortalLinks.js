@@ -36,8 +36,9 @@ async function fetchLearnerPortalLinks(apiClient, userId) {
           // of the response so check if it exists before referencing fields
           branding_configuration: brandingConfiguration ? {
             logo: brandingConfiguration.logo || null,
-            banner_border_color: brandingConfiguration.banner_border_color || null,
-            banner_background_color: brandingConfiguration.banner_background_color || null,
+            primary_color: brandingConfiguration.primary_color || null,
+            secondary_color: brandingConfiguration.secondary_color || null,
+            tertiary_color: brandingConfiguration.tertiary_color || null,
           } : null,
           title: enterpriseCustomer.name,
           url: `${window.location.protocol}//${learnerPortalHostname}/${enterpriseCustomerSlug}`,
