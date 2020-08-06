@@ -33,7 +33,7 @@ async function fetchLearnerPortalLinks(apiClient, userId) {
       if (enableLearnerPortal && enterpriseCustomerSlug) {
         learnerPortalLinks.push({
           // branding_configuration is not always returned as part
-          // of the response so check if it exists before referencing fields
+          // of the response, so check if it exists before referencing fields.
           branding_configuration: brandingConfiguration ? {
             logo: brandingConfiguration.logo || null,
             primary_color: brandingConfiguration.primary_color || null,
