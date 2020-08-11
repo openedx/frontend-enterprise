@@ -16,13 +16,17 @@ function cacheLinks(userId, links) {
   );
 }
 
-async function fetchLearnerPortalLinks(apiClient, userId) {
+async function fetchLearnerPortalLinks(
+  apiClient,
+  userId,
+  learnerPortalHostname = process.env.ENTERPRISE_LEARNER_PORTAL_HOSTNAME,
+  lmsBaseUrl = process.env.LMS_BASE_URL,
+) {
   const learnerPortalLinks = [];
-  const learnerPortalHostname = process.env.ENTERPRISE_LEARNER_PORTAL_HOSTNAME;
   if (!learnerPortalHostname) {
     return learnerPortalLinks;
   }
-  const response = await fetchEnterpriseCustomers(apiClient);
+  const response = await fetchEnterpriseCustomers(apiClient, lmsBaseUrl);
   const enterpriseCustomers = response.data.results;
   try {
     for (let i = 0; i < enterpriseCustomers.length; i += 1) {
@@ -72,7 +76,12 @@ function getCachedLearnerPortalLinks(userId) {
   return null;
 }
 
-export default async function getLearnerPortalLinks(apiClient, authenticatedUser) {
+export default async function getLearnerPortalLinks(
+  apiClient,
+  authenticatedUser,
+  learnerPortalHostname = process.env.ENTERPRISE_LEARNER_PORTAL_HOSTNAME,
+  lmsBaseUrl = process.env.LMS_BASE_URL,
+) {
   let learnerPortalLinks = [];
 
   if (authenticatedUser !== null && isEnterpriseUser(authenticatedUser)) {
@@ -82,7 +91,12 @@ export default async function getLearnerPortalLinks(apiClient, authenticatedUser
     if (cachedLinks != null) {
       learnerPortalLinks = learnerPortalLinks.concat(cachedLinks);
     } else {
-      const links = await fetchLearnerPortalLinks(apiClient, userId);
+      const links = await fetchLearnerPortalLinks(
+        apiClient,
+        userId,
+        learnerPortalHostname,
+        lmsBaseUrl,
+      );
       learnerPortalLinks = learnerPortalLinks.concat(links);
     }
   }
