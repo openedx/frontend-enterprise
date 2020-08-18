@@ -13,8 +13,10 @@ module.exports = {
     libraryTarget: 'umd',
     globalObject: 'typeof self !== \'undefined\' ? self : this',
   },
+  // Exclude react and any package that has it as a dependency from the bundle.
   externals: {
     react: 'react',
+    '@edx/frontend-platform/auth': '@edx/frontend-platform/auth',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
