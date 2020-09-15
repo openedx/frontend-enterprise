@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+
 import getLearnerPortalLinks from './learnerPortalLinks';
-import { getSelectedEnterpriseUUID } from './utils';
 
 export default function useEnterpriseConfig(authenticatedUser, learnerPortalHostname, lmsBaseUrl) {
   const [enterpriseLearnerPortalLink, setEnterpriseLearnerPortalLink] = useState();
@@ -16,9 +16,7 @@ export default function useEnterpriseConfig(authenticatedUser, learnerPortalHost
         learnerPortalHostname,
         lmsBaseUrl,
       ).then((learnerPortalLinks) => {
-        const preferredUUID = getSelectedEnterpriseUUID(authenticatedUser);
-        const preferredLearnerPortalLink = learnerPortalLinks.find(learnerPortalLink =>
-          learnerPortalLink.uuid === preferredUUID);
+        const preferredLearnerPortalLink = learnerPortalLinks.pop();
         if (preferredLearnerPortalLink) {
           const config = {
             logoAltText: preferredLearnerPortalLink.title,

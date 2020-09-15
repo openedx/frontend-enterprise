@@ -1,5 +1,5 @@
 import { fetchEnterpriseCustomers } from './service';
-import { isEnterpriseUser } from './utils';
+import { isEnterpriseUser, getSelectedEnterpriseUUID } from './utils';
 
 function getCacheKey(userId) {
   return `learnerPortalLinks:${userId}`;
@@ -19,6 +19,7 @@ function cacheLinks(userId, links) {
 async function fetchLearnerPortalLinks(
   apiClient,
   userId,
+  preferredEnterpriseUUID,
   learnerPortalHostname = process.env.ENTERPRISE_LEARNER_PORTAL_HOSTNAME,
   lmsBaseUrl = process.env.LMS_BASE_URL,
 ) {
@@ -26,7 +27,7 @@ async function fetchLearnerPortalLinks(
   if (!learnerPortalHostname) {
     return learnerPortalLinks;
   }
-  const response = await fetchEnterpriseCustomers(apiClient, lmsBaseUrl);
+  const response = await fetchEnterpriseCustomers(apiClient, lmsBaseUrl, preferredEnterpriseUUID);
   const enterpriseCustomers = response.data.results;
   try {
     for (let i = 0; i < enterpriseCustomers.length; i += 1) {
@@ -88,12 +89,14 @@ export default async function getLearnerPortalLinks(
     const { userId } = authenticatedUser;
     const cachedLinks = getCachedLearnerPortalLinks(userId);
 
-    if (cachedLinks != null) {
+    if (cachedLinks) {
       learnerPortalLinks = learnerPortalLinks.concat(cachedLinks);
     } else {
+      const preferredEnterpriseUUID = getSelectedEnterpriseUUID(authenticatedUser);
       const links = await fetchLearnerPortalLinks(
         apiClient,
         userId,
+        preferredEnterpriseUUID,
         learnerPortalHostname,
         lmsBaseUrl,
       );
