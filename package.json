@@ -75,5 +75,8 @@
   "peerDependencies": {
     "react": "^16.13.1",
     "@edx/frontend-platform": "^1.5.2"
+  },
+  "dependencies": {
+    "query-string": "^6.13.2"
   }
 }
