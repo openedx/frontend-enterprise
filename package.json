@@ -77,6 +77,10 @@
     "@edx/frontend-platform": "^1.5.2"
   },
   "dependencies": {
-    "query-string": "^6.13.2"
+    "@edx/paragon": "^12.0.5",
+    "prop-types": "^15.7.2",
+    "query-string": "^6.13.2",
+    "react-instantsearch-dom": "^6.8.2",
+    "react-router-dom": "^5.2.0"
   }
 }
