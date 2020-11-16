@@ -9,7 +9,7 @@ import MobileFilterMenu from './MobileFilterMenu';
 
 import {
   SEARCH_FACET_FILTERS, SHOW_ALL_NAME,
-} from './data/tests/constants';
+} from './data/constants';
 import { sortItemsByLabelAsc } from './data/utils';
 
 import { useWindowSize } from '../hooks';

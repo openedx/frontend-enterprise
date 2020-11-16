@@ -54,7 +54,7 @@ export function getSelectedEnterpriseUUID(user) {
   return null;
 }
 
-export const isNull = (value) => {
+export const isNull = (inputValue) => {
   const createArrayFromValue = (value) => {
     const values = [];
 
@@ -65,6 +65,6 @@ export const isNull = (value) => {
     values.push(value);
     return values;
   };
-  const values = createArrayFromValue(value);
+  const values = createArrayFromValue(inputValue);
   return values.every(item => item === null);
 };

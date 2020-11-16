@@ -11,5 +11,4 @@ export { default as useEnterpriseConfig } from './hooks';
 export { default as SearchHeader } from './course-search/SearchHeader';
 export { default as SearchBox } from './course-search/SearchBox';
 export { default as SearchFilters } from './course-search/SearchFilters';
-export { default as SearchResults } from './course-search/SearchResults';
 export { useDefaultSearchFilters } from './course-search/data/hooks';

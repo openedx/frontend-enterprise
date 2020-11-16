@@ -1,4 +1,6 @@
-import React, { createContext, useReducer, useMemo, useEffect } from 'react';
+import React, {
+  createContext, useReducer, useMemo, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useHistory } from 'react-router-dom';
 import qs from 'query-string';

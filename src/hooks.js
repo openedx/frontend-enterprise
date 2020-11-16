@@ -1,10 +1,10 @@
-import { useRef, useEffect, useState } from "react";
-import { getAuthenticatedHttpClient } from "@edx/frontend-platform/auth";
+import { useRef, useEffect, useState } from 'react';
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 
-import getLearnerPortalLinks from "./learnerPortalLinks";
+import getLearnerPortalLinks from './learnerPortalLinks';
 
 export const useWindowSize = () => {
-  const isClient = typeof window === "object";
+  const isClient = typeof window === 'object';
 
   function getSize() {
     return {
@@ -22,8 +22,8 @@ export const useWindowSize = () => {
     const handleResize = () => {
       setWindowSize(getSize());
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return windowSize;
@@ -40,7 +40,7 @@ export const useIsFirstRender = () => {
 export default function useEnterpriseConfig(
   authenticatedUser,
   learnerPortalHostname,
-  lmsBaseUrl
+  lmsBaseUrl,
 ) {
   const [
     enterpriseLearnerPortalLink,
@@ -57,7 +57,7 @@ export default function useEnterpriseConfig(
       httpClient,
       authenticatedUser,
       learnerPortalHostname,
-      lmsBaseUrl
+      lmsBaseUrl,
     ).then((learnerPortalLinks) => {
       const preferredLearnerPortalLink = learnerPortalLinks.pop();
       if (preferredLearnerPortalLink) {
@@ -71,9 +71,9 @@ export default function useEnterpriseConfig(
         setEnterpriseCustomerBrandingConfig(config);
 
         setEnterpriseLearnerPortalLink({
-          type: "item",
+          type: 'item',
           href: preferredLearnerPortalLink.url,
-          content: "Dashboard",
+          content: 'Dashboard',
         });
       }
     });

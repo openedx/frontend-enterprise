@@ -5,6 +5,12 @@ frontend-enterprise
 
 frontend-enterprise contains utility functions for supporting enterprise features.
 
+Dependency notes
+-----
+
+v6 and higher of query-string will fail the es5 check
+eslint-plugin-import needed at least 2.22.1 to avoid failures with an infinity symbol (see https://stackoverflow.com/questions/64790681/eslint-error-configuration-for-rule-import-no-cycle-is-invalid)
+
 Usage
 -----
 

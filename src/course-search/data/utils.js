@@ -1,5 +1,4 @@
-export const sortItemsByLabelAsc = items =>
-  items.sort((a, b) => a.label.localeCompare(b.label));
+export const sortItemsByLabelAsc = items => items.sort((a, b) => a.label.localeCompare(b.label));
 
 export const updateRefinementsFromQueryParams = (refinements) => {
   const refinementsWithJoinedLists = {};
