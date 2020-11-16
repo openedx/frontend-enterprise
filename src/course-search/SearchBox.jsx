@@ -43,7 +43,7 @@ export const SearchBoxBase = ({
 
   return (
     <div className={className}>
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control jsx-a11y/label-has-for */}
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label id="search-input-box" className="mb-2 text-brand-primary font-weight-normal">
         Search Courses
       </label>
