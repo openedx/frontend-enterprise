@@ -37,7 +37,7 @@ export const useIsFirstRender = () => {
   return isMountRef.current;
 };
 
-export default function useEnterpriseConfig(
+export function useEnterpriseConfig(
   authenticatedUser,
   learnerPortalHostname,
   lmsBaseUrl,
