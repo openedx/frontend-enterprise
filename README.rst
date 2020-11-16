@@ -12,7 +12,14 @@ v6 and higher of query-string will fail the es5 check
 eslint-plugin-import needed at least 2.22.1 to avoid failures with an infinity symbol (see https://stackoverflow.com/questions/64790681/eslint-error-configuration-for-rule-import-no-cycle-is-invalid)
 
 There is a precommit plugin (commitlint) which requires commit messages formatted in a particular way
-See: https://github.com/conventional-changelog/commitlint#what-is-commitlint
+See: https://github.com/conventional-changelog/commitlint#what-is-commitlint.
+In general you need something like
+
+```
+type: subject
+```
+type must be one of [build, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
+
 
 
 Usage
