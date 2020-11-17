@@ -53,3 +53,18 @@ export function getSelectedEnterpriseUUID(user) {
   }
   return null;
 }
+
+export const isNull = (inputValue) => {
+  const createArrayFromValue = (value) => {
+    const values = [];
+
+    if (Array.isArray(value)) {
+      return value;
+    }
+
+    values.push(value);
+    return values;
+  };
+  const values = createArrayFromValue(inputValue);
+  return values.every(item => item === null);
+};
