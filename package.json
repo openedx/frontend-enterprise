@@ -60,7 +60,7 @@
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^17.0.1",
     "redux": "^4.0.0",
-    "semantic-release": "^15.1.7",
+    "semantic-release": "^17.2.3",
     "source-map-loader": "^0.2.1",
     "travis-deploy-once": "^5.0.0",
     "uglifyjs-webpack-plugin": "^1.1.8",
