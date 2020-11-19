@@ -81,6 +81,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-loading-skeleton": "^2.1.1",
+    "react-instantsearch-dom": "^6.8.2",
     "redux": "^4.0.0"
   },
   "dependencies": {
@@ -90,7 +91,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "react-instantsearch-dom": "^6.8.2"
+    "@fortawesome/react-fontawesome": "^0.1.4"
   }
 }
