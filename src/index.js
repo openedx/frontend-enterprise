@@ -8,7 +8,7 @@ export {
 } from './constants';
 export { getSelectedEnterpriseUUID, isEnterpriseLearner, isEnterpriseUser } from './utils';
 export { useEnterpriseConfig } from './hooks';
+export { default as SearchData, SearchContext } from './course-search/SearchContext';
 export { default as SearchHeader } from './course-search/SearchHeader';
-export { default as SearchBox } from './course-search/SearchBox';
-export { default as SearchFilters } from './course-search/SearchFilters';
-export { useDefaultSearchFilters } from './course-search/data/hooks';
+export { default as SearchPagination } from './course-search/SearchPagination';
+export { useDefaultSearchFilters, useNbHitsFromSearchResults } from './course-search/data/hooks';

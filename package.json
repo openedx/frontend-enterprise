@@ -10,12 +10,11 @@
     "build": "src/*.js"
   },
   "scripts": {
-    "build": "fedx-scripts webpack",
+    "build": "make build",
     "gc": "commit",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
-    "is-es5": "es-check es5 ./dist/*.js",
     "precommit": "npm run lint",
     "prepublishOnly": "npm run build",
     "semantic-release": "semantic-release",
@@ -46,7 +45,6 @@
     "@testing-library/react-hooks": "^3.4.2",
     "axios-mock-adapter": "^1.15.0",
     "coveralls": "^3.0.0",
-    "es-check": "^5.0.0",
     "eslint-plugin-import": "^2.22.1",
     "history": "^4.7.2",
     "husky": "^0.14.3",
@@ -55,6 +53,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^17.0.1",
+    "react-instantsearch-dom": "^6.8.2",
     "react-loading-skeleton": "^2.1.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
@@ -62,7 +61,6 @@
     "redux": "^4.0.0",
     "semantic-release": "^17.2.3",
     "source-map-loader": "^0.2.1",
-    "travis-deploy-once": "^5.0.0",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^4.16.2",
     "webpack-cli": "^3.1.0"
@@ -84,6 +82,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-loading-skeleton": "^2.1.1",
+    "react-instantsearch-dom": "^6.8.2",
     "redux": "^4.0.0"
   },
   "dependencies": {
@@ -93,7 +92,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "react-instantsearch-dom": "^6.8.2"
+    "@fortawesome/react-fontawesome": "^0.1.4"
   }
 }
