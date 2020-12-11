@@ -82,14 +82,11 @@
     "redux": "^4.0.0"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "classnames": "^2.2.5",
     "query-string": "^5.1.1",
     "react-instantsearch-dom": "^6.8.2",
-    "react-loading-skeleton": "^2.1.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.17",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/free-regular-svg-icons": "^5.12.1",
-    "@fortawesome/free-solid-svg-icons": "^5.8.1",
-    "@fortawesome/react-fontawesome": "^0.1.4"
+    "react-loading-skeleton": "^2.1.1"
   }
 }
