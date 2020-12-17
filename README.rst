@@ -31,8 +31,8 @@ To install frontend-enterprise into your project:
 
    npm i --save @edx/frontend-enterprise
 
-.. |Build Status| image:: https://api.travis-ci.org/edx/frontend-enterprise.svg?branch=master
-   :target: https://travis-ci.org/edx/frontend-enterprise
+.. |Build Status| image:: https://api.travis-ci.com/edx/frontend-enterprise.svg?branch=master
+   :target: https://travis-ci.com/edx/frontend-enterprise
 .. |Coveralls| image:: https://img.shields.io/coveralls/edx/frontend-enterprise.svg?branch=master
    :target: https://coveralls.io/github/edx/frontend-enterprise
 .. |npm_version| image:: https://img.shields.io/npm/v/@edx/frontend-enterprise.svg
