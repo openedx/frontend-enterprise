@@ -86,7 +86,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "classnames": "^2.2.5",
     "query-string": "^5.1.1",
-    "react-instantsearch-dom": "^6.8.2",
+    "react-instantsearch-dom": "^6.8.3",
     "react-loading-skeleton": "^2.1.1"
   }
 }
