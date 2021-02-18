@@ -6,3 +6,4 @@ build:
 	cp ./package.json ./dist/package.json
 	cp ./LICENSE ./dist/LICENSE
 	cp ./README.rst ./dist/README.rst
+	node build-scss.js
