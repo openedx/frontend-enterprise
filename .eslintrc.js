@@ -14,6 +14,15 @@ config.rules = {
         "example/*",
       ],
     },
+  ],
+  "template-curly-spacing": "off",
+  "indent": [
+    "warn",
+    2,
+    {
+      "ignoredNodes": ["TemplateLiteral"],
+      "SwitchCase": 1
+    }
   ]
 };
 
