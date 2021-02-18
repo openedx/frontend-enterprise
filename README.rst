@@ -20,7 +20,9 @@ type: subject
 ```
 type must be one of [build, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
 
-
+Versioning and Releases
+-----
+This library has it's version automatically updated by semantic-versioning when the release is published to npm. The source code package.json file should remain at "1.0.0-semantically-released".  The below Usage instructions will install the latest version from npm. Please see the repository Releases for earlier package versions. 
 
 Usage
 -----
