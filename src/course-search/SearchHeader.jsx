@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Container, Row, Col } from '@edx/paragon';
 
 import SearchBox from './SearchBox';
 import SearchFilters from './SearchFilters';
@@ -12,22 +13,22 @@ const SearchHeader = () => {
 
   return (
     <div className="bg-brand-primary">
-      <div className="container-fluid">
-        <div className="row pt-4 pb-3">
-          <div className="col-12 col-md-10 col-lg-8">
+      <Container size="lg">
+        <Row className="pt-4 pb-3">
+          <Col xs={12} md={10} lg={8}>
             <SearchBox
               className="mb-3"
               defaultRefinement={searchQueryFromQueryParams}
               refinementsFromQueryParams={refinementsFromQueryParams}
             />
-          </div>
-          <div className="col-12">
+          </Col>
+          <Col xs={12}>
             <SearchFilters
               className="mb-3"
             />
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
