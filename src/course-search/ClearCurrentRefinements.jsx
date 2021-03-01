@@ -4,6 +4,8 @@ import { Button } from '@edx/paragon';
 import { SearchContext } from './SearchContext';
 import { clearRefinementsAction } from './data/actions';
 
+export const CLEAR_ALL_TEXT = 'clear all';
+
 const ClearCurrentRefinements = ({ className, variant }) => {
   const { dispatch } = useContext(SearchContext);
 
@@ -22,7 +24,7 @@ const ClearCurrentRefinements = ({ className, variant }) => {
       variant={variant}
       onClick={handleClearAllRefinementsClick}
     >
-      clear all
+      {CLEAR_ALL_TEXT}
     </Button>
   );
 };
