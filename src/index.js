@@ -12,4 +12,3 @@ export { default as SearchData, SearchContext } from './course-search/SearchCont
 export { default as SearchHeader } from './course-search/SearchHeader';
 export { default as SearchPagination } from './course-search/SearchPagination';
 export { useDefaultSearchFilters, useNbHitsFromSearchResults } from './course-search/data/hooks';
-export { SEARCH_FACET_FILTERS } from './course-search/data/constants';
