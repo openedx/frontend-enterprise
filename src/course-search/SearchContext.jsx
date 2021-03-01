@@ -12,7 +12,7 @@ import { useIsFirstRender } from '../hooks';
 
 export const SearchContext = createContext();
 
-const SearchData = ({ children }) => {
+const SearchData = ({ children, searchFacetFilters }) => {
   const [refinementsFromQueryParams, dispatch] = useReducer(
     refinementsReducer,
     {},
@@ -56,6 +56,7 @@ const SearchData = ({ children }) => {
   const value = {
     refinementsFromQueryParams,
     dispatch,
+    searchFacetFilters,
   };
 
   return (
@@ -63,8 +64,17 @@ const SearchData = ({ children }) => {
   );
 };
 
+SearchData.defaultProps = {
+  searchFacetFilters: SEARCH_FACET_FILTERS,
+};
+
 SearchData.propTypes = {
   children: PropTypes.node.isRequired,
+  searchFacetFilters: PropTypes.arrayOf(PropTypes.shape({
+    attribute: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    isSortedAlphabetical: PropTypes.bool,
+  })),
 };
 
 export default SearchData;

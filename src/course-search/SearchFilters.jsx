@@ -8,7 +8,7 @@ import CurrentRefinements from './CurrentRefinements';
 import MobileFilterMenu from './MobileFilterMenu';
 
 import {
-  SEARCH_FACET_FILTERS, SHOW_ALL_NAME,
+  SHOW_ALL_NAME,
 } from './data/constants';
 import { sortItemsByLabelAsc } from './data/utils';
 
@@ -20,7 +20,7 @@ export const FREE_ALL_TITLE = 'Free / All';
 
 const SearchFilters = () => {
   const size = useWindowSize();
-  const { refinementsFromQueryParams } = useContext(SearchContext);
+  const { refinementsFromQueryParams, searchFacetFilters } = useContext(SearchContext);
   const showMobileMenu = useMemo(
     () => size.width < breakpoints.small.maxWidth,
     [size],
@@ -40,7 +40,7 @@ const SearchFilters = () => {
 
   const searchFacets = useMemo(
     () => {
-      const filtersFromRefinements = SEARCH_FACET_FILTERS.map(({
+      const filtersFromRefinements = searchFacetFilters.map(({
         title, attribute, isSortedAlphabetical,
       }) => (
         <FacetListRefinement
