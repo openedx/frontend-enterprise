@@ -11,5 +11,6 @@ export { useEnterpriseConfig } from './hooks';
 export { default as SearchData, SearchContext } from './course-search/SearchContext';
 export { default as SearchHeader } from './course-search/SearchHeader';
 export { default as SearchPagination } from './course-search/SearchPagination';
-export { useDefaultSearchFilters, useNbHitsFromSearchResults } from './course-search/data/hooks';
-export { SEARCH_FACET_FILTERS } from './course-search/data/constants';
+export { useNbHitsFromSearchResults, getCatalogString } from './course-search/data/hooks';
+export { SEARCH_FACET_FILTERS, SHOW_ALL_NAME } from './course-search/data/constants';
+export { setRefinementAction } from './course-search/data/actions';

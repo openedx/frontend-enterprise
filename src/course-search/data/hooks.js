@@ -1,15 +1,8 @@
 import {
-  useMemo, useContext, useEffect,
+  useMemo,
 } from 'react';
-import { SearchContext } from '../SearchContext';
-import { features } from '../config';
-
-import {
-  SHOW_ALL_NAME,
-} from './constants';
 
 import { isNull } from '../../utils';
-import { setRefinementAction } from './actions';
 
 /**
    * Transforms items into an object with a key for each facet attribute
@@ -82,42 +75,4 @@ export const getCatalogString = (catalogs) => {
   }
 
   return catalogs.reduce(catalogFilterReducer, '');
-};
-
-export const useDefaultSearchFilters = ({ enterpriseConfig, subscriptionPlan, offerCatalogs = [] }) => {
-  // default to showing all catalogs
-  const { refinementsFromQueryParams, dispatch } = useContext(SearchContext);
-
-  useEffect(() => {
-    // if there are no subscriptions or offers, we default to showing all catalogs
-    if (!subscriptionPlan && offerCatalogs.length < 1) {
-      dispatch(setRefinementAction(SHOW_ALL_NAME, 1));
-    }
-  }, [subscriptionPlan, offerCatalogs.length]);
-
-  const filters = useMemo(
-    () => {
-      if (refinementsFromQueryParams[SHOW_ALL_NAME]) {
-        // show all enterprise catalogs
-        return `enterprise_customer_uuids:${enterpriseConfig.uuid}`;
-      }
-      // if there's a subscriptionPlan, filter results by the subscription catalog
-      // and any catalogs for which the user has vouchers
-      if (subscriptionPlan) {
-        if (features.ENROLL_WITH_CODES && offerCatalogs.length > 0) {
-          const catalogs = [subscriptionPlan.enterpriseCatalogUuid, ...offerCatalogs];
-          return getCatalogString(catalogs);
-        }
-        return `enterprise_catalog_uuids:${subscriptionPlan.enterpriseCatalogUuid}`;
-      }
-      if (features.ENROLL_WITH_CODES && offerCatalogs.length > 0) {
-        // shows catalogs for which a user has 100% vouchers
-        return getCatalogString(offerCatalogs);
-      }
-      return `enterprise_customer_uuids:${enterpriseConfig.uuid}`;
-    },
-    [enterpriseConfig, subscriptionPlan, offerCatalogs, refinementsFromQueryParams[SHOW_ALL_NAME]],
-  );
-
-  return { filters };
 };
