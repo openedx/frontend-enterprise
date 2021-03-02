@@ -2,7 +2,7 @@
   "name": "@edx/frontend-enterprise",
   "version": "1.0.0-semantically-released",
   "description": "Frontend utilities for supporting enterprise features.",
-  "main": "dist/index.js",
+  "main": "dist/",
   "publishConfig": {
     "access": "public"
   },
