@@ -22,7 +22,12 @@ type must be one of [build, ci, docs, feat, fix, perf, refactor, revert, style, 
 
 Versioning and Releases
 -----
-This library has it's version automatically updated by semantic-versioning when the release is published to npm. The source code package.json file should remain at "1.0.0-semantically-released".  The below Usage instructions will install the latest version from npm. Please see the repository Releases for earlier package versions. 
+This library has its version automatically updated by semantic-versioning when the release is published to npm. The source code package.json file should remain at "1.0.0-semantically-released".  The below Usage instructions will install the latest version from npm. Please see the repository Releases for earlier package versions. 
+
+Preview next release version from Pull Requests
+*****
+
+As a convenience, the "node_js CI / build (push)" check on Pull Requests includes a step to analyze the commit(s) and outputs a preview of what version semantic-release will publish if a PR gets merged. This is done using the "--dry-run" option for the semantic-release CLI, which will skip the publish/release steps. Look for a message in this CI step along the lines of "The next release version is <NEXT_RELEASE_VERSION>".
 
 Usage
 -----
