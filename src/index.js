@@ -14,3 +14,5 @@ export { default as SearchPagination } from './course-search/SearchPagination';
 export { useNbHitsFromSearchResults, getCatalogString } from './course-search/data/hooks';
 export { SEARCH_FACET_FILTERS, SHOW_ALL_NAME } from './course-search/data/constants';
 export { setRefinementAction } from './course-search/data/actions';
+export { getBestCourseMode } from './courseUtils';
+export { COURSE_MODES_MAP } from './courseUtils/constants';
