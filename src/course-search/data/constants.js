@@ -1,6 +1,18 @@
+import { features } from '../config';
+
 export const SHOW_ALL_NAME = 'showAll';
 
-export const SEARCH_FACET_FILTERS = [
+let SKILLS_SEARCH_FACET_FILTER = [];
+if (features.SKILLS_FILTER) {
+  SKILLS_SEARCH_FACET_FILTER = [
+    {
+      attribute: 'skill_names',
+      title: 'Skills',
+    },
+  ];
+}
+
+export const SEARCH_FACET_FILTERS = SKILLS_SEARCH_FACET_FILTER.concat([
   {
     attribute: 'subjects',
     title: 'Subject',
@@ -22,7 +34,7 @@ export const SEARCH_FACET_FILTERS = [
     attribute: 'availability',
     title: 'Availability',
   },
-];
+]);
 
 export const BOOLEAN_FILTERS = [SHOW_ALL_NAME];
 export const QUERY_PARAM_FOR_SEARCH_QUERY = 'q';
