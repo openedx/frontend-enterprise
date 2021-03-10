@@ -17,6 +17,7 @@ const propsForNoRefinements = {
   facetValueType: 'array',
   refinementsFromQueryParams: {},
   facetName: 'subjects',
+  searchForItems: () => {},
 };
 
 const propsForRefinements = {
@@ -29,6 +30,7 @@ const propsForRefinements = {
   }],
   facetValueType: 'array',
   refinementsFromQueryParams: {},
+  searchForItems: () => {},
 };
 
 const propsForActiveRefinements = {

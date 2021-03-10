@@ -2,6 +2,15 @@ export const SHOW_ALL_NAME = 'showAll';
 
 export const SEARCH_FACET_FILTERS = [
   {
+    attribute: 'skill_names',
+    title: 'Skills',
+    typeaheadOptions: {
+      placeholder: 'Find a skill',
+      ariaLabel: 'Type to find a skill',
+      minLength: 3,
+    },
+  },
+  {
     attribute: 'subjects',
     title: 'Subject',
   },

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { NO_OPTIONS_FOUND } from './data/constants';
 import FacetDropdown from './FacetDropdown';
+import TypeaheadFacetDropdown from './TypeaheadFacetDropdown';
 import FacetItem from './FacetItem';
 import { SearchContext } from './SearchContext';
 import {
@@ -16,6 +17,8 @@ const FacetListBase = ({
   isCheckedField,
   items,
   title,
+  typeaheadOptions,
+  searchForItems,
 }) => {
   /**
    * Handles when a facet option is toggled by either updating the appropriate
@@ -45,7 +48,7 @@ const FacetListBase = ({
   const renderItems = useCallback(
     () => {
       if (!items || !items.length) {
-        return <span className="py-2 px-2">{NO_OPTIONS_FOUND}</span>;
+        return <span className="py-2 px-2 no-options-found">{NO_OPTIONS_FOUND}</span>;
       }
 
       return items.map(item => {
@@ -64,6 +67,18 @@ const FacetListBase = ({
     [items],
   );
 
+  if (typeaheadOptions) {
+    return (
+      <TypeaheadFacetDropdown
+        items={renderItems()}
+        title={title}
+        isBold={isBold}
+        options={typeaheadOptions}
+        searchForItems={searchForItems}
+      />
+    );
+  }
+
   return (
     <FacetDropdown
       items={renderItems()}
@@ -75,6 +90,8 @@ const FacetListBase = ({
 
 FacetListBase.defaultProps = {
   isCheckedField: null,
+  typeaheadOptions: null,
+  searchForItems: null,
 };
 
 FacetListBase.propTypes = {
@@ -84,6 +101,12 @@ FacetListBase.propTypes = {
   isCheckedField: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   title: PropTypes.string.isRequired,
+  typeaheadOptions: PropTypes.shape({
+    placeholder: PropTypes.string.isRequired,
+    ariaLabel: PropTypes.string.isRequired,
+    minLength: PropTypes.number.isRequired,
+  }),
+  searchForItems: PropTypes.func,
 };
 
 export default FacetListBase;

@@ -15,6 +15,7 @@ const propsForNoItems = {
   attribute: SHOW_ALL_NAME,
   isBold: true,
   facetValueType: 'bool',
+  searchForItems: () => {},
 };
 
 const FREE_LABEL = 'Free';
@@ -34,6 +35,17 @@ const propsWithItems = {
     [FACET_ATTRIBUTES.SUBJECTS]: [SUBJECTS.COMMUNICATION],
     page: 3,
   },
+  searchForItems: () => {},
+};
+const searchableDropdownProps = {
+  title: 'Skills',
+  attribute: 'skill_names',
+  facetValueType: 'array',
+  items: [{ label: 'Blockchain', value: ['Blockchain'] }, { label: 'Cryptocurrency', value: ['Cryptocurrency'] }],
+  searchForItems: jest.fn(),
+  searchable: true,
+  isBold: true,
+  typeaheadOptions: { placeholder: 'Find a skill', ariaLabel: 'Type to find a skill', minLength: 3 },
 };
 
 describe('<FacetListBase />', () => {
@@ -124,5 +136,41 @@ describe('<FacetListBase />', () => {
 
     // assert page was deleted and subjects were not
     expect(history.location.search).toEqual('?showAll=1&subjects=Communication');
+  });
+
+  test('renders a typeahead dropdown', async () => {
+    const { container } = renderWithRouter(<SearchData><FacetListBase {...searchableDropdownProps} /></SearchData>);
+
+    // assert the "no options" message does not show
+    expect(screen.queryByText(NO_OPTIONS_FOUND)).not.toBeInTheDocument();
+
+    // open the typeahead dropdown menu
+    await act(async () => {
+      fireEvent.click(screen.queryByText('Skills'));
+    });
+    expect(screen.queryByPlaceholderText('Find a skill')).toBeInTheDocument();
+    expect(screen.queryByText('Blockchain')).toBeInTheDocument();
+    expect(screen.queryByText('Cryptocurrency')).toBeInTheDocument();
+
+    expect(container.querySelector('div.facet-list .typeahead.dropdown')).toBeInTheDocument();
+  });
+
+  test('typeahead dropdown calls searchForItems with correct arguments', async () => {
+    renderWithRouter(<SearchData><FacetListBase {...searchableDropdownProps} /></SearchData>);
+
+    // open the typeahead dropdown menu
+    await act(async () => {
+      fireEvent.click(screen.queryByText('Skills'));
+    });
+
+    // input some search text
+    await act(async () => {
+      fireEvent.change(screen.queryByPlaceholderText('Find a skill'), { target: { value: 'Blockchain' } });
+    });
+
+    await new Promise((r) => setTimeout(r, 210));
+
+    expect(searchableDropdownProps.searchForItems).toHaveBeenCalledTimes(1);
+    expect(searchableDropdownProps.searchForItems).toHaveBeenCalledWith('Blockchain');
   });
 });
