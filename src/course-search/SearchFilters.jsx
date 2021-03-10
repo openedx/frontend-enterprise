@@ -61,6 +61,7 @@ const SearchFilters = () => {
           searchable={!!typeaheadOptions}
         />
       ));
+
       return (
         <>
           {features.ENROLL_WITH_CODES && (

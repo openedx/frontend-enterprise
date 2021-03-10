@@ -80,11 +80,21 @@ const FacetListBase = ({
   }
 
   return (
-    <FacetDropdown
-      items={renderItems()}
-      title={title}
-      isBold={isBold}
-    />
+    typeaheadOptions ? (
+      <TypeaheadFacetDropdown
+        items={renderItems()}
+        title={title}
+        isBold={isBold}
+        options={typeaheadOptions}
+        searchForItems={searchForItems}
+      />
+    ) : (
+      <FacetDropdown
+        items={renderItems()}
+        title={title}
+        isBold={isBold}
+      />
+    )
   );
 };
 

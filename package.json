@@ -97,5 +97,7 @@
     "react-loading-skeleton": "^2.1.1",
     "lodash.debounce": "^4.0.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
