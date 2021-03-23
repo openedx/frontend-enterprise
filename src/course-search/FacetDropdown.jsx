@@ -12,13 +12,8 @@ const FacetDropdown = ({
   <div className="facet-list">
     <Dropdown className={classNames('mb-0 mr-md-3', type)}>
       <Dropdown.Toggle
-        className={
-          classNames(
-            'bg-white', 'text-capitalize', 'rounded-0', 'border-0',
-            'd-flex', 'justify-content-between', 'align-items-center', 'text-dark',
-            { 'font-weight-bold': isBold },
-          )
-        }
+        variant="inverse-primary"
+        className={classNames({ 'font-weight-bold': isBold })}
       >
         {title}
       </Dropdown.Toggle>

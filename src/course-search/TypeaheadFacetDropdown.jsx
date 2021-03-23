@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from '@edx/paragon';
 import debounce from 'lodash.debounce';
+import { Input } from '@edx/paragon';
+
 import FacetDropdown from './FacetDropdown';
 
 const TypeaheadFacetDropdown = ({
@@ -20,14 +21,16 @@ const TypeaheadFacetDropdown = ({
 
   const transformMenuOptions = menuOptions => (
     <>
-      <Input
-        autoFocus
-        type="search"
-        className="typeahead-dropdown-input"
-        placeholder={options.placeholder}
-        aria-label={options.ariaLabel}
-        onChange={(event) => handleSearch(event.currentTarget.value)}
-      />
+      <div className="p-2">
+        <Input
+          autoFocus
+          type="search"
+          className="typeahead-dropdown-input"
+          onChange={event => handleSearch(event.currentTarget.value)}
+          placeholder={options.placeholder}
+          aria-label={options.ariaLabel}
+        />
+      </div>
       <div className="typeahead-dropdown-menu-scrollable-items">
         {menuOptions}
       </div>
