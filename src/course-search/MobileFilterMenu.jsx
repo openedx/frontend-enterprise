@@ -70,7 +70,7 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
             </div>
             <div className="modal-footer py-3">
               <div className="col">
-                <ClearCurrentRefinements className="bg-white btn-block text-dark" variant="link" />
+                <ClearCurrentRefinements className="btn-block" variant="inverse-primary" />
               </div>
               <div className="col">
                 <Button

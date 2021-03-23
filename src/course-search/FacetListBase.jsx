@@ -47,8 +47,8 @@ const FacetListBase = ({
 
   const renderItems = useCallback(
     () => {
-      if (!items || !items.length) {
-        return <span className="py-2 px-2 no-options-found">{NO_OPTIONS_FOUND}</span>;
+      if (!items?.length) {
+        return <span className="p-2 d-block">{NO_OPTIONS_FOUND}</span>;
       }
 
       return items.map(item => {
@@ -80,21 +80,11 @@ const FacetListBase = ({
   }
 
   return (
-    typeaheadOptions ? (
-      <TypeaheadFacetDropdown
-        items={renderItems()}
-        title={title}
-        isBold={isBold}
-        options={typeaheadOptions}
-        searchForItems={searchForItems}
-      />
-    ) : (
-      <FacetDropdown
-        items={renderItems()}
-        title={title}
-        isBold={isBold}
-      />
-    )
+    <FacetDropdown
+      items={renderItems()}
+      title={title}
+      isBold={isBold}
+    />
   );
 };
 

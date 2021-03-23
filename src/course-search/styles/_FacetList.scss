@@ -1,20 +1,8 @@
+$facet-dropdown-max-height: 250px;
+
 .facet-list {
   .dropdown {
     @extend .mb-3;
-
-    .dropdown-toggle {
-      text-align: left;
-      padding-left: 10px;
-      padding-right: 10px;
-
-      &:before {
-        border-radius: 0;
-      }
-
-      &:after {
-        margin-left: 10px;
-      }
-    }
 
     .facet-item-label {
       font-weight: normal;
@@ -29,8 +17,8 @@
     }
 
     .dropdown-menu {
-      max-height: 250px;
-      overflow: scroll;
+      max-height: $facet-dropdown-max-height;
+      overflow-y: scroll;
       max-width: 420px;
       width: max-content;
 
@@ -43,31 +31,11 @@
 
   .typeahead {
     .dropdown-menu {
-      .facet-list & {
-        padding: 50px 0 0;
-        max-height: none;
-        overflow: visible;
-        width: 420px;
-      }
+      max-height: unset;
 
       .typeahead-dropdown-menu-scrollable-items {
-        position: relative;
-        max-height: 200px;
-        overflow: auto;
-
-        .no-options-found {
-          display: block;
-        }
-      }
-
-      .typeahead-dropdown-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 98%;
-        background: white;
-        padding: 5px;
-        margin: 4px;
+        max-height: $facet-dropdown-max-height;
+        overflow-y: scroll;
       }
     }
   }

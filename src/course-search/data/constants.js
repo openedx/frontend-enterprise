@@ -5,7 +5,7 @@ export const SEARCH_FACET_FILTERS = [
     attribute: 'skill_names',
     title: 'Skills',
     typeaheadOptions: {
-      placeholder: 'Find a skill',
+      placeholder: 'Find a skill...',
       ariaLabel: 'Type to find a skill',
       minLength: 3,
     },

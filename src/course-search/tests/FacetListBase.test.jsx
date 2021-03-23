@@ -169,7 +169,7 @@ describe('<FacetListBase />', () => {
 
     // input some search text
     await act(async () => {
-      fireEvent.change(screen.queryByPlaceholderText('Find a skill'), { target: { value: 'Blockchain' } });
+      fireEvent.change(screen.queryByPlaceholderText('Find a skill...'), { target: { value: 'Blockchain' } });
     });
 
     await new Promise((r) => setTimeout(r, 210));

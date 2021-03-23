@@ -23,9 +23,7 @@ const SearchHeader = () => {
             />
           </Col>
           <Col xs={12}>
-            <SearchFilters
-              className="mb-3"
-            />
+            <SearchFilters className="mb-3" />
           </Col>
         </Row>
       </Container>
