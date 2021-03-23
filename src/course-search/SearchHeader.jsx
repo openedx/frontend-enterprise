@@ -15,9 +15,9 @@ const SearchHeader = () => {
     <div className="bg-brand-primary">
       <Container size="lg">
         <Row className="pt-4 pb-3">
-          <Col xs={12} md={10} lg={8}>
+          <Col xs={12} md={8}>
             <SearchBox
-              className="mb-3"
+              className="mb-4"
               defaultRefinement={searchQueryFromQueryParams}
               refinementsFromQueryParams={refinementsFromQueryParams}
             />

@@ -31,6 +31,10 @@ export const SEARCH_FACET_FILTERS = [
     attribute: 'availability',
     title: 'Availability',
   },
+  {
+    attribute: 'language',
+    title: 'Language',
+  },
 ];
 
 export const BOOLEAN_FILTERS = [SHOW_ALL_NAME];
