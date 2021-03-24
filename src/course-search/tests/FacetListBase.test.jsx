@@ -45,7 +45,11 @@ const searchableDropdownProps = {
   searchForItems: jest.fn(),
   searchable: true,
   isBold: true,
-  typeaheadOptions: { placeholder: 'Find a skill', ariaLabel: 'Type to find a skill', minLength: 3 },
+  typeaheadOptions: {
+    placeholder: 'Find a skill...',
+    ariaLabel: 'Type to find a skill',
+    minLength: 3,
+  },
 };
 
 describe('<FacetListBase />', () => {
@@ -148,7 +152,7 @@ describe('<FacetListBase />', () => {
     await act(async () => {
       fireEvent.click(screen.queryByText('Skills'));
     });
-    expect(screen.queryByPlaceholderText('Find a skill')).toBeInTheDocument();
+    expect(screen.queryByPlaceholderText('Find a skill...')).toBeInTheDocument();
     expect(screen.queryByText('Blockchain')).toBeInTheDocument();
     expect(screen.queryByText('Cryptocurrency')).toBeInTheDocument();
 

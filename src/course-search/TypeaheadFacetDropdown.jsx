@@ -21,7 +21,7 @@ const TypeaheadFacetDropdown = ({
 
   const transformMenuOptions = menuOptions => (
     <>
-      <div className="p-2">
+      <div className="pr-2 pl-2 pb-2">
         <Input
           autoFocus
           type="search"
