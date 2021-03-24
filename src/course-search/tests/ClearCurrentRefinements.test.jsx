@@ -17,7 +17,7 @@ describe('<ClearCurrentRefinements />', () => {
 
   test('dispatches the clear refinements action on click', async () => {
     const spy = jest.spyOn(actions, 'clearRefinementsAction');
-    renderWithRouter(<SearchData><ClearCurrentRefinements /></SearchData>);
+    renderWithRouter(<SearchData><ClearCurrentRefinements variant="primary" /></SearchData>);
 
     // click a specific refinement to remove it
     fireEvent.click(screen.queryByText(CLEAR_ALL_TEXT));

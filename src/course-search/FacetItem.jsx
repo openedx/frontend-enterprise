@@ -6,15 +6,12 @@ import classNames from 'classnames';
 const FacetItem = ({
   handleInputOnChange, item, isChecked,
 }) => (
-  <Dropdown.Item
-    key={item.label}
-    as="label"
-    className="mb-0 py-3"
-  >
+  <Dropdown.Item as="label" className="mb-0 py-3">
     <Input
       type="checkbox"
       checked={isChecked}
       onChange={() => handleInputOnChange(item)}
+      className="position-relative mr-2"
     />
     <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
       {item.label}

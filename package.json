@@ -68,7 +68,8 @@
     "classnames": "^2.2.5",
     "query-string": "^5.1.1",
     "react-instantsearch-dom": "^6.8.3",
-    "react-loading-skeleton": "^2.1.1"
+    "react-loading-skeleton": "^2.1.1",
+    "lodash.debounce": "^4.0.8"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -86,14 +87,14 @@
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "redux": "4.0.5",
+    "redux": "^4.0.5",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "algoliasearch": "^4.8.5",
     "classnames": "^2.2.5",
     "query-string": "^5.1.1",
     "react-instantsearch-dom": "^6.8.3",
-    "react-loading-skeleton": "^2.1.1"
-  },
-  "dependencies": {}
+    "react-loading-skeleton": "^2.1.1",
+    "lodash.debounce": "^4.0.8"
+  }
 }

@@ -35,20 +35,13 @@
       @extend .border-bottom;
       @extend .py-3;
       width: 100%;
-
-      &:after {
-        position: table;
-        float: right;
-        height: 100%;
-        vertical-align: middle;
-      }
     }
 
     &:first-child {
       border: none;
     }
 
-    .dropdown-menu {
+    .dropdown-menu, .typeahead-dropdown-menu-scrollable-items {
       position: relative;
       width: 100%;
       box-shadow: none;

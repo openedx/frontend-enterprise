@@ -41,7 +41,7 @@ const SearchFilters = () => {
   const searchFacets = useMemo(
     () => {
       const filtersFromRefinements = searchFacetFilters.map(({
-        title, attribute, isSortedAlphabetical,
+        title, attribute, isSortedAlphabetical, typeaheadOptions,
       }) => (
         <FacetListRefinement
           key={attribute}
@@ -57,6 +57,8 @@ const SearchFilters = () => {
           refinementsFromQueryParams={refinementsFromQueryParams}
           defaultRefinement={refinementsFromQueryParams[attribute]}
           facetValueType="array"
+          typeaheadOptions={typeaheadOptions}
+          searchable={!!typeaheadOptions}
         />
       ));
       return (
