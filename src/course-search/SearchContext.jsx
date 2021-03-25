@@ -53,11 +53,14 @@ const SearchData = ({ children, searchFacetFilters }) => {
     }
   }, [newQueryString]);
 
-  const value = {
-    refinementsFromQueryParams,
-    dispatch,
-    searchFacetFilters,
-  };
+  const value = useMemo(
+    () => ({
+      refinementsFromQueryParams,
+      dispatch,
+      searchFacetFilters,
+    }),
+    [refinementsFromQueryParams, dispatch, searchFacetFilters],
+  );
 
   return (
     <SearchContext.Provider value={value}>{children}</SearchContext.Provider>
