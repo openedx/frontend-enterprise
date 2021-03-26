@@ -1,6 +1,9 @@
 import qs from 'query-string';
 
-import { FEATURE_ENROLL_WITH_CODES } from '../../constants';
+import {
+  FEATURE_ENROLL_WITH_CODES,
+  FEATURE_LANGUAGE_FACET,
+} from '../../constants';
 
 const hasFeatureFlagEnabled = (featureFlag) => {
   const { features } = qs.parse(window.location.search);
@@ -8,9 +11,8 @@ const hasFeatureFlagEnabled = (featureFlag) => {
 };
 
 const features = {
-  ENROLL_WITH_CODES:
-    process.env.FEATURE_ENROLL_WITH_CODES
-    || hasFeatureFlagEnabled(FEATURE_ENROLL_WITH_CODES),
+  ENROLL_WITH_CODES: process.env.FEATURE_ENROLL_WITH_CODES || hasFeatureFlagEnabled(FEATURE_ENROLL_WITH_CODES),
+  LANGUAGE_FACET: process.env.FEATURE_LANGUAGE_FACET || hasFeatureFlagEnabled(FEATURE_LANGUAGE_FACET),
 };
 
 // eslint-disable-next-line import/prefer-default-export
