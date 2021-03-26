@@ -1,3 +1,5 @@
+import { features } from '../config';
+
 export const SHOW_ALL_NAME = 'showAll';
 
 export const SEARCH_FACET_FILTERS = [
@@ -31,11 +33,15 @@ export const SEARCH_FACET_FILTERS = [
     attribute: 'availability',
     title: 'Availability',
   },
-  {
+];
+
+if (features.LANGUAGE_FACET) {
+  SEARCH_FACET_FILTERS.push({
     attribute: 'language',
     title: 'Language',
-  },
-];
+    isSortedAlphabetical: true,
+  });
+}
 
 export const BOOLEAN_FILTERS = [SHOW_ALL_NAME];
 export const QUERY_PARAM_FOR_SEARCH_QUERY = 'q';
