@@ -6,6 +6,11 @@ const ENTERPRISE_CATALOG_ADMIN = 'enterprise_catalog_admin';
 const ENTERPRISE_LEARNER = 'enterprise_learner';
 const ENTERPRISE_OPENEDX_OPERATOR = 'enterprise_openedx_operator';
 
+const STYLE_VARIANTS = {
+  default: 'default',
+  inverse: 'inverse',
+};
+
 export {
   FEATURE_ENROLL_WITH_CODES,
   FEATURE_LANGUAGE_FACET,
@@ -13,4 +18,5 @@ export {
   ENTERPRISE_CATALOG_ADMIN,
   ENTERPRISE_LEARNER,
   ENTERPRISE_OPENEDX_OPERATOR,
+  STYLE_VARIANTS,
 };

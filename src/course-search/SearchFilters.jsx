@@ -1,4 +1,5 @@
 import React, { useMemo, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { breakpoints } from '@edx/paragon';
 
 import FacetListRefinement from './FacetListRefinement';
@@ -15,10 +16,11 @@ import { sortItemsByLabelAsc } from './data/utils';
 import { useWindowSize } from '../hooks';
 import { SearchContext } from './SearchContext';
 import { features } from './config';
+import { STYLE_VARIANTS } from '../constants';
 
 export const FREE_ALL_TITLE = 'Free / All';
 
-const SearchFilters = () => {
+const SearchFilters = ({ variant }) => {
   const size = useWindowSize();
   const { refinementsFromQueryParams, searchFacetFilters } = useContext(SearchContext);
   const showMobileMenu = useMemo(
@@ -59,6 +61,7 @@ const SearchFilters = () => {
           facetValueType="array"
           typeaheadOptions={typeaheadOptions}
           searchable={!!typeaheadOptions}
+          variant={variant}
         />
       ));
       return (
@@ -71,6 +74,7 @@ const SearchFilters = () => {
               items={freeAllItems}
               key={SHOW_ALL_NAME}
               title={FREE_ALL_TITLE}
+              variant={variant}
             />
           )}
           {filtersFromRefinements}
@@ -96,6 +100,14 @@ const SearchFilters = () => {
       )}
     </>
   );
+};
+
+SearchFilters.defaultProps = {
+  variant: STYLE_VARIANTS.inverse,
+};
+
+SearchFilters.propTypes = {
+  variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
 };
 
 export default SearchFilters;

@@ -1,0 +1,14 @@
+.fe__searchfield {
+  border-radius: 0 !important;
+}
+
+.fe__searchfield-input-box {
+  @extend .mb-2;
+  @extend .text-brand-primary !optional;
+  @extend .font-weight-normal;
+}
+
+.fe__searchfield--inverse {
+  border: 0 !important;
+  @extend .bg-white;
+}

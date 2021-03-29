@@ -11,6 +11,7 @@ const TypeaheadFacetDropdown = ({
   isBold,
   options,
   searchForItems,
+  ...props
 }) => {
   const handleSearch = debounce((value) => {
     // when user is erasing the input and input is empty we need to reset the filtering
@@ -43,6 +44,7 @@ const TypeaheadFacetDropdown = ({
       title={title}
       isBold={isBold}
       type="typeahead"
+      {...props}
     />
   );
 };
