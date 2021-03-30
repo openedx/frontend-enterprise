@@ -8,11 +8,11 @@ const FacetDropdown = ({
   title,
   items,
   isBold,
-  type,
+  className,
   variant,
 }) => (
   <div className="facet-list">
-    <Dropdown className={classNames('mb-0 mr-md-3', type)}>
+    <Dropdown className={classNames('mb-0 mr-md-3', className)}>
       <Dropdown.Toggle
         variant={classNames({
           'inverse-primary': variant === STYLE_VARIANTS.inverse,
@@ -30,7 +30,7 @@ const FacetDropdown = ({
 );
 
 FacetDropdown.defaultProps = {
-  type: undefined,
+  className: '',
   variant: STYLE_VARIANTS.inverse,
 };
 
@@ -38,7 +38,7 @@ FacetDropdown.propTypes = {
   title: PropTypes.string.isRequired,
   items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   isBold: PropTypes.bool.isRequired,
-  type: PropTypes.string,
+  className: PropTypes.string,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
 };
 

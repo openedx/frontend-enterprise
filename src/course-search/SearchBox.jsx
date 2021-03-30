@@ -9,6 +9,8 @@ import { connectSearchBox } from 'react-instantsearch-dom';
 import { updateRefinementsFromQueryParams } from './data/utils';
 import { STYLE_VARIANTS } from '../constants';
 
+export const searchText = 'Search courses';
+
 export const SearchBoxBase = ({
   className,
   defaultRefinement,
@@ -48,7 +50,7 @@ export const SearchBoxBase = ({
     <div className={className}>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label id="search-input-box" className="fe__searchfield-input-box">
-        Search Courses
+        {searchText}
       </label>
       <SearchField.Advanced
         className={classNames('fe__searchfield', {

@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { SearchBoxBase } from '../SearchBox';
+import { SearchBoxBase, searchText } from '../SearchBox';
 
 import { renderWithRouter } from '../../utils/tests';
 
@@ -18,7 +18,7 @@ describe('<SearchBox />', () => {
     expect(screen.queryByRole('searchbox')).toBeInTheDocument();
 
     // assert our custom label for the input renders
-    expect(screen.getByLabelText('Search Courses')).toBeInTheDocument();
+    expect(screen.getByLabelText(searchText)).toBeInTheDocument();
   });
 
   test('renders with an initial value', () => {

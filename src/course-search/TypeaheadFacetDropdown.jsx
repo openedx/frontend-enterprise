@@ -43,7 +43,7 @@ const TypeaheadFacetDropdown = ({
       items={transformMenuOptions(items)}
       title={title}
       isBold={isBold}
-      type="typeahead"
+      className="typeahead"
       {...props}
     />
   );
