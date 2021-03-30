@@ -18,7 +18,7 @@ $facet-dropdown-max-height: 250px;
 
     .dropdown-menu {
       max-height: $facet-dropdown-max-height;
-      overflow-y: scroll;
+      overflow: scroll;
       max-width: 420px;
       width: max-content;
 
@@ -28,13 +28,11 @@ $facet-dropdown-max-height: 250px;
       }
     }
   }
-
   .typeahead {
     .dropdown-menu {
       max-height: unset;
       overflow-y: unset;
-
-      .typeahead-dropdown-menu-scrollable-items {
+          .typeahead-dropdown-menu-scrollable-items {
         max-height: $facet-dropdown-max-height;
         overflow-y: scroll;
       }

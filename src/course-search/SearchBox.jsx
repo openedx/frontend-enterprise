@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { useHistory } from 'react-router-dom';
 import qs from 'query-string';
 import { SearchField } from '@edx/paragon';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { updateRefinementsFromQueryParams } from './data/utils';
+import { STYLE_VARIANTS } from '../constants';
+
+export const searchText = 'Search courses';
 
 export const SearchBoxBase = ({
   className,
   defaultRefinement,
   refinementsFromQueryParams,
+  variant,
 }) => {
   const history = useHistory();
 
@@ -44,11 +49,13 @@ export const SearchBoxBase = ({
   return (
     <div className={className}>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label id="search-input-box" className="mb-2 text-brand-primary font-weight-normal">
-        Search Courses
+      <label id="search-input-box" className="fe__searchfield-input-box">
+        {searchText}
       </label>
       <SearchField.Advanced
-        className="border-0 bg-white"
+        className={classNames('fe__searchfield', {
+          'fe__searchfield--inverse': variant === STYLE_VARIANTS.inverse,
+        })}
         value={defaultRefinement}
         onSubmit={handleSubmit}
         onClear={handleClear}
@@ -65,11 +72,13 @@ SearchBoxBase.propTypes = {
   refinementsFromQueryParams: PropTypes.shape().isRequired,
   defaultRefinement: PropTypes.string,
   className: PropTypes.string,
+  variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
 };
 
 SearchBoxBase.defaultProps = {
   className: undefined,
   defaultRefinement: '',
+  variant: STYLE_VARIANTS.inverse,
 };
 
 export default connectSearchBox(SearchBoxBase);

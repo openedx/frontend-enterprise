@@ -9,6 +9,7 @@ import { SearchContext } from './SearchContext';
 import {
   addToRefinementArray, setRefinementAction, deleteRefinementAction, removeFromRefinementArray,
 } from './data/actions';
+import { STYLE_VARIANTS } from '../constants';
 
 const FacetListBase = ({
   attribute,
@@ -19,6 +20,7 @@ const FacetListBase = ({
   title,
   typeaheadOptions,
   searchForItems,
+  variant,
 }) => {
   /**
    * Handles when a facet option is toggled by either updating the appropriate
@@ -75,6 +77,7 @@ const FacetListBase = ({
         isBold={isBold}
         options={typeaheadOptions}
         searchForItems={searchForItems}
+        variant={variant}
       />
     );
   }
@@ -84,6 +87,7 @@ const FacetListBase = ({
       items={renderItems()}
       title={title}
       isBold={isBold}
+      variant={variant}
     />
   );
 };
@@ -92,6 +96,7 @@ FacetListBase.defaultProps = {
   isCheckedField: null,
   typeaheadOptions: null,
   searchForItems: null,
+  variant: STYLE_VARIANTS.inverse,
 };
 
 FacetListBase.propTypes = {
@@ -107,6 +112,7 @@ FacetListBase.propTypes = {
     minLength: PropTypes.number.isRequired,
   }),
   searchForItems: PropTypes.func,
+  variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
 };
 
 export default FacetListBase;
