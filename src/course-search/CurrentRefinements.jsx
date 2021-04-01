@@ -1,5 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Badge, Button } from '@edx/paragon';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
@@ -17,8 +18,9 @@ import {
 } from './data/hooks';
 import { SearchContext } from './SearchContext';
 import { removeFromRefinementArray, deleteRefinementAction } from './data/actions';
+import { STYLE_VARIANTS } from '../constants';
 
-export const CurrentRefinementsBase = ({ items }) => {
+export const CurrentRefinementsBase = ({ items, variant }) => {
   if (!items || !items.length) {
     return null;
   }
@@ -67,7 +69,7 @@ export const CurrentRefinementsBase = ({ items }) => {
       {visibleActiveRefinements.map(item => (
         <li className="mr-2" key={item.label}>
           <Badge
-            className="fe__refinement-badge mb-2 font-weight-light"
+            className="fe__refinement-badge py-2 mb-2 font-weight-light"
             variant="light"
             onClick={() => handleRefinementBadgeClick(item)}
           >
@@ -80,7 +82,7 @@ export const CurrentRefinementsBase = ({ items }) => {
       {!showAllRefinements && activeRefinementsAsFlatArray.length > NUM_CURRENT_REFINEMENTS_TO_DISPLAY && (
         <li className="mr-2">
           <Badge
-            className="fe__refinement-badge mb-2 font-weight-light"
+            className={classNames('fe__refinement-badge mb-2 py-2 font-weight-light', { 'fe__refinement-badge--default': variant === STYLE_VARIANTS.defualt })}
             variant="light"
             onClick={() => setShowAllRefinements(true)}
           >
@@ -92,23 +94,39 @@ export const CurrentRefinementsBase = ({ items }) => {
       {showAllRefinements && (
         <li className="mr-2">
           <Button
-            className="text-white text-underline px-1 py-0 mb-2"
-            variant="link"
+            className={classNames(
+              'fe__current-refinement-button text-underline px-1 py-0 mb-2',
+              { 'fe__current-refinement-button--inverse': variant === STYLE_VARIANTS.inverse },
+            )}
             onClick={() => setShowAllRefinements(false)}
+            variant="link"
+            size="inline"
           >
             show less
           </Button>
         </li>
       )}
       <li>
-        <ClearCurrentRefinements className="text-white text-underline px-1 py-0 mb-2" variant="link" />
+        <ClearCurrentRefinements
+          className={classNames(
+            'fe__current-refinement-button text-underline px-1 py-0 mb-2',
+            { 'fe__current-refinement-button--inverse': variant === STYLE_VARIANTS.inverse },
+          )}
+          variant="link"
+          size="inline"
+        />
       </li>
     </ul>
   );
 };
 
+CurrentRefinementsBase.defaultProps = {
+  variant: STYLE_VARIANTS.inverse,
+};
+
 CurrentRefinementsBase.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  variant: PropTypes.oneOf(Object.values(STYLE_VARIANTS)),
 };
 
 export default connectCurrentRefinements(CurrentRefinementsBase);

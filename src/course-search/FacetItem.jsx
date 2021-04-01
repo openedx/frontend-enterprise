@@ -12,14 +12,14 @@ const FacetItem = ({
       type="checkbox"
       checked={isChecked}
       onChange={() => handleInputOnChange(item)}
-      className="facet-item position-relative mr-2"
+      className="facet-item position-relative mr-2 mb-2"
     />
     <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
       {item.label}
     </span>
     {item.count && (
       <span className={classNames(
-        'badge badge-pill ml-2 bg-brand-primary text-brand-primary',
+        'badge badge-pill ml-2 py-1 bg-brand-primary text-brand-primary',
         { 'bg-brand-primary--default': variant === STYLE_VARIANTS.default },
       )}
       >

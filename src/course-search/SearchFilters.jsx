@@ -95,7 +95,7 @@ const SearchFilters = ({ variant }) => {
           <div className="d-flex">
             {searchFacets}
           </div>
-          <CurrentRefinements />
+          <CurrentRefinements variant={variant} />
         </>
       )}
     </>
