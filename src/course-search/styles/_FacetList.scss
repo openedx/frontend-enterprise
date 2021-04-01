@@ -25,6 +25,8 @@ $facet-dropdown-max-height: 250px;
       .dropdown-item {
         padding-left: 30px;
         white-space: break-spaces;
+        display: flex;
+        align-items: center;
       }
     }
   }
@@ -38,4 +40,10 @@ $facet-dropdown-max-height: 250px;
       }
     }
   }
+
+}
+
+.bg-brand-primary--default {
+  background-color: $primary-700;
+  color: $white;
 }

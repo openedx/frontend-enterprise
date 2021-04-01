@@ -6,7 +6,7 @@ import { clearRefinementsAction } from './data/actions';
 
 export const CLEAR_ALL_TEXT = 'clear all';
 
-const ClearCurrentRefinements = ({ className, variant }) => {
+const ClearCurrentRefinements = ({ className, variant, ...props }) => {
   const { dispatch } = useContext(SearchContext);
 
   /**
@@ -23,6 +23,7 @@ const ClearCurrentRefinements = ({ className, variant }) => {
       className={className}
       variant={variant}
       onClick={handleClearAllRefinementsClick}
+      {...props}
     >
       {CLEAR_ALL_TEXT}
     </Button>
