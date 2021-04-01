@@ -62,6 +62,7 @@ const FacetListBase = ({
             handleInputOnChange={handleInputOnChange}
             item={item}
             isChecked={isChecked}
+            variant={variant}
           />
         );
       });

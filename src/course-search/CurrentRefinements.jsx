@@ -67,7 +67,7 @@ export const CurrentRefinementsBase = ({ items }) => {
       {visibleActiveRefinements.map(item => (
         <li className="mr-2" key={item.label}>
           <Badge
-            className="mb-2 font-weight-light"
+            className="fe__refinement-badge mb-2 font-weight-light"
             variant="light"
             onClick={() => handleRefinementBadgeClick(item)}
           >
@@ -80,7 +80,7 @@ export const CurrentRefinementsBase = ({ items }) => {
       {!showAllRefinements && activeRefinementsAsFlatArray.length > NUM_CURRENT_REFINEMENTS_TO_DISPLAY && (
         <li className="mr-2">
           <Badge
-            className="mb-2 font-weight-light"
+            className="fe__refinement-badge mb-2 font-weight-light"
             variant="light"
             onClick={() => setShowAllRefinements(true)}
           >
