@@ -11,6 +11,22 @@ import { updateRefinementsFromQueryParams } from './data/utils';
 import { useIsFirstRender } from '../hooks';
 
 export const SearchContext = createContext();
+export const getRefinementsToSet = (queryParams, activeFacetAttributes) => {
+  const refinementsToSet = {};
+
+  Object.entries(queryParams).forEach(([key, value]) => {
+    if (activeFacetAttributes.includes(key)) {
+      const valueAsArray = value.includes(',') ? value.split(',') : [value];
+      refinementsToSet[key] = valueAsArray;
+    } else if (BOOLEAN_FILTERS.includes(key)) {
+      // convert a string into a number (this should be a 1 or 0)
+      refinementsToSet[key] = +value;
+    } else {
+      refinementsToSet[key] = value;
+    }
+  });
+  return refinementsToSet;
+};
 
 const SearchData = ({ children, searchFacetFilters }) => {
   const [refinementsFromQueryParams, dispatch] = useReducer(
@@ -24,20 +40,9 @@ const SearchData = ({ children, searchFacetFilters }) => {
   const queryParams = useMemo(() => qs.parse(search), [search]);
 
   useEffect(() => {
-    const activeFacetAttributes = SEARCH_FACET_FILTERS.map(filter => filter.attribute);
-    const keysToSet = {};
-    Object.entries(queryParams).forEach(([key, value]) => {
-      if (activeFacetAttributes.includes(key)) {
-        const valueAsArray = value.includes(',') ? value.split(',') : [value];
-        keysToSet[key] = valueAsArray;
-      } else if (BOOLEAN_FILTERS.includes(key)) {
-        // convert a string into a number (this should be a 1 or 0)
-        keysToSet[key] = +value;
-      } else {
-        keysToSet[key] = value;
-      }
-    });
-    dispatch(setMultipleRefinementsAction(keysToSet));
+    const activeFacetAttributes = searchFacetFilters.map(filter => filter.attribute);
+    const refinementsToSet = getRefinementsToSet(queryParams, activeFacetAttributes);
+    dispatch(setMultipleRefinementsAction(refinementsToSet));
   }, [search]);
 
   const newQueryString = useMemo(() => {
