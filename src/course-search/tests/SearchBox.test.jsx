@@ -5,13 +5,21 @@ import '@testing-library/jest-dom/extend-expect';
 import { SearchBoxBase, searchText } from '../SearchBox';
 
 import { renderWithRouter } from '../../utils/tests';
+import SearchData from '../SearchContext';
 
 const TEST_QUERY = 'test query';
 
+const renderWithContext = () => {
+  renderWithRouter(
+    <SearchData>
+      <SearchBoxBase />
+    </SearchData>,
+  );
+};
+
 describe('<SearchBox />', () => {
   test('renders with a label', () => {
-    const refinements = {};
-    renderWithRouter(<SearchBoxBase refinementsFromQueryParams={refinements} />);
+    renderWithContext();
 
     // assert the Paragon <SearchField /> component renders
     expect(screen.queryByRole('search')).toBeInTheDocument();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useHistory } from 'react-router-dom';
@@ -7,17 +7,20 @@ import { SearchField } from '@edx/paragon';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { updateRefinementsFromQueryParams } from './data/utils';
+import { deleteRefinementAction, setRefinementAction } from './data/actions';
 import { STYLE_VARIANTS } from '../constants';
+import { SearchContext } from './SearchContext';
+import { QUERY_PARAM_FOR_PAGE, QUERY_PARAM_FOR_SEARCH_QUERY } from './data/constants';
 
 export const searchText = 'Search courses';
 
 export const SearchBoxBase = ({
   className,
   defaultRefinement,
-  refinementsFromQueryParams,
   variant,
 }) => {
   const history = useHistory();
+  const { dispatch, refinementsFromQueryParams } = useContext(SearchContext);
 
   /**
    * Handles when a search is submitted by adding the user's search
@@ -25,10 +28,10 @@ export const SearchBoxBase = ({
    * existing query parameters must be preserved.
    */
   const handleSubmit = (searchQuery) => {
-    const refinements = { ...refinementsFromQueryParams };
-    refinements.q = searchQuery;
-    delete refinements.page; // reset to page 1
+    dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
+    dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
 
+    const refinements = { ...refinementsFromQueryParams };
     const updatedRefinements = updateRefinementsFromQueryParams(refinements);
     history.push({ search: qs.stringify(updatedRefinements) });
   };
@@ -38,10 +41,10 @@ export const SearchBoxBase = ({
    * from the query parameters.
    */
   const handleClear = () => {
-    const refinements = { ...refinementsFromQueryParams };
-    delete refinements.q;
-    delete refinements.page; // reset to page 1
+    dispatch(deleteRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY));
+    dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
 
+    const refinements = { ...refinementsFromQueryParams };
     const updatedRefinements = updateRefinementsFromQueryParams(refinements);
     history.push({ search: qs.stringify(updatedRefinements) });
   };
@@ -69,7 +72,6 @@ export const SearchBoxBase = ({
 };
 
 SearchBoxBase.propTypes = {
-  refinementsFromQueryParams: PropTypes.shape().isRequired,
   defaultRefinement: PropTypes.string,
   className: PropTypes.string,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
