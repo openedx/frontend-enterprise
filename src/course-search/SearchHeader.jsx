@@ -49,7 +49,7 @@ const SearchHeader = ({ variant, containerSize }) => {
 
 SearchHeader.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
-  containerSize: '',
+  containerSize: null,
 };
 
 SearchHeader.propTypes = {
