@@ -22,8 +22,9 @@ export const SEARCH_FACET_FILTERS = [
     isSortedAlphabetical: true,
   },
   {
-    attribute: 'programs',
+    attribute: (features.PROGRAM_TITLES_FACET ? 'program_titles' : 'programs'),
     title: 'Program',
+    isSortedAlphabetical: true,
   },
   {
     attribute: 'level_type',
