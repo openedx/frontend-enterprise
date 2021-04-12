@@ -79,7 +79,10 @@ describe('<FacetListBase />', () => {
     expect(screen.queryByText(FREE_LABEL)).toBeInTheDocument();
     expect(screen.queryByText(NOT_FREE_LABEL)).toBeInTheDocument();
   });
-
+  test('does not render if noDisplay is set to True', () => {
+    renderWithRouter(<SearchData><FacetListBase {...propsWithItems} noDisplay /></SearchData>);
+    expect(screen.queryByText(propsWithItems.title)).not.toBeInTheDocument();
+  });
   test('renders with options', async () => {
     renderWithRouter(<SearchData><FacetListBase {...propsWithItems} /></SearchData>);
 

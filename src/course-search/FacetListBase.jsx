@@ -21,6 +21,7 @@ const FacetListBase = ({
   typeaheadOptions,
   searchForItems,
   variant,
+  noDisplay,
 }) => {
   /**
    * Handles when a facet option is toggled by either updating the appropriate
@@ -70,6 +71,10 @@ const FacetListBase = ({
     [items],
   );
 
+  if (noDisplay) {
+    return null;
+  }
+
   if (typeaheadOptions) {
     return (
       <TypeaheadFacetDropdown
@@ -98,6 +103,7 @@ FacetListBase.defaultProps = {
   typeaheadOptions: null,
   searchForItems: null,
   variant: STYLE_VARIANTS.inverse,
+  noDisplay: false,
 };
 
 FacetListBase.propTypes = {
@@ -114,6 +120,7 @@ FacetListBase.propTypes = {
   }),
   searchForItems: PropTypes.func,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
+  noDisplay: PropTypes.bool,
 };
 
 export default FacetListBase;
