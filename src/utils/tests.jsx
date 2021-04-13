@@ -2,9 +2,8 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
-import { AppContext } from '@edx/frontend-platform/react';
+import SearchData from '../course-search/SearchContext';
 
-// eslint-disable import/prefer-default-export
 export function renderWithRouter(
   ui,
   {
@@ -25,28 +24,8 @@ export function renderWithRouter(
   };
 }
 
-/* eslint-disable react/prop-types */
-export const FakeAppContext = ({
-  initialAppState = {},
-  children,
-}) => (
-  <AppContext.Provider value={initialAppState}>
+export const renderWithSearchContext = (children) => renderWithRouter(
+  <SearchData>
     {children}
-  </AppContext.Provider>
+  </SearchData>,
 );
-/* eslint-enable react/prop-types */
-
-/* warning, this store may not be complete, please add to it as needed */
-export const fakeReduxStore = {
-  courseEnrollments: {
-    courseRuns: [],
-    error: null,
-    isMarkCourseCompleteSuccess: false,
-    isMoveToInProgressSuccess: false,
-  },
-  offers: {
-    loading: false,
-    offersCount: 0,
-    offers: [],
-  },
-};

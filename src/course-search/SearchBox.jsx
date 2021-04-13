@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useHistory } from 'react-router-dom';
-import qs from 'query-string';
 import { SearchField } from '@edx/paragon';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
-import { updateRefinementsFromQueryParams } from './data/utils';
 import { deleteRefinementAction, setRefinementAction } from './data/actions';
 import { STYLE_VARIANTS } from '../constants';
 import { SearchContext } from './SearchContext';
@@ -19,8 +16,7 @@ export const SearchBoxBase = ({
   defaultRefinement,
   variant,
 }) => {
-  const history = useHistory();
-  const { dispatch, refinementsFromQueryParams } = useContext(SearchContext);
+  const { dispatch } = useContext(SearchContext);
 
   /**
    * Handles when a search is submitted by adding the user's search
@@ -30,10 +26,6 @@ export const SearchBoxBase = ({
   const handleSubmit = (searchQuery) => {
     dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
-
-    const refinements = { ...refinementsFromQueryParams };
-    const updatedRefinements = updateRefinementsFromQueryParams(refinements);
-    history.push({ search: qs.stringify(updatedRefinements) });
   };
 
   /**
@@ -43,10 +35,6 @@ export const SearchBoxBase = ({
   const handleClear = () => {
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
-
-    const refinements = { ...refinementsFromQueryParams };
-    const updatedRefinements = updateRefinementsFromQueryParams(refinements);
-    history.push({ search: qs.stringify(updatedRefinements) });
   };
 
   return (
