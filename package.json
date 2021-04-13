@@ -71,14 +71,6 @@
     "react-loading-skeleton": "^2.1.1",
     "lodash.debounce": "^4.0.8"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/index.js",
-      "!**/node_modules/**",
-      "!**/tests/**"
-    ]
-  },
   "peerDependencies": {
     "@edx/frontend-platform": "^1.5.2",
     "@edx/paragon": "^13.12.1",
