@@ -30,7 +30,6 @@ const SearchHeader = ({ variant }) => {
             <SearchBox
               className="mb-4"
               defaultRefinement={searchQueryFromQueryParams}
-              refinementsFromQueryParams={refinementsFromQueryParams}
               variant={variant}
             />
           </Col>
