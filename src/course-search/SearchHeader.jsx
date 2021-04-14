@@ -12,14 +12,14 @@ import { SearchContext } from './SearchContext';
 export const searchBoxColTestId = 'search-box-col';
 export const filtersColTestId = 'filters-col';
 
-const SearchHeader = ({ variant }) => {
+const SearchHeader = ({ variant, containerSize }) => {
   const { refinementsFromQueryParams } = useContext(SearchContext);
 
   const searchQueryFromQueryParams = refinementsFromQueryParams.q;
 
   return (
     <div className="bg-brand-primary">
-      <Container size="lg">
+      <Container size={containerSize}>
         <Row className="pt-4 pb-3">
           <Col
             data-testid={searchBoxColTestId}
@@ -48,9 +48,11 @@ const SearchHeader = ({ variant }) => {
 
 SearchHeader.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
+  containerSize: null,
 };
 
 SearchHeader.propTypes = {
+  containerSize: PropTypes.string,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
 };
 
