@@ -71,14 +71,6 @@
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/index.js",
-      "!**/node_modules/**",
-      "!**/tests/**"
-    ]
-  },
   "peerDependencies": {
     "@edx/frontend-platform": "^1.5.2",
     "@edx/paragon": "^14.5.0",

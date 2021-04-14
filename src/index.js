@@ -13,6 +13,7 @@ export { default as SearchHeader } from './course-search/SearchHeader';
 export { default as SearchPagination } from './course-search/SearchPagination';
 export { useNbHitsFromSearchResults, getCatalogString } from './course-search/data/hooks';
 export { SEARCH_FACET_FILTERS, SHOW_ALL_NAME } from './course-search/data/constants';
+export { renderWithSearchContext } from './utils/tests';
 export {
   addToRefinementArray,
   deleteRefinementAction,
