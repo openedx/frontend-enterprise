@@ -40,7 +40,7 @@ export const SearchBoxBase = ({
   return (
     <div className={className}>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label id="search-input-box" className="fe__searchfield-input-box">
+      <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
         {searchText}
       </label>
       <SearchField.Advanced

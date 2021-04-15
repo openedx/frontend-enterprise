@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Dropdown } from '@edx/paragon';
+import { Badge, Input, Dropdown } from '@edx/paragon';
 import classNames from 'classnames';
 import { STYLE_VARIANTS } from '../constants';
 
@@ -18,13 +18,15 @@ const FacetItem = ({
       {item.label}
     </span>
     {item.count && (
-      <span className={classNames(
-        'badge badge-pill ml-2 py-1 bg-brand-primary text-brand-primary',
-        { 'bg-brand-primary--default': variant === STYLE_VARIANTS.default },
-      )}
+      <Badge
+        pill
+        className={classNames(
+          'ml-2 bg-brand-primary text-brand-primary',
+          { 'bg-brand-primary--default': variant === STYLE_VARIANTS.default },
+        )}
       >
         {item.count}
-      </span>
+      </Badge>
     )}
   </Dropdown.Item>
 );
