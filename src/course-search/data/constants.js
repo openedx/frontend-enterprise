@@ -15,16 +15,31 @@ export const SEARCH_FACET_FILTERS = [
   {
     attribute: 'subjects',
     title: 'Subject',
+    typeaheadOptions: {
+      placeholder: 'Find a subject...',
+      ariaLabel: 'Type to find a subject',
+      minLength: 3,
+    },
   },
   {
     attribute: 'partners.name',
     title: 'Partner',
     isSortedAlphabetical: true,
+    typeaheadOptions: {
+      placeholder: 'Find a partner...',
+      ariaLabel: 'Type to find a partner',
+      minLength: 3,
+    },
   },
   {
     attribute: (features.PROGRAM_TITLES_FACET ? 'program_titles' : 'programs'),
     title: 'Program',
     isSortedAlphabetical: true,
+    typeaheadOptions: {
+      placeholder: 'Find a program...',
+      ariaLabel: 'Type to find a program',
+      minLength: 3,
+    },
   },
   {
     attribute: 'level_type',
