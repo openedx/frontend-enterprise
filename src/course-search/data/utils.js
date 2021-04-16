@@ -12,3 +12,11 @@ export const updateRefinementsFromQueryParams = (refinements) => {
 
   return refinementsWithJoinedLists;
 };
+
+export function paramsToObject(entries) {
+  const result = {};
+  entries.forEach((value, key) => {
+    result[key] = value;
+  });
+  return result;
+}

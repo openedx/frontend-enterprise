@@ -1,13 +1,13 @@
-import qs from 'query-string';
-
 import {
   FEATURE_ENROLL_WITH_CODES,
   FEATURE_LANGUAGE_FACET,
   FEATURE_PROGRAM_TITLES_FACET,
 } from '../../constants';
+import { paramsToObject } from '../data/utils';
 
 const hasFeatureFlagEnabled = (featureFlag) => {
-  const { features } = qs.parse(window.location.search);
+  const searchParams = new URLSearchParams(window.location.search);
+  const { features } = paramsToObject(searchParams);
   return features && features.split(',').includes(featureFlag);
 };
 
