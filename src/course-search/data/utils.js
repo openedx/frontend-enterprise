@@ -12,3 +12,17 @@ export const updateRefinementsFromQueryParams = (refinements) => {
 
   return refinementsWithJoinedLists;
 };
+
+export function paramsToObject(entries) {
+  const result = {};
+  entries.forEach((value, key) => {
+    result[key] = value;
+  });
+  return result;
+}
+
+export function hasFeatureFlagEnabled(featureFlag) {
+  const searchParams = new URLSearchParams(window.location.search);
+  const { features } = paramsToObject(searchParams);
+  return features && features.split(',').includes(featureFlag);
+}
