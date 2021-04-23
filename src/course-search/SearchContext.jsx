@@ -3,11 +3,10 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useHistory } from 'react-router-dom';
-import qs from 'query-string';
 import { BOOLEAN_FILTERS, SEARCH_FACET_FILTERS } from './data/constants';
 import { refinementsReducer } from './data/reducer';
 import { setMultipleRefinementsAction } from './data/actions';
-import { updateRefinementsFromQueryParams } from './data/utils';
+import { paramsToObject, stringifyRefinements, updateRefinementsFromQueryParams } from './data/utils';
 import { useIsFirstRender } from '../hooks';
 
 export const SearchContext = createContext();
@@ -37,8 +36,7 @@ const SearchData = ({ children, searchFacetFilters }) => {
   const { search } = useLocation();
   const history = useHistory();
 
-  const queryParams = useMemo(() => qs.parse(search), [search]);
-
+  const queryParams = useMemo(() => paramsToObject(new URLSearchParams(search)), [search]);
   useEffect(() => {
     const activeFacetAttributes = searchFacetFilters.map(filter => filter.attribute);
     const refinementsToSet = getRefinementsToSet(queryParams, activeFacetAttributes);
@@ -47,7 +45,7 @@ const SearchData = ({ children, searchFacetFilters }) => {
 
   const newQueryString = useMemo(() => {
     const refinementsWithJoinedLists = updateRefinementsFromQueryParams(refinementsFromQueryParams);
-    return qs.stringify(refinementsWithJoinedLists);
+    return stringifyRefinements(refinementsWithJoinedLists);
   }, [refinementsFromQueryParams]);
 
   const isFirstRender = useIsFirstRender();

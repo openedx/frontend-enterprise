@@ -13,6 +13,15 @@ export const updateRefinementsFromQueryParams = (refinements) => {
   return refinementsWithJoinedLists;
 };
 
+export function stringifyRefinements(refinements) {
+  let refinementString = new URLSearchParams(refinements).toString();
+  // URLSearchParams won't encode spaces contained within individual refinements- ie `Computer Science`
+  if (refinementString) {
+    refinementString = refinementString.replace(/[+]/g, '%20');
+  }
+  return refinementString;
+}
+
 export function paramsToObject(entries) {
   const result = {};
   entries.forEach((value, key) => {
