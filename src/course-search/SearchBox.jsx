@@ -12,14 +12,17 @@ import { SearchContext } from './SearchContext';
 import { QUERY_PARAM_FOR_PAGE, QUERY_PARAM_FOR_SEARCH_QUERY } from './data/constants';
 
 export const searchText = 'Search courses';
-export const SEARCH_EVENT_NAME = 'edx.enterprise.public_catalog.catalog.search_courses';
+// this prefix will be combined with one of the SearchBox props to create a full tracking event name
+// only if event name prop is provided by user. In the absence of the tracking name prop,
+// no tracking event will be sent.
+export const SEARCH_EVENT_NAME_PREFIX = 'edx.enterprise';
 
 export const SearchBoxBase = ({
   className,
   defaultRefinement,
   variant,
 }) => {
-  const { dispatch } = useContext(SearchContext);
+  const { dispatch, trackingName } = useContext(SearchContext);
 
   /**
    * Handles when a search is submitted by adding the user's search
@@ -29,9 +32,11 @@ export const SearchBoxBase = ({
   const handleSubmit = (searchQuery) => {
     dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
-    sendTrackEvent(SEARCH_EVENT_NAME, {
-      query: searchQuery,
-    });
+    if (trackingName) {
+      sendTrackEvent(`${SEARCH_EVENT_NAME_PREFIX}.${trackingName}.catalog_search`, {
+        query: searchQuery,
+      });
+    }
   };
 
   /**

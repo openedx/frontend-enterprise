@@ -4,8 +4,8 @@ import '@testing-library/jest-dom/extend-expect';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
-import { SearchBoxBase, searchText, SEARCH_EVENT_NAME } from '../SearchBox';
-import { renderWithSearchContext } from '../../utils/tests';
+import { SearchBoxBase, searchText, SEARCH_EVENT_NAME_PREFIX } from '../SearchBox';
+import { renderWithSearchContext, renderWithSearchContextAndTracking } from '../../utils/tests';
 
 jest.mock('@edx/frontend-platform/analytics');
 
@@ -40,11 +40,8 @@ describe('<SearchBox />', () => {
     // assert url is updated with the query
     expect(history).toHaveLength(2);
     expect(history.location.search).toEqual('?q=test%20query');
-    // check tracking is invoked
-    expect(sendTrackEvent).toHaveBeenCalledWith(
-      SEARCH_EVENT_NAME,
-      { query: TEST_QUERY },
-    );
+    // check tracking is not invoked due to absent trackingName in context
+    expect(sendTrackEvent).not.toHaveBeenCalled();
 
     // clear the input
     fireEvent.click(screen.getByText('clear search'));
@@ -52,5 +49,18 @@ describe('<SearchBox />', () => {
     // assert query no longer exists in url
     expect(history).toHaveLength(3);
     expect(history.location.search).toEqual('');
+  });
+  test('tracking event when search initiated with trackingName present in context', () => {
+    renderWithSearchContextAndTracking(<SearchBoxBase />, 'aProduct');
+
+    // fill in search input and submit the search
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: TEST_QUERY } });
+    fireEvent.click(screen.getByText('submit search'));
+
+    // check tracking is invoked due to trackingName in context
+    expect(sendTrackEvent).toHaveBeenCalledWith(
+      `${SEARCH_EVENT_NAME_PREFIX}.aProduct.catalog_search`,
+      { query: TEST_QUERY },
+    );
   });
 });
