@@ -1,5 +1,6 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
@@ -34,8 +35,8 @@ describe('<SearchBox />', () => {
     const { history } = renderWithSearchContext(<SearchBoxBase />);
 
     // fill in search input and submit the search
-    fireEvent.change(screen.getByRole('searchbox'), { target: { value: TEST_QUERY } });
-    fireEvent.click(screen.getByText('submit search'));
+    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    userEvent.click(screen.getByText('submit search'));
 
     // assert url is updated with the query
     expect(history).toHaveLength(2);
@@ -44,7 +45,7 @@ describe('<SearchBox />', () => {
     expect(sendTrackEvent).not.toHaveBeenCalled();
 
     // clear the input
-    fireEvent.click(screen.getByText('clear search'));
+    userEvent.click(screen.getByText('clear search'));
 
     // assert query no longer exists in url
     expect(history).toHaveLength(3);
@@ -54,8 +55,8 @@ describe('<SearchBox />', () => {
     renderWithSearchContextAndTracking(<SearchBoxBase />, 'aProduct');
 
     // fill in search input and submit the search
-    fireEvent.change(screen.getByRole('searchbox'), { target: { value: TEST_QUERY } });
-    fireEvent.click(screen.getByText('submit search'));
+    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    userEvent.click(screen.getByText('submit search'));
 
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(
