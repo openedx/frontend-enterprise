@@ -8,7 +8,6 @@ frontend-enterprise contains utility functions for supporting enterprise feature
 Dependency notes
 -----
 
-* v6 and higher of query-string will fail the es5 check
 * eslint-plugin-import needed at least 2.22.1 to avoid failures with an infinity symbol (see https://stackoverflow.com/questions/64790681/eslint-error-configuration-for-rule-import-no-cycle-is-invalid). This can be removed from here once frontend-build PR is merged: https://github.com/edx/frontend-build/pull/137
 
 There is a precommit plugin (commitlint) which requires commit messages formatted in a particular way
@@ -22,7 +21,7 @@ type must be one of [build, ci, docs, feat, fix, perf, refactor, revert, style, 
 
 Versioning and Releases
 -----
-This library has its version automatically updated by semantic-versioning when the release is published to npm. The source code package.json file should remain at "1.0.0-semantically-released".  The below Usage instructions will install the latest version from npm. Please see the repository Releases for earlier package versions. 
+This library has its version automatically updated by semantic-versioning when the release is published to npm. The source code package.json file should remain at "1.0.0-semantically-released".  The below Usage instructions will install the latest version from npm. Please see the repository Releases for earlier package versions.
 
 Preview next release version from Pull Requests
 *****
