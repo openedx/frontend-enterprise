@@ -29,3 +29,9 @@ export const renderWithSearchContext = (children) => renderWithRouter(
     {children}
   </SearchData>,
 );
+
+export const renderWithSearchContextAndTracking = (children, trackingName) => renderWithRouter(
+  <SearchData trackingName={trackingName}>
+    {children}
+  </SearchData>,
+);
