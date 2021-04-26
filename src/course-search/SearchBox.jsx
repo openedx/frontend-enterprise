@@ -16,6 +16,7 @@ export const searchText = 'Search courses';
 // only if event name prop is provided by user. In the absence of the tracking name prop,
 // no tracking event will be sent.
 export const SEARCH_EVENT_NAME_PREFIX = 'edx.enterprise';
+export const QUERY_SUBMITTED_EVENT = 'catalog_search.query_submitted';
 
 export const SearchBoxBase = ({
   className,
@@ -33,7 +34,7 @@ export const SearchBoxBase = ({
     dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
     if (trackingName) {
-      sendTrackEvent(`${SEARCH_EVENT_NAME_PREFIX}.${trackingName}.catalog_search`, {
+      sendTrackEvent(`${SEARCH_EVENT_NAME_PREFIX}.${trackingName}.${QUERY_SUBMITTED_EVENT}`, {
         query: searchQuery,
       });
     }

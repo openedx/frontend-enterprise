@@ -5,7 +5,12 @@ import '@testing-library/jest-dom/extend-expect';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
-import { SearchBoxBase, searchText, SEARCH_EVENT_NAME_PREFIX } from '../SearchBox';
+import {
+  SearchBoxBase,
+  searchText,
+  SEARCH_EVENT_NAME_PREFIX,
+  QUERY_SUBMITTED_EVENT,
+} from '../SearchBox';
 import { renderWithSearchContext, renderWithSearchContextAndTracking } from '../../utils/tests';
 
 jest.mock('@edx/frontend-platform/analytics');
@@ -60,7 +65,7 @@ describe('<SearchBox />', () => {
 
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(
-      `${SEARCH_EVENT_NAME_PREFIX}.aProduct.catalog_search`,
+      `${SEARCH_EVENT_NAME_PREFIX}.aProduct.${QUERY_SUBMITTED_EVENT}`,
       { query: TEST_QUERY },
     );
   });
