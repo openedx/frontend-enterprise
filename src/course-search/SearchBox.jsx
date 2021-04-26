@@ -4,12 +4,15 @@ import classNames from 'classnames';
 import { SearchField } from '@edx/paragon';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
+
 import { deleteRefinementAction, setRefinementAction } from './data/actions';
 import { STYLE_VARIANTS } from '../constants';
 import { SearchContext } from './SearchContext';
 import { QUERY_PARAM_FOR_PAGE, QUERY_PARAM_FOR_SEARCH_QUERY } from './data/constants';
 
 export const searchText = 'Search courses';
+export const SEARCH_EVENT_NAME = 'edx.enterprise.public_catalog.catalog.search_courses';
 
 export const SearchBoxBase = ({
   className,
@@ -26,6 +29,9 @@ export const SearchBoxBase = ({
   const handleSubmit = (searchQuery) => {
     dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
+    sendTrackEvent(SEARCH_EVENT_NAME, {
+      query: searchQuery,
+    });
   };
 
   /**

@@ -2,8 +2,12 @@ import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { SearchBoxBase, searchText } from '../SearchBox';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
+
+import { SearchBoxBase, searchText, SEARCH_EVENT_NAME } from '../SearchBox';
 import { renderWithSearchContext } from '../../utils/tests';
+
+jest.mock('@edx/frontend-platform/analytics');
 
 const TEST_QUERY = 'test query';
 
@@ -36,6 +40,11 @@ describe('<SearchBox />', () => {
     // assert url is updated with the query
     expect(history).toHaveLength(2);
     expect(history.location.search).toEqual('?q=test%20query');
+    // check tracking is invoked
+    expect(sendTrackEvent).toHaveBeenCalledWith(
+      SEARCH_EVENT_NAME,
+      { query: TEST_QUERY },
+    );
 
     // clear the input
     fireEvent.click(screen.getByText('clear search'));
