@@ -1,8 +1,10 @@
 name: Release
+
 on:
   push:
     branches:
       - master
+
 jobs:
   release:
     name: Release
@@ -10,20 +12,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Node.js
+        with:
+          fetch-depth: 0
+      - name: Setup Nodejs
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Install dependencies
+      # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not authenticated
+      - name: Check NPM authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}" >> .npmrc
+          npm whoami
+      - name: Install Dependencies
         run: npm ci
+      - name: Run Lerna Bootstrap
+        run: npm run bootstrap
+      - name: Lint
+        run: npm run ci:lint
       - name: Test
-        run: npm run test
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Release
+        run: npm run ci:test
+      - name: Coverage Report
+        uses: codecov/codecov-action@v1
+      - name: Build
+        run: npm run ci:build
+      - name: Preview Changed Packages
+        run: npm run changed
+      - name: Publish Changed Packages
+        run: npm run publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}
-        run: npx semantic-release
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
