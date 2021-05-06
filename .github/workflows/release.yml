@@ -28,13 +28,13 @@ jobs:
       - name: Run Lerna Bootstrap
         run: npm run bootstrap
       - name: Lint
-        run: npm run ci:lint
+        run: npm run lint
       - name: Test
-        run: npm run ci:test
+        run: npm run test
       - name: Coverage Report
         uses: codecov/codecov-action@v1
       - name: Build
-        run: npm run ci:build
+        run: npm run build
       - name: Preview Changed Packages
         run: npm run changed
       - name: Publish Changed Packages
