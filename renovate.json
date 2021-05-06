@@ -3,8 +3,5 @@
     "config:base"
   ],
   "updateInternalDeps": true,
-  "patch": {
-    "automerge": true
-  },
   "rebaseStalePrs": true
 }

@@ -15,6 +15,6 @@ export {
   getSelectedEnterpriseUUID,
   isNull,
 } from './utils';
-export { renderWithRouter } from './tests/utils';
+export { renderWithRouter } from './test-utils';
 
 export { default as getLearnerPortalLinks } from './learnerPortalLinks';

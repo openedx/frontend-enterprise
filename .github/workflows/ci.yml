@@ -22,17 +22,16 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}" >> .npmrc
           npm whoami
-      - name: Install Dependencies
-        run: npm ci
-      - name: Lerna Bootstrap
-        run: npm run bootstrap
+      - name: Install and Setup Dependencies
+        run: npm run ci:setup
+      # build must come before running linting and tests for the `dist` directory to exist.
+      - name: Build
+        run: npm run ci:build
       - name: Lint
         run: npm run ci:lint
       - name: Test
         run: npm run ci:test
       - name: Coverage Report
         uses: codecov/codecov-action@v1
-      - name: Build
-        run: npm run ci:build
       - name: Preview Changed Packages
         run: npm run changed
