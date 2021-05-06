@@ -17,7 +17,7 @@
     "lint": "lerna run lint --stream",
     "lint:fix": "lerna run lint:fix --include-dependencies --include-dependents --since origin/master --stream",
     "ci:lint": "lerna run lint --include-dependencies --include-dependents --since origin/master --stream",
-    "publish": "lerna publish --yes --stream",
+    "publish": "lerna publish --yes",
     "changed": "lerna changed",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
