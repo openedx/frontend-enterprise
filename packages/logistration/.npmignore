@@ -1,0 +1,8 @@
+babel.config.js
+coverage
+Makefile
+dist
+src/**/*.test.js
+src/**/*.test.jsx
+src/**/tests
+src/**/setupTest.js

@@ -1,0 +1,47 @@
+{
+  "name": "@edx/frontend-enterprise-utils",
+  "version": "0.0.0",
+  "description": "Utils and other miscellaneous enterprise things.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edx/frontend-enterprise.git"
+  },
+  "main": "src/index.js",
+  "browserslist": [
+    "last 2 versions",
+    "ie 11"
+  ],
+  "scripts": {
+    "build": "make build",
+    "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
+    "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
+    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx .",
+    "snapshot": "fedx-scripts jest --updateSnapshot",
+    "start": "fedx-scripts webpack-dev-server --progress",
+    "test": "fedx-scripts jest --coverage --passWithNoTests"
+  },
+  "author": "edX",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/edx/frontend-enterprise#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/edx/frontend-enterprise/issues"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@testing-library/react": "11.2.6",
+    "history": "4.10.1",
+    "query-string": "7.0.0"
+  },
+  "devDependencies": {
+    "@edx/frontend-build": "5.6.11"
+  },
+  "peerDependencies": {
+    "@edx/frontend-platform": "1.9.4",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-router-dom": "5.2.0"
+  }
+}
