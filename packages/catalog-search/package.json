@@ -42,7 +42,7 @@
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.2.6",
     "@testing-library/react-hooks": "3.4.2",
-    "@testing-library/user-event": "13.1.5",
+    "@testing-library/user-event": "13.1.8",
     "react-instantsearch-dom": "6.8.3"
   },
   "peerDependencies": {
