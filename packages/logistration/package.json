@@ -40,7 +40,7 @@
     "@testing-library/react": "11.2.6"
   },
   "peerDependencies": {
-    "@edx/frontend-platform": "1.9.5",
+    "@edx/frontend-platform": "1.9.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "5.2.0"
