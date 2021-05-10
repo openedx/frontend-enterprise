@@ -37,7 +37,12 @@ jobs:
         uses: codecov/codecov-action@v1
       - name: Preview Changed Packages
         run: npm run changed
-      - name: Publish Changed Packages
-        run: npm run publish
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish correct @edx/frontend-enterprise-utils version to NPM
+        working-directory: ./packages/utils
+        run: npm publish --dry-run
+      - name: Publish correct @edx/frontend-enterprise-catalog-search version to NPM
+        working-directory: ./packages/catalog-search  
+        run: npm publish --dry-run
+      - name: Publish correct @edx/frontend-enterprise-logistration version to NPM
+        working-directory: ./packages/logistration
+        run: npm publish --dry-run
