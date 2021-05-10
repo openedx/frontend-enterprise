@@ -35,7 +35,9 @@ jobs:
         run: npm run test
       - name: Coverage Report
         uses: codecov/codecov-action@v1
-      - name: Publish Packages from existing versions
-        run: lerna publish from-package --no-git-tag-version --no-push --yes --loglevel verbose
+      - name: Preview Changed Packages
+        run: npm run changed
+      - name: Publish Changed Packages
+        run: npm run publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
