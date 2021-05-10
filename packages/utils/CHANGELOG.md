@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@0.1.3...@edx/frontend-enterprise-utils@0.1.5) (2021-05-10)
+
+
+### Bug Fixes
+
+* run lerna commands for all packages regardless of whether they changed in release.yml ([#109](https://github.com/edx/frontend-enterprise/issues/109)) ([608b1fb](https://github.com/edx/frontend-enterprise/commit/608b1fb4c3b5343f05ef994436dbbd2418668e17))
+* update publishing behavior and add additional docs ([#104](https://github.com/edx/frontend-enterprise/issues/104)) ([525c430](https://github.com/edx/frontend-enterprise/commit/525c430d5027e4514a27edccfed3d6ed4ddae091))
+
+
+
+
+
 ## [0.1.4](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@0.1.3...@edx/frontend-enterprise-utils@0.1.4) (2021-05-10)
 
 
