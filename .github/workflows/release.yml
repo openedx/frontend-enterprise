@@ -39,10 +39,10 @@ jobs:
         run: npm run changed
       - name: Publish correct @edx/frontend-enterprise-utils version to NPM
         working-directory: ./packages/utils
-        run: npm publish --dry-run
+        run: npm publish dist
       - name: Publish correct @edx/frontend-enterprise-catalog-search version to NPM
         working-directory: ./packages/catalog-search  
-        run: npm publish --dry-run
+        run: npm publish dist
       - name: Publish correct @edx/frontend-enterprise-logistration version to NPM
         working-directory: ./packages/logistration
-        run: npm publish --dry-run
+        run: npm publish dist
