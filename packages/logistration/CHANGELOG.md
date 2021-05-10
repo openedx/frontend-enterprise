@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.4](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.3...@edx/frontend-enterprise-logistration@0.1.4) (2021-05-10)
-
-
-### Bug Fixes
-
-* update publishing behavior and add additional docs ([#104](https://github.com/edx/frontend-enterprise/issues/104)) ([525c430](https://github.com/edx/frontend-enterprise/commit/525c430d5027e4514a27edccfed3d6ed4ddae091))
-
-
-
-
-
 ## [0.1.3](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.2...@edx/frontend-enterprise-logistration@0.1.3) (2021-05-08)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-logistration
