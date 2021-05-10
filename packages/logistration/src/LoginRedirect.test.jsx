@@ -4,7 +4,7 @@ import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import '@testing-library/jest-dom/extend-expect';
 
-import LoginRedirect from '../LoginRedirect';
+import LoginRedirect from './LoginRedirect';
 
 jest.mock('@edx/frontend-platform/auth');
 
@@ -15,6 +15,7 @@ const LoginRedirectWithChild = () => (
     <span data-testid="did-i-render" />
   </LoginRedirect>
 );
+
 describe('LoginRedirect', () => {
   beforeEach(() => {
     getAuthenticatedUser.mockReset();
