@@ -23,13 +23,21 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}" >> .npmrc
           npm whoami
       - name: Install and Setup Dependencies
-        run: npm run ci:setup
+        run: |
+          npm install
+          lerna bootstrap --include-dependencies --include-dependents --since origin/master
       # build must come before running linting and tests for the `dist` directory to exist.
       - name: Build
-        run: npm run ci:build
+        run: lerna run build --include-dependencies --include-dependents --since origin/master --parallel
       - name: Lint
-        run: npm run ci:lint
+        run: lerna run lint --include-dependencies --include-dependents --since origin/master --parallel
       - name: Test
-        run: npm run ci:test
+        run: lerna run test --include-dependencies --include-dependents --since origin/master --parallel
       - name: Coverage Report
         uses: codecov/codecov-action@v1
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - name: Preview Updated Versions (dry run)
+        run: lerna version --allow-branch ${{ steps.extract_branch.outputs.branch }} --conventional-commits --no-git-tag-version --no-changelog --no-push --yes
