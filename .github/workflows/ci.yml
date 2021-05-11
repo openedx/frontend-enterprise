@@ -33,5 +33,3 @@ jobs:
         run: npm run ci:test
       - name: Coverage Report
         uses: codecov/codecov-action@v1
-      - name: Preview Changed Packages
-        run: npm run changed
