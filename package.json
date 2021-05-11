@@ -11,7 +11,7 @@
     "setup": "npm install && npm run bootstrap",
     "ci:setup": "npm install && npm run ci:bootstrap",
     "bootstrap": "lerna bootstrap",
-    "ci:bootstrap": "lerna bootstrap --since origin/master",
+    "ci:bootstrap": "lerna bootstrap --include-dependencies --include-dependents --since origin/master",
     "dev": "lerna run dev --parallel",
     "clean": "rm -rf ./node_modules ./package-lock.json && lerna run clean && lerna clean --yes",
     "build": "lerna run build --parallel",
