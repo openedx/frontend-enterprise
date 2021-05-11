@@ -21,7 +21,7 @@
     "lint": "lerna run lint --parallel",
     "lint:fix": "lerna run lint:fix --include-dependencies --include-dependents --since origin/master --parallel",
     "ci:lint": "lerna run lint --include-dependencies --include-dependents --since origin/master --parallel",
-    "publish": "lerna publish --yes",
+    "publish": "lerna publish from-package --yes",
     "changed": "lerna changed",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
