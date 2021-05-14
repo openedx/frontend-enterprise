@@ -11,7 +11,7 @@ import { getConfig } from '@edx/frontend-platform/config';
  *
  * @param {node} children The child nodes to render if there is an authenticated user.
  */
-export default function LoginRedirect({ children }) {
+export default function LoginRedirect({ children, loadingDisplay: LoadingDisplay }) {
   const config = getConfig();
   const user = getAuthenticatedUser();
 
@@ -27,9 +27,15 @@ export default function LoginRedirect({ children }) {
   const proxyLoginUrl = `${config.LMS_BASE_URL}/enterprise/proxy-login/?${qs.stringify(options)}`;
   global.location.href = proxyLoginUrl;
 
-  return null;
+  return LoadingDisplay;
 }
 
 LoginRedirect.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
+  loadingDisplay: PropTypes.element,
+};
+
+LoginRedirect.defaultProps = {
+  children: null,
+  loadingDisplay: null,
 };
