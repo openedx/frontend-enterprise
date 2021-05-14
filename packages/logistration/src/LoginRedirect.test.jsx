@@ -16,6 +16,12 @@ const LoginRedirectWithChild = () => (
   </LoginRedirect>
 );
 
+const LoginRedirectWithLoadingDisplay = () => (
+  <LoginRedirect
+    loadingDisplay={<span data-testid="did-i-render" />}
+  />
+);
+
 describe('LoginRedirect', () => {
   beforeEach(() => {
     getAuthenticatedUser.mockReset();
@@ -44,5 +50,15 @@ describe('LoginRedirect', () => {
     // assert children are not rendered
     expect(screen.queryByTestId('did-i-render')).not.toBeInTheDocument();
     // We don't test the redirect functionality explicitly as navigation is not currently supported by jsdom
+  });
+
+  test('render ``loadingDisplay`` element if provided and the user is not authenticated', async () => {
+    const Component = <LoginRedirectWithLoadingDisplay />;
+    renderWithRouter(Component, {
+      route: `/${TEST_ENTERPRISE_SLUG}`,
+    });
+
+    // assert ``loadingDisplay`` element is rendered
+    expect(screen.queryByTestId('did-i-render')).toBeInTheDocument();
   });
 });
