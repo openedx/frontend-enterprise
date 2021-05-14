@@ -66,7 +66,7 @@ export const SearchBoxBase = ({
         onSubmit={handleSubmit}
         onClear={handleClear}
       >
-        <SearchField.Input className="form-control-lg" aria-labelledby="search-input-box" />
+        <SearchField.Input className="form-control-lg" aria-labelledby="search-input-box" data-hj-whitelist />
         <SearchField.ClearButton />
         <SearchField.SubmitButton />
       </SearchField.Advanced>
