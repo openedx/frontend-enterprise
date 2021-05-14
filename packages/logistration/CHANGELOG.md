@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.5...@edx/frontend-enterprise-logistration@0.1.6) (2021-05-14)
+
+
+### Bug Fixes
+
+* add loadingDisplay prop to LoginRedirect ([#121](https://github.com/edx/frontend-enterprise/issues/121)) ([5006845](https://github.com/edx/frontend-enterprise/commit/5006845235135787f17c7dd66bd9b5e86254efd3))
+
+
+
+
+
 ## [0.1.5](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.3...@edx/frontend-enterprise-logistration@0.1.5) (2021-05-10)
 
 
