@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@0.1.6...@edx/frontend-enterprise-utils@0.1.7) (2021-05-20)
+
+
+### Bug Fixes
+
+* downgrade query-string to pin to ES5 compatible version ([#129](https://github.com/edx/frontend-enterprise/issues/129)) ([52688ac](https://github.com/edx/frontend-enterprise/commit/52688acc9c4113f9bed2423434e7b2c7d88221f8))
+
+
+
+
+
 ## [0.1.6](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@0.1.5...@edx/frontend-enterprise-utils@0.1.6) (2021-05-20)
 
 
