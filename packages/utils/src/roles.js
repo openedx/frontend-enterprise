@@ -37,5 +37,6 @@ export const isEnterpriseUser = (user, role) => {
     }
     return roles.some(userRole => isEnterpriseRole(extractRoleNameFromJwtRole(userRole)));
   }
+
   return false;
 };
