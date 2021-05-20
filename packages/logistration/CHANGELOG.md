@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.8...@edx/frontend-enterprise-logistration@0.1.9) (2021-05-20)
+
+
+### Bug Fixes
+
+* temporary export and lerna release config update ([#127](https://github.com/edx/frontend-enterprise/issues/127)) ([9fe958a](https://github.com/edx/frontend-enterprise/commit/9fe958a3cab30a8182e8e202e76d7fda940cd99e))
+
+
+
+
+
 ## [0.1.8](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.7...@edx/frontend-enterprise-logistration@0.1.8) (2021-05-20)
 
 
