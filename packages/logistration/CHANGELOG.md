@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.6...@edx/frontend-enterprise-logistration@0.1.7) (2021-05-20)
+
+
+### Bug Fixes
+
+* add temp export to test publish ([10eb73d](https://github.com/edx/frontend-enterprise/commit/10eb73d2a72d485e4a9cc57bcc6c17e59a20d67f))
+
+
+
+
+
 ## [0.1.6](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.5...@edx/frontend-enterprise-logistration@0.1.6) (2021-05-14)
 
 
