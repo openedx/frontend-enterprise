@@ -36,13 +36,7 @@ jobs:
         run: npm run test
       - name: Coverage Report
         uses: codecov/codecov-action@v1
-      - name: Tag Changed Packages
-        run: lerna version --yes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Fetch Latest
-        run: git fetch --tags
       - name: Publish Tagged Packages
-        run: lerna publish from-git --yes
+        run: lerna publish from-package --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
