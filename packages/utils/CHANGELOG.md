@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@0.1.5...@edx/frontend-enterprise-utils@0.1.6) (2021-05-20)
+
+
+### Bug Fixes
+
+* split role name from context in JWT user roles ([#122](https://github.com/edx/frontend-enterprise/issues/122)) ([348bc6c](https://github.com/edx/frontend-enterprise/commit/348bc6c5c912d2c92ccee5869d49890528e6e51a))
+
+
+
+
+
 ## [0.1.5](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@0.1.3...@edx/frontend-enterprise-utils@0.1.5) (2021-05-10)
 
 
