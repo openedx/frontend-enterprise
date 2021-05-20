@@ -10,7 +10,10 @@ import { isEnterpriseRole, isEnterpriseUser } from '../roles';
 describe('roles', () => {
   describe('isEnterpriseRole', () => {
     const VALID_ENTERPRISE_ROLES = [
-      ENTERPRISE_ADMIN, ENTERPRISE_CATALOG_ADMIN, ENTERPRISE_LEARNER, ENTERPRISE_OPENEDX_OPERATOR
+      ENTERPRISE_ADMIN,
+      ENTERPRISE_CATALOG_ADMIN,
+      ENTERPRISE_LEARNER,
+      ENTERPRISE_OPENEDX_OPERATOR,
     ];
 
     VALID_ENTERPRISE_ROLES.forEach((role) => {
