@@ -40,4 +40,4 @@ jobs:
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
       - name: Preview Updated Versions (dry run)
-        run: lerna version --allow-branch ${{ steps.extract_branch.outputs.branch }} --conventional-commits --no-git-tag-version --no-changelog --no-push --yes
+        run: lerna version --allow-branch ${{ steps.extract_branch.outputs.branch }} --no-git-tag-version --no-changelog --no-push --yes

@@ -28,12 +28,15 @@ export const isEnterpriseRole = role => ENTERPRISE_PERMISSIONS.some(permission =
  * @returns {boolean} true if the user has an enterprise role and/or the specified role, otherwise false
  */
 export const isEnterpriseUser = (user, role) => {
+  const extractRoleNameFromJwtRole = jwtRole => jwtRole.split(':').shift();
+
   if (user?.roles) {
     const { roles } = user;
     if (role) {
-      return !!roles.find(userRole => userRole === role);
+      return !!roles.find(userRole => extractRoleNameFromJwtRole(userRole) === role);
     }
-    return roles.some(userRole => isEnterpriseRole(userRole));
+    return roles.some(userRole => isEnterpriseRole(extractRoleNameFromJwtRole(userRole)));
   }
+
   return false;
 };
