@@ -43,7 +43,7 @@
   "dependencies": {
     "@testing-library/react": "11.2.6",
     "history": "4.10.1",
-    "query-string": "7.0.0"
+    "query-string": "5.1.1"
   },
   "devDependencies": {
     "@edx/frontend-build": "5.6.14",
