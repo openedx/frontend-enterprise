@@ -52,6 +52,9 @@ export const SearchBoxBase = ({
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
   };
 
+  // Changing or removing New Relic synthetic data attributes will trigger a failure alert on our synthetics tests
+  // these should be disabled before removing the data attrs.
+  // https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/scripting-monitors/introduction-scripted-browser-monitors/
   return (
     <div className={className}>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
@@ -66,9 +69,14 @@ export const SearchBoxBase = ({
         onSubmit={handleSubmit}
         onClear={handleClear}
       >
-        <SearchField.Input className="form-control-lg" aria-labelledby="search-input-box" data-hj-whitelist />
-        <SearchField.ClearButton />
-        <SearchField.SubmitButton />
+        <SearchField.Input
+          className="form-control-lg"
+          aria-labelledby="search-input-box"
+          data-nr-synth-id="catalog-search-input-field"
+          data-hj-whitelist
+        />
+        <SearchField.ClearButton data-nr-synth-id="catalog-search-clear-button" />
+        <SearchField.SubmitButton data-nr-synth-id="catalog-search-submit-button" />
       </SearchField.Advanced>
     </div>
   );
