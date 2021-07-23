@@ -11,7 +11,7 @@ In the scenario where Git tags and a "chore: publish" commit were created for a 
 
   lerna publish from-package --yes
 
-By including the ``from-package`` option, Lerna will determine the package version to publish based on the existing version noted in the package.json files of each package in the monorepo. The ``--no-git-tag-version`` option tells Lerna to not attempt to create new Git tags for this release, because in this scenario, they were already created. The ``--no-push`` option tells Lerna to avoid creating a new "chore: publish" commit.
+By including the ``from-package`` option, Lerna will determine the package version to publish based on the existing version noted in the package.json files of each package in the monorepo.
 
 See the `official Lerna documentation <https://github.com/lerna/lerna/tree/main/commands/publish#readme>`_ for more details.
 
