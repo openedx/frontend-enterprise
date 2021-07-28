@@ -44,6 +44,8 @@ const FacetListBase = ({
     } else if (facetValueType === 'bool') {
       // eslint-disable-next-line no-bitwise
       dispatch(setRefinementAction(attribute, refinementsFromQueryParams[attribute] ^ 1));
+    } else if (facetValueType === 'single-item') {
+      dispatch(setRefinementAction(attribute, item.label));
     }
   };
 
@@ -107,7 +109,7 @@ FacetListBase.defaultProps = {
 
 FacetListBase.propTypes = {
   attribute: PropTypes.string.isRequired,
-  facetValueType: PropTypes.oneOf(['array', 'bool']).isRequired,
+  facetValueType: PropTypes.oneOf(['array', 'bool', 'single-item']).isRequired,
   isBold: PropTypes.bool.isRequired,
   isCheckedField: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
