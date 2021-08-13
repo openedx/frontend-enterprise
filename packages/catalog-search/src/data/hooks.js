@@ -6,33 +6,33 @@ import { isNull } from '@edx/frontend-enterprise-utils';
    * with a list of that facet attribute's active selection(s).
    */
 export const useActiveRefinementsByAttribute = (items) => {
-  const refinementsFromQueryParamsByAttribute = useMemo(
+  const refinementsByAttribute = useMemo(
     () => {
-      const refinements = {};
+      const refinementsMap = {};
       items.forEach((facet) => {
         const { attribute } = facet;
-        refinements[attribute] = facet.items;
+        refinementsMap[attribute] = facet.items;
       });
-      return refinements;
+      return refinementsMap;
     },
     [items],
   );
 
-  return refinementsFromQueryParamsByAttribute;
+  return refinementsByAttribute;
 };
 
 /**
-   * Transforms refinementsFromQueryParamsByAttribute into a flat array of objects,
+   * Transforms refinementsByAttribute into a flat array of objects,
    * each with an attribute key so we can still associate which attribute
    * a refinement is for.
    */
 export const useActiveRefinementsAsFlatArray = (items) => {
-  const refinementsFromQueryParamsByAttribute = useActiveRefinementsByAttribute(items);
+  const refinementsByAttribute = useActiveRefinementsByAttribute(items);
 
-  const refinementsFromQueryParamsAsFlatArray = useMemo(
+  const refinementsAsFlatArray = useMemo(
     () => {
       const refinements = [];
-      Object.entries(refinementsFromQueryParamsByAttribute).forEach(([key, value]) => {
+      Object.entries(refinementsByAttribute).forEach(([key, value]) => {
         const updatedValue = value.map((item) => ({
           ...item,
           attribute: key,
@@ -41,10 +41,10 @@ export const useActiveRefinementsAsFlatArray = (items) => {
       });
       return refinements;
     },
-    [refinementsFromQueryParamsByAttribute],
+    [JSON.stringify(refinementsByAttribute)],
   );
 
-  return refinementsFromQueryParamsAsFlatArray;
+  return refinementsAsFlatArray;
 };
 
 export const useNbHitsFromSearchResults = (searchResults) => {

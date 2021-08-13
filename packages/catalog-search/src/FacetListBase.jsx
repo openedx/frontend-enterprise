@@ -22,18 +22,17 @@ const FacetListBase = ({
   variant,
   noDisplay,
 }) => {
+  const { refinements, dispatch } = useContext(SearchContext);
+
   /**
-   * Handles when a facet option is toggled by either updating the appropriate
-   * query parameter for the facet attribute, or removes the facet attribute if
-   * there's no longer any selected options for that facet attribute.
+   * Handles when a facet option is toggled by either adding it to the refinements
+   * reducer for the facet attribute, or removes the facet attribute if there is no
+   * longer any selected options for that particular facet attribute.
    */
-
-  const { refinementsFromQueryParams, dispatch } = useContext(SearchContext);
-
   const handleInputOnChange = (item) => {
     if (item.value && facetValueType === 'array') {
       if (item.value.length > 0) {
-        if (refinementsFromQueryParams[attribute]?.includes(item.label)) {
+        if (refinements[attribute]?.includes(item.label)) {
           dispatch(removeFromRefinementArray(attribute, item.label));
         } else {
           dispatch(addToRefinementArray(attribute, item.label));
@@ -43,7 +42,7 @@ const FacetListBase = ({
       }
     } else if (facetValueType === 'bool') {
       // eslint-disable-next-line no-bitwise
-      dispatch(setRefinementAction(attribute, refinementsFromQueryParams[attribute] ^ 1));
+      dispatch(setRefinementAction(attribute, refinements[attribute] ^ 1));
     } else if (facetValueType === 'single-item') {
       dispatch(setRefinementAction(attribute, [item.label]));
     }
@@ -55,9 +54,8 @@ const FacetListBase = ({
         return <span className="p-2 d-block">{NO_OPTIONS_FOUND}</span>;
       }
 
-      return items.map(item => {
+      return items.map((item) => {
         const isChecked = isCheckedField ? item[isCheckedField] : !!item.value;
-
         return (
           <FacetItem
             key={item.label}

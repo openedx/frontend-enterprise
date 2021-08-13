@@ -18,7 +18,7 @@ FacetListRefinementBase.propTypes = {
   attribute: PropTypes.string.isRequired,
   currentRefinement: PropTypes.arrayOf(PropTypes.string).isRequired,
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  refinementsFromQueryParams: PropTypes.shape().isRequired,
+  refinements: PropTypes.shape().isRequired,
   title: PropTypes.string.isRequired,
 };
 

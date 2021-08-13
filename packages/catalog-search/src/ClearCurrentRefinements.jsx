@@ -11,7 +11,7 @@ const ClearCurrentRefinements = ({ className, variant, ...props }) => {
 
   /**
    * Called when clear filters button is clicked. Removes
-   * all non-query keys from refinementsFromQueryParams and
+   * all non-query keys from ``refinements`` and
    * updates the query params.
    */
   const handleClearAllRefinementsClick = () => {
