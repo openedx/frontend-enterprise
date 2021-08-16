@@ -1,6 +1,6 @@
-name: Release
+name: Publish from package.json
 
-on: [workflow_trigger]
+on: [workflow_dispatch]
 
 jobs:
   release:
@@ -35,7 +35,7 @@ jobs:
         run: npm run test
       - name: Coverage Report
         uses: codecov/codecov-action@v1
-      - name: Publish Packages Versions from package.json
+      - name: Publish to NPM from package.json versions
         run: lerna publish from-package --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
