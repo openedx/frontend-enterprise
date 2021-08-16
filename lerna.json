@@ -6,8 +6,9 @@
   "command": {
     "publish": {
       "allowBranch": "master",
-      "message": "chore(release): publish :tada:",
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "message": "chore(release): publish :tada:"
     }
   }
 }
