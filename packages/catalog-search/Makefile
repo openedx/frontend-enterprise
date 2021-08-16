@@ -5,7 +5,7 @@ build:
 	@find dist -name '*.test.js*' -delete
 	cp ./package.json ./dist/package.json
 	cp ./LICENSE ./dist/LICENSE
-	cp ./README.rst ./dist/README.rst
+	cp ./README.md ./dist/README.md
 	cp ./CHANGELOG.md ./dist/CHANGELOG.md
 
 clean:
