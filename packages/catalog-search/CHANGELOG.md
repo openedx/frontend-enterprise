@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@0.1.13...@edx/frontend-enterprise-catalog-search@0.1.14) (2021-08-16)
+
+
+### Bug Fixes
+
+* Updated FacetListBase to save list of selected item even for single-item facetValueType ([#147](https://github.com/edx/frontend-enterprise/issues/147)) ([95da33c](https://github.com/edx/frontend-enterprise/commit/95da33c2decf9133be36363ed01c9dc18b96b08f))
+
+
+
+
+
 ## [0.1.13](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@0.1.12...@edx/frontend-enterprise-catalog-search@0.1.13) (2021-08-05)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
