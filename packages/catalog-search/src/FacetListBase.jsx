@@ -45,7 +45,7 @@ const FacetListBase = ({
       // eslint-disable-next-line no-bitwise
       dispatch(setRefinementAction(attribute, refinementsFromQueryParams[attribute] ^ 1));
     } else if (facetValueType === 'single-item') {
-      dispatch(setRefinementAction(attribute, item.label));
+      dispatch(setRefinementAction(attribute, [item.label]));
     }
   };
 
