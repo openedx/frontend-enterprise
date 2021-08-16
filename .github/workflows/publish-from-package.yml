@@ -1,0 +1,41 @@
+name: Publish from package.json
+
+on: [workflow_dispatch]
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          # pulls all commits (needed for lerna / semantic release to correctly version)
+          fetch-depth: 0
+      # pulls all tags (needed for lerna / semantic release to correctly version)
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - uses: fregante/setup-git-user@v1
+      - name: Setup Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not authenticated
+      - name: Check NPM authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}" >> .npmrc
+          npm whoami
+      - name: Install and Setup Dependencies
+        run: npm run setup
+      # build must come before running linting and tests for the `dist` directory to exist.
+      - name: Build
+        run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm run test
+      - name: Coverage Report
+        uses: codecov/codecov-action@v1
+      - name: Publish to NPM from package.json versions
+        run: lerna publish from-package --yes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
