@@ -51,6 +51,8 @@ export const SEARCH_FACET_FILTERS = [
   },
 ];
 
+export const ADDITIONAL_FACET_FILTERS = ['skills.name', 'name', 'current_job'];
+
 if (features.LANGUAGE_FACET) {
   SEARCH_FACET_FILTERS.push({
     attribute: 'language',
