@@ -42,6 +42,7 @@ jobs:
         run: |
           lerna version --yes
           git fetch --all --tags
+          git show-ref --tags -d
           lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
