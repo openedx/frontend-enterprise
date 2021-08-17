@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.0.0 (2021-08-17)
+
+**Note:** Version bump only for package @edx/frontend-enterprise-logistration
+
+
+
+
+
 ## [0.1.11](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@0.1.10...@edx/frontend-enterprise-logistration@0.1.11) (2021-05-20)
 
 
