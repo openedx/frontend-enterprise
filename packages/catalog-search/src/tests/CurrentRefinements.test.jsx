@@ -65,7 +65,7 @@ describe('<CurrentRefinements />', () => {
         <CurrentRefinementsBase items={items} />
       </SearchData>,
       {
-        route: `/?subjects=${SUBJECTS.COMPUTER_SCIENCE},${SUBJECTS.COMMUNICATION}`,
+        route: `/?subjects=${SUBJECTS.COMPUTER_SCIENCE}&subjects=${SUBJECTS.COMMUNICATION}`,
       },
     );
 

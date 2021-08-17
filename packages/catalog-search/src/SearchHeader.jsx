@@ -13,9 +13,8 @@ export const searchBoxColTestId = 'search-box-col';
 export const filtersColTestId = 'filters-col';
 
 const SearchHeader = ({ variant, containerSize }) => {
-  const { refinementsFromQueryParams } = useContext(SearchContext);
-
-  const searchQueryFromQueryParams = refinementsFromQueryParams.q;
+  const { refinements } = useContext(SearchContext);
+  const searchQueryFromRefinements = refinements.q;
 
   return (
     <div className="bg-brand-primary">
@@ -29,7 +28,7 @@ const SearchHeader = ({ variant, containerSize }) => {
           >
             <SearchBox
               className="mb-4"
-              defaultRefinement={searchQueryFromQueryParams}
+              defaultRefinement={searchQueryFromRefinements}
               variant={variant}
             />
           </Col>

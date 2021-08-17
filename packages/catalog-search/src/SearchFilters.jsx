@@ -18,7 +18,7 @@ export const FREE_ALL_TITLE = 'Free / All';
 
 const SearchFilters = ({ variant }) => {
   const size = useWindowSize();
-  const { refinementsFromQueryParams, searchFacetFilters } = useContext(SearchContext);
+  const { refinements, searchFacetFilters } = useContext(SearchContext);
   const showMobileMenu = useMemo(
     () => size.width < breakpoints.small.maxWidth,
     [JSON.stringify(size)],
@@ -28,13 +28,13 @@ const SearchFilters = ({ variant }) => {
       label: 'Free to me',
       // flip the 1 to 0 or vice versa using boolean logic
       // eslint-disable-next-line no-bitwise
-      value: refinementsFromQueryParams[SHOW_ALL_NAME] ^ 1,
+      value: refinements[SHOW_ALL_NAME] ^ 1,
     },
     {
       label: 'All courses',
-      value: refinementsFromQueryParams[SHOW_ALL_NAME],
+      value: refinements[SHOW_ALL_NAME],
     },
-  ], [refinementsFromQueryParams[SHOW_ALL_NAME]]);
+  ], [refinements[SHOW_ALL_NAME]]);
 
   const searchFacets = useMemo(
     () => {
@@ -52,8 +52,8 @@ const SearchFilters = ({ variant }) => {
             }
             return items;
           }}
-          refinementsFromQueryParams={refinementsFromQueryParams}
-          defaultRefinement={refinementsFromQueryParams[attribute]}
+          refinements={refinements}
+          defaultRefinement={refinements[attribute]}
           facetValueType="array"
           typeaheadOptions={typeaheadOptions}
           searchable={!!typeaheadOptions}
@@ -78,7 +78,7 @@ const SearchFilters = ({ variant }) => {
         </>
       );
     },
-    [refinementsFromQueryParams],
+    [JSON.stringify(refinements)],
   );
 
   return (

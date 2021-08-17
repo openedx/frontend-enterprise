@@ -26,8 +26,7 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
   }
 
   const [showAllRefinements, setShowAllRefinements] = useState(false);
-  const { refinementsFromQueryParams, dispatch } = useContext(SearchContext);
-
+  const { refinements, dispatch } = useContext(SearchContext);
   const activeRefinementsAsFlatArray = useActiveRefinementsAsFlatArray(items);
 
   /**
@@ -54,9 +53,8 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
     }
     // if the refinement is found, remove it.
     const facetName = item.attribute;
-    if (!QUERY_PARAMS_TO_IGNORE.includes(facetName) && refinementsFromQueryParams[facetName]
-    && refinementsFromQueryParams[facetName].includes(item.label)) {
-      if (refinementsFromQueryParams[facetName].length === 1) {
+    if (!QUERY_PARAMS_TO_IGNORE.includes(facetName) && refinements[facetName]?.includes(item.label)) {
+      if (refinements[facetName].length === 1) {
         dispatch(deleteRefinementAction(facetName));
       } else {
         dispatch(removeFromRefinementArray(facetName, item.label));

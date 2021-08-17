@@ -10,5 +10,9 @@
       "conventionalCommits": true,
       "createRelease": "github"
     }
+  },
+  "changelogPreset": {
+    "name": "conventionalcommits",
+    "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}"
   }
 }

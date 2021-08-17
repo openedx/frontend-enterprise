@@ -15,7 +15,7 @@ const propsForNoRefinements = {
   title: FACET_ATTRIBUTES.SUBJECTS,
   currentRefinement: [],
   facetValueType: 'array',
-  refinementsFromQueryParams: {},
+  refinements: {},
   facetName: 'subjects',
   searchForItems: () => {},
 };
@@ -29,7 +29,7 @@ const propsForRefinements = {
     isRefined: false,
   }],
   facetValueType: 'array',
-  refinementsFromQueryParams: {},
+  refinements: {},
   searchForItems: () => {},
 };
 
@@ -48,7 +48,7 @@ const propsForActiveRefinements = {
   }],
   currentRefinement: [SUBJECTS.COMPUTER_SCIENCE],
   facetValueType: 'array',
-  refinementsFromQueryParams: { [FACET_ATTRIBUTES.SUBJECTS]: [SUBJECTS.COMPUTER_SCIENCE] },
+  refinements: { [FACET_ATTRIBUTES.SUBJECTS]: [SUBJECTS.COMPUTER_SCIENCE] },
 };
 
 describe('<FacetListRefinementBase />', () => {
@@ -124,7 +124,7 @@ describe('<FacetListRefinementBase />', () => {
       <SearchData>
         <FacetListRefinementBase
           {...propsForActiveRefinements}
-          refinementsFromQueryParams={{ ...propsForActiveRefinements.refinementsFromQueryParams, page: 3 }}
+          refinements={{ ...propsForActiveRefinements.refinements, page: 3 }}
         />
       </SearchData>,
       { route: '/search?page=3' },

@@ -8,15 +8,15 @@ import { useIsFirstRender } from '@edx/frontend-enterprise-utils';
 import { BOOLEAN_FILTERS, SEARCH_FACET_FILTERS } from './data/constants';
 import { refinementsReducer } from './data/reducer';
 import { setMultipleRefinementsAction } from './data/actions';
-import { paramsToObject, stringifyRefinements, updateRefinementsFromQueryParams } from './data/utils';
+import { searchParamsToObject, stringifyRefinements } from './data/utils';
 
 export const SearchContext = createContext();
+
 export const getRefinementsToSet = (queryParams, activeFacetAttributes) => {
   const refinementsToSet = {};
-
   Object.entries(queryParams).forEach(([key, value]) => {
     if (activeFacetAttributes.includes(key)) {
-      const valueAsArray = value.includes(',') ? value.split(',') : [value];
+      const valueAsArray = Array.isArray(value) ? value : [value];
       refinementsToSet[key] = valueAsArray;
     } else if (BOOLEAN_FILTERS.includes(key)) {
       // convert a string into a number (this should be a 1 or 0)
@@ -25,11 +25,12 @@ export const getRefinementsToSet = (queryParams, activeFacetAttributes) => {
       refinementsToSet[key] = value;
     }
   });
+
   return refinementsToSet;
 };
 
 const SearchData = ({ children, searchFacetFilters, trackingName }) => {
-  const [refinementsFromQueryParams, dispatch] = useReducer(
+  const [refinements, dispatch] = useReducer(
     refinementsReducer,
     {},
   );
@@ -37,34 +38,42 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
   const { search } = useLocation();
   const history = useHistory();
 
-  const queryParams = useMemo(() => paramsToObject(new URLSearchParams(search)), [search]);
+  /**
+   * Applies initial URL query params on page load to the refinements
+   * reducer to update search results. Note the empty dependency list
+   * here is important; we only want to set the refinements reducer with
+   * the initial query parameters, *not* any time the query parameters change.
+   *
+   * The URL query parameters will be kept in sync with any updates to the
+   * reducer state below.
+   */
   useEffect(() => {
+    const initialQueryParams = searchParamsToObject(new URLSearchParams(search));
     const activeFacetAttributes = searchFacetFilters.map(filter => filter.attribute);
-    const refinementsToSet = getRefinementsToSet(queryParams, activeFacetAttributes);
+    const refinementsToSet = getRefinementsToSet(initialQueryParams, activeFacetAttributes);
     dispatch(setMultipleRefinementsAction(refinementsToSet));
-  }, [search]);
-
-  const newQueryString = useMemo(() => {
-    const refinementsWithJoinedLists = updateRefinementsFromQueryParams(refinementsFromQueryParams);
-    return stringifyRefinements(refinementsWithJoinedLists);
-  }, [refinementsFromQueryParams]);
+  }, []);
 
   const isFirstRender = useIsFirstRender();
 
+  /**
+   * Syncs the refinements reducer state with the URL query parameters.
+   */
   useEffect(() => {
     if (!isFirstRender) {
+      const newQueryString = stringifyRefinements(refinements);
       history.push({ search: newQueryString });
     }
-  }, [newQueryString]);
+  }, [JSON.stringify(refinements)]);
 
   const value = useMemo(
     () => ({
-      refinementsFromQueryParams,
+      refinements,
       dispatch,
       searchFacetFilters,
       trackingName,
     }),
-    [refinementsFromQueryParams, dispatch, searchFacetFilters, trackingName],
+    [JSON.stringify(refinements), dispatch, searchFacetFilters, trackingName],
   );
 
   return (

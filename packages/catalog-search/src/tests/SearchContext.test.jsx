@@ -6,14 +6,14 @@ const activeFacetAttributes = ['subject', 'language'];
 describe('getRefinementsToSet', () => {
   it('converts query params that are arrays into arrays', () => {
     const queryParams = {
-      subject: 'science,math',
+      subject: ['science', 'math'],
       language: 'english',
     };
-    const refinements = {
+    const expectedRefinements = {
       subject: ['science', 'math'],
       language: ['english'],
     };
-    expect(getRefinementsToSet(queryParams, activeFacetAttributes)).toEqual(refinements);
+    expect(getRefinementsToSet(queryParams, activeFacetAttributes)).toEqual(expectedRefinements);
   });
   it('converts boolean query params to a number', () => {
     expect(getRefinementsToSet({ [SHOW_ALL_NAME]: '0' }, [])).toEqual({ [SHOW_ALL_NAME]: 0 });
@@ -24,7 +24,11 @@ describe('getRefinementsToSet', () => {
     expect(getRefinementsToSet(queryParams, activeFacetAttributes)).toEqual(expected);
   });
   it('does not modify non-active facets', () => {
-    const queryParams = { features: 'ENROLL_WITH_CODES, ANOTHER_FEATURE', anotherkey: '0', subject: 'bears,tigers' };
+    const queryParams = {
+      features: 'ENROLL_WITH_CODES, ANOTHER_FEATURE',
+      anotherkey: '0',
+      subject: ['bears', 'tigers'],
+    };
     const expected = { ...queryParams, subject: ['bears', 'tigers'] };
     expect(getRefinementsToSet(queryParams, activeFacetAttributes)).toEqual(expected);
   });
