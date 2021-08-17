@@ -41,6 +41,7 @@ jobs:
       - name: Publish Changed Packages
         run: |
           lerna version --yes
+          git fetch --all --tags
           lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
