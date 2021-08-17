@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@1.0.0...@edx/frontend-enterprise-catalog-search@2.0.0) (2021-08-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* `refinementsFromQueryParams` renamed to `refinements`
+
+### Bug Fixes
+
+* improved support for lists of attribute values in algolia facet filtering ([#145](https://github.com/edx/frontend-enterprise/issues/145)) ([ef26cda](https://github.com/edx/frontend-enterprise/commit/ef26cda0008a26f1c1073d74c11868064ee65004))
+
+
+
 # [1.0.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@0.1.17...@edx/frontend-enterprise-catalog-search@1.0.0) (2021-08-17)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
