@@ -37,6 +37,8 @@ jobs:
       - name: Coverage Report
         uses: codecov/codecov-action@v1
       - name: Publish Changed Packages
-        run: lerna publish from-git --yes
+        run: |
+          lerna version --yes
+          lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
