@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.3](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.2...@edx/frontend-enterprise-catalog-search@2.0.3) (2021-08-17)
+
+
+### Bug Fixes
+
+* update readme to test lerna publishing ([#161](https://github.com/edx/frontend-enterprise/issues/161)) ([fcb3357](https://github.com/edx/frontend-enterprise/commit/fcb33570c8e270983ed2bc692c3283e63e16ce38))
+
+
+
 ### [2.0.2](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.1...@edx/frontend-enterprise-catalog-search@2.0.2) (2021-08-17)
 
 
