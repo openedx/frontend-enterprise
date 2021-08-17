@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.17](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@0.1.16...@edx/frontend-enterprise-catalog-search@0.1.17) (2021-08-17)
+
+
+### Bug Fixes
+
+* update readme ([99705d5](https://github.com/edx/frontend-enterprise/commit/99705d53082c54c493930f873bd4fbb0ab7dc52c))
+
+
+
+
+
 ## [0.1.16](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@0.1.15...@edx/frontend-enterprise-catalog-search@0.1.16) (2021-08-17)
 
 
