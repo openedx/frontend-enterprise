@@ -1,5 +1,5 @@
 @edx/frontend-enterprise-catalog-search
-================
+==============
 
 [![Build Status](https://github.com/edx/frontend-enterprise/actions/workflows/release.yml/badge.svg)](https://travis-ci.com/edx/frontend-enterprise)
 [![Codecov](https://img.shields.io/codecov/c/github/edx/frontend-enterprise)](https://codecov.io/gh/edx/frontend-enterprise)
