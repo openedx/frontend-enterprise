@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.4](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.3...@edx/frontend-enterprise-catalog-search@2.0.4) (2021-08-18)
+
+
+### Bug Fixes
+
+* update Algolia link in catalog-search README ([#163](https://github.com/edx/frontend-enterprise/issues/163)) ([2cfa8ca](https://github.com/edx/frontend-enterprise/commit/2cfa8ca1cabcfad6c0733b764b9a78ed8921d464))
+
+
+
 ### [2.0.3](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.2...@edx/frontend-enterprise-catalog-search@2.0.3) (2021-08-17)
 
 
