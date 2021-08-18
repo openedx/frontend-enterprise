@@ -99,9 +99,11 @@ where type must be one of ``[build, ci, docs, feat, fix, perf, refactor, revert,
 Versioning and releases
 *****
 
-This library has its version automatically updated by Lerna (i.e., ``lerna publish``) using semantic-versioning under-the-hood when the release is published to npm.
+This library has its version automatically updated by Lerna (i.e., ``lerna version``) using semantic-versioning under-the-hood when the release is published to npm. Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
 
-Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
+When a PR is merged, Lerna creates a release commit (e.g., ``chore(release): publish``). In this commit, Lerna increments the versions in the appropriate package.json files for any changed packages, creates Git tags, and updates the CHANGELOG file.
+
+To publish the packages that had their versions incremented, you must manually trigger the ``Publish from package.json`` Github Action workflow `found here <https://github.com/edx/frontend-enterprise/actions/workflows/publish-from-package.yml>`_. It will publish any versions denoted in the package.json files that are not currently published on the NPM registry, publishing the incremented versions from the aforementioned release commit.
 
 Preview changed packages in CI with Github Actions
 -----
