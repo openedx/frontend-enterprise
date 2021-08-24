@@ -21,6 +21,8 @@ const FacetListBase = ({
   searchForItems,
   variant,
   noDisplay,
+  doRefinement,
+  customAttribute,
 }) => {
   const { refinements, dispatch } = useContext(SearchContext);
 
@@ -30,21 +32,24 @@ const FacetListBase = ({
    * longer any selected options for that particular facet attribute.
    */
   const handleInputOnChange = (item) => {
+    // if it is desired to load the same attribute data in multiple dropdowns then
+    // customAttribute can be passed to differentiate them.
+    const index = customAttribute || attribute;
     if (item.value && facetValueType === 'array') {
       if (item.value.length > 0) {
-        if (refinements[attribute]?.includes(item.label)) {
-          dispatch(removeFromRefinementArray(attribute, item.label));
+        if (refinements[index]?.includes(item.label)) {
+          dispatch(removeFromRefinementArray(index, item.label));
         } else {
-          dispatch(addToRefinementArray(attribute, item.label));
+          dispatch(addToRefinementArray(index, item.label));
         }
       } else {
-        dispatch(deleteRefinementAction(attribute));
+        dispatch(deleteRefinementAction(index));
       }
     } else if (facetValueType === 'bool') {
       // eslint-disable-next-line no-bitwise
-      dispatch(setRefinementAction(attribute, refinements[attribute] ^ 1));
+      dispatch(setRefinementAction(index, refinements[index] ^ 1));
     } else if (facetValueType === 'single-item') {
-      dispatch(setRefinementAction(attribute, [item.label]));
+      dispatch(setRefinementAction(index, [item.label]));
     }
   };
 
@@ -55,7 +60,13 @@ const FacetListBase = ({
       }
 
       return items.map((item) => {
-        const isChecked = isCheckedField ? item[isCheckedField] : !!item.value;
+        let isChecked;
+        if (doRefinement) {
+          isChecked = isCheckedField ? item[isCheckedField] : !!item.value;
+        } else {
+          const index = customAttribute || attribute;
+          isChecked = refinements[index]?.includes(item.label);
+        }
         return (
           <FacetItem
             key={item.label}
@@ -100,9 +111,11 @@ const FacetListBase = ({
 FacetListBase.defaultProps = {
   isCheckedField: null,
   typeaheadOptions: null,
+  customAttribute: null,
   searchForItems: null,
   variant: STYLE_VARIANTS.inverse,
   noDisplay: false,
+  doRefinement: true,
 };
 
 FacetListBase.propTypes = {
@@ -110,6 +123,7 @@ FacetListBase.propTypes = {
   facetValueType: PropTypes.oneOf(['array', 'bool', 'single-item']).isRequired,
   isBold: PropTypes.bool.isRequired,
   isCheckedField: PropTypes.string,
+  customAttribute: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   title: PropTypes.string.isRequired,
   typeaheadOptions: PropTypes.shape({
@@ -120,6 +134,7 @@ FacetListBase.propTypes = {
   searchForItems: PropTypes.func,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
   noDisplay: PropTypes.bool,
+  doRefinement: PropTypes.bool,
 };
 
 export default FacetListBase;
