@@ -8,7 +8,7 @@ import { STYLE_VARIANTS } from './data/constants';
 const FacetItem = ({
   handleInputOnChange, item, isChecked, variant,
 }) => (
-  <Dropdown.Item as="label" className="mb-0 py-3">
+  <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
     <Input
       type="checkbox"
       checked={isChecked}
@@ -18,17 +18,15 @@ const FacetItem = ({
     <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
       {item.label}
     </span>
-    {item.count && (
-      <Badge
-        pill
-        className={classNames(
-          'ml-2 bg-brand-primary text-brand-primary',
-          { 'bg-brand-primary--default': variant === STYLE_VARIANTS.default },
-        )}
-      >
-        {item.count}
-      </Badge>
-    )}
+    <Badge
+      pill
+      className={classNames(
+        'ml-2 bg-brand-primary text-brand-primary',
+        { 'bg-brand-primary--default': variant === STYLE_VARIANTS.default },
+      )}
+    >
+      {item.count}
+    </Badge>
   </Dropdown.Item>
 );
 

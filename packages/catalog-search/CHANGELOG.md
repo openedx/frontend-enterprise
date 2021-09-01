@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.6](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.5...@edx/frontend-enterprise-catalog-search@2.0.6) (2021-09-01)
+
+### Bug Fixes
+
+* update alignment in Facet dropdown items
+* Badges were showing an unformatted '0' instead of 0 in badge form when result count was 0
+
+
 ### [2.0.5](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.4...@edx/frontend-enterprise-catalog-search@2.0.5) (2021-08-24)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
