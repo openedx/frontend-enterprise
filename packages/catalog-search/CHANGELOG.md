@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.7...@edx/frontend-enterprise-catalog-search@2.1.0) (2021-09-03)
+
+
+### Features
+
+* ENT4876: Added delete functionality in single-item refinement type ([#168](https://github.com/edx/frontend-enterprise/issues/168)) ([49da3d6](https://github.com/edx/frontend-enterprise/commit/49da3d6bf95e2a7e5e4110a5924ca972a8e384ea))
+
+
+
 ### [2.0.7](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.5...@edx/frontend-enterprise-catalog-search@2.0.7) (2021-09-01)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
