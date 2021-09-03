@@ -49,7 +49,11 @@ const FacetListBase = ({
       // eslint-disable-next-line no-bitwise
       dispatch(setRefinementAction(index, refinements[index] ^ 1));
     } else if (facetValueType === 'single-item') {
-      dispatch(setRefinementAction(index, [item.label]));
+      if (refinements[index]?.includes(item.label)) {
+        dispatch(deleteRefinementAction(index, item.label));
+      } else {
+        dispatch(setRefinementAction(index, [item.label]));
+      }
     }
   };
 
