@@ -7,7 +7,6 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
 import {
   SearchBoxBase,
-  searchText,
   SEARCH_EVENT_NAME_PREFIX,
   QUERY_SUBMITTED_EVENT,
 } from '../SearchBox';
@@ -41,7 +40,7 @@ describe('<SearchBox />', () => {
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByRole('submit'));
+    userEvent.click(screen.getByRole('button'));
 
     // assert url is updated with the query
     expect(history).toHaveLength(2);
@@ -54,7 +53,7 @@ describe('<SearchBox />', () => {
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByRole('submit'));
+    userEvent.click(screen.getByRole('button'));
 
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(

@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Button, Col, Row, SearchField } from '@edx/paragon';
+import {
+  Button, Col, Row, SearchField,
+} from '@edx/paragon';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
@@ -35,7 +37,7 @@ export const SearchBoxBase = ({
    * existing query parameters must be preserved.
    */
 
-   const handleSearch = (searchQuery) => {
+  const handleSearch = (searchQuery) => {
     dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
     if (trackingName) {
@@ -46,8 +48,8 @@ export const SearchBoxBase = ({
   };
 
   const handleOnChange = (value) => {
-    setCurrState(value)
-  }
+    setCurrState(value);
+  };
 
   // Changing or removing New Relic synthetic data attributes will trigger a failure alert on our synthetics tests
   // these should be disabled before removing the data attrs.
@@ -56,28 +58,30 @@ export const SearchBoxBase = ({
     <Row className={className}>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <Col xl={8}>
-      <SearchField.Advanced
-        className={classNames('fe__searchfield', {
-          'fe__searchfield--inverse': variant === STYLE_VARIANTS.inverse,
-        })}
-        value={defaultRefinement}
-        onChange={handleOnChange}
-        onSubmit={handleSearch}
-      >
-        <SearchField.Input
-          className="form-control-lg"
-          aria-labelledby="search-input-box"
-          data-nr-synth-id="catalog-search-input-field"
-          placeholder={searchText}
-          data-hj-whitelist
-        />
-      </SearchField.Advanced>
+        <SearchField.Advanced
+          className={classNames('fe__searchfield', {
+            'fe__searchfield--inverse': variant === STYLE_VARIANTS.inverse,
+          })}
+          value={defaultRefinement}
+          onChange={handleOnChange}
+          onSubmit={handleSearch}
+        >
+          <SearchField.Input
+            className="form-control-lg"
+            aria-labelledby="search-input-box"
+            data-nr-synth-id="catalog-search-input-field"
+            placeholder={searchText}
+            data-hj-whitelist
+          />
+        </SearchField.Advanced>
       </Col>
       <Col>
-        <Button 
-          role="submit"
-          onClick={() => {handleSearch(currSearchQuery)}} variant="primary">
-            Search
+        <Button
+          role="button"
+          onClick={() => { handleSearch(currSearchQuery); }}
+          variant="primary"
+        >
+          Search
         </Button>
       </Col>
     </Row>
