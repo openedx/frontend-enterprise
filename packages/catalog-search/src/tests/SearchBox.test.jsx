@@ -27,9 +27,6 @@ describe('<SearchBox />', () => {
     // assert the Paragon <SearchField /> component renders
     expect(screen.queryByRole('search')).toBeInTheDocument();
     expect(screen.queryByRole('searchbox')).toBeInTheDocument();
-
-    // assert our custom label for the input renders
-    expect(screen.getByLabelText(searchText)).toBeInTheDocument();
   });
 
   test('renders with an initial value', () => {
@@ -39,32 +36,25 @@ describe('<SearchBox />', () => {
     expect(screen.queryByRole('searchbox')).toHaveAttribute('value', TEST_QUERY);
   });
 
-  test('handles submit and clear', () => {
+  test('handles submit', () => {
     const { history } = renderWithSearchContext(<SearchBoxBase />);
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByText('submit search'));
+    userEvent.click(screen.getByRole('submit'));
 
     // assert url is updated with the query
     expect(history).toHaveLength(2);
     expect(history.location.search).toEqual('?q=test%20query');
     // check tracking is not invoked due to absent trackingName in context
     expect(sendTrackEvent).not.toHaveBeenCalled();
-
-    // clear the input
-    userEvent.click(screen.getByText('clear search'));
-
-    // assert query no longer exists in url
-    expect(history).toHaveLength(3);
-    expect(history.location.search).toEqual('');
   });
   test('tracking event when search initiated with trackingName present in context', () => {
     renderWithSearchContextAndTracking(<SearchBoxBase />, 'aProduct');
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByText('submit search'));
+    userEvent.click(screen.getByRole('submit'));
 
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(

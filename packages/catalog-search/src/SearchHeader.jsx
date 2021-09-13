@@ -19,7 +19,7 @@ const SearchHeader = ({ variant, containerSize }) => {
   return (
     <div className="bg-brand-primary">
       <Container size={containerSize}>
-        <Row className="pt-4 pb-3">
+        <Row className="pt-2">
           <Col
             data-testid={searchBoxColTestId}
             className={classNames('fe__searchbox-col', { 'fe__searchbox-col--default': variant === STYLE_VARIANTS.default })}
@@ -32,6 +32,8 @@ const SearchHeader = ({ variant, containerSize }) => {
               variant={variant}
             />
           </Col>
+          </Row>
+          <Row className="pt-2 pb-3">
           <Col
             data-testid={filtersColTestId}
             className={classNames('fe__searchbox-col', { 'fe__searchbox-col--default': variant === STYLE_VARIANTS.default })}

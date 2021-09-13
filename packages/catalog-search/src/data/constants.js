@@ -51,7 +51,7 @@ export const SEARCH_FACET_FILTERS = [
   },
 ];
 
-export const ADDITIONAL_FACET_FILTERS = ['skills.name', 'name', 'current_job'];
+export const ADDITIONAL_FACET_FILTERS = ['skills.name', 'name', 'current_job', 'enterprise_catalog_query_uuids'];
 
 if (features.LANGUAGE_FACET) {
   SEARCH_FACET_FILTERS.push({

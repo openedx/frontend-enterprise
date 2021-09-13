@@ -1,7 +1,28 @@
+.row {
+  flex-wrap: nowrap;
+}
 .fe__searchbox-col--default {
   padding: 0;
 
-  .container, .row {
-    padding: 0;
+  .fe__searchfield {
+    margin-top: 0px;
+  }
+
+  .form-control-lg {
+    font-size: 1rem;
+    max-height: 42px;
+  }
+  .pgn__searchfield {
+    width: auto;
+    margin-top: 10px;
+  }
+
+  .col-xl-8 {
+    padding-right: 0;
+  }
+
+  .btn-primary {
+    margin-top: 10px;
+    border-radius: 0;
   }
 }

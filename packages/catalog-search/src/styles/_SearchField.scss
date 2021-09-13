@@ -2,13 +2,15 @@
   border-radius: 0 !important;
 }
 
-.fe__searchfield-input-box {
-  @extend .mb-2;
-  @extend .text-brand-primary !optional;
-  @extend .font-weight-normal;
+.pgn__form-group input {
+  margin-top: 10px;
+  display: inline-block !important;
+  border-radius: 0px;
 }
 
-.fe__searchfield--inverse {
-  border: 0 !important;
-  @extend .bg-white;
+.pgn__form-group button {
+  display: inline-block !important;
+  margin-left: 8px;
+  margin-top: 10px;
+  border-radius: 0px;
 }
