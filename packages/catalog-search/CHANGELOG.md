@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.1.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.1.0...@edx/frontend-enterprise-catalog-search@2.1.1) (2021-09-23)
+
+
+### Bug Fixes
+
+* show count on dropdown list items only when showBadge is true ([64f8aac](https://github.com/edx/frontend-enterprise/commit/64f8aac7f655d8c8317438531e23c5bb7ff2da43))
+
+
+
 ## [2.1.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.0.7...@edx/frontend-enterprise-catalog-search@2.1.0) (2021-09-03)
 
 
