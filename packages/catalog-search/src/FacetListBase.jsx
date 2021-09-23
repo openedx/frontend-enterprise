@@ -23,6 +23,7 @@ const FacetListBase = ({
   noDisplay,
   doRefinement,
   customAttribute,
+  showBadge,
 }) => {
   const { refinements, dispatch } = useContext(SearchContext);
 
@@ -78,6 +79,7 @@ const FacetListBase = ({
             item={item}
             isChecked={isChecked}
             variant={variant}
+            showBadge={showBadge}
           />
         );
       });
@@ -120,6 +122,7 @@ FacetListBase.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
   noDisplay: false,
   doRefinement: true,
+  showBadge: true,
 };
 
 FacetListBase.propTypes = {
@@ -139,6 +142,7 @@ FacetListBase.propTypes = {
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
   noDisplay: PropTypes.bool,
   doRefinement: PropTypes.bool,
+  showBadge: PropTypes.bool,
 };
 
 export default FacetListBase;
