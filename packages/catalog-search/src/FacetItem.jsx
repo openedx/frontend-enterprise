@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { STYLE_VARIANTS } from './data/constants';
 
 const FacetItem = ({
-  handleInputOnChange, item, isChecked, variant,
+  handleInputOnChange, item, isChecked, variant, showBadge,
 }) => (
   <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
     <Input
@@ -18,15 +18,17 @@ const FacetItem = ({
     <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
       {item.label}
     </span>
-    <Badge
-      pill
-      className={classNames(
-        'ml-2 bg-brand-primary text-brand-primary',
-        { 'bg-brand-primary--default': variant === STYLE_VARIANTS.default },
-      )}
-    >
-      {item.count}
-    </Badge>
+    {showBadge && (
+      <Badge
+        pill
+        className={classNames(
+          'ml-2 bg-brand-primary text-brand-primary',
+          { 'bg-brand-primary--default': variant === STYLE_VARIANTS.default },
+        )}
+      >
+        {item.count}
+      </Badge>
+    )}
   </Dropdown.Item>
 );
 
@@ -42,6 +44,7 @@ FacetItem.propTypes = {
     label: PropTypes.string.isRequired,
   }).isRequired,
   variant: PropTypes.oneOf(Object.values(STYLE_VARIANTS)),
+  showBadge: PropTypes.bool.isRequired,
 };
 
 export default FacetItem;
