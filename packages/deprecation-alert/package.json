@@ -1,7 +1,7 @@
 {
-  "name": "@edx/frontend-enterprise-ie11-alert",
+  "name": "@edx/frontend-enterprise-deprecation-alert",
   "version": "1.0.0",
-  "description": "Component(s) to inform enterprise users that IE11 will no longer be supported.",
+  "description": "Component(s) to inform enterprise users of deprecated tools.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edx/frontend-enterprise.git"
