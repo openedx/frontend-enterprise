@@ -16,5 +16,6 @@ export {
   isNull,
 } from './utils';
 export { renderWithRouter } from './test-utils';
+export { default as sendEnterpriseTrackEvent } from './analytics';
 
 export { default as getLearnerPortalLinks } from './learnerPortalLinks';
