@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.0 (2021-10-14)
+
+
+### Features
+
+* add sendEnterpriseTrackEvent to utils package ([aa8ec75](https://github.com/edx/frontend-enterprise/commit/aa8ec755b1dda199fbe236dbeb742872a10f3f91))
+
+
+
 # 1.0.0 (2021-08-17)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-utils
