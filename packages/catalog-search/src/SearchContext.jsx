@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useIsFirstRender } from '@edx/frontend-enterprise-utils';
 
-import { BOOLEAN_FILTERS, SEARCH_FACET_FILTERS, ADDITIONAL_FACET_FILTERS } from './data/constants';
+import { BOOLEAN_FILTERS, SEARCH_FACET_FILTERS, ADDITIONAL_FACET_FILTERS, URL_FILTERS } from './data/constants';
 import { refinementsReducer } from './data/reducer';
 import { setMultipleRefinementsAction } from './data/actions';
 import { searchParamsToObject, stringifyRefinements } from './data/utils';
@@ -17,7 +17,7 @@ export const getRefinementsToSet = (queryParams, activeFacetAttributes) => {
   Object.entries(queryParams).forEach(([key, value]) => {
     // Any additional facet filter to SEARCH_FACET_FILTERS who's data needs to be kept in an
     // array can live in ADDITIONAL_FACET_FILTERS.
-    if (activeFacetAttributes.includes(key) || ADDITIONAL_FACET_FILTERS.includes(key)) {
+    if (activeFacetAttributes.includes(key) || ADDITIONAL_FACET_FILTERS.includes(key) || URL_FILTERS.includes(key)) {
       const valueAsArray = Array.isArray(value) ? value : [value];
       refinementsToSet[key] = valueAsArray;
     } else if (BOOLEAN_FILTERS.includes(key)) {
