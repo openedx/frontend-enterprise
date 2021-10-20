@@ -8,8 +8,8 @@ export const CLEAR_ALL_TEXT = 'clear all';
 
 const ClearCurrentRefinements = ({ className, variant, ...props }) => {
   const { refinements, dispatch } = useContext(SearchContext);
-  const hide_cards = (refinements["hide_cards"] == "true")
-  const CLEAR_ALL_LABEL = hide_cards ? '' : CLEAR_ALL_TEXT;
+  const hideCards = (refinements.hide_cards === 'true');
+  const CLEAR_ALL_LABEL = hideCards ? '' : CLEAR_ALL_TEXT;
 
   /**
    * Called when clear filters button is clicked. Removes

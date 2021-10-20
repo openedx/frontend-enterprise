@@ -53,7 +53,7 @@ export const SEARCH_FACET_FILTERS = [
 
 export const ADDITIONAL_FACET_FILTERS = ['skills.name', 'name', 'current_job'];
 
-export const URL_FILTERS = ['hide_cards']
+export const URL_FILTERS = ['hide_cards'];
 
 if (features.LANGUAGE_FACET) {
   SEARCH_FACET_FILTERS.push({

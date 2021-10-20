@@ -35,13 +35,14 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
    */
   const visibleActiveRefinements = useMemo(
     () => {
-      // is the parameter to hide cards is passed, the selection of the catalog title is hidden to avoid them 
-      // accidentally clearing it 
-      if (refinements["hide_cards"] == "true") {
-        const updatedArray = []
-        activeRefinementsAsFlatArray.forEach(function(element) { 
-          if (element["attribute"] != "enterprise_catalog_query_titles")
-            updatedArray.push(element)
+      // is the parameter to hide cards is passed, the selection of the catalog title is hidden
+      // to avoid the user accidentally clearing it and triggering a reload
+      if (refinements.hide_cards === 'true') {
+        const updatedArray = [];
+        activeRefinementsAsFlatArray.forEach(element => {
+          if (element.attribute !== 'enterprise_catalog_query_titles') {
+            updatedArray.push(element);
+          }
         });
         return updatedArray;
       }

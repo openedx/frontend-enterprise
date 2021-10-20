@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useIsFirstRender } from '@edx/frontend-enterprise-utils';
 
-import { BOOLEAN_FILTERS, SEARCH_FACET_FILTERS, ADDITIONAL_FACET_FILTERS, URL_FILTERS } from './data/constants';
+import {
+  BOOLEAN_FILTERS,
+  SEARCH_FACET_FILTERS,
+  ADDITIONAL_FACET_FILTERS,
+  URL_FILTERS,
+} from './data/constants';
 import { refinementsReducer } from './data/reducer';
 import { setMultipleRefinementsAction } from './data/actions';
 import { searchParamsToObject, stringifyRefinements } from './data/utils';
