@@ -8,8 +8,7 @@ export const CLEAR_ALL_TEXT = 'clear all';
 
 const ClearCurrentRefinements = ({ className, variant, ...props }) => {
   const { refinements, dispatch } = useContext(SearchContext);
-  const hideCards = (refinements.hide_cards === 'true');
-  const CLEAR_ALL_LABEL = hideCards ? '' : CLEAR_ALL_TEXT;
+  const hideCards = (refinements.hide_cards && refinements.hide_cards[0] === 'true');
 
   /**
    * Called when clear filters button is clicked. Removes
@@ -21,14 +20,18 @@ const ClearCurrentRefinements = ({ className, variant, ...props }) => {
   };
 
   return (
-    <Button
-      className={className}
-      variant={variant}
-      onClick={handleClearAllRefinementsClick}
-      {...props}
-    >
-      {CLEAR_ALL_LABEL}
-    </Button>
+    <span>
+      {!hideCards && (
+      <Button
+        className={className}
+        variant={variant}
+        onClick={handleClearAllRefinementsClick}
+        {...props}
+      >
+        {CLEAR_ALL_TEXT}
+      </Button>
+      ) }
+    </span>
   );
 };
 
