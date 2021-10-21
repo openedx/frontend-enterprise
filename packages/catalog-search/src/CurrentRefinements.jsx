@@ -35,6 +35,17 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
    */
   const visibleActiveRefinements = useMemo(
     () => {
+      // is the parameter to hide cards is passed, the selection of the catalog title is hidden
+      // to avoid the user accidentally clearing it and triggering a reload
+      if (refinements.hide_cards && refinements.hide_cards[0] === 'true') {
+        const updatedArray = [];
+        activeRefinementsAsFlatArray.forEach(element => {
+          if (element.attribute !== 'enterprise_catalog_query_titles') {
+            updatedArray.push(element);
+          }
+        });
+        return updatedArray;
+      }
       if (showAllRefinements) {
         return activeRefinementsAsFlatArray;
       }
