@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.1.2...@edx/frontend-enterprise-catalog-search@2.2.0) (2021-10-21)
+
+
+### Features
+
+* hide refinement tags with url param ([#175](https://github.com/edx/frontend-enterprise/issues/175)) ([9d251a9](https://github.com/edx/frontend-enterprise/commit/9d251a9bf638e3a85f7291337129be3c47dc25eb))
+
+
+
 ### [2.1.2](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.1.1...@edx/frontend-enterprise-catalog-search@2.1.2) (2021-10-14)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
