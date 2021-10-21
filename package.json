@@ -20,8 +20,8 @@
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "devDependencies": {
-    "@commitlint/cli": "12.1.1",
-    "@commitlint/config-conventional": "12.1.1",
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
     "@edx/frontend-platform": "1.9.6",
     "@edx/paragon": "14.5.0",
     "husky": "6.0.0",
