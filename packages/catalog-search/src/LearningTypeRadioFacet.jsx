@@ -11,9 +11,9 @@ const LEARNING_TYPE_PROGRAM = 'program';
 const LearningTypeRadioFacet = () => {
   const { refinements, dispatch } = useContext(SearchContext);
   // only bold the dropdown title if the learning type is Course or Program
-  const typeCourseSelected = refinements['content_type'] && refinements['content_type'].includes(LEARNING_TYPE_COURSE)
-  const typeProgramSelected = refinements['content_type'] && refinements['content_type'].includes(LEARNING_TYPE_PROGRAM)
-  const boldTitle = typeCourseSelected || typeProgramSelected
+  const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
+  const typeProgramSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_PROGRAM);
+  const boldTitle = typeCourseSelected || typeProgramSelected;
 
   const handleInputOnChange = (type) => {
     if (type === '') {
@@ -51,7 +51,7 @@ const LearningTypeRadioFacet = () => {
               className="facet-item position-relative mr-2 mb-2"
               onChange={() => handleInputOnChange(LEARNING_TYPE_COURSE)}
             />
-            <span className={classNames('facet-item-label', {'is-refined':typeCourseSelected})}>
+            <span className={classNames('facet-item-label', { 'is-refined': typeCourseSelected })}>
               Courses
             </span>
           </Dropdown.Item>
@@ -62,7 +62,7 @@ const LearningTypeRadioFacet = () => {
               className="facet-item position-relative mr-2 mb-2"
               onChange={() => handleInputOnChange(LEARNING_TYPE_PROGRAM)}
             />
-            <span className={classNames('facet-item-label', {'is-refined':typeProgramSelected})}>
+            <span className={classNames('facet-item-label', { 'is-refined': typeProgramSelected })}>
               Programs
             </span>
           </Dropdown.Item>
