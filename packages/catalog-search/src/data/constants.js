@@ -1,4 +1,4 @@
-import {features, LEARNING_TYPE_FACET} from '../config';
+import { features } from '../config';
 
 export const SHOW_ALL_NAME = 'showAll';
 
@@ -67,7 +67,7 @@ if (features.LEARNING_TYPE_FACET) {
   SEARCH_FACET_FILTERS.push({
     attribute: 'content_type',
     title: 'Learning type',
-    noDisplay:true
+    noDisplay: true,
   });
 }
 

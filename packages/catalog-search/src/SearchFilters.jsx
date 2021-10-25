@@ -13,7 +13,7 @@ import { sortItemsByLabelAsc } from './data/utils';
 
 import { SearchContext } from './SearchContext';
 import { features } from './config';
-import LearningTypeRadioFacet from "./LearningTypeRadioFacet";
+import LearningTypeRadioFacet from './LearningTypeRadioFacet';
 
 export const FREE_ALL_TITLE = 'Free / All';
 
@@ -76,7 +76,7 @@ const SearchFilters = ({ variant }) => {
             />
           )}
           {filtersFromRefinements}
-           {features.LEARNING_TYPE_FACET && (<LearningTypeRadioFacet/>)}
+          {features.LEARNING_TYPE_FACET && (<LearningTypeRadioFacet />)}
         </>
       );
     },
