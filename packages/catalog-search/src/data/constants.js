@@ -1,4 +1,4 @@
-import { features } from '../config';
+import {features, LEARNING_TYPE_FACET} from '../config';
 
 export const SHOW_ALL_NAME = 'showAll';
 
@@ -60,6 +60,14 @@ if (features.LANGUAGE_FACET) {
     attribute: 'language',
     title: 'Language',
     isSortedAlphabetical: true,
+  });
+}
+
+if (features.LEARNING_TYPE_FACET) {
+  SEARCH_FACET_FILTERS.push({
+    attribute: 'content_type',
+    title: 'Learning type',
+    noDisplay:true
   });
 }
 
