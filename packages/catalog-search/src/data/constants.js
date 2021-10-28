@@ -63,6 +63,16 @@ if (features.LANGUAGE_FACET) {
   });
 }
 
+if (features.LEARNING_TYPE_FACET) {
+  SEARCH_FACET_FILTERS.push({
+    attribute: 'content_type',
+    title: 'Learning type',
+    // algolia wont filter if not passed through connectRefinementsList, if we add without hiding, there will be a new
+    // facet created with courses and programs dropdown items only.
+    noDisplay: true,
+  });
+}
+
 export const BOOLEAN_FILTERS = [SHOW_ALL_NAME];
 export const QUERY_PARAM_FOR_SEARCH_QUERY = 'q';
 export const QUERY_PARAM_FOR_PAGE = 'page';
