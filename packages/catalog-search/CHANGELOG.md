@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.2.3](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.2.2...@edx/frontend-enterprise-catalog-search@2.2.3) (2021-11-03)
+
+
+### Bug Fixes
+
+* reverted changes to use program_title and now using program title instead of program title. ([#181](https://github.com/edx/frontend-enterprise/issues/181)) ([a812b88](https://github.com/edx/frontend-enterprise/commit/a812b88971c62c41deac8e5e06d6170856295a98))
+
+
+
 ### [2.2.2](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.2.1...@edx/frontend-enterprise-catalog-search@2.2.2) (2021-11-03)
 
 
