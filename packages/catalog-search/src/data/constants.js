@@ -32,7 +32,7 @@ export const SEARCH_FACET_FILTERS = [
     },
   },
   {
-    attribute: 'program_type',
+    attribute: (features.PROGRAM_TITLES_FACET ? 'program_titles' : 'programs'),
     title: 'Program',
     isSortedAlphabetical: true,
     typeaheadOptions: {
