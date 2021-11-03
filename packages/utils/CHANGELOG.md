@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 1.1.1 (2021-11-03)
+
+
+### Bug Fixes
+
+* use shared browserslist configuration ([#179](https://github.com/edx/frontend-enterprise/issues/179)) ([6ffebe5](https://github.com/edx/frontend-enterprise/commit/6ffebe5ba490567c691eac978125eee530707556))
+
+
+
 ## 1.1.0 (2021-10-14)
 
 
