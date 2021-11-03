@@ -19,6 +19,7 @@ import {
 jest.mock('@edx/frontend-platform/analytics');
 
 const TEST_QUERY = 'test query';
+const HEADER_TITLE = 'Search Courses and Programs';
 
 describe('<SearchBox />', () => {
   test('renders with a label', () => {
@@ -30,6 +31,13 @@ describe('<SearchBox />', () => {
 
     // assert our custom label for the input renders
     expect(screen.getByLabelText(searchText)).toBeInTheDocument();
+  });
+
+  test('renders with correct label when provided in props', () => {
+    renderWithSearchContext(<SearchBoxBase headerTitle={HEADER_TITLE} />);
+
+    // assert our custom label for the input renders
+    expect(screen.getByLabelText(HEADER_TITLE)).toBeInTheDocument();
   });
 
   test('renders with an initial value', () => {
