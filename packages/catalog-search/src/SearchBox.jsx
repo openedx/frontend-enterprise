@@ -25,6 +25,7 @@ export const SearchBoxBase = ({
   className,
   defaultRefinement,
   variant,
+  headerTitle,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
@@ -59,7 +60,7 @@ export const SearchBoxBase = ({
     <div className={className}>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
-        {searchText}
+        { headerTitle || searchText }
       </label>
       <SearchField.Advanced
         className={classNames('fe__searchfield', {
@@ -86,12 +87,14 @@ SearchBoxBase.propTypes = {
   defaultRefinement: PropTypes.string,
   className: PropTypes.string,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
+  headerTitle: PropTypes.string,
 };
 
 SearchBoxBase.defaultProps = {
   className: undefined,
   defaultRefinement: '',
   variant: STYLE_VARIANTS.inverse,
+  headerTitle: undefined,
 };
 
 export default connectSearchBox(SearchBoxBase);
