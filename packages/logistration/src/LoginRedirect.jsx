@@ -19,8 +19,11 @@ export default function LoginRedirect({ children, loadingDisplay: LoadingDisplay
     return children;
   }
 
-  const { enterpriseSlug } = useParams();
-  global.location.href = getProxyLoginUrl(enterpriseSlug);
+  const {
+    enterpriseSlug,
+    enterpriseCustomerInviteKey,
+  } = useParams();
+  global.location.href = getProxyLoginUrl(enterpriseSlug, enterpriseCustomerInviteKey);
 
   return LoadingDisplay;
 }
