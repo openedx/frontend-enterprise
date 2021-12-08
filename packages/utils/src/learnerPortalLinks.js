@@ -1,5 +1,3 @@
-import qs from 'query-string';
-
 import { getSelectedEnterpriseUUID } from './utils';
 import { isEnterpriseUser } from './roles';
 
@@ -19,10 +17,9 @@ export const fetchEnterpriseCustomers = (
 ) => {
   let url = `${lmsBaseUrl}/enterprise/api/v1/enterprise-customer/`;
   if (preferredEnterpriseUUID !== null) {
-    const queryParams = qs.stringify({
-      uuid: preferredEnterpriseUUID,
-    });
-    url += `?${queryParams}`;
+    const queryParams = new URLSearchParams();
+    queryParams.append('uuid', preferredEnterpriseUUID)
+    url += `?${queryParams.toString()}`;
   }
   return apiClient.get(url);
 };
