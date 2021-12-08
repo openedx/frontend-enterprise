@@ -18,7 +18,7 @@ export const fetchEnterpriseCustomers = (
   let url = `${lmsBaseUrl}/enterprise/api/v1/enterprise-customer/`;
   if (preferredEnterpriseUUID !== null) {
     const queryParams = new URLSearchParams();
-    queryParams.append('uuid', preferredEnterpriseUUID)
+    queryParams.append('uuid', preferredEnterpriseUUID);
     url += `?${queryParams.toString()}`;
   }
   return apiClient.get(url);
