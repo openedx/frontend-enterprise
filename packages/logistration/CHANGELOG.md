@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.0 (2021-12-09)
+
+
+### Features
+
+* support enterprise customer invite key in LoginRedirect ([#192](https://github.com/edx/frontend-enterprise/issues/192)) ([9b8a200](https://github.com/edx/frontend-enterprise/commit/9b8a200633d5fc665ed9faf79d10f43cb7a9386a))
+
+
+
 ### 1.0.2 (2021-11-03)
 
 
