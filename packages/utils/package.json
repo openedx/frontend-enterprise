@@ -41,8 +41,7 @@
   "sideEffects": false,
   "dependencies": {
     "@testing-library/react": "11.2.6",
-    "history": "4.10.1",
-    "query-string": "5.1.1"
+    "history": "4.10.1"
   },
   "devDependencies": {
     "@edx/browserslist-config": "1.0.0",
