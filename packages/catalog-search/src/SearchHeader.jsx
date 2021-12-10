@@ -12,7 +12,7 @@ import { SearchContext } from './SearchContext';
 export const searchBoxColTestId = 'search-box-col';
 export const filtersColTestId = 'filters-col';
 
-const SearchHeader = ({ variant, containerSize, headerTitle }) => {
+const SearchHeader = ({ variant, containerSize, headerTitle, hideTitle }) => {
   const { refinements } = useContext(SearchContext);
   const searchQueryFromRefinements = refinements.q;
 
@@ -31,6 +31,7 @@ const SearchHeader = ({ variant, containerSize, headerTitle }) => {
               defaultRefinement={searchQueryFromRefinements}
               variant={variant}
               headerTitle={headerTitle}
+              hideTitle={hideTitle}
             />
           </Col>
           <Col

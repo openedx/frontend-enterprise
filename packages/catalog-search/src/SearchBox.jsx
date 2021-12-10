@@ -26,6 +26,7 @@ export const SearchBoxBase = ({
   defaultRefinement,
   variant,
   headerTitle,
+  hideTitle,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
@@ -58,10 +59,12 @@ export const SearchBoxBase = ({
   // https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/scripting-monitors/introduction-scripted-browser-monitors/
   return (
     <div className={className}>
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      {!hideTitle && (
+      /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
       <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
         { headerTitle || searchText }
       </label>
+      )}
       <SearchField.Advanced
         className={classNames('fe__searchfield', {
           'fe__searchfield--inverse': variant === STYLE_VARIANTS.inverse,
@@ -88,6 +91,7 @@ SearchBoxBase.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
   headerTitle: PropTypes.string,
+  hideTitle: PropTypes.bool,
 };
 
 SearchBoxBase.defaultProps = {
@@ -95,6 +99,7 @@ SearchBoxBase.defaultProps = {
   defaultRefinement: '',
   variant: STYLE_VARIANTS.inverse,
   headerTitle: undefined,
+  hideTitle: false,
 };
 
 export default connectSearchBox(SearchBoxBase);
