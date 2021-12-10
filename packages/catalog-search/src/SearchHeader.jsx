@@ -12,7 +12,9 @@ import { SearchContext } from './SearchContext';
 export const searchBoxColTestId = 'search-box-col';
 export const filtersColTestId = 'filters-col';
 
-const SearchHeader = ({ variant, containerSize, headerTitle, hideTitle }) => {
+const SearchHeader = ({
+  variant, containerSize, headerTitle, hideTitle,
+}) => {
   const { refinements } = useContext(SearchContext);
   const searchQueryFromRefinements = refinements.q;
 
@@ -51,12 +53,14 @@ SearchHeader.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
   containerSize: null,
   headerTitle: undefined,
+  hideTitle: false,
 };
 
 SearchHeader.propTypes = {
   headerTitle: PropTypes.string,
   containerSize: PropTypes.string,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
+  hideTitle: PropTypes.bool,
 };
 
 export default SearchHeader;

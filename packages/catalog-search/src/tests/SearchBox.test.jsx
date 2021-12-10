@@ -41,7 +41,7 @@ describe('<SearchBox />', () => {
   });
 
   test('renders without a label when hideTitle is true', () => {
-    renderWithSearchContext(<SearchBoxBase hideTitle={true} />);
+    renderWithSearchContext(<SearchBoxBase hideTitle />);
 
     // assert the Paragon <SearchField /> component renders
     expect(screen.queryByRole('search')).toBeInTheDocument();
