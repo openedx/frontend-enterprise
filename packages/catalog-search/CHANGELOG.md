@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.3.0...@edx/frontend-enterprise-catalog-search@2.4.0) (2021-12-13)
+
+
+### Features
+
+* add functionality to hide searchbox header ([#194](https://github.com/edx/frontend-enterprise/issues/194)) ([c56e3da](https://github.com/edx/frontend-enterprise/commit/c56e3da34162a58202d4f34efa7b7542657e6616))
+
+
+
 ## [2.3.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.2.5...@edx/frontend-enterprise-catalog-search@2.3.0) (2021-12-09)
 
 
