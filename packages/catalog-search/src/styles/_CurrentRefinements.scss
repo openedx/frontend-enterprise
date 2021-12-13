@@ -1,5 +1,6 @@
 .fe__refinement-badge {
   border-radius: 0;
+  cursor: pointer;
 
   &.fe__refinement-badge:first-child {
     // overrides bootstrap margin for first child

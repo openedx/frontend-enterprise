@@ -40,6 +40,17 @@ describe('<SearchBox />', () => {
     expect(screen.getByLabelText(HEADER_TITLE)).toBeInTheDocument();
   });
 
+  test('renders without a label when hideTitle is true', () => {
+    renderWithSearchContext(<SearchBoxBase hideTitle />);
+
+    // assert the Paragon <SearchField /> component renders
+    expect(screen.queryByRole('search')).toBeInTheDocument();
+    expect(screen.queryByRole('searchbox')).toBeInTheDocument();
+
+    // assert the label is hidden
+    expect(screen.queryByText(searchText)).not.toBeInTheDocument();
+  });
+
   test('renders with an initial value', () => {
     renderWithSearchContext(<SearchBoxBase defaultRefinement={TEST_QUERY} />);
 
