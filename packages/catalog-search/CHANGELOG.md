@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.4.1...@edx/frontend-enterprise-catalog-search@2.5.0) (2022-01-24)
+
+
+### Features
+
+* add hasFeatureFlagEnabled util function ([#209](https://github.com/edx/frontend-enterprise/issues/209)) ([9dca2e4](https://github.com/edx/frontend-enterprise/commit/9dca2e41ea0b043d17356b4accb5e40c582a5b26))
+
+
+
 ### [2.4.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.4.0...@edx/frontend-enterprise-catalog-search@2.4.1) (2022-01-24)
 
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.0 (2022-01-24)
+
+
+### Features
+
+* add hasFeatureFlagEnabled util function ([#209](https://github.com/edx/frontend-enterprise/issues/209)) ([9dca2e4](https://github.com/edx/frontend-enterprise/commit/9dca2e41ea0b043d17356b4accb5e40c582a5b26))
+
+
+
 ## 1.2.0 (2021-12-09)
 
 
