@@ -34,3 +34,15 @@ export const isNull = (inputValue) => {
   const values = createArrayFromValue(inputValue);
   return values.every(item => item === null);
 };
+
+/**
+ * Determines whether a specified feature flag is enabled.
+ *
+ * @param {string} featureFlag
+ * @returns true if feature flag is in `?feature` query parameter
+ */
+export function hasFeatureFlagEnabled(featureFlag) {
+  const searchParams = new URLSearchParams(global.location.search);
+  const features = searchParams.getAll('feature');
+  return features.includes(featureFlag);
+}

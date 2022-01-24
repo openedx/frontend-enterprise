@@ -1,7 +1,6 @@
 import {
   sortItemsByLabelAsc,
   searchParamsToObject,
-  hasFeatureFlagEnabled,
 } from '../utils';
 
 describe('sortItemsByLabelAsc', () => {
@@ -37,24 +36,5 @@ describe('searchParamsToObject', () => {
     const searchParams = new URLSearchParams(url.search);
     const endingObject = searchParamsToObject(searchParams);
     expect(endingObject).toEqual({ foo: ['bar', 'bar2'] });
-  });
-});
-
-describe('hasFeatureFlagEnabled', () => {
-  const { location } = global;
-
-  beforeAll(() => {
-    delete global.location;
-    global.location = { search: '?features=ayy&features=lmao' };
-  });
-
-  afterAll(() => {
-    global.location = location;
-  });
-
-  test('properly determines feature flags from query params', () => {
-    expect(hasFeatureFlagEnabled('ayy')).toEqual(true);
-    expect(hasFeatureFlagEnabled('lmao')).toEqual(true);
-    expect(hasFeatureFlagEnabled('foobar')).toEqual(false);
   });
 });
