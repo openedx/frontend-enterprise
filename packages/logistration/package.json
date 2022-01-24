@@ -41,8 +41,7 @@
   "sideEffects": false,
   "dependencies": {
     "@edx/frontend-enterprise-utils": "^1.2.0",
-    "prop-types": "15.7.2",
-    "query-string": "5.1.1"
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
     "@edx/browserslist-config": "1.0.0",
