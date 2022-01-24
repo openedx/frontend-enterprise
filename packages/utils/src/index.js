@@ -14,6 +14,7 @@ export {
 export {
   getSelectedEnterpriseUUID,
   isNull,
+  hasFeatureFlagEnabled,
 } from './utils';
 export { renderWithRouter } from './test-utils';
 export { default as sendEnterpriseTrackEvent } from './analytics';

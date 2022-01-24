@@ -34,7 +34,7 @@ export function stringifyRefinements(refinements) {
  * Given a URLSearchParams instance, parses an object that accounts for the
  * possibility of more than one value per parameter, e.g. "?foo=bar&foo=bar2".
  *
- * @param {*} entries URLSearchParams instance
+ * @param {URLSearchParams} entries URLSearchParams instance
  * @returns Object containing query parameters with an array of values for each parameter.
  */
 export function searchParamsToObject(entries) {
@@ -47,10 +47,4 @@ export function searchParamsToObject(entries) {
     }
     return acc;
   }, {});
-}
-
-export function hasFeatureFlagEnabled(featureFlag) {
-  const searchParams = new URLSearchParams(global.location.search);
-  const { features } = searchParamsToObject(searchParams);
-  return features?.includes(featureFlag);
 }

@@ -1,4 +1,4 @@
-import { hasFeatureFlagEnabled } from '../data/utils';
+import { hasFeatureFlagEnabled } from '@edx/frontend-enterprise-utils';
 
 export const FEATURE_ENROLL_WITH_CODES = 'ENROLL_WITH_CODES';
 export const FEATURE_LANGUAGE_FACET = 'LANGUAGE_FACET';
