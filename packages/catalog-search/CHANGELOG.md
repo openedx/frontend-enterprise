@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.4.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.4.0...@edx/frontend-enterprise-catalog-search@2.4.1) (2022-01-24)
+
+
+### Bug Fixes
+
+* remove query-string dependency ([#204](https://github.com/edx/frontend-enterprise/issues/204)) ([b027561](https://github.com/edx/frontend-enterprise/commit/b0275613e1eaa8ddc8bf233a906ddfb6becc858f))
+
+
+
 ## [2.4.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.3.0...@edx/frontend-enterprise-catalog-search@2.4.0) (2021-12-13)
 
 
