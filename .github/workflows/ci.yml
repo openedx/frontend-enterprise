@@ -6,9 +6,6 @@ jobs:
   tests:
     name: Build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [12, 14, 16]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
