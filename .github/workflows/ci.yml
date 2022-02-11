@@ -1,12 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches:
-    - 'master'
-  pull_request:
-    branches:
-    - '**'
+on: [push]
 
 jobs:
   tests:
@@ -23,10 +17,14 @@ jobs:
           fetch-depth: 0
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - name: Setup Nodejs Env
+        run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
+      - name: Print env value
+        run: echo ${{ env.NODE_VER }}
       - name: Setup Nodejs
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ env.NODE_VER }}
       # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not
       # authenticated, even though this build does _not_ attempt to publish, as an extra check before merge
       # that Lerna is set to publish.
