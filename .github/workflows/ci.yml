@@ -1,9 +1,15 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+    - 'master'
+  pull_request:
+    branches:
+    - '**'
 
 jobs:
-  build:
+  tests:
     name: Build
     runs-on: ubuntu-latest
     strategy:
