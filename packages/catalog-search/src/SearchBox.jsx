@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SearchField } from '@edx/paragon';
@@ -6,6 +6,7 @@ import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
+import { Link } from 'react-router-dom';
 import { deleteRefinementAction, setRefinementAction } from './data/actions';
 import { SearchContext } from './SearchContext';
 import {
@@ -27,29 +28,64 @@ export const SearchBoxBase = ({
   variant,
   headerTitle,
   hideTitle,
+  index,
+  filters,
+  enterpriseSlug,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
+
+  const [autocompleteHits, setAutocompleteHits] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   /**
    * Handles when a search is submitted by adding the user's search
    * query as a query parameter. Note that it must preserved any other
    * existing query parameters must be preserved.
    */
-  const handleSubmit = (searchQuery) => {
-    dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
+  const handleSubmit = (query) => {
+    setShowSuggestions(false);
+    dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, query));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
     if (trackingName) {
       sendTrackEvent(`${SEARCH_EVENT_NAME_PREFIX}.${trackingName}.${QUERY_SUBMITTED_EVENT}`, {
-        query: searchQuery,
+        query,
       });
     }
   };
+
+  useEffect(() => {
+    document.addEventListener('click', () => setShowSuggestions(false));
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchCourses = setTimeout(async () => {
+      if (searchQuery !== '' && isMounted) {
+        const { hits, nbHits } = await index.search(searchQuery, {
+          filters,
+          attributesToHighlight: ['title'],
+        });
+        if (nbHits > 0 && isMounted) {
+          setAutocompleteHits(hits);
+          setShowSuggestions(true);
+        }
+      } else {
+        setShowSuggestions(false);
+      }
+    }, 1000);
+    return () => {
+      isMounted = false;
+      clearTimeout(fetchCourses);
+    };
+  }, [searchQuery]);
 
   /**
    * Handles when a search is cleared by removing the user's search query
    * from the query parameters.
    */
   const handleClear = () => {
+    setSearchQuery('');
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
   };
@@ -72,16 +108,70 @@ export const SearchBoxBase = ({
         value={defaultRefinement}
         onSubmit={handleSubmit}
         onClear={handleClear}
+        onChange={(query) => {
+          setSearchQuery(query);
+        }}
       >
         <SearchField.Input
           className="form-control-lg"
           aria-labelledby="search-input-box"
           data-nr-synth-id="catalog-search-input-field"
           data-hj-whitelist
+          autoComplete="off"
         />
         <SearchField.ClearButton data-nr-synth-id="catalog-search-clear-button" />
         <SearchField.SubmitButton data-nr-synth-id="catalog-search-submit-button" />
       </SearchField.Advanced>
+      { showSuggestions && (
+      <div className="suggestions">
+        <div>
+          <div className="mb-2 ml-2 mt-1 font-weight-bold suggestions-section">
+            Courses
+          </div>
+          {
+                autocompleteHits.filter(hit => hit.content_type === 'course')
+                  .slice(0, 3)
+                  .map((hit) => (
+                    <Link to={`/${enterpriseSlug}/course/${hit.key}`} key={hit.title} className="suggestion-item" style={{ whiteSpace: 'pre-wrap' }}>
+                      <div style={{ display: 'flex' }}>
+                        {/* eslint-disable-next-line no-underscore-dangle, react/no-danger */}
+                        <div dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }} />
+                        <div className="badge badge-light ml-3 font-weight-light " style={{ lineHeight: '1.5' }}>
+                          {hit.key && hit.key.split('+')[0]}
+                        </div>
+                      </div>
+                    </Link>
+                  ))
+              }
+        </div>
+        <div>
+          <div className="mb-2 mt-5 ml-2 font-weight-bold suggestions-section">
+            Programs
+          </div>
+          {
+                autocompleteHits.filter(hit => hit.content_type !== 'course')
+                  .slice(0, 3)
+                  .map((hit) => (
+                    <Link to={`/${enterpriseSlug}/program/${hit.aggregation_key.split(':').pop()}`} key={hit.title} className="suggestion-item" style={{ whiteSpace: 'pre-wrap' }}>
+                      <div style={{ display: 'flex' }}>
+                        {/* eslint-disable-next-line no-underscore-dangle, react/no-danger */}
+                        <div dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }} />
+                        <div className="badge badge-light ml-3 font-weight-light " style={{ lineHeight: '1.5' }}>
+                          {hit.authoring_organizations && hit.authoring_organizations[0].key}
+                        </div>
+                      </div>
+                      <p className="font-weight-light text-gray-400 " style={{ fontSize: '.9rem', marginBottom: '0px' }}>
+                        {hit.program_type}
+                      </p>
+                    </Link>
+                  ))
+              }
+        </div>
+        <button type="button" className="btn btn-light w-100 view-all-btn" onClick={() => handleSubmit(searchQuery)}>
+          View all results
+        </button>
+      </div>
+      )}
     </div>
   );
 };
@@ -92,6 +182,9 @@ SearchBoxBase.propTypes = {
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
   headerTitle: PropTypes.string,
   hideTitle: PropTypes.bool,
+  index: PropTypes.shape({ search: PropTypes.func.isRequired }).isRequired,
+  filters: PropTypes.string,
+  enterpriseSlug: PropTypes.string.isRequired,
 };
 
 SearchBoxBase.defaultProps = {
@@ -100,6 +193,7 @@ SearchBoxBase.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
   headerTitle: undefined,
   hideTitle: false,
+  filters: '',
 };
 
 export default connectSearchBox(SearchBoxBase);
