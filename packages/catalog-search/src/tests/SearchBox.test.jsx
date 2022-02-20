@@ -65,6 +65,15 @@ describe('<SearchBox />', () => {
     expect(screen.queryByTestId('suggestions')).toBeNull();
   });
 
+  test('makes algolia call with correct parameters on typing in searchbox', () => {
+    jest.useFakeTimers()
+    renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
+    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    jest.runAllTimers()
+    expect(index.search.mock.calls.length).toBe(1)
+    expect(index.search).toHaveBeenCalledWith("test query", {"attributesToHighlight": ["title"], "filters": ""})
+  });
+
   test('handles submit and clear', () => {
     const { history } = renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
