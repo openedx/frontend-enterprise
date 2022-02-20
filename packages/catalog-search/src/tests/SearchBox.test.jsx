@@ -60,6 +60,11 @@ describe('<SearchBox />', () => {
     expect(screen.queryByRole('searchbox')).toHaveAttribute('value', TEST_QUERY);
   });
 
+  test('doesnt render suggestions at start', () => {
+    renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
+    expect(screen.queryByTestId('suggestions')).toBeNull();
+  });
+
   test('handles submit and clear', () => {
     const { history } = renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 

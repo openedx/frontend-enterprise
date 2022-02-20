@@ -6,7 +6,6 @@ import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
-import { Link } from 'react-router-dom';
 import { deleteRefinementAction, setRefinementAction } from './data/actions';
 import { SearchContext } from './SearchContext';
 import {
@@ -14,6 +13,7 @@ import {
   QUERY_PARAM_FOR_PAGE,
   QUERY_PARAM_FOR_SEARCH_QUERY,
 } from './data/constants';
+import SearchSuggestions from './SearchSuggestions';
 
 export const searchText = 'Search courses';
 // this prefix will be combined with one of the SearchBox props to create a full tracking event name
@@ -123,54 +123,11 @@ export const SearchBoxBase = ({
         <SearchField.SubmitButton data-nr-synth-id="catalog-search-submit-button" />
       </SearchField.Advanced>
       { showSuggestions && (
-      <div className="suggestions">
-        <div>
-          <div className="mb-2 ml-2 mt-1 font-weight-bold suggestions-section">
-            Courses
-          </div>
-          {
-                autocompleteHits.filter(hit => hit.content_type === 'course')
-                  .slice(0, 3)
-                  .map((hit) => (
-                    <Link to={`/${enterpriseSlug}/course/${hit.key}`} key={hit.title} className="suggestion-item" style={{ whiteSpace: 'pre-wrap' }}>
-                      <div style={{ display: 'flex' }}>
-                        {/* eslint-disable-next-line no-underscore-dangle, react/no-danger */}
-                        <div dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }} />
-                        <div className="badge badge-light ml-3 font-weight-light " style={{ lineHeight: '1.5' }}>
-                          {hit.key && hit.key.split('+')[0]}
-                        </div>
-                      </div>
-                    </Link>
-                  ))
-              }
-        </div>
-        <div>
-          <div className="mb-2 mt-5 ml-2 font-weight-bold suggestions-section">
-            Programs
-          </div>
-          {
-                autocompleteHits.filter(hit => hit.content_type !== 'course')
-                  .slice(0, 3)
-                  .map((hit) => (
-                    <Link to={`/${enterpriseSlug}/program/${hit.aggregation_key.split(':').pop()}`} key={hit.title} className="suggestion-item" style={{ whiteSpace: 'pre-wrap' }}>
-                      <div style={{ display: 'flex' }}>
-                        {/* eslint-disable-next-line no-underscore-dangle, react/no-danger */}
-                        <div dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }} />
-                        <div className="badge badge-light ml-3 font-weight-light " style={{ lineHeight: '1.5' }}>
-                          {hit.authoring_organizations && hit.authoring_organizations[0].key}
-                        </div>
-                      </div>
-                      <p className="font-weight-light text-gray-400 " style={{ fontSize: '.9rem', marginBottom: '0px' }}>
-                        {hit.program_type}
-                      </p>
-                    </Link>
-                  ))
-              }
-        </div>
-        <button type="button" className="btn btn-light w-100 view-all-btn" onClick={() => handleSubmit(searchQuery)}>
-          View all results
-        </button>
-      </div>
+        <SearchSuggestions
+          enterpriseSlug={enterpriseSlug}
+          autoCompleteHits={autocompleteHits}
+          handleViewAllClick={() => handleSubmit(searchQuery)}
+        />
       )}
     </div>
   );
