@@ -71,7 +71,21 @@ describe('<SearchBox />', () => {
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
     jest.runAllTimers();
     expect(index.search.mock.calls.length).toBe(1);
-    expect(index.search).toHaveBeenCalledWith('test query', { attributesToHighlight: ['title'], filters: '' });
+    expect(index.search).toHaveBeenCalledWith(
+      'test query',
+      {
+        attributesToHighlight: ['title'],
+        filters: '',
+        attributesToRetrieve: [
+          'key',
+          'content_type',
+          'title',
+          'authoring_organizations',
+          'aggregation_key',
+          '_highlightResult',
+        ],
+      },
+    );
   });
 
   test('handles submit and clear', () => {

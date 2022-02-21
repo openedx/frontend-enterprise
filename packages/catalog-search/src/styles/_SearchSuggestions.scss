@@ -1,0 +1,50 @@
+.suggestions{
+  position: absolute;
+  background: white;
+  margin-top: auto;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.suggestion-item {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px 5px 10px;
+  padding: 8px;
+  color: #000;
+    &:hover{
+      color:white;
+      background-color:#000000 ;
+      text-decoration: none;
+  }
+
+    &:hover span {
+      color:white;
+  }
+  em {
+  font-weight: bold;
+  font-style: normal;
+  &:hover{
+    color: white;
+  }
+}
+
+}
+
+.suggestion-heading {
+  color: #707070!important
+}
+
+.view-all-btn {
+  color:#000;
+  border-radius: 0px;
+  &:hover{
+    color:#000;
+  }
+}
+
+.suggestions-section {
+  color: #707070;
+  font-size: .9rem;
+}

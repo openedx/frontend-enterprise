@@ -65,6 +65,14 @@ export const SearchBoxBase = ({
         const { hits, nbHits } = await index.search(searchQuery, {
           filters,
           attributesToHighlight: ['title'],
+          attributesToRetrieve: [
+            'key',
+            'content_type',
+            'title',
+            'authoring_organizations',
+            'aggregation_key',
+            '_highlightResult',
+          ],
         });
         if (nbHits > 0 && isMounted) {
           setAutocompleteHits(hits);
