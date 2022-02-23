@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const SearchSuggestionItem = ({
-  title, url, highlightedTitle, authoringOrganization, programType,
+  url, highlightedTitle, authoringOrganization, programType,
 }) => (
-  <Link to={url} key={title} className="suggestion-item">
+  <Link to={url} className="suggestion-item">
     <div>
       {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: highlightedTitle }} />
@@ -29,7 +29,6 @@ const SearchSuggestionItem = ({
 );
 
 SearchSuggestionItem.propTypes = {
-  title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   highlightedTitle: PropTypes.string.isRequired,
   authoringOrganization: PropTypes.string,
