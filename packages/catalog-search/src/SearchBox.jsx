@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SearchField } from '@edx/paragon';
@@ -13,6 +13,7 @@ import {
   QUERY_PARAM_FOR_PAGE,
   QUERY_PARAM_FOR_SEARCH_QUERY,
 } from './data/constants';
+import SearchSuggestions from './SearchSuggestions';
 
 export const searchText = 'Search courses';
 // this prefix will be combined with one of the SearchBox props to create a full tracking event name
@@ -27,29 +28,73 @@ export const SearchBoxBase = ({
   variant,
   headerTitle,
   hideTitle,
+  index,
+  filters,
+  enterpriseSlug,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
+
+  const [autocompleteHits, setAutocompleteHits] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   /**
    * Handles when a search is submitted by adding the user's search
    * query as a query parameter. Note that it must preserved any other
    * existing query parameters must be preserved.
    */
-  const handleSubmit = (searchQuery) => {
-    dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, searchQuery));
+  const handleSubmit = (query) => {
+    setShowSuggestions(false);
+    dispatch(setRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY, query));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
     if (trackingName) {
       sendTrackEvent(`${SEARCH_EVENT_NAME_PREFIX}.${trackingName}.${QUERY_SUBMITTED_EVENT}`, {
-        query: searchQuery,
+        query,
       });
     }
   };
+
+  useEffect(() => {
+    document.addEventListener('click', () => setShowSuggestions(false));
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchCourses = setTimeout(async () => {
+      if (searchQuery !== '' && isMounted) {
+        const { hits, nbHits } = await index.search(searchQuery, {
+          filters,
+          attributesToHighlight: ['title'],
+          attributesToRetrieve: [
+            'key',
+            'content_type',
+            'title',
+            'authoring_organizations',
+            'aggregation_key',
+            '_highlightResult',
+            'program_type',
+          ],
+        });
+        if (nbHits > 0 && isMounted) {
+          setAutocompleteHits(hits);
+          setShowSuggestions(true);
+        }
+      } else {
+        setShowSuggestions(false);
+      }
+    }, 1000);
+    return () => {
+      isMounted = false;
+      clearTimeout(fetchCourses);
+    };
+  }, [searchQuery]);
 
   /**
    * Handles when a search is cleared by removing the user's search query
    * from the query parameters.
    */
   const handleClear = () => {
+    setSearchQuery('');
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_SEARCH_QUERY));
     dispatch(deleteRefinementAction(QUERY_PARAM_FOR_PAGE));
   };
@@ -72,16 +117,27 @@ export const SearchBoxBase = ({
         value={defaultRefinement}
         onSubmit={handleSubmit}
         onClear={handleClear}
+        onChange={(query) => {
+          setSearchQuery(query);
+        }}
       >
         <SearchField.Input
           className="form-control-lg"
           aria-labelledby="search-input-box"
           data-nr-synth-id="catalog-search-input-field"
           data-hj-whitelist
+          autoComplete="off"
         />
         <SearchField.ClearButton data-nr-synth-id="catalog-search-clear-button" />
         <SearchField.SubmitButton data-nr-synth-id="catalog-search-submit-button" />
       </SearchField.Advanced>
+      { showSuggestions && (
+        <SearchSuggestions
+          enterpriseSlug={enterpriseSlug}
+          autoCompleteHits={autocompleteHits}
+          handleViewAllClick={() => handleSubmit(searchQuery)}
+        />
+      )}
     </div>
   );
 };
@@ -92,6 +148,9 @@ SearchBoxBase.propTypes = {
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
   headerTitle: PropTypes.string,
   hideTitle: PropTypes.bool,
+  index: PropTypes.shape({ search: PropTypes.func.isRequired }).isRequired,
+  filters: PropTypes.string,
+  enterpriseSlug: PropTypes.string.isRequired,
 };
 
 SearchBoxBase.defaultProps = {
@@ -100,6 +159,7 @@ SearchBoxBase.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
   headerTitle: undefined,
   hideTitle: false,
+  filters: '',
 };
 
 export default connectSearchBox(SearchBoxBase);

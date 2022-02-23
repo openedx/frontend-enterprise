@@ -17,26 +17,26 @@ jest.mock('../SearchFilters', () => ({
   __esModule: true,
   default: () => <div>Filter</div>,
 }));
-
+const enterpriseConfig = { slug: 'test-enterprise' };
 describe('SearchHeader', () => {
   test('displays a SearchBox', () => {
-    renderWithSearchContext(<SearchHeader />);
+    renderWithSearchContext(<SearchHeader enterpriseConfig={enterpriseConfig} />);
     expect(screen.getByText('SEARCH')).toBeInTheDocument();
   });
   test('has the inverse variant by default -- search box', () => {
-    renderWithSearchContext(<SearchHeader />);
+    renderWithSearchContext(<SearchHeader enterpriseConfig={enterpriseConfig} />);
     expect(screen.getByTestId(searchBoxColTestId).className).not.toContain('fe__searchbox-col--default');
   });
   test('adds class names for default variant -- search box', () => {
-    renderWithSearchContext(<SearchHeader variant={STYLE_VARIANTS.default} />);
+    renderWithSearchContext(<SearchHeader variant={STYLE_VARIANTS.default} enterpriseConfig={enterpriseConfig} />);
     expect(screen.getByTestId(searchBoxColTestId).className).toContain('fe__searchbox-col--default');
   });
   test('has the inverse variant by default -- filters', () => {
-    renderWithSearchContext(<SearchHeader />);
+    renderWithSearchContext(<SearchHeader enterpriseConfig={enterpriseConfig} />);
     expect(screen.getByTestId(filtersColTestId).className).not.toContain('fe__searchbox-col--default');
   });
   test('adds class names for default variant -- filters', () => {
-    renderWithSearchContext(<SearchHeader variant={STYLE_VARIANTS.default} />);
+    renderWithSearchContext(<SearchHeader variant={STYLE_VARIANTS.default} enterpriseConfig={enterpriseConfig} />);
     expect(screen.getByTestId(filtersColTestId).className).toContain('fe__searchbox-col--default');
   });
 });

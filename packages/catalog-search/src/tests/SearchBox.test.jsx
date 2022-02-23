@@ -21,9 +21,11 @@ jest.mock('@edx/frontend-platform/analytics');
 const TEST_QUERY = 'test query';
 const HEADER_TITLE = 'Search Courses and Programs';
 
+const index = { search: jest.fn() };
+
 describe('<SearchBox />', () => {
   test('renders with a label', () => {
-    renderWithSearchContext(<SearchBoxBase />);
+    renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // assert the Paragon <SearchField /> component renders
     expect(screen.queryByRole('search')).toBeInTheDocument();
@@ -34,14 +36,14 @@ describe('<SearchBox />', () => {
   });
 
   test('renders with correct label when provided in props', () => {
-    renderWithSearchContext(<SearchBoxBase headerTitle={HEADER_TITLE} />);
+    renderWithSearchContext(<SearchBoxBase headerTitle={HEADER_TITLE} enterpriseSlug="test-enterprise" index={index} />);
 
     // assert our custom label for the input renders
     expect(screen.getByLabelText(HEADER_TITLE)).toBeInTheDocument();
   });
 
   test('renders without a label when hideTitle is true', () => {
-    renderWithSearchContext(<SearchBoxBase hideTitle />);
+    renderWithSearchContext(<SearchBoxBase hideTitle enterpriseSlug="test-enterprise" index={index} />);
 
     // assert the Paragon <SearchField /> component renders
     expect(screen.queryByRole('search')).toBeInTheDocument();
@@ -52,14 +54,43 @@ describe('<SearchBox />', () => {
   });
 
   test('renders with an initial value', () => {
-    renderWithSearchContext(<SearchBoxBase defaultRefinement={TEST_QUERY} />);
+    renderWithSearchContext(<SearchBoxBase defaultRefinement={TEST_QUERY} enterpriseSlug="test-enterprise" index={index} />);
 
     // assert the Paragon <SearchField /> component renders
     expect(screen.queryByRole('searchbox')).toHaveAttribute('value', TEST_QUERY);
   });
 
+  test('doesnt render suggestions at start', () => {
+    renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
+    expect(screen.queryByTestId('suggestions')).toBeNull();
+  });
+
+  test('makes algolia call with correct parameters on typing in searchbox', () => {
+    jest.useFakeTimers();
+    renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
+    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    jest.runAllTimers();
+    expect(index.search.mock.calls.length).toBe(1);
+    expect(index.search).toHaveBeenCalledWith(
+      'test query',
+      {
+        attributesToHighlight: ['title'],
+        filters: '',
+        attributesToRetrieve: [
+          'key',
+          'content_type',
+          'title',
+          'authoring_organizations',
+          'aggregation_key',
+          '_highlightResult',
+          'program_type',
+        ],
+      },
+    );
+  });
+
   test('handles submit and clear', () => {
-    const { history } = renderWithSearchContext(<SearchBoxBase />);
+    const { history } = renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
@@ -79,7 +110,7 @@ describe('<SearchBox />', () => {
     expect(history.location.search).toEqual('');
   });
   test('tracking event when search initiated with trackingName present in context', () => {
-    renderWithSearchContextAndTracking(<SearchBoxBase />, 'aProduct');
+    renderWithSearchContextAndTracking(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />, 'aProduct');
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);

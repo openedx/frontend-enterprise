@@ -13,7 +13,7 @@ export const searchBoxColTestId = 'search-box-col';
 export const filtersColTestId = 'filters-col';
 
 const SearchHeader = ({
-  variant, containerSize, headerTitle, hideTitle,
+  variant, containerSize, headerTitle, hideTitle, index, filters, enterpriseConfig: { slug },
 }) => {
   const { refinements } = useContext(SearchContext);
   const searchQueryFromRefinements = refinements.q;
@@ -34,6 +34,9 @@ const SearchHeader = ({
               variant={variant}
               headerTitle={headerTitle}
               hideTitle={hideTitle}
+              index={index}
+              filters={filters}
+              enterpriseSlug={slug}
             />
           </Col>
           <Col
@@ -54,6 +57,7 @@ SearchHeader.defaultProps = {
   containerSize: null,
   headerTitle: undefined,
   hideTitle: false,
+  filters: '',
 };
 
 SearchHeader.propTypes = {
@@ -61,6 +65,9 @@ SearchHeader.propTypes = {
   containerSize: PropTypes.string,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
   hideTitle: PropTypes.bool,
+  index: PropTypes.shape({ search: PropTypes.func.isRequired }).isRequired,
+  filters: PropTypes.string,
+  enterpriseConfig: PropTypes.shape({ slug: PropTypes.string.isRequired }).isRequired,
 };
 
 export default SearchHeader;
