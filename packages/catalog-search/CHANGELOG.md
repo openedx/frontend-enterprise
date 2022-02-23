@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.5.0...@edx/frontend-enterprise-catalog-search@2.6.0) (2022-02-23)
+
+
+### Features
+
+* add type ahead autocomplete suggestion support ([#215](https://github.com/edx/frontend-enterprise/issues/215)) ([66d80f2](https://github.com/edx/frontend-enterprise/commit/66d80f253922fe3494b26df36f63b720160d1ce2))
+
+
+
 ## [2.5.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.4.1...@edx/frontend-enterprise-catalog-search@2.5.0) (2022-01-24)
 
 
