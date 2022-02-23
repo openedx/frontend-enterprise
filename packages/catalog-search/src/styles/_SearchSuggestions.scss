@@ -13,6 +13,7 @@
   margin: 5px 10px 5px 10px;
   padding: 8px;
   color: #000;
+  white-space: pre-wrap;
     &:hover{
       color:white;
       background-color:#000000 ;
@@ -29,6 +30,17 @@
     color: white;
   }
 }
+  div{
+    display: flex;
+  }
+  .authoring-org-badge{
+    line-height: 1.5;
+  }
+
+  .program-type{
+    font-size: .9rem;
+    margin-bottom: 0px;
+  }
 
 }
 

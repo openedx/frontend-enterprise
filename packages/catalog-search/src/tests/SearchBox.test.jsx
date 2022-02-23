@@ -83,6 +83,7 @@ describe('<SearchBox />', () => {
           'authoring_organizations',
           'aggregation_key',
           '_highlightResult',
+          'program_type',
         ],
       },
     );

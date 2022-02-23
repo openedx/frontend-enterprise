@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import { MAX_NUM_SUGGESTIONS } from './data/constants';
+import SearchSuggestionItem from './SearchSuggestionItem';
 
 const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClick }) => {
   const getLinkToCourse = (course) => `/${enterpriseSlug}/course/${course.key}`;
@@ -18,15 +18,13 @@ const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClic
                     autoCompleteHits.filter(hit => hit.content_type === 'course')
                       .slice(0, MAX_NUM_SUGGESTIONS)
                       .map((hit) => (
-                        <Link to={getLinkToCourse(hit)} key={hit.title} className="suggestion-item" style={{ whiteSpace: 'pre-wrap' }}>
-                          <div style={{ display: 'flex' }}>
-                            {/* eslint-disable-next-line no-underscore-dangle, react/no-danger */}
-                            <div dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }} />
-                            <div className="badge badge-light ml-3 font-weight-light" style={{ lineHeight: '1.5' }}>
-                              {hit.key && hit.key.split('+')[0]}
-                            </div>
-                          </div>
-                        </Link>
+                        <SearchSuggestionItem
+                          url={getLinkToCourse(hit)}
+                          /* eslint-disable-next-line no-underscore-dangle */
+                          highlightedTitle={hit._highlightResult.title.value}
+                          authoringOrganization={hit.key && hit.key.split('+')[0]}
+                          title={hit.title}
+                        />
                       ))
                   }
       </div>
@@ -35,21 +33,17 @@ const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClic
           Programs
         </div>
         {
-                    autoCompleteHits.filter(hit => hit.content_type !== 'course')
+                    autoCompleteHits.filter(hit => hit.content_type === 'program')
                       .slice(0, MAX_NUM_SUGGESTIONS)
                       .map((hit) => (
-                        <Link to={getLinkToProgram(hit)} key={hit.title} className="suggestion-item" style={{ whiteSpace: 'pre-wrap' }}>
-                          <div style={{ display: 'flex' }}>
-                            {/* eslint-disable-next-line no-underscore-dangle, react/no-danger */}
-                            <div dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }} />
-                            <div className="badge badge-light ml-3 font-weight-light" style={{ lineHeight: '1.5' }}>
-                              {hit.authoring_organizations && hit.authoring_organizations[0].key}
-                            </div>
-                          </div>
-                          <p className="font-weight-light text-gray-400 " style={{ fontSize: '.9rem', marginBottom: '0px' }}>
-                            {hit.program_type}
-                          </p>
-                        </Link>
+                        <SearchSuggestionItem
+                          url={getLinkToProgram(hit)}
+                          /* eslint-disable-next-line no-underscore-dangle */
+                          highlightedTitle={hit._highlightResult.title.value}
+                          authoringOrganization={hit.authoring_organizations && hit.authoring_organizations[0].key}
+                          title={hit.title}
+                          programType={hit.program_type}
+                        />
                       ))
                   }
       </div>

@@ -72,6 +72,7 @@ export const SearchBoxBase = ({
             'authoring_organizations',
             'aggregation_key',
             '_highlightResult',
+            'program_type',
           ],
         });
         if (nbHits > 0 && isMounted) {
