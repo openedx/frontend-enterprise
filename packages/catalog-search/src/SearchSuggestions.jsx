@@ -23,7 +23,7 @@ const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClic
                           /* eslint-disable-next-line no-underscore-dangle */
                           highlightedTitle={hit._highlightResult.title.value}
                           authoringOrganization={hit.key && hit.key.split('+')[0]}
-                          title={hit.title}
+                          key={hit.title}
                         />
                       ))
                   }
@@ -41,7 +41,7 @@ const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClic
                           /* eslint-disable-next-line no-underscore-dangle */
                           highlightedTitle={hit._highlightResult.title.value}
                           authoringOrganization={hit.authoring_organizations && hit.authoring_organizations[0].key}
-                          title={hit.title}
+                          key={hit.title}
                           programType={hit.program_type}
                         />
                       ))

@@ -79,7 +79,7 @@ export const SearchBoxBase = ({
           setAutocompleteHits(hits);
           setShowSuggestions(true);
         }
-      } else {
+      } else if (isMounted) {
         setShowSuggestions(false);
       }
     }, 1000);
