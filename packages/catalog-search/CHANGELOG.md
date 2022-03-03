@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.6.0...@edx/frontend-enterprise-catalog-search@2.6.1) (2022-03-03)
+
+
+### Bug Fixes
+
+* autocomplete defensive code fix ([#236](https://github.com/edx/frontend-enterprise/issues/236)) ([c5653a4](https://github.com/edx/frontend-enterprise/commit/c5653a4b0d1958d5d6ebe543a851a7c28ad4349b))
+
+
+
 ## [2.6.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.5.0...@edx/frontend-enterprise-catalog-search@2.6.0) (2022-02-23)
 
 
