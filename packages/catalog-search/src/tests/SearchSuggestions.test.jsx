@@ -25,6 +25,22 @@ const fakeSuggestionsData = {
   ],
 };
 
+const fakeSuggestionsDataEmptyAuthoringOrgs = {
+  ...fakeSuggestionsData,
+  nbHits: 1,
+  hits: [
+    {
+      content_type: 'program',
+      key: 'harvard+programX',
+      title: 'test-program',
+      _highlightResult: { title: { value: 'test-<em>program</em>' } },
+      aggregation_key: '123:456',
+      authoring_organizations: [],
+      program_type: 'xSeries',
+    },
+  ],
+};
+
 const handleViewAllClick = jest.fn();
 
 describe('<SeachSuggestions />', () => {
@@ -41,6 +57,20 @@ describe('<SeachSuggestions />', () => {
     expect(screen.getByText('program')).not.toBeNull();
     expect(screen.getByText('edX')).not.toBeNull();
     expect(screen.getByText('harvard')).not.toBeNull();
+    expect(screen.getByText('xSeries')).not.toBeNull();
+    expect(screen.getByText('View all results')).not.toBeNull();
+  });
+
+  test('renders no errors when no authoring orgs found for programs data', () => {
+    renderWithRouter(<SearchSuggestions
+      enterpriseSlug="test-enterprise"
+      autoCompleteHits={fakeSuggestionsDataEmptyAuthoringOrgs.hits}
+      handleViewAllClick={handleViewAllClick}
+    />);
+    expect(screen.getByText('Courses')).not.toBeNull();
+    expect(screen.getByText('Programs')).not.toBeNull();
+    expect(screen.getAllByText('test-').length).toBe(1);
+    expect(screen.getByText('program')).not.toBeNull();
     expect(screen.getByText('xSeries')).not.toBeNull();
     expect(screen.getByText('View all results')).not.toBeNull();
   });
