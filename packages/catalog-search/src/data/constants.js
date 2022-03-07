@@ -94,3 +94,7 @@ export const STYLE_VARIANTS = {
   default: 'default',
   inverse: 'inverse',
 };
+
+export const LEARNING_TYPE_COURSE = 'course';
+export const LEARNING_TYPE_PROGRAM = 'program';
+export const LEARNING_TYPE_PATHWAY = 'learnerpathway';

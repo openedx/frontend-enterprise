@@ -5,15 +5,16 @@ import { SearchContext } from './SearchContext';
 import {
   setRefinementAction,
 } from './data/actions';
+import { features } from './config';
+import { LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY } from './data/constants';
 
-const LEARNING_TYPE_COURSE = 'course';
-const LEARNING_TYPE_PROGRAM = 'program';
 const LearningTypeRadioFacet = () => {
   const { refinements, dispatch } = useContext(SearchContext);
   // only bold the dropdown title if the learning type is Course or Program
   const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
   const typeProgramSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_PROGRAM);
-  const boldTitle = typeCourseSelected || typeProgramSelected;
+  const typePathwaySelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_PATHWAY);
+  const boldTitle = typeCourseSelected || typeProgramSelected || typePathwaySelected;
 
   const handleInputOnChange = (type) => {
     if (type === '') {
@@ -66,6 +67,21 @@ const LearningTypeRadioFacet = () => {
               Programs
             </span>
           </Dropdown.Item>
+          {
+            features.ENABlE_PATHWAYS && (
+              <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
+                <Input
+                  type="radio"
+                  checked={typePathwaySelected}
+                  className="facet-item position-relative mr-2 mb-2"
+                  onChange={() => handleInputOnChange(LEARNING_TYPE_PATHWAY)}
+                />
+                <span className={classNames('facet-item-label', { 'is-refined': typePathwaySelected })}>
+                  Pathways
+                </span>
+              </Dropdown.Item>
+            )
+          }
         </Dropdown.Menu>
       </Dropdown>
     </div>
