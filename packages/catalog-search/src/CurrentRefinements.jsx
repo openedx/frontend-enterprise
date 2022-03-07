@@ -13,6 +13,7 @@ import {
   QUERY_PARAMS_TO_IGNORE,
   NUM_CURRENT_REFINEMENTS_TO_DISPLAY,
   STYLE_VARIANTS,
+  LEARNING_TYPE_PATHWAY,
 } from './data/constants';
 import {
   useActiveRefinementsAsFlatArray,
@@ -82,7 +83,8 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
             variant="light"
             onClick={() => handleRefinementBadgeClick(item)}
           >
-            <span className="mr-2">{item.label}</span>
+            {/* Temporary fix : can be removed when learnerpathway content type is changed to pathways */}
+            <span className="mr-2">{item.label === LEARNING_TYPE_PATHWAY ? 'Pathway' : item.label}</span>
             <FontAwesomeIcon icon={faTimes} />
             <span className="sr-only">Remove the filter {item.label}</span>
           </Badge>
