@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.6.1...@edx/frontend-enterprise-catalog-search@2.7.0) (2022-03-07)
+
+
+### Features
+
+* add learning type `Pathways` ([#237](https://github.com/edx/frontend-enterprise/issues/237)) ([2641323](https://github.com/edx/frontend-enterprise/commit/26413236489e2b256ae13f43a209dc9ba64ba264))
+
+
+
 ### [2.6.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.6.0...@edx/frontend-enterprise-catalog-search@2.6.1) (2022-03-03)
 
 
