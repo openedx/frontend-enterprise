@@ -40,7 +40,7 @@ const LearningTypeRadioFacet = () => {
               checked={!boldTitle}
               className="facet-item position-relative mr-2 mb-2"
               onChange={() => handleInputOnChange('')}
-              data-testid={"learning-type-any"}
+              data-testid="learning-type-any"
             />
             <span className={classNames('facet-item-label', {})}>
               Any
@@ -52,7 +52,7 @@ const LearningTypeRadioFacet = () => {
               checked={typeCourseSelected}
               className="facet-item position-relative mr-2 mb-2"
               onChange={() => handleInputOnChange(LEARNING_TYPE_COURSE)}
-              data-testid={"learning-type-courses"}
+              data-testid="learning-type-courses"
             />
             <span className={classNames('facet-item-label', { 'is-refined': typeCourseSelected })}>
               Courses
@@ -64,7 +64,7 @@ const LearningTypeRadioFacet = () => {
               checked={typeProgramSelected}
               className="facet-item position-relative mr-2 mb-2"
               onChange={() => handleInputOnChange(LEARNING_TYPE_PROGRAM)}
-              data-testid={"learning-type-programs"}
+              data-testid="learning-type-programs"
             />
             <span className={classNames('facet-item-label', { 'is-refined': typeProgramSelected })}>
               Programs
@@ -78,7 +78,7 @@ const LearningTypeRadioFacet = () => {
                   checked={typePathwaySelected}
                   className="facet-item position-relative mr-2 mb-2"
                   onChange={() => handleInputOnChange(LEARNING_TYPE_PATHWAY)}
-                  data-testid={"learning-type-pathways"}
+                  data-testid="learning-type-pathways"
                 />
                 <span className={classNames('facet-item-label', { 'is-refined': typePathwaySelected })}>
                   Pathways
