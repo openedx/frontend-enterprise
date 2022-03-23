@@ -1,5 +1,6 @@
 **Merge checklist:**
-- [ ] Ensure your commit message follows the semantic-release conventional commit message format
+- [ ] Evaluate how your changes will impact existing consumers (e.g., `frontend-app-learner-portal-enterprise`, `frontend-app-admin-portal`, and `frontend-app-enterprise-public-catalog`). Will consumers safely be able to upgrade to this change without any breaking changes?
+- [ ] Ensure your commit message follows the semantic-release conventional commit message format. If your changes include a breaking change, ensure your commit message is explicitly marked as a `BREAKING CHANGE` so the NPM package is released as such.
 - [ ] Once CI is passing, verify the package versions that Lerna will increment to in the Github Action CI workflow logs.
     - *Note*: This may be found in the "Preview Updated Versions (dry run)" step in the Github Action CI workflow logs.
 
