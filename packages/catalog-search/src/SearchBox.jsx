@@ -1,17 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SearchField } from '@edx/paragon';
+import debounce from 'lodash.debounce';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
 import { deleteRefinementAction, setRefinementAction } from './data/actions';
+import { useActiveElement } from './data/hooks';
 import { SearchContext } from './SearchContext';
 import {
   STYLE_VARIANTS,
   QUERY_PARAM_FOR_PAGE,
   QUERY_PARAM_FOR_SEARCH_QUERY,
+  ALGOLIA_ATTRIBUTES_TO_RETRIEVE,
+  SEARCH_BOX_CLASS_NAME,
+  DEBOUNCE_TIME_MS,
 } from './data/constants';
 import SearchSuggestions from './SearchSuggestions';
 
@@ -31,6 +41,8 @@ export const SearchBoxBase = ({
   index,
   filters,
   enterpriseSlug,
+  suggestionSubmitOverride,
+  disableSuggestionRedirect,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
@@ -54,40 +66,65 @@ export const SearchBoxBase = ({
     }
   };
 
+  const handleSuggestionSubmit = (hit) => {
+    // If an override is provided, call it with the hit
+    if (typeof suggestionSubmitOverride === 'function') {
+      suggestionSubmitOverride(hit);
+    }
+
+    // When a suggested search is clicked, set the course tile to the search query
+    setSearchQuery(hit.title);
+    // Do all the regular submit stuff
+    handleSubmit(hit.title);
+  };
+
+  const handleClickListener = () => setShowSuggestions(false);
   useEffect(() => {
-    document.addEventListener('click', () => setShowSuggestions(false));
+    document.addEventListener('click', handleClickListener);
+    // Clean up the event listener when the component unmounts-
+    // https://blog.logrocket.com/understanding-react-useeffect-cleanup-function/
+    return () => {
+      document.removeEventListener('click', handleClickListener);
+    };
   });
 
-  useEffect(() => {
-    let isMounted = true;
-    const fetchCourses = setTimeout(async () => {
-      if (searchQuery !== '' && isMounted) {
-        const { hits, nbHits } = await index.search(searchQuery, {
-          filters,
-          attributesToHighlight: ['title'],
-          attributesToRetrieve: [
-            'key',
-            'content_type',
-            'title',
-            'authoring_organizations',
-            'aggregation_key',
-            '_highlightResult',
-            'program_type',
-          ],
-        });
-        if (nbHits > 0 && isMounted) {
-          setAutocompleteHits(hits);
-          setShowSuggestions(true);
-        }
+  // Track the focused element
+  const focusedElement = useActiveElement();
+
+  // Function to be called when the user stops typing, will fetch algolia hits for query after `DEBOUNCE_TIME_MS` has
+  // elapsed
+  const debounceFunc = async (query) => {
+    // Skip suggesting anything until there's something typed
+    if (query !== '') {
+      const { hits, nbHits } = await index.search(query, {
+        filters,
+        attributesToHighlight: ['title'],
+        attributesToRetrieve: ALGOLIA_ATTRIBUTES_TO_RETRIEVE,
+      });
+      if (nbHits > 0) {
+        setAutocompleteHits(hits);
+        setShowSuggestions(true);
       } else {
+        // If there are no results of the suggested search, hide the empty suggestion component
         setShowSuggestions(false);
       }
-    }, 1000);
-    return () => {
-      isMounted = false;
-      clearTimeout(fetchCourses);
-    };
-  }, [searchQuery]);
+    // Hide the results as soon as the user removes the entire query string, instead of waiting a second
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+  // Since the debounced method is called in a useEffect hook, use `useCallback` to account for repeated invoking of the
+  // method.
+  const debounceHandler = useCallback(debounce(debounceFunc, DEBOUNCE_TIME_MS), []);
+
+  useEffect(() => {
+    // If the component is provided an index and the current focused element is the input field,
+    // start the suggestion request to algolia
+    if (index !== undefined && focusedElement.classList.contains(SEARCH_BOX_CLASS_NAME)) {
+      debounceHandler(searchQuery);
+    }
+  // Retry this method if the focused element or the search query changes
+  }, [searchQuery, focusedElement]);
 
   /**
    * Handles when a search is cleared by removing the user's search query
@@ -122,7 +159,7 @@ export const SearchBoxBase = ({
         }}
       >
         <SearchField.Input
-          className="form-control-lg"
+          className={`form-control-lg ${SEARCH_BOX_CLASS_NAME}`}
           aria-labelledby="search-input-box"
           data-nr-synth-id="catalog-search-input-field"
           data-hj-whitelist
@@ -135,7 +172,9 @@ export const SearchBoxBase = ({
         <SearchSuggestions
           enterpriseSlug={enterpriseSlug}
           autoCompleteHits={autocompleteHits}
-          handleViewAllClick={() => handleSubmit(searchQuery)}
+          handleSubmit={() => handleSubmit(searchQuery)}
+          handleSuggestionClickSubmit={hit => handleSuggestionSubmit(hit)}
+          disableSuggestionRedirect={disableSuggestionRedirect}
         />
       )}
     </div>
@@ -148,9 +187,11 @@ SearchBoxBase.propTypes = {
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
   headerTitle: PropTypes.string,
   hideTitle: PropTypes.bool,
-  index: PropTypes.shape({ search: PropTypes.func.isRequired }).isRequired,
+  index: PropTypes.shape({ search: PropTypes.func.isRequired }),
   filters: PropTypes.string,
-  enterpriseSlug: PropTypes.string.isRequired,
+  enterpriseSlug: PropTypes.string,
+  suggestionSubmitOverride: PropTypes.func,
+  disableSuggestionRedirect: PropTypes.bool,
 };
 
 SearchBoxBase.defaultProps = {
@@ -160,6 +201,10 @@ SearchBoxBase.defaultProps = {
   headerTitle: undefined,
   hideTitle: false,
   filters: '',
+  enterpriseSlug: undefined,
+  index: undefined,
+  suggestionSubmitOverride: undefined,
+  disableSuggestionRedirect: false,
 };
 
 export default connectSearchBox(SearchBoxBase);

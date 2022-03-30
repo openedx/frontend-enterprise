@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 import { MAX_NUM_SUGGESTIONS } from './data/constants';
 import SearchSuggestionItem from './SearchSuggestionItem';
 
-const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClick }) => {
+const SearchSuggestions = ({
+  autoCompleteHits,
+  enterpriseSlug,
+  handleSubmit,
+  handleSuggestionClickSubmit,
+  disableSuggestionRedirect,
+}) => {
   const getLinkToCourse = (course) => `/${enterpriseSlug}/course/${course.key}`;
   const getLinkToProgram = (program) => `/${enterpriseSlug}/program/${program.aggregation_key.split(':').pop()}`;
 
@@ -21,10 +27,9 @@ const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClic
               <SearchSuggestionItem
                 key={hit.title}
                 url={getLinkToCourse(hit)}
-                /* eslint-disable-next-line no-underscore-dangle */
-                highlightedTitle={hit._highlightResult.title.value}
-                authoringOrganization={hit.key && hit.key.split('+')[0]}
-                title={hit.title}
+                hit={hit}
+                disableSuggestionRedirect={disableSuggestionRedirect}
+                suggestionItemHandler={handleSuggestionClickSubmit}
               />
             ))
         }
@@ -40,16 +45,14 @@ const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClic
               <SearchSuggestionItem
                 key={hit.title}
                 url={getLinkToProgram(hit)}
-                /* eslint-disable-next-line no-underscore-dangle */
-                highlightedTitle={hit._highlightResult.title.value}
-                authoringOrganization={hit.authoring_organizations.shift()?.key}
-                title={hit.title}
-                programType={hit.program_type}
+                hit={hit}
+                disableSuggestionRedirect={disableSuggestionRedirect}
+                suggestionItemHandler={handleSuggestionClickSubmit}
               />
             ))
         }
       </div>
-      <button type="button" className="btn btn-light w-100 view-all-btn" onClick={handleViewAllClick}>
+      <button type="button" className="btn btn-light w-100 view-all-btn" onClick={handleSubmit}>
         View all results
       </button>
     </div>
@@ -58,8 +61,17 @@ const SearchSuggestions = ({ autoCompleteHits, enterpriseSlug, handleViewAllClic
 
 SearchSuggestions.propTypes = {
   autoCompleteHits: PropTypes.arrayOf(PropTypes.object).isRequired,
-  enterpriseSlug: PropTypes.string.isRequired,
-  handleViewAllClick: PropTypes.func.isRequired,
+  enterpriseSlug: PropTypes.string,
+  handleSubmit: PropTypes.func,
+  handleSuggestionClickSubmit: PropTypes.func,
+  disableSuggestionRedirect: PropTypes.bool,
+};
+
+SearchSuggestions.defaultProps = {
+  handleSubmit: undefined,
+  enterpriseSlug: '',
+  handleSuggestionClickSubmit: undefined,
+  disableSuggestionRedirect: false,
 };
 
 export default SearchSuggestions;

@@ -98,3 +98,7 @@ export const STYLE_VARIANTS = {
 export const LEARNING_TYPE_COURSE = 'course';
 export const LEARNING_TYPE_PROGRAM = 'program';
 export const LEARNING_TYPE_PATHWAY = 'learnerpathway';
+export const ALGOLIA_ATTRIBUTES_TO_RETRIEVE = ['*'];
+
+export const SEARCH_BOX_CLASS_NAME = 'search-box-input';
+export const DEBOUNCE_TIME_MS = 500;

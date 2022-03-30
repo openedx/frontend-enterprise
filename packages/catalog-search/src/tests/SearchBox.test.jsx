@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -65,48 +65,50 @@ describe('<SearchBox />', () => {
     expect(screen.queryByTestId('suggestions')).toBeNull();
   });
 
-  test('makes algolia call with correct parameters on typing in searchbox', () => {
-    jest.useFakeTimers();
+  test('makes algolia call with correct parameters on typing in searchbox', async () => {
+    const hits = [
+      { content_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
+      { content_type: 'course', _highlightResult: { title: { value: 'test-title2' } } },
+    ];
+    const nbHits = 2;
+
+    index.search.mockImplementation(() => {
+      const thing = { hits, nbHits };
+      return (thing);
+    });
+
     renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    jest.runAllTimers();
-    expect(index.search.mock.calls.length).toBe(1);
+    await waitFor(() => expect(index.search.mock.calls.length).toBe(1));
     expect(index.search).toHaveBeenCalledWith(
       'test query',
       {
         attributesToHighlight: ['title'],
         filters: '',
-        attributesToRetrieve: [
-          'key',
-          'content_type',
-          'title',
-          'authoring_organizations',
-          'aggregation_key',
-          '_highlightResult',
-          'program_type',
-        ],
+        attributesToRetrieve: ['*'],
       },
     );
   });
-
-  test('handles submit and clear', () => {
+  test('handles submit and clear', async () => {
     const { history } = renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
     userEvent.click(screen.getByText('submit search'));
+    // userEvent.type(screen.getByRole('searchbox'), '{enter}');
 
     // assert url is updated with the query
-    expect(history).toHaveLength(2);
+    await waitFor(() => expect(history).toHaveLength(2));
     expect(history.location.search).toEqual('?q=test%20query');
     // check tracking is not invoked due to absent trackingName in context
     expect(sendTrackEvent).not.toHaveBeenCalled();
 
     // clear the input
     userEvent.click(screen.getByText('clear search'));
+    // userEvent.click(screen.getByTestId('test-input-clear'));
 
     // assert query no longer exists in url
-    expect(history).toHaveLength(3);
+    await waitFor(() => expect(history).toHaveLength(3));
     expect(history.location.search).toEqual('');
   });
   test('tracking event when search initiated with trackingName present in context', () => {
@@ -120,6 +122,40 @@ describe('<SearchBox />', () => {
     expect(sendTrackEvent).toHaveBeenCalledWith(
       `${SEARCH_EVENT_NAME_PREFIX}.aProduct.${QUERY_SUBMITTED_EVENT}`,
       { query: TEST_QUERY },
+    );
+  });
+  test('search box renders search suggestion and can override redirect', async () => {
+    const suggestionSubmitOverride = jest.fn();
+
+    SearchBoxBase.handleSuggestionSubmit = jest.fn();
+    const hits = [
+      { content_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
+      { content_type: 'course', _highlightResult: { title: { value: 'test-title2' } } },
+    ];
+    const nbHits = 2;
+
+    index.search.mockImplementation(() => {
+      const thing = { hits, nbHits };
+      return (thing);
+    });
+
+    renderWithSearchContext(
+      <SearchBoxBase
+        enterpriseSlug="test-enterprise"
+        index={index}
+        suggestionSubmitOverride={suggestionSubmitOverride}
+        disableSuggestionRedirect
+      />,
+    );
+
+    // fill in search input and submit the search
+    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await waitFor(() => expect(screen.queryByTestId('suggestions')).not.toBeNull());
+    await waitFor(() => expect(screen.getByText('test-title')).toBeInTheDocument());
+    userEvent.click(screen.getByText('test-title'));
+
+    expect(suggestionSubmitOverride).toHaveBeenCalledWith(
+      { content_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
     );
   });
 });
