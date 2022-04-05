@@ -55,11 +55,11 @@ export const SearchBoxBase = ({
   };
 
   useEffect(() => {
-    const callbackFn =  () => setShowSuggestions(false);
+    const callbackFn = () => setShowSuggestions(false);
     document.addEventListener('click', callbackFn);
     return () => {
       document.removeEventListener('click', callbackFn);
-    }
+    };
   });
 
   useEffect(() => {
