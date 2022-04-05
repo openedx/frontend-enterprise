@@ -30,6 +30,7 @@ const LearningTypeRadioFacet = () => {
         <Dropdown.Toggle
           variant="inverse-primary"
           className={classNames({ 'font-weight-bold': boldTitle })}
+          id="fe__catalog-search__learning-type-radio-facet__dropdown-toggle"
         >
           Learning Type
         </Dropdown.Toggle>

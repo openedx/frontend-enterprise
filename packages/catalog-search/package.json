@@ -6,9 +6,6 @@
     "type": "git",
     "url": "git+https://github.com/edx/frontend-enterprise.git"
   },
-  "browserslist": [
-    "extends @edx/browserslist-config"
-  ],
   "watch": {
     "build": {
       "patterns": [

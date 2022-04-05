@@ -15,6 +15,7 @@ const FacetDropdown = ({
   <div className="facet-list">
     <Dropdown className={classNames('mb-0 mr-md-3', className)}>
       <Dropdown.Toggle
+        id="fe__catalog-search__facet-dropdown__dropdown-toggle"
         variant={classNames({
           'inverse-primary': variant === STYLE_VARIANTS.inverse,
           'outline-primary': variant === STYLE_VARIANTS.default,

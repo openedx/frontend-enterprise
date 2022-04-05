@@ -55,7 +55,11 @@ export const SearchBoxBase = ({
   };
 
   useEffect(() => {
-    document.addEventListener('click', () => setShowSuggestions(false));
+    const callbackFn =  () => setShowSuggestions(false);
+    document.addEventListener('click', callbackFn);
+    return () => {
+      document.removeEventListener('click', callbackFn);
+    }
   });
 
   useEffect(() => {
@@ -107,7 +111,7 @@ export const SearchBoxBase = ({
       {!hideTitle && (
       /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
       <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
-        { headerTitle || searchText }
+        {headerTitle || searchText}
       </label>
       )}
       <SearchField.Advanced
@@ -117,9 +121,7 @@ export const SearchBoxBase = ({
         value={defaultRefinement}
         onSubmit={handleSubmit}
         onClear={handleClear}
-        onChange={(query) => {
-          setSearchQuery(query);
-        }}
+        onChange={setSearchQuery}
       >
         <SearchField.Input
           className="form-control-lg"
@@ -131,7 +133,7 @@ export const SearchBoxBase = ({
         <SearchField.ClearButton data-nr-synth-id="catalog-search-clear-button" />
         <SearchField.SubmitButton data-nr-synth-id="catalog-search-submit-button" />
       </SearchField.Advanced>
-      { showSuggestions && (
+      {showSuggestions && (
         <SearchSuggestions
           enterpriseSlug={enterpriseSlug}
           autoCompleteHits={autocompleteHits}

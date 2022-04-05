@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -21,7 +21,9 @@ jest.mock('@edx/frontend-platform/analytics');
 const TEST_QUERY = 'test query';
 const HEADER_TITLE = 'Search Courses and Programs';
 
-const index = { search: jest.fn() };
+const index = {
+  search: jest.fn(() => Promise.resolve({ hits: [], nbHits: 0 })),
+};
 
 describe('<SearchBox />', () => {
   test('renders with a label', () => {
@@ -93,8 +95,9 @@ describe('<SearchBox />', () => {
     const { history } = renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // fill in search input and submit the search
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByText('submit search'));
+    const searchInput = screen.getByRole('searchbox');
+    userEvent.type(searchInput, TEST_QUERY);
+    fireEvent.submit(searchInput);
 
     // assert url is updated with the query
     expect(history).toHaveLength(2);
@@ -113,8 +116,9 @@ describe('<SearchBox />', () => {
     renderWithSearchContextAndTracking(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />, 'aProduct');
 
     // fill in search input and submit the search
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByText('submit search'));
+    const searchInput = screen.getByRole('searchbox');
+    userEvent.type(searchInput, TEST_QUERY);
+    fireEvent.submit(searchInput);
 
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(
