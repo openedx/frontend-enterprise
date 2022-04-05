@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.7.0...@edx/frontend-enterprise-catalog-search@2.8.0) (2022-04-05)
+
+
+### Features
+
+* making suggested items backwards compatible and redirect func overridable ([#242](https://github.com/edx/frontend-enterprise/issues/242)) ([01f284d](https://github.com/edx/frontend-enterprise/commit/01f284d7999e046df2c6a395997ac410e92a5fdb))
+
+
+
 ## [2.7.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.6.1...@edx/frontend-enterprise-catalog-search@2.7.0) (2022-03-07)
 
 
