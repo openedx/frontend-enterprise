@@ -41,14 +41,14 @@ const fakeSuggestionsDataEmptyAuthoringOrgs = {
   ],
 };
 
-const handleViewAllClick = jest.fn();
+const handleSubmit = jest.fn();
 
 describe('<SeachSuggestions />', () => {
   test('renders all data', () => {
     renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
-      handleViewAllClick={handleViewAllClick}
+      handleSubmit={handleSubmit}
     />);
     expect(screen.getByText('Courses')).not.toBeNull();
     expect(screen.getByText('Programs')).not.toBeNull();
@@ -65,7 +65,7 @@ describe('<SeachSuggestions />', () => {
     renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsDataEmptyAuthoringOrgs.hits}
-      handleViewAllClick={handleViewAllClick}
+      handleSubmit={handleSubmit}
     />);
     expect(screen.getByText('Courses')).not.toBeNull();
     expect(screen.getByText('Programs')).not.toBeNull();
@@ -79,18 +79,18 @@ describe('<SeachSuggestions />', () => {
     renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
-      handleViewAllClick={handleViewAllClick}
+      handleSubmit={handleSubmit}
     />);
 
     userEvent.click(screen.getByText('View all results'));
-    expect(handleViewAllClick.mock.calls.length).toBe(1);
+    expect(handleSubmit.mock.calls.length).toBe(1);
   });
 
   test('redirects to correct page on course click', () => {
     const { container, history } = renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
-      handleViewAllClick={handleViewAllClick}
+      handleSubmit={handleSubmit}
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(history.location.pathname).toBe('/test-enterprise/course/edX+courseX');
@@ -100,7 +100,7 @@ describe('<SeachSuggestions />', () => {
     const { container, history } = renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
-      handleViewAllClick={handleViewAllClick}
+      handleSubmit={handleSubmit}
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[1]);
     expect(history.location.pathname).toBe('/test-enterprise/program/456');

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { isNull } from '@edx/frontend-enterprise-utils';
 
 /**
@@ -72,4 +72,18 @@ export const getCatalogString = (catalogs) => {
   }
 
   return catalogs.reduce(catalogFilterReducer, '');
+};
+
+export const useActiveElement = () => {
+  const [active, setActive] = useState(document.activeElement);
+  const handleFocusIn = () => setActive(document.activeElement);
+
+  useEffect(() => {
+    document.addEventListener('focusin', handleFocusIn);
+    return () => {
+      document.removeEventListener('focusin', handleFocusIn);
+    };
+  }, []);
+
+  return active;
 };
