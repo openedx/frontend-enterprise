@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "13.2.0",
-    "@edx/frontend-platform": "1.9.6",
+    "@edx/frontend-platform": "1.15.6",
     "@edx/paragon": "14.5.0",
     "husky": "6.0.0",
     "lerna": "4.0.0",
