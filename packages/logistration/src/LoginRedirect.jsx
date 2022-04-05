@@ -14,15 +14,15 @@ import { getProxyLoginUrl } from './utils';
  */
 export default function LoginRedirect({ children, loadingDisplay: LoadingDisplay }) {
   const user = getAuthenticatedUser();
+  const {
+    enterpriseSlug,
+    enterpriseCustomerInviteKey,
+  } = useParams();
 
   if (user) {
     return children;
   }
 
-  const {
-    enterpriseSlug,
-    enterpriseCustomerInviteKey,
-  } = useParams();
   global.location.href = getProxyLoginUrl(enterpriseSlug, enterpriseCustomerInviteKey);
 
   return LoadingDisplay;
