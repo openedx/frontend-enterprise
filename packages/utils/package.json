@@ -46,12 +46,16 @@
   "devDependencies": {
     "@edx/browserslist-config": "1.0.0",
     "@edx/frontend-build": "5.6.14",
-    "npm-watch": "^0.9.0"
-  },
-  "peerDependencies": {
     "@edx/frontend-platform": "1.9.6",
+    "npm-watch": "0.9.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-router-dom": "5.2.0"
+  },
+  "peerDependencies": {
+    "@edx/frontend-platform": "^1.9.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.2.0"
   }
 }
