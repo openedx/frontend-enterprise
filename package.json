@@ -9,7 +9,7 @@
   },
   "scripts": {
     "setup": "npm install && npm run bootstrap",
-    "bootstrap": "lerna exec -- npm install --legacy-peer-deps",
+    "bootstrap": "lerna exec -- npm install",
     "dev": "lerna run dev --parallel",
     "clean": "rm -rf ./node_modules && lerna run clean && lerna clean --yes",
     "build": "lerna run build --parallel",
