@@ -9,5 +9,4 @@ build:
 	cp ./CHANGELOG.md ./dist/CHANGELOG.md
 
 clean:
-	rm -rf ./node_modules
 	rm -rf ./dist

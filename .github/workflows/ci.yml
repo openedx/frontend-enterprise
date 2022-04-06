@@ -15,7 +15,7 @@ jobs:
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - name: Setup Nodejs
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 12
       # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not
@@ -27,17 +27,17 @@ jobs:
           npm whoami
       - name: Install and Setup Dependencies
         run: |
-          npm install
-          lerna bootstrap --include-dependencies --include-dependents --since origin/master
+          npm ci
+          lerna exec -- npm ci
       # build must come before running linting and tests for the `dist` directory to exist.
       - name: Build
-        run: lerna run build --include-dependencies --include-dependents --since origin/master --parallel
+        run: lerna run build
       - name: Lint
-        run: lerna run lint --include-dependencies --include-dependents --since origin/master --parallel
+        run: lerna run lint
       - name: Test
-        run: lerna run test --include-dependencies --include-dependents --since origin/master --parallel
+        run: lerna run test
       - name: Coverage Report
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"

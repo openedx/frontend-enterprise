@@ -15,7 +15,7 @@
     }
   },
   "scripts": {
-    "dev": "npm-watch build",
+    "dev": "npx npm-watch build",
     "clean": "make clean",
     "build": "make build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
@@ -44,21 +44,20 @@
   },
   "devDependencies": {
     "@edx/browserslist-config": "1.0.0",
-    "@edx/frontend-build": "^9.1.4",
+    "@edx/frontend-build": "9.1.4",
     "@edx/frontend-platform": "1.9.6",
-    "@edx/paragon": "^14.5.0",
+    "@edx/paragon": "14.5.0",
     "@fortawesome/free-solid-svg-icons": "5.8.1",
     "@fortawesome/react-fontawesome": "0.1.4",
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.2.6",
     "@testing-library/react-hooks": "3.4.2",
     "@testing-library/user-event": "13.1.8",
-    "npm-watch": "0.9.0",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "react-instantsearch-dom": "6.8.3",
     "react-router-dom": "5.2.0",
-    "react-test-renderer": "16.12.0"
+    "react-test-renderer": "16.14.0"
   },
   "peerDependencies": {
     "@edx/frontend-platform": "^1.9.6",
