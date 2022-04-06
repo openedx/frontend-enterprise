@@ -30,8 +30,8 @@ jobs:
         npm whoami
     - name: Install and Setup Dependencies
       run: |
-        npm ci
-        lerna exec -- npm ci
+        npm install
+        lerna exec -- npm install
     # build must come before running linting and tests for the `dist` directory to exist.
     - name: Build
       run: lerna run build
