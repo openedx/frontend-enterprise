@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/edx/frontend-enterprise.git"
   },
+  "workspaces": [
+    "./packages/*"
+  ],
   "scripts": {
     "setup": "npm install && npm run bootstrap",
     "bootstrap": "lerna exec -- npm install",
