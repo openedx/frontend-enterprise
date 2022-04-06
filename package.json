@@ -9,9 +9,9 @@
   },
   "scripts": {
     "setup": "npm install && npm run bootstrap",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna exec -- npm i",
     "dev": "lerna run dev --parallel",
-    "clean": "rm -rf ./node_modules ./package-lock.json && lerna run clean && lerna clean --yes",
+    "clean": "rm -rf ./node_modules && lerna run clean && lerna clean --yes",
     "build": "lerna run build --parallel",
     "test": "lerna run test --parallel",
     "lint": "lerna run lint --parallel",
