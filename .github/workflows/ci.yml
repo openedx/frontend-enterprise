@@ -3,44 +3,47 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  tests:
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12, 14, 16]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          # pulls all commits (needed for lerna / semantic release to correctly version)
-          fetch-depth: 0
-      # pulls all tags (needed for lerna / semantic release to correctly version)
-      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      - name: Setup Nodejs
-        uses: actions/setup-node@v3
-        with:
-          node-version: 12
-      # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not
-      # authenticated, even though this build does _not_ attempt to publish, as an extra check before merge
-      # that Lerna is set to publish.
-      - name: Check NPM authentication
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}" >> .npmrc
-          npm whoami
-      - name: Install and Setup Dependencies
-        run: |
-          npm ci
-          lerna exec -- npm ci
-      # build must come before running linting and tests for the `dist` directory to exist.
-      - name: Build
-        run: lerna run build
-      - name: Lint
-        run: lerna run lint
-      - name: Test
-        run: lerna run test
-      - name: Coverage Report
-        uses: codecov/codecov-action@v2
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-      - name: Preview Updated Versions (dry run)
-        run: lerna version --allow-branch ${{ steps.extract_branch.outputs.branch }} --no-git-tag-version --no-changelog --no-push --yes
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        # pulls all commits (needed for lerna / semantic release to correctly version)
+        fetch-depth: 0
+    # pulls all tags (needed for lerna / semantic release to correctly version)
+    - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+    - name: Setup Nodejs
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+    # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not
+    # authenticated, even though this build does _not_ attempt to publish, as an extra check before merge
+    # that Lerna is set to publish.
+    - name: Check NPM authentication
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}" >> .npmrc
+        npm whoami
+    - name: Install and Setup Dependencies
+      run: |
+        npm ci
+        lerna exec -- npm ci
+    # build must come before running linting and tests for the `dist` directory to exist.
+    - name: Build
+      run: lerna run build
+    - name: Lint
+      run: lerna run lint
+    - name: Test
+      run: lerna run test
+    - name: Coverage Report
+      uses: codecov/codecov-action@v2
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+    - name: Preview Updated Versions (dry run)
+      run: lerna version --allow-branch ${{ steps.extract_branch.outputs.branch }} --no-git-tag-version --no-changelog --no-push --yes
