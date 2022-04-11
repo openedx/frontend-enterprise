@@ -94,8 +94,7 @@ describe('<SearchBox />', () => {
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByText('submit search'));
-    // userEvent.type(screen.getByRole('searchbox'), '{enter}');
+    userEvent.type(screen.getByRole('searchbox'), '{enter}');
 
     // assert url is updated with the query
     await waitFor(() => expect(history).toHaveLength(2));
@@ -105,7 +104,6 @@ describe('<SearchBox />', () => {
 
     // clear the input
     userEvent.click(screen.getByText('clear search'));
-    // userEvent.click(screen.getByTestId('test-input-clear'));
 
     // assert query no longer exists in url
     await waitFor(() => expect(history).toHaveLength(3));
@@ -116,8 +114,7 @@ describe('<SearchBox />', () => {
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.click(screen.getByText('submit search'));
-
+    userEvent.type(screen.getByRole('searchbox'), '{enter}');
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(
       `${SEARCH_EVENT_NAME_PREFIX}.aProduct.${QUERY_SUBMITTED_EVENT}`,

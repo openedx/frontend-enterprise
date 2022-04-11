@@ -59,7 +59,7 @@
   },
   "peerDependencies": {
     "@edx/frontend-platform": "1.9.6",
-    "@edx/paragon": "14.5.0",
+    "@edx/paragon": "^19.15.0",
     "@fortawesome/free-solid-svg-icons": "5.8.1",
     "@fortawesome/react-fontawesome": "0.1.4",
     "react": "16.14.0",
