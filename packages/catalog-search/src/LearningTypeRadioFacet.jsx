@@ -5,7 +5,6 @@ import { SearchContext } from './SearchContext';
 import {
   setRefinementAction,
 } from './data/actions';
-import { features } from './config';
 import { LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY } from './data/constants';
 
 const LearningTypeRadioFacet = () => {

@@ -6,11 +6,9 @@ import '@testing-library/jest-dom/extend-expect';
 
 import LearningTypeRadioFacet from '../LearningTypeRadioFacet';
 
-import { features } from '../config';
 import { renderWithSearchContext } from './utils';
 
 describe('<LearningTypeRadioFacet />', () => {
-
   test('LearningTypeRadioFacet is rendered and isnt bold initially', () => {
     renderWithSearchContext(<LearningTypeRadioFacet />);
     expect(screen.getByText('Learning Type')).toBeInTheDocument();
