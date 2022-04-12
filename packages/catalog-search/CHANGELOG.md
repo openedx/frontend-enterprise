@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.8.0...@edx/frontend-enterprise-catalog-search@2.9.0) (2022-04-12)
+
+
+### Features
+
+* persistent facet filters ([#251](https://github.com/edx/frontend-enterprise/issues/251)) ([c67fc7f](https://github.com/edx/frontend-enterprise/commit/c67fc7ff950d757ba8f97b7b562ba0c86168a682))
+
+
+
 ## [2.8.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.7.0...@edx/frontend-enterprise-catalog-search@2.8.0) (2022-04-05)
 
 
