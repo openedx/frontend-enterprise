@@ -10,9 +10,6 @@ import { features } from '../config';
 import { renderWithSearchContext } from './utils';
 
 describe('<LearningTypeRadioFacet />', () => {
-  beforeEach(() => {
-    features.ENABlE_PATHWAYS = true;
-  });
 
   test('LearningTypeRadioFacet is rendered and isnt bold initially', () => {
     renderWithSearchContext(<LearningTypeRadioFacet />);
