@@ -24,14 +24,21 @@ export const isEnterpriseRole = role => ENTERPRISE_PERMISSIONS.some(permission =
  * Determines whether an authenticated user has a valid enterprise role, or the specified role.
  *
  * @param {object} user An authenticated user
- * @param {string} [role] Checks specified role against the role's for the user
- * @returns {boolean} true if the user has an enterprise role and/or the specified role, otherwise false
+ * @param {string} [role] Checks specified role against the roles for the user
+ * @param {string} [enterpriseUUID] Checks specified role against the roles for the user for the specific enterprise
+ * @returns {boolean} true if the user has an enterprise role and/or the specified role and/or the specified role
+ * for the specific enterprise, otherwise false
  */
-export const isEnterpriseUser = (user, role) => {
+export const isEnterpriseUser = (user, role, enterpriseUUID) => {
   const extractRoleNameFromJwtRole = jwtRole => jwtRole.split(':').shift();
+  const extractEnterpriseFromJwtRole = jwtRole => jwtRole.split(':')[1];
 
   if (user?.roles) {
     const { roles } = user;
+    if (enterpriseUUID && role) {
+      return !!roles.find(userRole => extractRoleNameFromJwtRole(userRole) === role
+        && extractEnterpriseFromJwtRole(userRole) === enterpriseUUID);
+    }
     if (role) {
       return !!roles.find(userRole => extractRoleNameFromJwtRole(userRole) === role);
     }
