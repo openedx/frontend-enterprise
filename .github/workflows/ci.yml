@@ -37,4 +37,6 @@ jobs:
     - name: Coverage Report
       uses: codecov/codecov-action@v2
     - name: Preview Updated Versions (dry run)
-      run: lerna version --allow-branch ${{ github.event.pull_request.head.ref }} --no-git-tag-version --no-changelog --no-push --yes
+      run: |
+        git switch -c "actual-branch-not-detached-head"
+        lerna version --allow-branch ${{ github.event.pull_request.head.ref }} --no-git-tag-version --no-changelog --no-push --yes
