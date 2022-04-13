@@ -6,9 +6,6 @@ jobs:
   tests:
     name: Build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [12, 14, 16]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -20,7 +17,7 @@ jobs:
     - name: Setup Nodejs
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node }}
+        node-version: 16
     # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not
     # authenticated, even though this build does _not_ attempt to publish, as an extra check before merge
     # that Lerna is set to publish.
