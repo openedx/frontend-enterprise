@@ -27,7 +27,8 @@ jobs:
         npm whoami
     - name: Install and Setup Dependencies
       run: |
-        npm run setup
+        npm install
+        lerna exec -- npm install
     # build must come before running linting and tests for the `dist` directory to exist.
     - name: Build
       run: lerna run build
@@ -38,4 +39,4 @@ jobs:
     - name: Coverage Report
       uses: codecov/codecov-action@v2
     - name: Preview Updated Versions (dry run)
-      run: lerna version --allow-branch ${GITHUB_REF##*/} --no-git-tag-version --no-changelog --no-push --yes
+      run: lerna version --allow-branch ${{ github.event.pull_request.head.ref }} --no-git-tag-version --no-changelog --no-push --yes
