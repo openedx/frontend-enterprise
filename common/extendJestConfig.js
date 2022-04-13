@@ -3,7 +3,7 @@ const extendJestConfig = (config) => {
   config.modulePathIgnorePatterns = config.modulePathIgnorePatterns ? [...config.modulePathIgnorePatterns, ...modulePathsToIgnore] : modulePathsToIgnore;
   config.moduleNameMapper = {
     ...config.moduleNameMapper,
-    "@edx/frontend-enterprise-(.*)": "<rootDir>/../$1/src",
+    '@edx/frontend-enterprise-(.*)': '<rootDir>/../$1/src',
   };
 };
 
