@@ -8,14 +8,6 @@ const extendESLintConfig = (config) => {
       importNoUnresolved[1].ignore = [...originalIgnore, '@edx/frontend-enterprise-*'];
     }
   }
-  config.settings = {
-    ...config.settings,
-    'import/resolver': {
-      alias: [
-        ['@edx/frontend-enterprise-utils', '../utils/src'],
-      ],
-    },
-  };
 };
 
 module.exports =  extendESLintConfig;

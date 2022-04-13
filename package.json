@@ -13,7 +13,7 @@
   "scripts": {
     "setup": "npm install",
     "dev": "lerna run dev --parallel",
-    "clean": "rm -rf ./node_modules && lerna run clean",
+    "clean": "lerna run clean && rm -rf ./node_modules",
     "build": "lerna run build --parallel",
     "test": "lerna run test --parallel",
     "lint": "lerna run lint --parallel",
