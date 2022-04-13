@@ -1,12 +1,7 @@
-const path = require('path');
 const { createConfig } = require('@edx/frontend-build');
+const extendJestConfig = require('../../common/extendJestConfig');
 
 const config = createConfig('jest');
-
-config.modulePathIgnorePatterns = ['<rootDir>/dist'];
-config.moduleNameMapper = {
-  '@edx/frontend-enterprise-utils': path.resolve(__dirname, '../utils/src'),
-};
-// config.transformIgnorePatterns = ["node_modules/(?!(@edx/frontend-enterprise-utils)/)"];
+extendJestConfig(config);
 
 module.exports = config;
