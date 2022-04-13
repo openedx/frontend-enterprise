@@ -4,6 +4,9 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import getLearnerPortalLinks from './learnerPortalLinks';
 
 export const useIsFirstRender = () => {
+  console.log('useIsFirstRender');
+  throw new Error('huzzah!');
+
   const isMountRef = useRef(true);
   useEffect(() => {
     isMountRef.current = false;

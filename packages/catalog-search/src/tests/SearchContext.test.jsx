@@ -13,6 +13,7 @@ describe('getRefinementsToSet', () => {
       subject: ['science', 'math'],
       language: ['english'],
     };
+    expect(true).toBe(false);
     expect(getRefinementsToSet(queryParams, activeFacetAttributes)).toEqual(expectedRefinements);
   });
   it('converts boolean query params to a number', () => {
