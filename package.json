@@ -11,15 +11,14 @@
     "./packages/*"
   ],
   "scripts": {
-    "setup": "npm install && npm run bootstrap",
-    "bootstrap": "npx lerna exec -- npm install",
-    "dev": "npx lerna run dev --parallel",
-    "clean": "rm -rf ./node_modules && npx lerna run clean",
-    "build": "npx lerna run build --parallel",
-    "test": "npx lerna run test --parallel",
-    "lint": "npx lerna run lint --parallel",
-    "lint:fix": "npx lerna run lint:fix --include-dependencies --include-dependents --since origin/master --parallel",
-    "changed": "npx lerna changed"
+    "setup": "npm install",
+    "dev": "lerna run dev --parallel",
+    "clean": "rm -rf ./node_modules && lerna run clean",
+    "build": "lerna run build --parallel",
+    "test": "lerna run test --parallel",
+    "lint": "lerna run lint --parallel",
+    "lint:fix": "lerna run lint:fix --parallel",
+    "changed": "lerna changed"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "13.2.0",
