@@ -29,14 +29,15 @@ jobs:
       run: npm run setup
     # build must come before running linting and tests for the `dist` directory to exist.
     - name: Build
-      run: lerna run build
+      run: npm run build
     - name: Lint
-      run: lerna run lint
+      run: npm run lint
     - name: Test
-      run: lerna run test
+      run: npm run test
     - name: Coverage Report
       uses: codecov/codecov-action@v2
     - name: Preview Updated Versions (dry run)
+      # switch from detatched head to a real branch so we can pass it to `--allow-branch`
       run: |
         git switch -c "actual-branch-not-detached-head"
         lerna version --allow-branch actual-branch-not-detached-head --no-git-tag-version --no-changelog --no-push --yes
