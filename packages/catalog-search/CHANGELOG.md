@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.9.0...@edx/frontend-enterprise-catalog-search@3.0.0) (2022-04-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* The Open edX platform is collectively moving towards Node 16. By doing so in this repository, we can now use NPM workspaces in place of Lerna in many places. Lerna is still used for publishing to NPM, updating CHANGELOGs and package.json files upon released. But NPM workspace commands can now be used instead of Lerna commands for the developer experience, which is more performant, easier to reason about, and natively supported by NPM.
+
+* Node 16 upgrade and peer dependency cleanup (#250) ([d4e3caf](https://github.com/edx/frontend-enterprise/commit/d4e3caf7e15a626f1c5e4b4d27f5e09c6f412120)), closes [#250](https://github.com/edx/frontend-enterprise/issues/250)
+
+
+
 ## [2.9.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@2.8.0...@edx/frontend-enterprise-catalog-search@2.9.0) (2022-04-12)
 
 
