@@ -13,16 +13,17 @@ import { getProxyLoginUrl } from './utils';
  * @param {element} loadingDisplay A React element to display while authenticated user is loading
  */
 export default function LoginRedirect({ children, loadingDisplay: LoadingDisplay }) {
+  const {
+    enterpriseSlug,
+    enterpriseCustomerInviteKey,
+  } = useParams();
+
   const user = getAuthenticatedUser();
 
   if (user) {
     return children;
   }
 
-  const {
-    enterpriseSlug,
-    enterpriseCustomerInviteKey,
-  } = useParams();
   global.location.href = getProxyLoginUrl(enterpriseSlug, enterpriseCustomerInviteKey);
 
   return LoadingDisplay;

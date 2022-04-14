@@ -1,7 +1,7 @@
 const { createConfig } = require('@edx/frontend-build');
+const extendJestConfig = require('../../common/extendJestConfig');
 
 const config = createConfig('jest');
-
-config.modulePathIgnorePatterns = ['<rootDir>/dist'];
+extendJestConfig(config);
 
 module.exports = config;

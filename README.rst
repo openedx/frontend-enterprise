@@ -19,11 +19,8 @@ To get started with ``frontend-enterprise`` local development, clone the repo an
 ::
 
   npm run setup
-  npm run dev
 
-The above commands will install package dependencies, symlinking local packages rather than installing from NPM directly. However, since (most of) the packages in this monorepo contain a build step for Babel transpilation, it necessary to watch changes in the ``src`` directories of each package to re-run the relevant build script(s) as needed (``npm run dev``).
-
-Each package is configured to only publish the contents of the generated ``dist`` directory to NPM; this behavior gets replicated in the local symlinking of packages as well, which is why it is necessary to watch the source files for changes and re-build the ``dist`` directory when they do change. This ensures the symlinked packages will always contain the correct packages. It is recommended to run ``npm run dev`` in a separate terminal tab or window so you may run other commands as needed while source files are still being watched/transpiled.
+The above command will install package dependencies using NPM workspaces, hoisting all packages to `node_modules` at the root of the repository for performance reasons (e.g., there will only be one copy of React). By using NPM workspaces, `npm install` knows that when importing a package that is part of this monorepo (e.g., `@edx/frontend-enterprise-utils`), it should look at the local package folder and creates symlinks accordingly.
 
 Other useful commands for linting and testing may include:
 
@@ -32,19 +29,17 @@ Other useful commands for linting and testing may include:
   npm run lint
   npm run test
 
-The above NPM scripts are running Lerna commands behind-the-scenes. By default, it will run the associated NPM command in each package in the monorepo. However, Lerna provides a mechanism to only run tests for a specific package(s), for example:
+The above NPM scripts are run via NPM workspaces behind-the-scenes. By default, it will run the associated NPM command in each package in the monorepo. However, NPM workspaces does provide a mechanism to only run tests for a specific package, for example:
 
 ::
 
-  lerna run test --scope=@edx/frontend-enterprise-catalog-search
+  npm run test -w @edx/frontend-enterprise-catalog-search
 
 To clean your local monorepo of any installed ``node_modules`` and symlinked packages to start fresh, you may run:
 
 ::
 
   npm run clean
-
-See https://github.com/lerna/lerna for full documentation of Lerna commands.
 
 Installing local monorepo package(s) from an edX micro-frontend
 -----
@@ -83,9 +78,7 @@ Each package in the monorepo contains its own package.json file and unique set o
 
 To get around this issue of common/shared dependencies, we can rely on how NPM finds installed packages. If a package does not exist in ``node_modules`` for an individual package, NPM will look in ``node_modules`` further up the directory tree until it finds the package, or gets to the root of the repository. 
 
-By installing these common dependencies at the root package.json file, they will be accessible to any package in the monorepo to ensure there is only one copy of them used throughout. These dependencies are still noted in each individual package.json file as a peer dependency but not as a dev dependency since they are already installed in ``node_modules`` at the root of the repository.
-
-As such, we should pay extra attention to managing dependencies in each packages, making informed decisions about whether a dependency should be included in an individual package's package.json file or the package.json file at the root of the repository.
+NPM workspaces helps with this by hoisting installed packages to the root `node_modules` folder where they will be accessible to any package in the monorepo to ensure there is only one copy used throughout. These dependencies are still noted in each individual package.json file as both a peer dependency and a dev dependency.
 
 Writing a commit
 -----
@@ -95,6 +88,8 @@ There is a precommit plugin (commitlint) which requires commit messages formatte
 ``type: subject``
 
 where type must be one of ``[build, ci, docs, feat, fix, perf, refactor, revert, style, test]``
+
+Note: only `fix`, `feat`, and `perf` will trigger a new NPM release, as this is the default behavior for semantic-release.
 
 Versioning and releases
 *****
@@ -108,7 +103,7 @@ To publish the packages that had their versions incremented, you must manually t
 Preview changed packages in CI with Github Actions
 -----
 
-As a convenience, the ``lerna changed`` command is run for each push to determine which packages in the monorepo will be published should a PR get merged.
+As a convenience, a dry run of the ``lerna version`` command is run for each push to determine which packages in the monorepo will be published should a PR get merged.
 
 .. |Build Status| image:: https://github.com/edx/frontend-enterprise/actions/workflows/release.yml/badge.svg
    :target: https://github.com/edx/frontend-enterprise/actions

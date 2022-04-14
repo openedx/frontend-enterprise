@@ -18,7 +18,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
       # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not authenticated
       - name: Check NPM authentication
         run: |
@@ -35,7 +35,7 @@ jobs:
         run: npm run test
       - name: Coverage Report
         uses: codecov/codecov-action@v1
-      - name: 
+      - name: Force publish major versions
         run: lerna version major --force-publish --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

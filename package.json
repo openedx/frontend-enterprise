@@ -7,26 +7,22 @@
     "type": "git",
     "url": "git+https://github.com/edx/frontend-enterprise.git"
   },
+  "workspaces": [
+    "./packages/*"
+  ],
   "scripts": {
-    "setup": "npm install && npm run bootstrap",
-    "bootstrap": "lerna bootstrap",
-    "dev": "lerna run dev --parallel",
-    "clean": "rm -rf ./node_modules ./package-lock.json && lerna run clean && lerna clean --yes",
-    "build": "lerna run build --parallel",
-    "test": "lerna run test --parallel",
-    "lint": "lerna run lint --parallel",
-    "lint:fix": "lerna run lint:fix --include-dependencies --include-dependents --since origin/master --parallel",
+    "setup": "npm install",
+    "dev": "npm run dev --workspaces",
+    "clean": "npm run clean --workspaces && rm -rf ./node_modules",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
     "changed": "lerna changed"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "13.2.0",
-    "@edx/frontend-platform": "1.9.6",
-    "@edx/paragon": "^19.15.0",
     "husky": "6.0.0",
-    "lerna": "4.0.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "react-router-dom": "5.2.0",
-    "react-test-renderer": "16.14.0"
+    "lerna": "4.0.0"
   }
 }

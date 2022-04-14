@@ -6,9 +6,6 @@
     "type": "git",
     "url": "git+https://github.com/edx/frontend-enterprise.git"
   },
-  "browserslist": [
-    "extends @edx/browserslist-config"
-  ],
   "watch": {
     "build": {
       "patterns": [
@@ -18,15 +15,15 @@
     }
   },
   "scripts": {
-    "dev": "npm-watch build",
+    "dev": "npx npm-watch build",
     "clean": "make clean",
     "build": "make build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
     "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx .",
     "snapshot": "fedx-scripts jest --updateSnapshot",
-    "start": "fedx-scripts webpack-dev-server --progress",
-    "test": "fedx-scripts jest --coverage --passWithNoTests"
+    "test": "fedx-scripts jest --coverage --passWithNoTests",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "edX",
   "license": "AGPL-3.0",
@@ -45,15 +42,19 @@
   },
   "devDependencies": {
     "@edx/browserslist-config": "1.0.0",
-    "@edx/frontend-build": "5.6.14",
+    "@edx/frontend-build": "9.1.4",
+    "@edx/frontend-platform": "1.15.6",
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.2.6",
-    "npm-watch": "^0.9.0"
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-router-dom": "5.2.0",
+    "react-test-renderer": "16.12.0"
   },
   "peerDependencies": {
-    "@edx/frontend-platform": "1.9.6",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-router-dom": "5.2.0"
+    "@edx/frontend-platform": "^1.9.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.2.0"
   }
 }
