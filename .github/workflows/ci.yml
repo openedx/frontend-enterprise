@@ -12,8 +12,8 @@ jobs:
       with:
         # pulls all commits (needed for lerna / semantic release to correctly version)
         fetch-depth: 0
-    # pulls all tags (needed for lerna / semantic release to correctly version)
-    - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      # pulls all tags (needed for lerna / semantic release to correctly version)
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
     - name: Setup Nodejs
       uses: actions/setup-node@v3
       with:
