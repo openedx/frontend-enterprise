@@ -64,5 +64,21 @@ describe('roles', () => {
       const isValidEnterpriseUser = isEnterpriseUser(user, ENTERPRISE_LEARNER);
       expect(isValidEnterpriseUser).toEqual(true);
     });
+
+    it('returns true when authenticated user has specified role for an enterprise', () => {
+      const user = {
+        roles: ['enterprise_admin:11', 'enterprise_admin:22', 'enterprise_learner:33'],
+      };
+      const isValidEnterpriseUser = isEnterpriseUser(user, ENTERPRISE_ADMIN, '22');
+      expect(isValidEnterpriseUser).toEqual(true);
+    });
+
+    it('returns false when authenticated user does not have the specified role for an enterprise', () => {
+      const user = {
+        roles: ['enterprise_admin:11', 'enterprise_admin:22', 'enterprise_learner:33'],
+      };
+      const isValidEnterpriseUser = isEnterpriseUser(user, ENTERPRISE_ADMIN, '99');
+      expect(isValidEnterpriseUser).toEqual(false);
+    });
   });
 });
