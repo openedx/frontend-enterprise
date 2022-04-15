@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@2.0.0...@edx/frontend-enterprise-utils@2.0.1) (2022-04-15)
+
+
+### Bug Fixes
+
+* updated enterprise role determination with multiple enterprise support ([#253](https://github.com/edx/frontend-enterprise/issues/253)) ([87f5e07](https://github.com/edx/frontend-enterprise/commit/87f5e072aa5194a507a8b2fdb15f21b69e82612c))
+
+
+
 ## 2.0.0 (2022-04-14)
 
 
