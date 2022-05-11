@@ -21,7 +21,7 @@ const SearchFilters = ({ variant }) => {
   const size = useWindowSize();
   const { refinements, searchFacetFilters } = useContext(SearchContext);
   const showMobileMenu = useMemo(
-    () => size.width < breakpoints.small.maxWidth,
+    () => size.width < breakpoints.large.maxWidth,
     [JSON.stringify(size)],
   );
   const freeAllItems = useMemo(() => [
