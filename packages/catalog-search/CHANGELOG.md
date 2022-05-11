@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.0.2](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.0.1...@edx/frontend-enterprise-catalog-search@3.0.2) (2022-05-11)
+
+
+### Bug Fixes
+
+* switch SearchFilters to mobile menu when smaller than large bp. ENT-5800 ([#256](https://github.com/edx/frontend-enterprise/issues/256)) ([65f5e10](https://github.com/edx/frontend-enterprise/commit/65f5e10017133b0887bcd86cb61433522d7b962f))
+
+
+
 ### [3.0.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.0.0...@edx/frontend-enterprise-catalog-search@3.0.1) (2022-04-15)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
