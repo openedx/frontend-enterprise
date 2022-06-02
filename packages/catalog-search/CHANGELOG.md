@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.0.4](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.0.3...@edx/frontend-enterprise-catalog-search@3.0.4) (2022-06-02)
+
+
+### Bug Fixes
+
+* update devDependencies in `utils` and `logistration`; add more docs to README ([#260](https://github.com/edx/frontend-enterprise/issues/260)) ([db5204d](https://github.com/edx/frontend-enterprise/commit/db5204dd417a57d4e20a66d5cc1fdfd5fee298cb))
+
+
+
 ### [3.0.3](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.0.2...@edx/frontend-enterprise-catalog-search@3.0.3) (2022-06-02)
 
 
