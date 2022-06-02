@@ -1,6 +1,6 @@
 import React, { useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { breakpoints, useWindowSize } from '@edx/paragon';
+import { breakpoints, MediaQuery } from '@edx/paragon';
 
 import FacetListRefinement from './FacetListRefinement';
 import FacetListBase from './FacetListBase';
@@ -18,12 +18,7 @@ import LearningTypeRadioFacet from './LearningTypeRadioFacet';
 export const FREE_ALL_TITLE = 'Free / All';
 
 const SearchFilters = ({ variant }) => {
-  const size = useWindowSize();
   const { refinements, searchFacetFilters } = useContext(SearchContext);
-  const showMobileMenu = useMemo(
-    () => size.width < breakpoints.large.maxWidth,
-    [JSON.stringify(size)],
-  );
   const freeAllItems = useMemo(() => [
     {
       label: 'Free to me',
@@ -85,18 +80,19 @@ const SearchFilters = ({ variant }) => {
 
   return (
     <>
-      {showMobileMenu ? (
+      <MediaQuery maxWidth={breakpoints.large.maxWidth}>
         <MobileFilterMenu className="mb-3">
           {searchFacets}
         </MobileFilterMenu>
-      ) : (
+      </MediaQuery>
+      <MediaQuery minWidth={breakpoints.extraLarge.minWidth}>
         <>
           <div className="d-flex">
             {searchFacets}
           </div>
           <CurrentRefinements variant={variant} />
         </>
-      )}
+      </MediaQuery>
     </>
   );
 };
