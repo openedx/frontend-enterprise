@@ -41,7 +41,23 @@ To clean your local monorepo of any installed ``node_modules`` and symlinked pac
 
   npm run clean
 
-Installing local monorepo package(s) from an edX micro-frontend
+Installing new NPM modules in the workspace packages
+-----
+
+To install a new NPM module in all workspace packages, use the `--workspaces` argument, e.g.:
+
+::
+
+  npm install @edx/paragon@latest --workspaces
+
+To install a new NPM module in one or more specific workspace package(s), use the `--workspace` argument, e.g.:
+
+::
+
+  npm install -D @edx/paragon@latest --workspace=@edx/frontend-enterprise-catalog-search
+
+
+Installing local monorepo package(s) into an Open edX micro-frontend
 -----
 
 For any micro-frontend using `@edx/frontend-build <https://github.com/edx/frontend-build>` that consumes any packages from this monorepo may want to use a local copy of one or more packages during development rather than relying solely on the published NPM packages. To do this, you may modify your module.config.js file to create Webpack aliases to your local checkout of the monorepo packages:
