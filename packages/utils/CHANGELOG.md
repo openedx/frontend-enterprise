@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 2.0.2 (2022-06-02)
+
+
+### Bug Fixes
+
+* Use media query to resize for mobile in SearchFilters ([#259](https://github.com/edx/frontend-enterprise/issues/259)) ([6780f94](https://github.com/edx/frontend-enterprise/commit/6780f94058badbf82b909430db209574698dd596))
+
+
+
 ### [2.0.1](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@2.0.0...@edx/frontend-enterprise-utils@2.0.1) (2022-04-15)
 
 

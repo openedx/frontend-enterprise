@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-utils",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Utils and other miscellaneous enterprise things.",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "@edx/browserslist-config": "1.0.0",
     "@edx/frontend-build": "9.1.4",
-    "@edx/frontend-enterprise-catalog-search": "^3.0.2",
+    "@edx/frontend-enterprise-catalog-search": "^3.0.3",
     "@edx/frontend-platform": "1.15.6",
     "@edx/paragon": "^19.25.1",
     "react": "16.14.0",
