@@ -45,7 +45,7 @@
     "@edx/browserslist-config": "1.0.0",
     "@edx/frontend-build": "9.1.4",
     "@edx/frontend-platform": "1.15.6",
-    "@edx/paragon": "^19.25.1",
+    "@edx/paragon": "19.25.1",
     "@fortawesome/free-solid-svg-icons": "5.8.1",
     "@fortawesome/react-fontawesome": "0.1.4",
     "@testing-library/jest-dom": "5.11.6",
