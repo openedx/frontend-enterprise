@@ -35,7 +35,7 @@ jobs:
       - name: Test
         run: npm run test
       - name: Coverage Report
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
       - name: Publish to NPM from package.json versions
         run: lerna publish from-package --yes
         env:

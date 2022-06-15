@@ -36,7 +36,7 @@ jobs:
     - name: Test
       run: npm run test
     - name: Coverage Report
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v3
     - name: Preview Updated Versions (dry run)
       # switch from detatched head to a real branch so we can pass it to `--allow-branch`
       run: |
