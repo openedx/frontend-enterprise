@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { breakpoints, MediaQuery } from '@edx/paragon';

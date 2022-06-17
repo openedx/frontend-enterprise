@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -52,7 +53,7 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
       }
       return activeRefinementsAsFlatArray.slice(0, NUM_CURRENT_REFINEMENTS_TO_DISPLAY);
     },
-    [activeRefinementsAsFlatArray, showAllRefinements],
+    [activeRefinementsAsFlatArray, refinements.hide_cards, showAllRefinements],
   );
 
   /**

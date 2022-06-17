@@ -8,6 +8,7 @@ frontend-enterprise
 - `@edx/frontend-enterprise-catalog-search </packages/catalog-search>`_
 - `@edx/frontend-enterprise-logistration </packages/logistration>`_
 - `@edx/frontend-enterprise-utils </packages/utils>`_
+- `@edx/frontend-enterprise-hotjar </packages/hotjar>`
 
 Each of these packages is published to NPM and have their own README files. The packages can be found in the ``packages/*`` folder.
 
@@ -92,7 +93,7 @@ Managing package dependencies
 
 Each package in the monorepo contains its own package.json file and unique set of dependencies depending on their needs. However, issues may arise when importing conflicting versions of external packages (e.g., React) in multiple monorepo packages. This is because some dependencies only properly work when there is a single copy of the dependency to ensure the same version is used throughout an application. For example, ``react`` and ``react-dom`` are common offenders here as there can only be one copy of React used at any given time. If a library/app attempts to use more than one copy or differening versions of React, there will be unintended behavior and warnings.
 
-To get around this issue of common/shared dependencies, we can rely on how NPM finds installed packages. If a package does not exist in ``node_modules`` for an individual package, NPM will look in ``node_modules`` further up the directory tree until it finds the package, or gets to the root of the repository. 
+To get around this issue of common/shared dependencies, we can rely on how NPM finds installed packages. If a package does not exist in ``node_modules`` for an individual package, NPM will look in ``node_modules`` further up the directory tree until it finds the package, or gets to the root of the repository.
 
 NPM workspaces helps with this by hoisting installed packages to the root `node_modules` folder where they will be accessible to any package in the monorepo to ensure there is only one copy used throughout. These dependencies are still noted in each individual package.json file as both a peer dependency and a dev dependency.
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo, useState, useEffect } from 'react';
 import { isNull } from '@edx/frontend-enterprise-utils';
 
