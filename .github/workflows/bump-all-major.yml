@@ -35,7 +35,7 @@ jobs:
       - name: Test
         run: npm run test
       - name: Coverage Report
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
       - name: Force publish major versions
         run: lerna version major --force-publish --yes
         env:
