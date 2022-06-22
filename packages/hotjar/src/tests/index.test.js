@@ -2,7 +2,7 @@
 
 import {
   appendHeadScript, identifyHotjar, initializeHotjar,
-} from '../hotjar';
+} from '../index';
 
 describe('appendHeadScript', () => {
   const scriptId = 'hotjar-init-script';
