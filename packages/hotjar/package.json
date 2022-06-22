@@ -1,7 +1,7 @@
 {
-  "name": "@edx/frontend-enterprise-catalog-search",
-  "version": "3.0.5",
-  "description": "Components related to Enterprise catalog search.",
+  "name": "@edx/frontend-enterprise-hotjar",
+  "version": "1.0.0",
+  "description": "Utils for Hotjar.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edx/frontend-enterprise.git"
@@ -36,37 +36,17 @@
     "url": "https://github.com/edx/frontend-enterprise/issues"
   },
   "sideEffects": false,
-  "dependencies": {
-    "@edx/frontend-enterprise-utils": "^2.0.4",
-    "classnames": "2.2.5",
-    "lodash.debounce": "4.0.8",
-    "prop-types": "15.7.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@edx/browserslist-config": "1.1.0",
     "@edx/frontend-build": "11.0.1",
-    "@edx/frontend-platform": "1.15.6",
-    "@edx/paragon": "19.25.1",
-    "@fortawesome/free-solid-svg-icons": "5.8.1",
-    "@fortawesome/react-fontawesome": "0.1.4",
-    "@testing-library/jest-dom": "5.11.6",
-    "@testing-library/react": "11.2.6",
-    "@testing-library/react-hooks": "3.4.2",
-    "@testing-library/user-event": "13.1.8",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "react-instantsearch-dom": "6.8.3",
-    "react-router-dom": "5.2.0",
-    "react-test-renderer": "16.14.0"
+    "react-router-dom": "5.2.0"
   },
   "peerDependencies": {
-    "@edx/frontend-platform": "^1.9.6 || ^2.0.0",
-    "@edx/paragon": "^19.15.0 || ^20.0.0",
-    "@fortawesome/free-solid-svg-icons": "^5.8.1",
-    "@fortawesome/react-fontawesome": "^0.1.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-instantsearch-dom": "^6.8.3",
     "react-router-dom": "^5.2.0"
   }
 }
