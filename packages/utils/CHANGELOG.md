@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@2.0.4...@edx/frontend-enterprise-utils@2.1.0) (2022-06-22)
+
+
+### Features
+
+* add hotjar library ([#264](https://github.com/edx/frontend-enterprise/issues/264)) ([f132ce1](https://github.com/edx/frontend-enterprise/commit/f132ce1716bb64714a8c368a80f673d1e9ef12fc))
+
+
+
 ### [2.0.4](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@2.0.3...@edx/frontend-enterprise-utils@2.0.4) (2022-06-17)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-utils
