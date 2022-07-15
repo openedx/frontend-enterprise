@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 3.1.1 (2022-07-15)
+
+
+### Bug Fixes
+
+* search reset after checkbox click in dropdown ([#267](https://github.com/edx/frontend-enterprise/issues/267)) ([eb1d15a](https://github.com/edx/frontend-enterprise/commit/eb1d15a7acd86f06dcc8fb6ae14efc00f13e9778))
+
+
+
 ## [3.1.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.0.5...@edx/frontend-enterprise-catalog-search@3.1.0) (2022-06-22)
 
 
