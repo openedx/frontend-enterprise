@@ -15,6 +15,7 @@ const FacetDropdown = ({
   <div className="facet-list">
     <Dropdown autoClose="outside" className={classNames('mb-0 mr-md-3', className)}>
       <Dropdown.Toggle
+        id="{title}-{variant}"
         variant={classNames({
           'inverse-primary': variant === STYLE_VARIANTS.inverse,
           'outline-primary': variant === STYLE_VARIANTS.default,
