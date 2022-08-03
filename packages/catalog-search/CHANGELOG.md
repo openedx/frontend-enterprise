@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.1.2](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.1...@edx/frontend-enterprise-catalog-search@3.1.2) (2022-08-03)
+
+
+### Bug Fixes
+
+* small fix to dropdown toggle ([#269](https://github.com/edx/frontend-enterprise/issues/269)) ([3a515c0](https://github.com/edx/frontend-enterprise/commit/3a515c0e8db46e2e590bf3bd5e55cea81e0f2af1))
+
+
+
 ### 3.1.1 (2022-07-15)
 
 
