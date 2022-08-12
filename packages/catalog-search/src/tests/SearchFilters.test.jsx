@@ -12,6 +12,7 @@ import SearchFilters from '../SearchFilters';
 describe('<SearchFilters />', () => {
   test('renders with a label', () => {
     renderWithSearchContext(
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       <ResponsiveContext.Provider value={{ width: breakpoints.large.maxWidth }}>
         <SearchFilters />
       </ResponsiveContext.Provider>,

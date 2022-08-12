@@ -179,7 +179,7 @@ describe('<FacetListBase />', () => {
       fireEvent.change(screen.queryByPlaceholderText('Find a skill...'), { target: { value: 'Blockchain' } });
     });
 
-    await new Promise((r) => setTimeout(r, 210));
+    await new Promise((r) => { setTimeout(r, 210); });
 
     expect(searchableDropdownProps.searchForItems).toHaveBeenCalledTimes(1);
     expect(searchableDropdownProps.searchForItems).toHaveBeenCalledWith('Blockchain');

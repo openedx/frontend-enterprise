@@ -10,7 +10,7 @@ import ClearCurrentRefinements from './ClearCurrentRefinements';
 
 import { useActiveRefinementsAsFlatArray } from './data/hooks';
 
-export const MobileFilterMenuBase = ({ children, className, items }) => {
+export function MobileFilterMenuBase({ children, className, items }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const activeRefinementsAsFlatArray = useActiveRefinementsAsFlatArray(items);
@@ -86,7 +86,7 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
       </div>
     </div>
   );
-};
+}
 
 MobileFilterMenuBase.propTypes = {
   children: PropTypes.node.isRequired,

@@ -5,20 +5,21 @@ import classNames from 'classnames';
 
 import { STYLE_VARIANTS } from './data/constants';
 
-const FacetItem = ({
+function FacetItem({
   handleInputOnChange, item, isChecked, variant, showBadge,
-}) => (
-  <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
-    <Input
-      type="checkbox"
-      checked={isChecked}
-      onChange={() => handleInputOnChange(item)}
-      className="facet-item position-relative mr-2 mb-2"
-    />
-    <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
-      {item.label}
-    </span>
-    {showBadge && (
+}) {
+  return (
+    <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
+      <Input
+        type="checkbox"
+        checked={isChecked}
+        onChange={() => handleInputOnChange(item)}
+        className="facet-item position-relative mr-2 mb-2"
+      />
+      <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
+        {item.label}
+      </span>
+      {showBadge && (
       <Badge
         pill
         className={classNames(
@@ -28,9 +29,10 @@ const FacetItem = ({
       >
         {item.count}
       </Badge>
-    )}
-  </Dropdown.Item>
-);
+      )}
+    </Dropdown.Item>
+  );
+}
 
 FacetItem.defaultProps = {
   variant: STYLE_VARIANTS.inverse,

@@ -22,7 +22,7 @@ import {
 import { SearchContext } from './SearchContext';
 import { removeFromRefinementArray, deleteRefinementAction } from './data/actions';
 
-export const CurrentRefinementsBase = ({ items, variant }) => {
+export function CurrentRefinementsBase({ items, variant }) {
   if (!items || !items.length) {
     return null;
   }
@@ -130,7 +130,7 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
       </li>
     </ul>
   );
-};
+}
 
 CurrentRefinementsBase.defaultProps = {
   variant: STYLE_VARIANTS.inverse,

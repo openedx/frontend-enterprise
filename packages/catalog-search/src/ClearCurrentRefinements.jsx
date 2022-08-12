@@ -6,7 +6,7 @@ import { clearRefinementsAction } from './data/actions';
 
 export const CLEAR_ALL_TEXT = 'clear all';
 
-const ClearCurrentRefinements = ({ className, variant, ...props }) => {
+function ClearCurrentRefinements({ className, variant, ...props }) {
   const { refinements, dispatch } = useContext(SearchContext);
   const hideCards = (refinements.hide_cards && refinements.hide_cards[0] === 'true');
 
@@ -33,7 +33,7 @@ const ClearCurrentRefinements = ({ className, variant, ...props }) => {
       ) }
     </span>
   );
-};
+}
 
 ClearCurrentRefinements.propTypes = {
   variant: PropTypes.string.isRequired,

@@ -12,7 +12,7 @@ import { SearchContext } from './SearchContext';
 export const searchBoxColTestId = 'search-box-col';
 export const filtersColTestId = 'filters-col';
 
-const SearchHeader = ({
+function SearchHeader({
   variant,
   containerSize,
   headerTitle,
@@ -22,7 +22,7 @@ const SearchHeader = ({
   suggestionSubmitOverride,
   enterpriseConfig: { slug },
   disableSuggestionRedirect,
-}) => {
+}) {
   const { refinements } = useContext(SearchContext);
   let searchQueryFromRefinements;
   // Sometimes the query is set to an array of one string instead of just the string
@@ -66,7 +66,7 @@ const SearchHeader = ({
       </Container>
     </div>
   );
-};
+}
 
 SearchHeader.defaultProps = {
   variant: STYLE_VARIANTS.inverse,

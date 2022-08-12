@@ -11,7 +11,7 @@ import {
   addToRefinementArray, setRefinementAction, deleteRefinementAction, removeFromRefinementArray,
 } from './data/actions';
 
-const FacetListBase = ({
+function FacetListBase({
   attribute,
   facetValueType,
   isBold,
@@ -25,7 +25,7 @@ const FacetListBase = ({
   doRefinement,
   customAttribute,
   showBadge,
-}) => {
+}) {
   const { refinements, dispatch } = useContext(SearchContext);
 
   /**
@@ -113,7 +113,7 @@ const FacetListBase = ({
       variant={variant}
     />
   );
-};
+}
 
 FacetListBase.defaultProps = {
   isCheckedField: null,

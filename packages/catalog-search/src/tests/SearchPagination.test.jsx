@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-closing-tag-location */
 import React from 'react';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { screen, fireEvent } from '@testing-library/react';
@@ -32,13 +33,11 @@ describe('<SearchPagination />', () => {
     expect(history.location.search).toEqual('');
   });
   test('updates page query when navigating left to a previous page', () => {
-    const { history } = renderWithRouter(
-      <SearchData>
-        <SearchPaginationBase nbPages={4} currentRefinement={3} />
-      </SearchData>, {
-        route: 'search/?page=3',
-      },
-    );
+    const { history } = renderWithRouter(<SearchData>
+      <SearchPaginationBase nbPages={4} currentRefinement={3} />
+    </SearchData>, {
+      route: 'search/?page=3',
+    });
 
     // assert SearchData adds showAll
     expect(history.location.search).toEqual('?page=3');

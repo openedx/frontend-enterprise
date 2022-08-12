@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const SearchSuggestionItem = ({
+function SearchSuggestionItem({
   url, suggestionItemHandler, hit, disableSuggestionRedirect,
-}) => {
+}) {
   const authoringOrganization = hit.key && hit.key.split('+')[0];
   // If the disable redirect bool is provided, prevent the redirect from happening and instead call the provided submit
   // handler
@@ -36,7 +36,7 @@ const SearchSuggestionItem = ({
       }
     </Link>
   );
-};
+}
 
 SearchSuggestionItem.propTypes = {
   url: PropTypes.string.isRequired,
@@ -45,7 +45,7 @@ SearchSuggestionItem.propTypes = {
     key: PropTypes.string,
     title: PropTypes.string,
     program_type: PropTypes.string,
-    authoring_organizations: PropTypes.array,
+    authoring_organizations: PropTypes.shape([]),
     _highlightResult: PropTypes.shape({ title: PropTypes.shape({ value: PropTypes.string }) }),
   }).isRequired,
   disableSuggestionRedirect: PropTypes.bool.isRequired,

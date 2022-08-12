@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import { connectRefinementList } from 'react-instantsearch-dom';
 import FacetListBase from './FacetListBase';
 
-export const FacetListRefinementBase = ({
+export function FacetListRefinementBase({
   currentRefinement, ...props
-}) => (
-  <FacetListBase
-    isBold={currentRefinement.length > 0}
-    isCheckedField="isRefined"
-    {...props}
-  />
-);
+}) {
+  return (
+    <FacetListBase
+      isBold={currentRefinement.length > 0}
+      isCheckedField="isRefined"
+      {...props}
+    />
+  );
+}
 
 FacetListRefinementBase.propTypes = {
   attribute: PropTypes.string.isRequired,
