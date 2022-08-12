@@ -2,6 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
+// eslint-disable-next-line import/no-unresolved
 import '@testing-library/jest-dom/extend-expect';
 
 import LoginRedirect from './LoginRedirect';
@@ -10,17 +11,21 @@ jest.mock('@edx/frontend-platform/auth');
 
 const TEST_ENTERPRISE_SLUG = 'test-enterprise-slug';
 
-const LoginRedirectWithChild = () => (
-  <LoginRedirect>
-    <span data-testid="did-i-render" />
-  </LoginRedirect>
-);
+function LoginRedirectWithChild() {
+  return (
+    <LoginRedirect>
+      <span data-testid="did-i-render" />
+    </LoginRedirect>
+  );
+}
 
-const LoginRedirectWithLoadingDisplay = () => (
-  <LoginRedirect
-    loadingDisplay={<span data-testid="did-i-render" />}
-  />
-);
+function LoginRedirectWithLoadingDisplay() {
+  return (
+    <LoginRedirect
+      loadingDisplay={<span data-testid="did-i-render" />}
+    />
+  );
+}
 
 describe('LoginRedirect', () => {
   beforeEach(() => {
