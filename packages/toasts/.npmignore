@@ -1,0 +1,7 @@
+*.config.js*
+coverage
+Makefile
+src/**/*.test.js
+src/**/*.test.jsx
+src/**/tests
+src/**/setupTest.js

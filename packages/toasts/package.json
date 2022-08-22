@@ -1,7 +1,7 @@
 {
-  "name": "@edx/frontend-enterprise-logistration",
-  "version": "2.1.0",
-  "description": "Enterprise-specific component(s) to ensure enterprise users are redirected to branded enterprise logistration flow.",
+  "name": "@edx/frontend-enterprise-toasts",
+  "version": "0.1.0",
+  "description": "Component(s) to display toasts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edx/frontend-enterprise.git"
@@ -53,6 +53,7 @@
   },
   "peerDependencies": {
     "@edx/frontend-platform": "^1.9.6 || ^2.0.0",
+    "@edx/paragon": "^20.10.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.2.0"
