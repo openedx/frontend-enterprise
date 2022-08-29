@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-utils",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Utils and other miscellaneous enterprise things.",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@edx/browserslist-config": "1.1.0",
-    "@edx/frontend-build": "11.0.1",
+    "@edx/frontend-build": "^11.0.2",
     "@edx/frontend-platform": "1.15.6",
     "react": "16.14.0",
     "react-dom": "16.14.0",

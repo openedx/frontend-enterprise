@@ -8,7 +8,7 @@ frontend-enterprise
 - `@edx/frontend-enterprise-catalog-search </packages/catalog-search>`_
 - `@edx/frontend-enterprise-logistration </packages/logistration>`_
 - `@edx/frontend-enterprise-utils </packages/utils>`_
-- `@edx/frontend-enterprise-hotjar </packages/hotjar>`
+- `@edx/frontend-enterprise-hotjar </packages/hotjar>`_
 
 Each of these packages is published to NPM and have their own README files. The packages can be found in the ``packages/*`` folder.
 
