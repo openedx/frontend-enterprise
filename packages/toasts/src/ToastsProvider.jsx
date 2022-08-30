@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 export const ToastsContext = createContext();
 const ToastsProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
-  function getRandom(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
   /**
    * message parameter can either be a string or React node component - Displays text or component in the toasts.
    * delay parameter must be a number - Optional. The time in milliseconds to show the toast.
@@ -24,7 +21,7 @@ const ToastsProvider = ({ children }) => {
     setToasts(prevToasts => [
       ...prevToasts,
       {
-        id: getRandom(0, 1000),
+        id: prevToasts.length,
         action: actionObj,
         message,
         show: true,
