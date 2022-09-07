@@ -4,7 +4,7 @@
   "description": "Utils and other miscellaneous enterprise things.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edx/frontend-enterprise.git"
+    "url": "git+https://github.com/openedx/frontend-enterprise.git"
   },
   "watch": {
     "build": {
@@ -27,13 +27,13 @@
   },
   "author": "edX",
   "license": "AGPL-3.0",
-  "homepage": "https://github.com/edx/frontend-enterprise#readme",
+  "homepage": "https://github.com/openedx/frontend-enterprise#readme",
   "publishConfig": {
     "access": "public",
     "directory": "dist"
   },
   "bugs": {
-    "url": "https://github.com/edx/frontend-enterprise/issues"
+    "url": "https://github.com/openedx/frontend-enterprise/issues"
   },
   "sideEffects": false,
   "dependencies": {
