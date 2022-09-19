@@ -2,7 +2,6 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
-// eslint-disable-next-line import/no-unresolved
 import '@testing-library/jest-dom/extend-expect';
 
 import LoginRedirect from './LoginRedirect';
