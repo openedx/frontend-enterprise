@@ -17,6 +17,6 @@ export {
   hasFeatureFlagEnabled,
 } from './utils';
 export { renderWithRouter } from './test-utils';
-export { default as sendEnterpriseTrackEvent } from './analytics';
+export { sendEnterpriseTrackEvent, sendEnterpriseTrackEventWithDelay, TRACK_EVENT_DELAY_MS } from './analytics';
 
 export { default as getLearnerPortalLinks } from './learnerPortalLinks';
