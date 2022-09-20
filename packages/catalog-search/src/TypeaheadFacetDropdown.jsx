@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import { Input } from '@edx/paragon';
@@ -13,16 +13,14 @@ const TypeaheadFacetDropdown = ({
   searchForItems,
   ...props
 }) => {
-  const [searchValue, setSearchValue] = useState('');
   const handleSearch = debounce((value) => {
     // when user is erasing the input and input is empty we need to reset the filtering
     if (value.length >= options.minLength || value.length === 0) {
       searchForItems(value);
-      setSearchValue(value);
     }
   }, 200);
 
-  const transformMenuOptions = menuOptions => (
+  const transformMenuOptions = (menuOptions) => (
     <>
       <div className="pr-2 pl-2 pb-2">
         <Input
@@ -39,10 +37,6 @@ const TypeaheadFacetDropdown = ({
       </div>
     </>
   );
-
-  if (searchValue !== '') {
-    handleSearch(searchValue);
-  }
 
   return (
     <FacetDropdown
