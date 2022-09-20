@@ -37,7 +37,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@edx/frontend-enterprise-utils": "^2.2.0",
+    "@edx/frontend-enterprise-utils": "2.2.0",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
