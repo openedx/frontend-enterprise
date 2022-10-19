@@ -10,10 +10,11 @@ const FacetDropdown = ({
   items,
   isBold,
   className,
+  onChangeAction,
   variant,
 }) => (
   <div className="facet-list">
-    <Dropdown autoClose="outside" className={classNames('mb-0 mr-md-3', className)}>
+    <Dropdown onChange={() => onChangeAction} autoClose="outside" className={classNames('mb-0 mr-md-3', className)}>
       <Dropdown.Toggle
         id="{title}-{variant}"
         variant={classNames({
@@ -41,6 +42,7 @@ FacetDropdown.propTypes = {
   items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   isBold: PropTypes.bool.isRequired,
   className: PropTypes.string,
+  onChangeAction: PropTypes.func.isRequired,
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
 };
 

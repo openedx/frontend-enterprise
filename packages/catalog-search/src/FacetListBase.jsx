@@ -10,6 +10,7 @@ import { SearchContext } from './SearchContext';
 import {
   addToRefinementArray, setRefinementAction, deleteRefinementAction, removeFromRefinementArray,
 } from './data/actions';
+import { dropdownContainerDataCapture } from './data/utils';
 
 const FacetListBase = ({
   attribute,
@@ -26,7 +27,7 @@ const FacetListBase = ({
   customAttribute,
   showBadge,
 }) => {
-  const { refinements, dispatch } = useContext(SearchContext);
+  const { refinements, dispatch, enterpriseUUID } = useContext(SearchContext);
 
   /**
    * Handles when a facet option is toggled by either adding it to the refinements
@@ -58,7 +59,6 @@ const FacetListBase = ({
       }
     }
   };
-
   const renderItems = useCallback(
     () => {
       if (!items?.length) {
@@ -101,6 +101,7 @@ const FacetListBase = ({
         options={typeaheadOptions}
         searchForItems={searchForItems}
         variant={variant}
+        showBadge={showBadge}
       />
     );
   }
@@ -110,6 +111,7 @@ const FacetListBase = ({
       items={renderItems()}
       title={title}
       isBold={isBold}
+      onChangeAction={() => dropdownContainerDataCapture([], typeaheadOptions, showBadge, refinements, enterpriseUUID)}
       variant={variant}
     />
   );

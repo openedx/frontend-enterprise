@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import { Input } from '@edx/paragon';
-
+import { SearchContext } from './SearchContext';
 import FacetDropdown from './FacetDropdown';
+import { dropdownContainerDataCapture } from './data/utils';
 
 const TypeaheadFacetDropdown = ({
   title,
@@ -11,6 +12,7 @@ const TypeaheadFacetDropdown = ({
   isBold,
   options,
   searchForItems,
+  showBadge,
   ...props
 }) => {
   const handleSearch = debounce((value) => {
@@ -37,13 +39,14 @@ const TypeaheadFacetDropdown = ({
       </div>
     </>
   );
-
+  const { refinements, enterpriseUUID } = useContext(SearchContext);
   return (
     <FacetDropdown
       items={transformMenuOptions(items)}
       title={title}
       isBold={isBold}
       className="typeahead"
+      onChangeAction={() => dropdownContainerDataCapture([], true, showBadge, refinements, enterpriseUUID)}
       {...props}
     />
   );
@@ -59,6 +62,7 @@ TypeaheadFacetDropdown.propTypes = {
     minLength: PropTypes.number.isRequired,
   }).isRequired,
   searchForItems: PropTypes.func.isRequired,
+  showBadge: PropTypes.bool.isRequired,
 };
 
 export default TypeaheadFacetDropdown;

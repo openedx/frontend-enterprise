@@ -37,7 +37,9 @@ export const getRefinementsToSet = (queryParams, activeFacetAttributes) => {
   return refinementsToSet;
 };
 
-const SearchData = ({ children, searchFacetFilters, trackingName }) => {
+const SearchData = ({
+  children, searchFacetFilters, trackingName, enterpriseUUID,
+}) => {
   const [refinements, dispatch] = useReducer(
     refinementsReducer,
     {},
@@ -80,8 +82,9 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
       dispatch,
       searchFacetFilters,
       trackingName,
+      enterpriseUUID,
     }),
-    [JSON.stringify(refinements), dispatch, searchFacetFilters, trackingName],
+    [JSON.stringify(refinements), dispatch, searchFacetFilters, trackingName, enterpriseUUID],
   );
 
   return (
@@ -92,6 +95,7 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
 SearchData.defaultProps = {
   searchFacetFilters: SEARCH_FACET_FILTERS,
   trackingName: null,
+  enterpriseUUID: null,
 };
 
 SearchData.propTypes = {
@@ -102,6 +106,7 @@ SearchData.propTypes = {
     isSortedAlphabetical: PropTypes.bool,
   })),
   trackingName: PropTypes.string,
+  enterpriseUUID: PropTypes.string,
 };
 
 export default SearchData;
