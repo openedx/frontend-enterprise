@@ -10,21 +10,17 @@ jest.mock('@edx/frontend-platform/auth');
 
 const TEST_ENTERPRISE_SLUG = 'test-enterprise-slug';
 
-function LoginRedirectWithChild() {
-  return (
-    <LoginRedirect>
-      <span data-testid="did-i-render" />
-    </LoginRedirect>
-  );
-}
+const LoginRedirectWithChild = () => (
+  <LoginRedirect>
+    <span data-testid="did-i-render" />
+  </LoginRedirect>
+);
 
-function LoginRedirectWithLoadingDisplay() {
-  return (
-    <LoginRedirect
-      loadingDisplay={<span data-testid="did-i-render" />}
-    />
-  );
-}
+const LoginRedirectWithLoadingDisplay = () => (
+  <LoginRedirect
+    loadingDisplay={<span data-testid="did-i-render" />}
+  />
+);
 
 describe('LoginRedirect', () => {
   beforeEach(() => {

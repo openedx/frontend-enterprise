@@ -12,7 +12,7 @@ import { getProxyLoginUrl } from './utils';
  * @param {node} children The child nodes to render if there is an authenticated user.
  * @param {element} loadingDisplay A React element to display while authenticated user is loading
  */
-export default function LoginRedirect({ children, loadingDisplay: LoadingDisplay }) {
+const LoginRedirect = ({ children, loadingDisplay: LoadingDisplay }) => {
   const {
     enterpriseSlug,
     enterpriseCustomerInviteKey,
@@ -27,7 +27,7 @@ export default function LoginRedirect({ children, loadingDisplay: LoadingDisplay
   global.location.href = getProxyLoginUrl(enterpriseSlug, enterpriseCustomerInviteKey);
 
   return LoadingDisplay;
-}
+};
 
 LoginRedirect.propTypes = {
   children: PropTypes.node,
@@ -38,3 +38,5 @@ LoginRedirect.defaultProps = {
   children: null,
   loadingDisplay: null,
 };
+
+export default LoginRedirect;
