@@ -9,15 +9,13 @@ import SearchData from '../SearchContext';
 import { SUBJECTS, AVAILABLILITY, FACET_ATTRIBUTES } from '../data/tests/constants';
 
 // eslint-disable-next-line react/prop-types
-function MobileFilterMenuWrapper({ items }) {
-  return (
-    <SearchData>
-      <MobileFilterMenuBase items={items}>
-        <span data-testid="did-i-render" />
-      </MobileFilterMenuBase>
-    </SearchData>
-  );
-}
+const MobileFilterMenuWrapper = ({ items }) => (
+  <SearchData>
+    <MobileFilterMenuBase items={items}>
+      <span data-testid="did-i-render" />
+    </MobileFilterMenuBase>
+  </SearchData>
+);
 
 describe('<MobileFilterMenu />', () => {
   test('renders the modal initially closed, but opens on Filters button click', () => {

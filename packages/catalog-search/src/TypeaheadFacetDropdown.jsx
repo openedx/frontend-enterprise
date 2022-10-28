@@ -5,14 +5,14 @@ import { Input } from '@edx/paragon';
 
 import FacetDropdown from './FacetDropdown';
 
-function TypeaheadFacetDropdown({
+const TypeaheadFacetDropdown = ({
   title,
   items,
   isBold,
   options,
   searchForItems,
   ...props
-}) {
+}) => {
   const handleSearch = debounce((value) => {
     // when user is erasing the input and input is empty we need to reset the filtering
     if (value.length >= options.minLength || value.length === 0) {
@@ -47,7 +47,7 @@ function TypeaheadFacetDropdown({
       {...props}
     />
   );
-}
+};
 
 TypeaheadFacetDropdown.propTypes = {
   title: PropTypes.string.isRequired,

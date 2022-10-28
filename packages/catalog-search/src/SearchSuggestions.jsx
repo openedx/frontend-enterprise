@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { MAX_NUM_SUGGESTIONS } from './data/constants';
 import SearchSuggestionItem from './SearchSuggestionItem';
 
-function SearchSuggestions({
+const SearchSuggestions = ({
   autoCompleteHits,
   enterpriseSlug,
   handleSubmit,
   handleSuggestionClickSubmit,
   disableSuggestionRedirect,
-}) {
+}) => {
   const getLinkToCourse = (course) => `/${enterpriseSlug}/course/${course.key}`;
   const getLinkToProgram = (program) => `/${enterpriseSlug}/program/${program.aggregation_key.split(':').pop()}`;
 
@@ -57,7 +57,7 @@ function SearchSuggestions({
       </button>
     </div>
   );
-}
+};
 
 SearchSuggestions.propTypes = {
   autoCompleteHits: PropTypes.arrayOf(PropTypes.shape({

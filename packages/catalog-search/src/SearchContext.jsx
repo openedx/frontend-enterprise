@@ -37,7 +37,7 @@ export const getRefinementsToSet = (queryParams, activeFacetAttributes) => {
   return refinementsToSet;
 };
 
-function SearchData({ children, searchFacetFilters, trackingName }) {
+const SearchData = ({ children, searchFacetFilters, trackingName }) => {
   const [refinements, dispatch] = useReducer(
     refinementsReducer,
     {},
@@ -87,7 +87,7 @@ function SearchData({ children, searchFacetFilters, trackingName }) {
   return (
     <SearchContext.Provider value={value}>{children}</SearchContext.Provider>
   );
-}
+};
 
 SearchData.defaultProps = {
   searchFacetFilters: SEARCH_FACET_FILTERS,

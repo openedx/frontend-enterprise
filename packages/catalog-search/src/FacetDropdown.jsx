@@ -5,33 +5,31 @@ import { Dropdown } from '@edx/paragon';
 
 import { STYLE_VARIANTS } from './data/constants';
 
-function FacetDropdown({
+const FacetDropdown = ({
   title,
   items,
   isBold,
   className,
   variant,
-}) {
-  return (
-    <div className="facet-list">
-      <Dropdown autoClose="outside" className={classNames('mb-0 mr-md-3', className)}>
-        <Dropdown.Toggle
-          id="{title}-{variant}"
-          variant={classNames({
-            'inverse-primary': variant === STYLE_VARIANTS.inverse,
-            'outline-primary': variant === STYLE_VARIANTS.default,
-          })}
-          className={classNames({ 'font-weight-bold': isBold })}
-        >
-          {title}
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          {items}
-        </Dropdown.Menu>
-      </Dropdown>
-    </div>
-  );
-}
+}) => (
+  <div className="facet-list">
+    <Dropdown autoClose="outside" className={classNames('mb-0 mr-md-3', className)}>
+      <Dropdown.Toggle
+        id="{title}-{variant}"
+        variant={classNames({
+          'inverse-primary': variant === STYLE_VARIANTS.inverse,
+          'outline-primary': variant === STYLE_VARIANTS.default,
+        })}
+        className={classNames({ 'font-weight-bold': isBold })}
+      >
+        {title}
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        {items}
+      </Dropdown.Menu>
+    </Dropdown>
+  </div>
+);
 
 FacetDropdown.defaultProps = {
   className: '',

@@ -18,7 +18,7 @@ import LearningTypeRadioFacet from './LearningTypeRadioFacet';
 
 export const FREE_ALL_TITLE = 'Free / All';
 
-function SearchFilters({ variant }) {
+const SearchFilters = ({ variant }) => {
   const { refinements, searchFacetFilters } = useContext(SearchContext);
   const freeAllItems = useMemo(() => [
     {
@@ -96,7 +96,7 @@ function SearchFilters({ variant }) {
       </MediaQuery>
     </>
   );
-}
+};
 
 SearchFilters.defaultProps = {
   variant: STYLE_VARIANTS.inverse,

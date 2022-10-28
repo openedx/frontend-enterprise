@@ -8,11 +8,11 @@ import { Pagination } from '@edx/paragon';
 import { SearchContext } from './SearchContext';
 import { setRefinementAction, deleteRefinementAction } from './data/actions';
 
-export function SearchPaginationBase({
+export const SearchPaginationBase = ({
   nbPages,
   currentRefinement,
   maxPagesDisplayed,
-}) {
+}) => {
   const { dispatch } = useContext(SearchContext);
 
   const icons = useMemo(
@@ -63,7 +63,7 @@ export function SearchPaginationBase({
       }}
     />
   );
-}
+};
 
 SearchPaginationBase.propTypes = {
   nbPages: PropTypes.number.isRequired,

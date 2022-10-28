@@ -9,14 +9,14 @@ import { renderWithSearchContext } from './utils';
 import '../../__mocks__/react-instantsearch-dom';
 import SearchFilters from '../SearchFilters';
 
-function SearchContextWrapper() {
+const SearchContextWrapper = () => {
   const contextValue = useMemo(() => ({ width: breakpoints.large.maxWidth }), []);
   return (
     <ResponsiveContext.Provider value={contextValue}>
       <SearchFilters />
     </ResponsiveContext.Provider>
   );
-}
+};
 
 describe('<SearchFilters />', () => {
   test('renders with a label', () => {

@@ -33,7 +33,7 @@ export const searchText = 'Search courses';
 export const SEARCH_EVENT_NAME_PREFIX = 'edx.enterprise';
 export const QUERY_SUBMITTED_EVENT = 'catalog_search.query_submitted';
 
-export function SearchBoxBase({
+export const SearchBoxBase = ({
   className,
   defaultRefinement,
   variant,
@@ -44,7 +44,7 @@ export function SearchBoxBase({
   enterpriseSlug,
   suggestionSubmitOverride,
   disableSuggestionRedirect,
-}) {
+}) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
   const [autocompleteHits, setAutocompleteHits] = useState([]);
@@ -180,7 +180,7 @@ export function SearchBoxBase({
       )}
     </div>
   );
-}
+};
 
 SearchBoxBase.propTypes = {
   defaultRefinement: PropTypes.string,

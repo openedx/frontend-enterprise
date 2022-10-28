@@ -8,7 +8,7 @@ import {
 import { features } from './config';
 import { LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY } from './data/constants';
 
-function LearningTypeRadioFacet() {
+const LearningTypeRadioFacet = () => {
   const { refinements, dispatch } = useContext(SearchContext);
   // only bold the dropdown title if the learning type is Course or Program
   const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
@@ -91,6 +91,6 @@ function LearningTypeRadioFacet() {
       </Dropdown>
     </div>
   );
-}
+};
 
 export default LearningTypeRadioFacet;
