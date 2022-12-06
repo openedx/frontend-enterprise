@@ -9,6 +9,7 @@ import { STYLE_VARIANTS } from './data/constants';
 
 import { SearchContext } from './SearchContext';
 
+export const searchHeaderTestId = 'search-header';
 export const searchBoxColTestId = 'search-box-col';
 export const filtersColTestId = 'filters-col';
 
@@ -33,7 +34,10 @@ const SearchHeader = ({
   }
 
   return (
-    <div className="bg-brand-primary">
+    <div
+      data-testid={searchHeaderTestId}
+      className={classNames({ 'bg-brand-primary': variant === STYLE_VARIANTS.inverse })}
+    >
       <Container size={containerSize}>
         <Row className="pt-4 pb-3">
           <Col
