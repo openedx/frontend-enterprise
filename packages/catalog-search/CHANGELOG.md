@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.1.5](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.4...@edx/frontend-enterprise-catalog-search@3.1.5) (2022-12-06)
+
+
+### Bug Fixes
+
+* only apply bg-brand-primary to SearchHeader if variant=inverse ([#281](https://github.com/edx/frontend-enterprise/issues/281)) ([7f77bfd](https://github.com/edx/frontend-enterprise/commit/7f77bfda3c98374b28f95e650ce0b9e093053212))
+
+
+
 ### [3.1.4](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.3...@edx/frontend-enterprise-catalog-search@3.1.4) (2022-09-20)
 
 
