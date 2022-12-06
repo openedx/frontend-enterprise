@@ -2,7 +2,9 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import SearchHeader, { filtersColTestId, searchBoxColTestId } from '../SearchHeader';
+import SearchHeader, {
+  filtersColTestId, searchBoxColTestId, searchHeaderTestId,
+} from '../SearchHeader';
 import { STYLE_VARIANTS } from '../data/constants';
 
 import { renderWithSearchContext } from './utils';
@@ -26,10 +28,12 @@ describe('SearchHeader', () => {
   test('has the inverse variant by default -- search box', () => {
     renderWithSearchContext(<SearchHeader enterpriseConfig={enterpriseConfig} />);
     expect(screen.getByTestId(searchBoxColTestId).className).not.toContain('fe__searchbox-col--default');
+    expect(screen.getByTestId(searchHeaderTestId).className).toContain('bg-brand-primary');
   });
-  test('adds class names for default variant -- search box', () => {
+  test('has class names for default variant -- search box', () => {
     renderWithSearchContext(<SearchHeader variant={STYLE_VARIANTS.default} enterpriseConfig={enterpriseConfig} />);
     expect(screen.getByTestId(searchBoxColTestId).className).toContain('fe__searchbox-col--default');
+    expect(screen.getByTestId(searchHeaderTestId).className).not.toContain('bg-brand-primary');
   });
   test('has the inverse variant by default -- filters', () => {
     renderWithSearchContext(<SearchHeader enterpriseConfig={enterpriseConfig} />);
