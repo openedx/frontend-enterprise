@@ -28,5 +28,5 @@ export const sendEnterpriseTrackEventWithDelay = (
     eventName,
     properties,
   );
-  return new Promise((resolve) => setTimeout(resolve, delay));
+  return new Promise((resolve) => { setTimeout(resolve, delay); });
 };

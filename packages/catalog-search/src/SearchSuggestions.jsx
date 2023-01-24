@@ -60,7 +60,9 @@ const SearchSuggestions = ({
 };
 
 SearchSuggestions.propTypes = {
-  autoCompleteHits: PropTypes.arrayOf(PropTypes.object).isRequired,
+  autoCompleteHits: PropTypes.arrayOf(PropTypes.shape({
+    content_type: PropTypes.string,
+  })).isRequired,
   enterpriseSlug: PropTypes.string,
   handleSubmit: PropTypes.func,
   handleSuggestionClickSubmit: PropTypes.func,

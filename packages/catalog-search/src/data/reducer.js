@@ -6,7 +6,7 @@ import {
 } from './actions';
 import { QUERY_PARAMS_TO_IGNORE } from './constants';
 
-export const refinementsReducer = (state = {}, action) => {
+export const refinementsReducer = (state = {}, action = {}) => {
   const nextState = { ...state };
   switch (action.type) {
     case DELETE_REFINEMENT:

@@ -45,7 +45,6 @@ SearchSuggestionItem.propTypes = {
     key: PropTypes.string,
     title: PropTypes.string,
     program_type: PropTypes.string,
-    authoring_organizations: PropTypes.array,
     _highlightResult: PropTypes.shape({ title: PropTypes.shape({ value: PropTypes.string }) }),
   }).isRequired,
   disableSuggestionRedirect: PropTypes.bool.isRequired,
