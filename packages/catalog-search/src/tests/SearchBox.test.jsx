@@ -126,8 +126,8 @@ describe('<SearchBox />', () => {
 
     SearchBoxBase.handleSuggestionSubmit = jest.fn();
     const hits = [
-      { content_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
-      { content_type: 'course', _highlightResult: { title: { value: 'test-title2' } } },
+      { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
+      { learning_type: 'course', _highlightResult: { title: { value: 'test-title2' } } },
     ];
     const nbHits = 2;
 
@@ -152,7 +152,7 @@ describe('<SearchBox />', () => {
     userEvent.click(screen.getByText('test-title'));
 
     expect(suggestionSubmitOverride).toHaveBeenCalledWith(
-      { content_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
+      { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
     );
   });
 });
