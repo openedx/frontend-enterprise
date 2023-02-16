@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 2.2.3 (2023-02-16)
+
+
+### Bug Fixes
+
+* more version fixes ([#292](https://github.com/edx/frontend-enterprise/issues/292)) ([f51bafc](https://github.com/edx/frontend-enterprise/commit/f51bafcb8a93d9f3be40437c16b55ef5c79d7f04))
+
+
+
 ### 2.2.2 (2023-02-16)
 
 
