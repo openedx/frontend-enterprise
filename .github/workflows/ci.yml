@@ -4,9 +4,26 @@ on: [pull_request]
 
 jobs:
   tests:
+    if: "!(github.actor == 'github-actions[bot]') "
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - name: test eval
+      env:
+        RUN_EVAL: ${{ !(github.actor == 'github-actions[bot]' && startsWith(github.event.commits[0].message, 'chore(release)')) }}
+      run: echo "$RUN_EVAL"
+    - name: test eval2
+      env:
+        RUN_EVAL: ${{ !(github.actor == 'macdiesel' && startsWith(github.event.commits[0].message, 'chore')) }}
+      run: echo "$RUN_EVAL"
+    - name: test eval3
+      env:
+        RUN_EVAL: ${{ toJson(github.event) }}
+      run: echo ${{ github.actor }} -- "$RUN_EVAL"
+    - name: test eval4
+      env:
+        RUN_EVAL: ${{ github.event.commits[0].message }}
+      run: echo ${{ github.actor }} -- "$RUN_EVAL"
     - name: Checkout
       uses: actions/checkout@v2
       with:
