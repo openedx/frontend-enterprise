@@ -43,3 +43,19 @@ jobs:
         run: lerna version --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Lerna Versions PR
+        id: vpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            title: ${{ github.event.commits[0].message }}
+            body: |
+              ${{ github.event.commits[0].message }}
+            branch: automation/lerna/version
+      - name: Enable Lerna Versions PR Pull Request Automerge
+        if: steps.vpr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.vpr.outputs.pull-request-number }}
+          merge-method: squash
