@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 2.1.5 (2023-02-17)
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/edx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/edx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+
+
+
 ### 2.1.3 (2023-02-16)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-logistration
