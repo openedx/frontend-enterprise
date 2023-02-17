@@ -46,7 +46,7 @@ jobs:
           git reset --hard origin/master
       - name: Push the updated branch automation/lerna/version
         run: |
-          git push origin automation/lerna/version
+          git push -f origin automation/lerna/version
       - name: Increment Versions of Changed Packages
         run: lerna version --yes
         env:
