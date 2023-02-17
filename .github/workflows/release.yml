@@ -46,7 +46,7 @@ jobs:
           git reset --hard origin/master
       - name: Push the updated branch automation/lerna/version
         run: |
-          git push origin automation/lerna/version
+          git push -f origin automation/lerna/version
       - name: Increment Versions of Changed Packages
         run: lerna version --yes
         env:
@@ -56,9 +56,9 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
             token: ${{ secrets.GITHUB_TOKEN }}
-            title: ${{ github.event.commits[0].message }}
+            title: "chore(release): publish :tada:"
             body: |
-              ${{ github.event.commits[0].message }}
+              chore(release): publish :tada:
             branch: automation/lerna/version
       - name: Enable Lerna Versions PR Pull Request Automerge
         if: steps.vpr.outputs.pull-request-operation == 'created'
