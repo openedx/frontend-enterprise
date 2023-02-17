@@ -6,7 +6,7 @@
   "command": {
     "publish": {
       "allowBranch": "automation/lerna/version",
-      "message": "chore(release): publish %s ",
+      "message": "chore(release): publish :tada:",
       "conventionalCommits": true,
       "createRelease": "github",
       "loglevel": "verbose"
