@@ -43,7 +43,7 @@ jobs:
       - name: Update automation/lerna/version branch
         run: |
           git switch -C automation/lerna/version
-          git rebase origin/master
+          git reset --hard origin/master
       - name: Push the updated branch automation/lerna/version
         run: |
           git push origin automation/lerna/version
