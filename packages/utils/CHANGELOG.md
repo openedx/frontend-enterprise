@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 2.2.5 (2023-02-17)
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/edx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/edx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* more version fixes ([#292](https://github.com/edx/frontend-enterprise/issues/292)) ([f51bafc](https://github.com/edx/frontend-enterprise/commit/f51bafcb8a93d9f3be40437c16b55ef5c79d7f04))
+
+
+
 ### 2.2.4 (2023-02-17)
 
 
