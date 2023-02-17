@@ -60,6 +60,7 @@ jobs:
             body: |
               chore(release): publish :tada:
             branch: automation/lerna/version
+            base: master
       - name: Enable Lerna Versions PR Pull Request Automerge
         if: steps.vpr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v2
