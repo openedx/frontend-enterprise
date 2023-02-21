@@ -38,6 +38,6 @@ jobs:
       - name: Coverage Report
         uses: codecov/codecov-action@v3
       - name: Publish to NPM from package.json versions
-        run: lerna publish from-package --yes
+        run: npx lerna@6 publish from-package --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
