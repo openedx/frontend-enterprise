@@ -8,22 +8,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: test eval
-      env:
-        RUN_EVAL: ${{ !(github.actor == 'github-actions[bot]' && startsWith(github.event.commits[0].message, 'chore(release)')) }}
-      run: echo "$RUN_EVAL"
-    - name: test eval2
-      env:
-        RUN_EVAL: ${{ !(github.actor == 'macdiesel' && startsWith(github.event.commits[0].message, 'chore')) }}
-      run: echo "$RUN_EVAL"
-    - name: test eval3
-      env:
-        RUN_EVAL: ${{ toJson(github.event) }}
-      run: echo ${{ github.actor }} -- "$RUN_EVAL"
-    - name: test eval4
-      env:
-        RUN_EVAL: ${{ github.event.commits[0].message }}
-      run: echo ${{ github.actor }} -- "$RUN_EVAL"
     - name: Checkout
       uses: actions/checkout@v2
       with:
@@ -58,4 +42,8 @@ jobs:
       # switch from detatched head to a real branch so we can pass it to `--allow-branch`
       run: |
         git switch -c "actual-branch-not-detached-head"
+        echo "Installing commitlint"
+        npm install --save commitlint
+        npm install --save conventional-changelog-conventionalcommits
+        echo "Finished installing Installing commitlint"
         lerna version --allow-branch actual-branch-not-detached-head --no-git-tag-version --no-changelog --no-push --yes
