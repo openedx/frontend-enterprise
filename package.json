@@ -19,6 +19,7 @@
     "test:watch": "npm run test:watch --workspaces",
     "lint": "npm run lint --workspaces",
     "lint:fix": "npm run lint:fix --workspaces",
+    "bootstrap": "npm install conventional-changelog-conventionalcommits",
     "changed": "lerna changed"
   },
   "devDependencies": {
