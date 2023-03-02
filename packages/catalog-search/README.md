@@ -1,8 +1,7 @@
 @edx/frontend-enterprise-catalog-search
 ================
 
-[![Build Status](https://github.com/openedx/frontend-enterprise/actions/workflows/release.yml/badge.svg)](https://travis-ci.com/edx/frontend-enterprise)
-[![Codecov](https://img.shields.io/codecov/c/github/edx/frontend-enterprise)](https://codecov.io/gh/edx/frontend-enterprise)
+[![Codecov](https://img.shields.io/codecov/c/github/openedx/frontend-enterprise)](https://codecov.io/gh/openedx/frontend-enterprise)
 [![NPM Version](https://img.shields.io/npm/v/@edx/frontend-enterprise-catalog-search.svg)](https://www.npmjs.com/package/@edx/frontend-enterprise-catalog-search)
 [![npm_downloads](https://img.shields.io/npm/dt/@edx/frontend-enterprise-catalog-search.svg)](https://www.npmjs.com/package/@edx/frontend-enterprise-catalog-search)
 [![license](https://img.shields.io/npm/l/@edx/frontend-enterprise-catalog-search.svg)](https://www.npmjs.com/package/@edx/frontend-enterprise-catalog-search)
