@@ -16,6 +16,8 @@ jobs:
         with:
           # pulls all commits (needed for lerna / semantic release to correctly version)
           fetch-depth: 0
+      - name: Setup Nodejs Env
+        run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - name: Pull All Git Tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
@@ -23,7 +25,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VER }}
       # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not authenticated
       - name: Check NPM authentication
         run: |
@@ -48,7 +50,7 @@ jobs:
         run: |
           git push -f origin automation/lerna/version
       - name: Increment Versions of Changed Packages
-        run: | 
+        run: |
           npm install --save commitlint
           npm install --save conventional-changelog-conventionalcommits
           lerna version --yes
