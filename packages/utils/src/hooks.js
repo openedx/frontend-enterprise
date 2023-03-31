@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 
 import getLearnerPortalLinks from './learnerPortalLinks';

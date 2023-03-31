@@ -11,6 +11,7 @@ import { SearchField } from '@edx/paragon';
 import debounce from 'lodash.debounce';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
 import { deleteRefinementAction, setRefinementAction } from './data/actions';
