@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
 export const sendEnterpriseTrackEvent = (enterpriseUUID, eventName, properties = {}) => {

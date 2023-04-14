@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 
 import { getProxyLoginUrl } from './utils';
