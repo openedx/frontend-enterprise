@@ -61,7 +61,7 @@ To install a new NPM module in one or more specific workspace package(s), use th
 Installing local monorepo package(s) into an Open edX micro-frontend
 -----
 
-For any micro-frontend using `@edx/frontend-build <https://github.com/edx/frontend-build>` that consumes any packages from this monorepo may want to use a local copy of one or more packages during development rather than relying solely on the published NPM packages. To do this, you may modify your module.config.js file to create Webpack aliases to your local checkout of the monorepo packages:
+For any micro-frontend using `@edx/frontend-build <https://github.com/openedx/frontend-build>` that consumes any packages from this monorepo may want to use a local copy of one or more packages during development rather than relying solely on the published NPM packages. To do this, you may modify your module.config.js file to create Webpack aliases to your local checkout of the monorepo packages:
 
 ::
 
@@ -115,14 +115,14 @@ This library has its version automatically updated by Lerna (i.e., ``lerna versi
 
 When a PR is merged, Lerna creates a release commit (e.g., ``chore(release): publish``). In this commit, Lerna increments the versions in the appropriate package.json files for any changed packages, creates Git tags, and updates the CHANGELOG file.
 
-To publish the packages that had their versions incremented, you must manually trigger the ``Publish from package.json`` Github Action workflow `found here <https://github.com/edx/frontend-enterprise/actions/workflows/publish-from-package.yml>`_. It will publish any versions denoted in the package.json files that are not currently published on the NPM registry, publishing the incremented versions from the aforementioned release commit.
+To publish the packages that had their versions incremented, you must manually trigger the ``Publish from package.json`` Github Action workflow `found here <https://github.com/openedx/frontend-enterprise/actions/workflows/publish-from-package.yml>`_. It will publish any versions denoted in the package.json files that are not currently published on the NPM registry, publishing the incremented versions from the aforementioned release commit.
 
 Preview changed packages in CI with Github Actions
 -----
 
 As a convenience, a dry run of the ``lerna version`` command is run for each push to determine which packages in the monorepo will be published should a PR get merged.
 
-.. |Build Status| image:: https://github.com/edx/frontend-enterprise/actions/workflows/release.yml/badge.svg
-   :target: https://github.com/edx/frontend-enterprise/actions
+.. |Build Status| image:: https://github.com/openedx/frontend-enterprise/actions/workflows/release.yml/badge.svg
+   :target: https://github.com/openedx/frontend-enterprise/actions
 .. |Codecov| image:: https://codecov.io/gh/edx/frontend-enterprise/branch/master/graph/badge.svg?token=lBHoe5P4Q3
    :target: https://codecov.io/gh/edx/frontend-enterprise

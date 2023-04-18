@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* Bump all versions one final time I hope.... ([#297](https://github.com/edx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/edx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* Bump all versions one final time I hope.... ([#297](https://github.com/openedx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/openedx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
 
 
 
@@ -20,12 +20,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.2.0](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@1.1.0...@edx/frontend-enterprise-hotjar@1.2.0) (2022-06-22)
+## [1.2.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@1.1.0...@edx/frontend-enterprise-hotjar@1.2.0) (2022-06-22)
 
 
 ### Features
 
-* rename hotjar.js to index.js ([#265](https://github.com/edx/frontend-enterprise/issues/265)) ([8763a3e](https://github.com/edx/frontend-enterprise/commit/8763a3eb7f6862d1f86b70203f1c71626a72ed8e))
+* rename hotjar.js to index.js ([#265](https://github.com/openedx/frontend-enterprise/issues/265)) ([8763a3e](https://github.com/openedx/frontend-enterprise/commit/8763a3eb7f6862d1f86b70203f1c71626a72ed8e))
 
 
 
@@ -34,4 +34,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add hotjar library ([#264](https://github.com/edx/frontend-enterprise/issues/264)) ([f132ce1](https://github.com/edx/frontend-enterprise/commit/f132ce1716bb64714a8c368a80f673d1e9ef12fc))
+* add hotjar library ([#264](https://github.com/openedx/frontend-enterprise/issues/264)) ([f132ce1](https://github.com/openedx/frontend-enterprise/commit/f132ce1716bb64714a8c368a80f673d1e9ef12fc))

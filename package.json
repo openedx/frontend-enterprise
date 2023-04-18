@@ -5,7 +5,7 @@
   "description": "Frontend libraries and UI components for Enterprise in a monorepo managed by Lerna",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edx/frontend-enterprise.git"
+    "url": "git+https://github.com/openedx/frontend-enterprise.git"
   },
   "workspaces": [
     "./packages/*"

@@ -5,7 +5,7 @@ In setting up the Lerna monorepo, there was a moment when the ``lerna publish`` 
 
 The result of this publishing failure was that the Git repository was in a state as if the release had been published, without the same, matching version existing on the NPM registry. This document serves as a starting point to resolve that situation.
 
-In the scenario where Git tags and a "chore: publish" commit were created for a new release without that release actually being published to NPM, you may `temporarily modify the release.yml Github Action workflow file <https://github.com/edx/frontend-enterprise/blob/master/.github/workflows/release.yml#L40>`_ to run the following command instead of the default ``lerna publish``:
+In the scenario where Git tags and a "chore: publish" commit were created for a new release without that release actually being published to NPM, you may `temporarily modify the release.yml Github Action workflow file <https://github.com/openedx/frontend-enterprise/blob/master/.github/workflows/release.yml#L40>`_ to run the following command instead of the default ``lerna publish``:
 
 ::
 
