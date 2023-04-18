@@ -45,5 +45,5 @@ jobs:
       # switch from detatched head to a real branch so we can pass it to `--allow-branch`
       run: |
         git switch -c "actual-branch-not-detached-head"
-        npx lerna init
+        npx lerna init --version 6.6.1
         npx lerna version --allow-branch actual-branch-not-detached-head --no-git-tag-version --no-changelog --no-push --yes
