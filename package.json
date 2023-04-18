@@ -23,6 +23,8 @@
     "changed": "lerna changed"
   },
   "devDependencies": {
-    "husky": "6.0.0"
+    "@commitlint/config-conventional": "17.6.0",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "husky": "6.0.0",
   }
 }
