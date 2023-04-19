@@ -49,8 +49,6 @@ jobs:
           git push -f origin automation/lerna/version
       - name: Increment Versions of Changed Packages
         run: | 
-          npm install --save commitlint
-          npm install --save conventional-changelog-conventionalcommits
           npx lerna@6 version --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
