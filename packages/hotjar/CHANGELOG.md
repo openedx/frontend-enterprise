@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/edx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@1.2.0...@edx/frontend-enterprise-hotjar@1.2.6) (2023-04-24)
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/edx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/edx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* manully bump versions after failed automation run ([#301](https://github.com/edx/frontend-enterprise/issues/301)) ([f1e8616](https://github.com/edx/frontend-enterprise/commit/f1e8616996c46ffda1c7596be6fc323136ac34c2))
+
+
+
 ### 1.2.4 (2023-02-17)
 
 
