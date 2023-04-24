@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@3.3.0) (2023-04-24)
+
+
+### Features
+
+* Add .npmrc file to more .gitignore files ([#303](https://github.com/openedx/frontend-enterprise/issues/303)) ([d890c21](https://github.com/openedx/frontend-enterprise/commit/d890c212c3f8c5ec81e6dee63f68029ad0b00552))
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/openedx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/openedx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* manully bump versions after failed automation run ([#301](https://github.com/openedx/frontend-enterprise/issues/301)) ([f1e8616](https://github.com/openedx/frontend-enterprise/commit/f1e8616996c46ffda1c7596be6fc323136ac34c2))
+
+
+
 ## [3.2.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@3.2.0) (2023-04-24)
 
 
