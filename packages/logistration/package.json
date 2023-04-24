@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-logistration",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "description": "Enterprise-specific component(s) to ensure enterprise users are redirected to branded enterprise logistration flow.",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@edx/frontend-enterprise-utils": "^2.2.4",
+    "@edx/frontend-enterprise-utils": "^2.3.0",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
