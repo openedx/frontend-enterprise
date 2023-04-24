@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.0 (2023-04-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* The Open edX platform is collectively moving towards Node 16. By doing so in this repository, we can now use NPM workspaces in place of Lerna in many places. Lerna is still used for publishing to NPM, updating CHANGELOGs and package.json files upon released. But NPM workspace commands can now be used instead of Lerna commands for the developer experience, which is more performant, easier to reason about, and natively supported by NPM.
+* refactor to split ui components into separate packages using Lerna
+
+### Features
+
+* Add .npmrc file to more .gitignore files ([#303](https://github.com/openedx/frontend-enterprise/issues/303)) ([d890c21](https://github.com/openedx/frontend-enterprise/commit/d890c212c3f8c5ec81e6dee63f68029ad0b00552))
+* add hasFeatureFlagEnabled util function ([#209](https://github.com/openedx/frontend-enterprise/issues/209)) ([9dca2e4](https://github.com/openedx/frontend-enterprise/commit/9dca2e41ea0b043d17356b4accb5e40c582a5b26))
+* add hotjar library ([#264](https://github.com/openedx/frontend-enterprise/issues/264)) ([f132ce1](https://github.com/openedx/frontend-enterprise/commit/f132ce1716bb64714a8c368a80f673d1e9ef12fc))
+* add sendEnterpriseTrackEvent to utils package ([aa8ec75](https://github.com/openedx/frontend-enterprise/commit/aa8ec755b1dda199fbe236dbeb742872a10f3f91))
+* add sendEnterpriseTrackEventWithDelay ([#272](https://github.com/openedx/frontend-enterprise/issues/272)) ([97879ea](https://github.com/openedx/frontend-enterprise/commit/97879ea19c6161d896edc6098626bf37cd3fbdb5))
+* support enterprise customer invite key in LoginRedirect ([#192](https://github.com/openedx/frontend-enterprise/issues/192)) ([9b8a200](https://github.com/openedx/frontend-enterprise/commit/9b8a200633d5fc665ed9faf79d10f43cb7a9386a))
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/openedx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/openedx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* downgrade query-string to pin to ES5 compatible version ([#129](https://github.com/openedx/frontend-enterprise/issues/129)) ([52688ac](https://github.com/openedx/frontend-enterprise/commit/52688acc9c4113f9bed2423434e7b2c7d88221f8))
+* manully bump versions after failed automation run ([#301](https://github.com/openedx/frontend-enterprise/issues/301)) ([f1e8616](https://github.com/openedx/frontend-enterprise/commit/f1e8616996c46ffda1c7596be6fc323136ac34c2))
+* more version fixes ([#292](https://github.com/openedx/frontend-enterprise/issues/292)) ([f51bafc](https://github.com/openedx/frontend-enterprise/commit/f51bafcb8a93d9f3be40437c16b55ef5c79d7f04))
+* run lerna commands for all packages regardless of whether they changed in release.yml ([#109](https://github.com/openedx/frontend-enterprise/issues/109)) ([608b1fb](https://github.com/openedx/frontend-enterprise/commit/608b1fb4c3b5343f05ef994436dbbd2418668e17))
+* split role name from context in JWT user roles ([#122](https://github.com/openedx/frontend-enterprise/issues/122)) ([348bc6c](https://github.com/openedx/frontend-enterprise/commit/348bc6c5c912d2c92ccee5869d49890528e6e51a))
+* update devDependencies in `utils` and `logistration`; add more docs to README ([#260](https://github.com/openedx/frontend-enterprise/issues/260)) ([db5204d](https://github.com/openedx/frontend-enterprise/commit/db5204dd417a57d4e20a66d5cc1fdfd5fee298cb))
+* update publishing behavior and add additional docs ([#104](https://github.com/openedx/frontend-enterprise/issues/104)) ([525c430](https://github.com/openedx/frontend-enterprise/commit/525c430d5027e4514a27edccfed3d6ed4ddae091))
+* updated enterprise role determination with multiple enterprise support ([#253](https://github.com/openedx/frontend-enterprise/issues/253)) ([87f5e07](https://github.com/openedx/frontend-enterprise/commit/87f5e072aa5194a507a8b2fdb15f21b69e82612c))
+* Use media query to resize for mobile in SearchFilters ([#259](https://github.com/openedx/frontend-enterprise/issues/259)) ([6780f94](https://github.com/openedx/frontend-enterprise/commit/6780f94058badbf82b909430db209574698dd596))
+* use shared browserslist configuration ([#179](https://github.com/openedx/frontend-enterprise/issues/179)) ([6ffebe5](https://github.com/openedx/frontend-enterprise/commit/6ffebe5ba490567c691eac978125eee530707556))
+
+
+### Code Refactoring
+
+* separate components into npm packages in monorepo; add logistration-redirect ([#97](https://github.com/openedx/frontend-enterprise/issues/97)) ([3e2a3ac](https://github.com/openedx/frontend-enterprise/commit/3e2a3acf327211ed82415e8052d008bd1fdd2e33))
+
+
+* Node 16 upgrade and peer dependency cleanup (#250) ([d4e3caf](https://github.com/openedx/frontend-enterprise/commit/d4e3caf7e15a626f1c5e4b4d27f5e09c6f412120)), closes [#250](https://github.com/openedx/frontend-enterprise/issues/250)
+
+
+
 ## [2.5.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@2.2.0...@edx/frontend-enterprise-utils@2.5.0) (2023-04-24)
 
 
