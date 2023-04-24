@@ -12,6 +12,14 @@
       "loglevel": "verbose"
     }
   },
+    "ignoreChanges": [
+    "CHANGELOG.md",
+    "node_modules/**",
+    "package.json",
+    "*.md",
+    "perf/**",
+    ".github/**"
+  ],
   "changelogPreset": {
     "name": "conventionalcommits",
     "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}"
