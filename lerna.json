@@ -12,13 +12,16 @@
       "loglevel": "verbose"
     }
   },
-    "ignoreChanges": [
+  "ignoreChanges": [
     "CHANGELOG.md",
     "node_modules/**",
     "package.json",
     "*.md",
     "perf/**",
-    ".github/**"
+    ".github/**",
+    "packages/**/.eslintrc.js",
+    "packages/**/.gitignore",
+    "packages/**/*.rst"
   ],
   "changelogPreset": {
     "name": "conventionalcommits",
