@@ -52,7 +52,7 @@ jobs:
           npx lerna@6 version --yes --allow-branch automation/lerna/version --git-remote origin --conventional-commits --create-release github
           git status
           git --no-pager diff HEAD~1
-          git push origin automation/lerna/version
+          git push --set-upstream origin automation/lerna/version
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate Lerna Versions PR
