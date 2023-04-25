@@ -49,10 +49,13 @@ jobs:
           git push -f origin automation/lerna/version
       - name: Increment Versions of Changed Packages
         run: | 
-          npx lerna@6 version --yes --allow-branch automation/lerna/version --git-remote origin --conventional-commits --create-release github
+          npx lerna@6 version --yes --allow-branch automation/lerna/version --git-remote origin --conventional-commits --create-release github --no-push
           git status
+          git log --no-pager --oneline --decorate --graph
           git --no-pager diff HEAD~1
+          git --no-pager log --oneline --decorate --graph          
           git push --set-upstream origin automation/lerna/version
+          git push origin --tags
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate Lerna Versions PR
