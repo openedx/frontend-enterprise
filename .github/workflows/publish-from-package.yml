@@ -5,7 +5,6 @@ on: [workflow_dispatch]
 jobs:
   release:
     name: Release
-    if: "!(github.actor == 'github-actions[bot]') "
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,6 +37,6 @@ jobs:
       - name: Coverage Report
         uses: codecov/codecov-action@v3
       - name: Publish to NPM from package.json versions
-        run: lerna publish from-package --yes
+        run: npx lerna@6 publish from-package --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
