@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-catalog-search",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Components related to Enterprise catalog search.",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@edx/browserslist-config": "1.1.0",
     "@edx/frontend-build": "12.7.0",
-    "@edx/frontend-platform": "4.0.1",
+    "@edx/frontend-platform": "4.2.0",
     "@edx/paragon": "19.25.1",
     "@fortawesome/free-solid-svg-icons": "5.8.1",
     "@fortawesome/react-fontawesome": "0.1.4",
@@ -60,7 +60,7 @@
     "react-test-renderer": "16.14.0"
   },
   "peerDependencies": {
-    "@edx/frontend-platform": "^4.0.1",
+    "@edx/frontend-platform": "^4.2.0",
     "@edx/paragon": "^19.15.0 || ^20.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",

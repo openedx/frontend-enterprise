@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@4.0.0...@edx/frontend-enterprise-utils@4.1.0) (2023-05-11)
+
+### Features
+
+* Bump frontend-platform to 4.2.0 ([#329](https://github.com/openedx/frontend-enterprise/pull/329))
+
+
 ## [4.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@4.0.0) (2023-05-09)
 
 
