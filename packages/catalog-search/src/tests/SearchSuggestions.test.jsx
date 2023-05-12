@@ -8,13 +8,13 @@ const fakeSuggestionsData = {
   nbHits: 2,
   hits: [
     {
-      content_type: 'course',
+      learning_type: 'course',
       key: 'edX+courseX',
       title: 'test-course',
       _highlightResult: { title: { value: 'test-<em>course</em>' } },
     },
     {
-      content_type: 'program',
+      learning_type: 'program',
       key: 'harvard+programX',
       title: 'test-program',
       _highlightResult: { title: { value: 'test-<em>program</em>' } },
@@ -25,12 +25,25 @@ const fakeSuggestionsData = {
   ],
 };
 
+const fakeSuggestionsDataOnlyExecEd = {
+  ...fakeSuggestionsData,
+  nbHits: 1,
+  hits: [
+    {
+      learning_type: 'Executive Education',
+      key: 'harvard+programX',
+      title: 'test-program',
+      _highlightResult: { title: { value: 'test-<em>program</em>' } },
+    },
+  ],
+};
+
 const fakeSuggestionsDataEmptyAuthoringOrgs = {
   ...fakeSuggestionsData,
   nbHits: 1,
   hits: [
     {
-      content_type: 'program',
+      learning_type: 'program',
       key: 'harvard+programX',
       title: 'test-program',
       _highlightResult: { title: { value: 'test-<em>program</em>' } },
@@ -67,7 +80,6 @@ describe('<SeachSuggestions />', () => {
       autoCompleteHits={fakeSuggestionsDataEmptyAuthoringOrgs.hits}
       handleSubmit={handleSubmit}
     />);
-    expect(screen.getByText('Courses')).not.toBeNull();
     expect(screen.getByText('Programs')).not.toBeNull();
     expect(screen.getAllByText('test-').length).toBe(1);
     expect(screen.getByText('program')).not.toBeNull();
@@ -104,5 +116,31 @@ describe('<SeachSuggestions />', () => {
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[1]);
     expect(history.location.pathname).toBe('/test-enterprise/program/456');
+  });
+  test('properly handles exec ed content', () => {
+    renderWithRouter(<SearchSuggestions
+      enterpriseSlug="test-enterprise"
+      autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
+      handleSubmit={handleSubmit}
+      disableSuggestionRedirect
+    />);
+    expect(screen.getByText('Executive Education')).not.toBeNull();
+  });
+  test('does not display exec ed content without disabling redirect', () => {
+    renderWithRouter(<SearchSuggestions
+      enterpriseSlug="test-enterprise"
+      autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
+      handleSubmit={handleSubmit}
+      disableSuggestionRedirect={false}
+    />);
+    expect(() => { screen.getByText('Executive Education'); }).toThrow();
+  });
+  test('does not display containers it does not have results for', () => {
+    renderWithRouter(<SearchSuggestions
+      enterpriseSlug="test-enterprise"
+      autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
+      handleSubmit={handleSubmit}
+    />);
+    expect(() => { screen.getByText('Programs'); }).toThrow();
   });
 });
