@@ -1,13 +1,9 @@
 name: Release
 
-on:
-  push:
-    branches:
-      - master
+on: [workflow_dispatch]
 
 jobs:
   release:
-    if: "!(github.actor == 'github-actions[bot]') "
     name: Release
     runs-on: ubuntu-latest
     steps:
@@ -51,7 +47,7 @@ jobs:
           git push -f origin automation/lerna/version
       - name: Increment Versions of Changed Packages
         run: | 
-          npx lerna@6 version --yes --allow-branch automation/lerna/version --git-remote origin --conventional-commits --create-release github --no-push
+          npx lerna@6 version --yes --allow-branch automation/lerna/version --git-remote origin --conventional-commits --create-release github
           git status
           git log --no-pager --oneline --decorate --graph
           git --no-pager diff HEAD~1
