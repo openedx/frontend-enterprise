@@ -49,9 +49,6 @@ jobs:
         run: | 
           npx lerna@6 version --yes --allow-branch automation/lerna/version --git-remote origin --conventional-commits --create-release github
           git status
-          git log --no-pager --oneline --decorate --graph
-          git --no-pager diff HEAD~1
-          git --no-pager log --oneline --decorate --graph          
           git push --set-upstream origin automation/lerna/version
           git push origin --tags
         env:
