@@ -29,6 +29,9 @@
   &:hover{
     color: white;
   }
+  &:not(:first-child) {
+    margin-left: 4px; // add space between _highlightResult.title.value hits
+  }
 }
   div{
     display: flex;
