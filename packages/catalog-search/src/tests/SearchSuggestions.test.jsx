@@ -3,6 +3,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchSuggestions from '../SearchSuggestions';
+import { COURSE_TYPE_EXECUTIVE_EDUCATION } from '../data/constants';
 
 const fakeSuggestionsData = {
   nbHits: 2,
@@ -118,22 +119,15 @@ describe('<SeachSuggestions />', () => {
     expect(history.location.pathname).toBe('/test-enterprise/program/456');
   });
   test('properly handles exec ed content', () => {
-    renderWithRouter(<SearchSuggestions
+    const { container } = renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
       handleSubmit={handleSubmit}
       disableSuggestionRedirect
     />);
     expect(screen.getByText('Executive Education')).not.toBeNull();
-  });
-  test('does not display exec ed content without disabling redirect', () => {
-    renderWithRouter(<SearchSuggestions
-      enterpriseSlug="test-enterprise"
-      autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
-      handleSubmit={handleSubmit}
-      disableSuggestionRedirect={false}
-    />);
-    expect(() => { screen.getByText('Executive Education'); }).toThrow();
+    expect(container.getElementsByClassName('suggestion-item')[0].href)
+      .toMatch(`http://localhost/test-enterprise/${COURSE_TYPE_EXECUTIVE_EDUCATION}/course/harvard+programX`);
   });
   test('does not display containers it does not have results for', () => {
     renderWithRouter(<SearchSuggestions

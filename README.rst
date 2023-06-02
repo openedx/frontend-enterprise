@@ -61,7 +61,7 @@ To install a new NPM module in one or more specific workspace package(s), use th
 Installing local monorepo package(s) into an Open edX micro-frontend
 -----
 
-For any micro-frontend using `@edx/frontend-build <https://github.com/openedx/frontend-build>` that consumes any packages from this monorepo may want to use a local copy of one or more packages during development rather than relying solely on the published NPM packages. To do this, you may modify your module.config.js file to create Webpack aliases to your local checkout of the monorepo packages:
+For any micro-frontend using `@edx/frontend-build <https://github.com/openedx/frontend-build>` that consumes any packages from this monorepo may want to use a local copy of one or more packages during development rather than relying solely on the published NPM packages. To do this, you may modify your module.config.js file (create module.config.js if it does not already exist) to create Webpack aliases to your local checkout of the monorepo packages:
 
 ::
 
