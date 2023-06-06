@@ -98,6 +98,10 @@ export const STYLE_VARIANTS = {
 export const LEARNING_TYPE_COURSE = 'course';
 export const LEARNING_TYPE_PROGRAM = 'program';
 export const LEARNING_TYPE_PATHWAY = 'learnerpathway';
+export const LEARNING_TYPE_EXECUTIVE_EDUCATION = 'Executive Education';
+
+export const COURSE_TYPE_EXECUTIVE_EDUCATION = 'executive-education-2u';
+
 export const ALGOLIA_ATTRIBUTES_TO_RETRIEVE = ['*'];
 
 export const SEARCH_BOX_CLASS_NAME = 'search-box-input';

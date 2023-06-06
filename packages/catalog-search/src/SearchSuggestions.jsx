@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MAX_NUM_SUGGESTIONS } from './data/constants';
+import {
+  MAX_NUM_SUGGESTIONS, LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM,
+  LEARNING_TYPE_EXECUTIVE_EDUCATION, COURSE_TYPE_EXECUTIVE_EDUCATION,
+} from './data/constants';
 import SearchSuggestionItem from './SearchSuggestionItem';
 
 const SearchSuggestions = ({
@@ -11,7 +14,14 @@ const SearchSuggestions = ({
   handleSuggestionClickSubmit,
   disableSuggestionRedirect,
 }) => {
-  const getLinkToCourse = (course) => `/${enterpriseSlug}/course/${course.key}`;
+  const getLinkToCourse = (course) => {
+    const { learning_type: learningType } = course;
+    if (learningType === LEARNING_TYPE_EXECUTIVE_EDUCATION) {
+      return `/${enterpriseSlug}/${COURSE_TYPE_EXECUTIVE_EDUCATION}/course/${course.key}`;
+    }
+
+    return `/${enterpriseSlug}/course/${course.key}`;
+  };
   const getLinkToProgram = (program) => `/${enterpriseSlug}/program/${program.aggregation_key.split(':').pop()}`;
 
   const courses = [];
@@ -19,9 +29,9 @@ const SearchSuggestions = ({
   const execEdCourses = [];
   autoCompleteHits.forEach((hit) => {
     const { learning_type: learningType } = hit;
-    if (learningType === 'course') { courses.push(hit); }
-    if (learningType === 'program') { programs.push(hit); }
-    if (learningType === 'Executive Education') { execEdCourses.push(hit); }
+    if (learningType === LEARNING_TYPE_COURSE) { courses.push(hit); }
+    if (learningType === LEARNING_TYPE_PROGRAM) { programs.push(hit); }
+    if (learningType === LEARNING_TYPE_EXECUTIVE_EDUCATION) { execEdCourses.push(hit); }
   });
   return (
     <div className="suggestions" data-testid="suggestions">
@@ -63,9 +73,7 @@ const SearchSuggestions = ({
           }
         </div>
       )}
-      {/* Currently (Feb 2023) it is not possible to redirect to the learner portal for exec ed content so only display
-       if the redirect is disabled */}
-      {execEdCourses.length > 0 && disableSuggestionRedirect && (
+      {execEdCourses.length > 0 && (
         <div>
           <div className="mb-2 mt-5 ml-2 font-weight-bold suggestions-section">
             Executive Education
