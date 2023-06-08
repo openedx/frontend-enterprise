@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@4.2.0...@edx/frontend-enterprise-catalog-search@4.3.0) (2023-06-08)
+
+
+### Features
+
+* Updated course link for executive education courses. ([4212580](https://github.com/openedx/frontend-enterprise/commit/4212580f4fd6c2de4696f25e81f50f2714db1672))
+
 ## [4.2.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@4.2.0) (2023-05-31)
 
 
