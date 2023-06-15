@@ -37,7 +37,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@testing-library/react": "11.2.6",
+    "@testing-library/react": "11.2.7",
     "history": "4.10.1"
   },
   "devDependencies": {
