@@ -101,7 +101,7 @@ describe('<FacetListBase />', () => {
   });
 
   test('supports clicking on a refinement', async () => {
-    const { history } = renderWithRouter(
+    renderWithRouter(
       <SearchData>
         <FacetListBase
           {...propsWithItems}
@@ -120,10 +120,10 @@ describe('<FacetListBase />', () => {
       fireEvent.click(screen.queryByText(NOT_FREE_LABEL));
     });
 
-    expect(history.location.search).toEqual('?showAll=1');
+    expect(window.location.search).toEqual('?showAll=1');
   });
   test('clears pagination when clicking on a refinement', async () => {
-    const { history } = renderWithRouter(
+    renderWithRouter(
       <SearchData>
         <FacetListBase
           {...propsWithItems}
@@ -142,7 +142,7 @@ describe('<FacetListBase />', () => {
     });
 
     // assert page was deleted and subjects were not
-    expect(history.location.search).toEqual('?subjects=Communication&showAll=1');
+    expect(window.location.search).toEqual('?subjects=Communication&showAll=1');
   });
 
   test('renders a typeahead dropdown', async () => {

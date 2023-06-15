@@ -30,7 +30,7 @@ describe('LoginRedirect', () => {
   test('renders children if the user is authenticated', async () => {
     getAuthenticatedUser.mockReturnValue({ user: { email: 'test-user' } });
     const Component = <LoginRedirectWithChild />;
-    const { history } = renderWithRouter(Component, {
+    renderWithRouter(Component, {
       route: `/${TEST_ENTERPRISE_SLUG}`,
     });
 
@@ -38,7 +38,7 @@ describe('LoginRedirect', () => {
     expect(screen.queryByTestId('did-i-render')).toBeInTheDocument();
 
     // assert we did NOT get redirected
-    expect(history.location.pathname).toEqual(`/${TEST_ENTERPRISE_SLUG}`);
+    expect(window.location.pathname).toEqual(`/${TEST_ENTERPRISE_SLUG}`);
   });
 
   test('does not render children (due to redirect) if the user is not authenticated', async () => {

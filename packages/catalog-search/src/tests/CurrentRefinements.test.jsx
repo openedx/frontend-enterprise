@@ -60,7 +60,7 @@ describe('<CurrentRefinements />', () => {
   });
 
   test('supports removing an active refinement from the url by clicking on it', async () => {
-    const { history } = renderWithRouter(
+    renderWithRouter(
       <SearchData>
         <CurrentRefinementsBase items={items} />
       </SearchData>,
@@ -73,6 +73,6 @@ describe('<CurrentRefinements />', () => {
     fireEvent.click(screen.queryByText(SUBJECTS.COMMUNICATION));
 
     // assert the clicked refinement in the url is removed but others stay put
-    expect(history.location.search).toEqual('?subjects=Computer%20Science');
+    expect(window.location.search).toEqual('?subjects=Computer%20Science');
   });
 });
