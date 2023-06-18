@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter as Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
 
@@ -12,7 +12,7 @@ export const renderWithRouter = (
   } = {},
 ) => {
   // eslint-disable-next-line react/prop-types
-  const Wrapper = ({ children }) => <Router history={history}>{children}</Router>;
+  const Wrapper = ({ children }) => <Router initialEntries={[route]}>{children}</Router>;
   return {
     ...render(ui, { wrapper: Wrapper }),
     // adding `history` to the returned utilities to allow us
