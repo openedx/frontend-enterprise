@@ -3,7 +3,7 @@ import React, {
   createContext, useReducer, useMemo, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useIsFirstRender } from '@edx/frontend-enterprise-utils';
 
 import {
@@ -43,8 +43,8 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
     {},
   );
 
-  const { search } = useLocation();
-  const history = useHistory();
+  const { pathname, search } = useLocation();
+  const navigate = useNavigate();
 
   /**
    * Applies initial URL query params on page load to the refinements
@@ -70,7 +70,7 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
   useEffect(() => {
     if (!isFirstRender) {
       const newQueryString = stringifyRefinements(refinements);
-      history.push({ search: newQueryString });
+      navigate(pathname, { search: newQueryString });
     }
   }, [JSON.stringify(refinements)]);
 

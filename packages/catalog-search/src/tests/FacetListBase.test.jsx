@@ -2,6 +2,7 @@ import React from 'react';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { act, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import { BrowserRouter } from 'react-router-dom';
 
 import { FREE_ALL_TITLE } from '../SearchFilters';
 import FacetListBase from '../FacetListBase';
@@ -54,7 +55,7 @@ const searchableDropdownProps = {
 
 describe('<FacetListBase />', () => {
   test('renders with no options', async () => {
-    renderWithRouter(<SearchData><FacetListBase {...propsForNoItems} /></SearchData>);
+    renderWithRouter(<BrowserRouter><SearchData><FacetListBase {...propsForNoItems} /></SearchData></BrowserRouter>);
 
     // assert facet title exists
     expect(screen.queryByText(FREE_ALL_TITLE)).toBeInTheDocument();
