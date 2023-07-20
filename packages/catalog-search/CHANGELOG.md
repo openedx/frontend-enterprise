@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@4.5.0) (2023-07-20)
+
+
+### Features
+
+* Add .npmrc file to more .gitignore files ([#303](https://github.com/openedx/frontend-enterprise/issues/303)) ([d890c21](https://github.com/openedx/frontend-enterprise/commit/d890c212c3f8c5ec81e6dee63f68029ad0b00552))
+* adding exec ed compatibility to suggested search ([#288](https://github.com/openedx/frontend-enterprise/issues/288)) ([21d608c](https://github.com/openedx/frontend-enterprise/commit/21d608ce49b764e62101b5f696b463f6800ddcb0))
+* update react & react-dom to v17 ([#338](https://github.com/openedx/frontend-enterprise/issues/338)) ([b1b548c](https://github.com/openedx/frontend-enterprise/commit/b1b548c0ec27572d639f276507a1495b78db9497))
+* Updated course link for executive4 education courses. ([#336](https://github.com/openedx/frontend-enterprise/issues/336)) ([4212580](https://github.com/openedx/frontend-enterprise/commit/4212580f4fd6c2de4696f25e81f50f2714db1672))
+* upgraded to node v18, added .nvmrc and updated workflows ([#306](https://github.com/openedx/frontend-enterprise/issues/306)) ([0508783](https://github.com/openedx/frontend-enterprise/commit/050878307ff5f8a94385b7f41070dec19c7e84cc))
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/openedx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/openedx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* manully bump versions after failed automation run ([#301](https://github.com/openedx/frontend-enterprise/issues/301)) ([f1e8616](https://github.com/openedx/frontend-enterprise/commit/f1e8616996c46ffda1c7596be6fc323136ac34c2))
+* missing space in search ([#333](https://github.com/openedx/frontend-enterprise/issues/333)) ([c604834](https://github.com/openedx/frontend-enterprise/commit/c604834d2efcfeba5d692e0f8dc7bb1681e72262))
+
+
+
 ## [4.4.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@4.4.0) (2023-06-15)
 
 
