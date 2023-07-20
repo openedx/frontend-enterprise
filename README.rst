@@ -113,9 +113,17 @@ Versioning and releases
 
 This library has its version automatically updated by Lerna (i.e., ``lerna version``) using semantic-versioning under-the-hood when the release is published to npm. Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
 
-When a PR is merged, Lerna creates a release commit (e.g., ``chore(release): publish``). In this commit, Lerna increments the versions in the appropriate package.json files for any changed packages, creates Git tags, and updates the CHANGELOG file.
+When a PR is merged, you must manually run Lerna to create a release commit (e.g., ``chore(release): publish``). In this commit, Lerna increments the versions in the appropriate package.json files for any changed packages, creates Git tags, and updates the CHANGELOG file.
+To create this commit:
+::
 
-To publish the packages that had their versions incremented, you must manually trigger the ``Publish from package.json`` Github Action workflow `found here <https://github.com/openedx/frontend-enterprise/actions/workflows/publish-from-package.yml>`_. It will publish any versions denoted in the package.json files that are not currently published on the NPM registry, publishing the incremented versions from the aforementioned release commit.
+    npm run lerna:version
+    git push --set-upstream origin automation/lerna/version
+    git push —-tags
+
+Once you have pushed the release commit and tag, you create a new PR from your branch ``automation/lerna/version`` in this example. Once the PR is open review and merge.
+
+To publish the packages that had their versions incremented per above, you must manually trigger the ``Publish from package.json`` Github Action workflow `found here <https://github.com/openedx/frontend-enterprise/actions/workflows/publish-from-package.yml>`_. It will publish any versions denoted in the package.json files that are not currently published on the NPM registry, publishing the incremented versions from the aforementioned release commit.
 
 Preview changed packages in CI with Github Actions
 -----
