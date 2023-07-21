@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.0 (2023-07-21)
+
+
+### Features
+
+* Add .npmrc file to more .gitignore files ([#303](https://github.com/openedx/frontend-enterprise/issues/303)) ([d890c21](https://github.com/openedx/frontend-enterprise/commit/d890c212c3f8c5ec81e6dee63f68029ad0b00552))
+* update react & react-dom to v17 ([#338](https://github.com/openedx/frontend-enterprise/issues/338)) ([b1b548c](https://github.com/openedx/frontend-enterprise/commit/b1b548c0ec27572d639f276507a1495b78db9497))
+* upgraded to node v18, added .nvmrc and updated workflows ([#306](https://github.com/openedx/frontend-enterprise/issues/306)) ([0508783](https://github.com/openedx/frontend-enterprise/commit/050878307ff5f8a94385b7f41070dec19c7e84cc))
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/openedx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/openedx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* manully bump versions after failed automation run ([#301](https://github.com/openedx/frontend-enterprise/issues/301)) ([f1e8616](https://github.com/openedx/frontend-enterprise/commit/f1e8616996c46ffda1c7596be6fc323136ac34c2))
+
+
+
 ## 1.3.0 (2023-04-24)
 
 
