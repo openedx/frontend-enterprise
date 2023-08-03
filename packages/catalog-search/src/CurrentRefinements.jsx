@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { Badge, Button } from '@edx/paragon';
+import { CloseSmall } from '@edx/paragon/icons';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import ClearCurrentRefinements from './ClearCurrentRefinements';
 
@@ -86,7 +85,7 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
           >
             {/* Temporary fix : can be removed when learnerpathway content type is changed to pathways */}
             <span className="mr-2">{item.label === LEARNING_TYPE_PATHWAY ? 'Pathway' : item.label}</span>
-            <FontAwesomeIcon icon={faTimes} />
+            <CloseSmall />
             <span className="sr-only">Remove the filter {item.label}</span>
           </Badge>
         </li>
@@ -94,7 +93,7 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
       {!showAllRefinements && activeRefinementsAsFlatArray.length > NUM_CURRENT_REFINEMENTS_TO_DISPLAY && (
         <li className="mr-2">
           <Badge
-            className={classNames('fe__refinement-badge mb-2 py-2 font-weight-light', { 'fe__refinement-badge--default': variant === STYLE_VARIANTS.defualt })}
+            className={classNames('fe__refinement-badge mb-2 py-2 font-weight-light justify-center', { 'fe__refinement-badge--default': variant === STYLE_VARIANTS.defualt })}
             variant="light"
             onClick={() => setShowAllRefinements(true)}
           >

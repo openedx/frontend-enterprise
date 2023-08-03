@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 import { Button } from '@edx/paragon';
+import { ArrowDropDown, Close } from '@edx/paragon/icons';
 
 import ClearCurrentRefinements from './ClearCurrentRefinements';
 
@@ -30,7 +29,7 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
               </span>
             )}
           </div>
-          <FontAwesomeIcon icon={faCaretDown} />
+          <ArrowDropDown />
         </Button>
       )}
       <div
@@ -58,8 +57,7 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
                 className="btn-close position-absolute px-2"
                 onClick={() => setIsOpen(false)}
               >
-                <FontAwesomeIcon
-                  icon={faTimes}
+                <Close
                   id="icon-close-mobile-filter-menu"
                 />
                 <span className="sr-only">close filter menu</span>

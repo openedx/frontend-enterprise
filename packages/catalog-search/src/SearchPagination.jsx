@@ -1,9 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connectPagination } from 'react-instantsearch-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { Pagination } from '@edx/paragon';
+import { Pagination, Icon } from '@edx/paragon';
+import { ArrowBackIos, ArrowForwardIos } from '@edx/paragon/icons';
 
 import { SearchContext } from './SearchContext';
 import { setRefinementAction, deleteRefinementAction } from './data/actions';
@@ -19,13 +18,13 @@ export const SearchPaginationBase = ({
     () => ({
       left: (
         <>
-          <FontAwesomeIcon icon={faAngleLeft} />
+          <Icon src={ArrowBackIos} />
           <div className="sr-only">Navigate Left</div>
         </>
       ),
       right: (
         <>
-          <FontAwesomeIcon icon={faAngleRight} />
+          <Icon src={ArrowForwardIos} />
           <div className="sr-only">Navigate Right</div>
         </>
       ),
