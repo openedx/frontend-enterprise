@@ -93,7 +93,7 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
       {!showAllRefinements && activeRefinementsAsFlatArray.length > NUM_CURRENT_REFINEMENTS_TO_DISPLAY && (
         <li className="mr-2">
           <Badge
-            className={classNames('fe__refinement-badge mb-2 py-2 font-weight-light justify-center', { 'fe__refinement-badge--default': variant === STYLE_VARIANTS.defualt })}
+            className={classNames('fe__refinement-badge mb-2 py-2 font-weight-light fe_current-icon-justify-center', { 'fe__refinement-badge--default': variant === STYLE_VARIANTS.defualt })}
             variant="light"
             onClick={() => setShowAllRefinements(true)}
           >
