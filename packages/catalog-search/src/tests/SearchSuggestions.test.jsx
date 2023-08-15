@@ -100,23 +100,24 @@ describe('<SeachSuggestions />', () => {
   });
 
   test('redirects to correct page on course click', () => {
-    const { container, history } = renderWithRouter(<SearchSuggestions
+    const { container } = renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
+
     userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
-    expect(history.location.pathname).toBe('/test-enterprise/course/edX+courseX');
+    expect(window.location.pathname).toBe('/test-enterprise/course/edX+courseX');
   });
 
   test('redirects to correct page on program click', () => {
-    const { container, history } = renderWithRouter(<SearchSuggestions
+    const { container } = renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[1]);
-    expect(history.location.pathname).toBe('/test-enterprise/program/456');
+    expect(window.location.pathname).toBe('/test-enterprise/program/456');
   });
   test('properly handles exec ed content', () => {
     const { container } = renderWithRouter(<SearchSuggestions

@@ -9,6 +9,16 @@ import SearchData from '../SearchContext';
 import { FACET_ATTRIBUTES, SUBJECTS } from '../data/tests/constants';
 import { NO_OPTIONS_FOUND } from '../data/constants';
 
+const mockedNavigator = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedNavigator,
+  useLocation: () => ({
+    pathname: '/',
+  }),
+}));
+
 const propsForNoRefinements = {
   items: [],
   attribute: FACET_ATTRIBUTES.SUBJECTS,
@@ -52,6 +62,10 @@ const propsForActiveRefinements = {
 };
 
 describe('<FacetListRefinementBase />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('renders with no options', async () => {
     renderWithRouter(<SearchData><FacetListRefinementBase {...propsForNoRefinements} /></SearchData>);
 
@@ -102,7 +116,7 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('supports clicking on a refinement', async () => {
-    const { history } = renderWithRouter(<SearchData><FacetListRefinementBase {...propsForRefinements} /></SearchData>);
+    renderWithRouter(<SearchData><FacetListRefinementBase {...propsForRefinements} /></SearchData>);
 
     // assert the refinements appear
     await act(async () => {
@@ -116,18 +130,17 @@ describe('<FacetListRefinementBase />', () => {
     });
 
     // assert the clicked refinement was added to the url
-    expect(history.location.search).toEqual('?subjects=Communication');
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'subjects=Communication' });
   });
 
   test('clears pagination when clicking on a refinement', async () => {
-    const { history } = renderWithRouter(
+    renderWithRouter(
       <SearchData>
         <FacetListRefinementBase
           {...propsForActiveRefinements}
           refinements={{ ...propsForActiveRefinements.refinements, page: 3 }}
         />
       </SearchData>,
-      { route: '/search?page=3' },
     );
 
     // assert the refinements appear
@@ -140,6 +153,6 @@ describe('<FacetListRefinementBase />', () => {
     });
 
     // assert page was deleted and subjects were not
-    expect(history.location.search).toEqual('?subjects=Communication');
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'subjects=Communication' });
   });
 });

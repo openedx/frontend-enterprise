@@ -9,6 +9,13 @@ import LearningTypeRadioFacet from '../LearningTypeRadioFacet';
 import { features } from '../config';
 import { renderWithSearchContext } from './utils';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: () => ({
+    pathname: '/',
+  }),
+}));
+
 describe('<LearningTypeRadioFacet />', () => {
   beforeEach(() => {
     features.ENABlE_PATHWAYS = true;

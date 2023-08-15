@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { act, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
@@ -8,6 +9,14 @@ import FacetListBase from '../FacetListBase';
 import { FACET_ATTRIBUTES, SUBJECTS } from '../data/tests/constants';
 import { NO_OPTIONS_FOUND, SHOW_ALL_NAME } from '../data/constants';
 import SearchData from '../SearchContext';
+
+const mockedNavigator = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+  useNavigate: () => mockedNavigator,
+}));
 
 const propsForNoItems = {
   items: [],
@@ -53,6 +62,11 @@ const searchableDropdownProps = {
 };
 
 describe('<FacetListBase />', () => {
+  beforeEach(() => {
+    useLocation.mockReturnValue({ pathname: '/' });
+    jest.clearAllMocks();
+  });
+
   test('renders with no options', async () => {
     renderWithRouter(<SearchData><FacetListBase {...propsForNoItems} /></SearchData>);
 
@@ -101,7 +115,7 @@ describe('<FacetListBase />', () => {
   });
 
   test('supports clicking on a refinement', async () => {
-    const { history } = renderWithRouter(
+    renderWithRouter(
       <SearchData>
         <FacetListBase
           {...propsWithItems}
@@ -120,16 +134,21 @@ describe('<FacetListBase />', () => {
       fireEvent.click(screen.queryByText(NOT_FREE_LABEL));
     });
 
-    expect(history.location.search).toEqual('?showAll=1');
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'showAll=1' });
   });
   test('clears pagination when clicking on a refinement', async () => {
-    const { history } = renderWithRouter(
+    const mockedLocation = {
+      pathname: '/',
+      search: '?subjects=Communication&page=3',
+    };
+    useLocation.mockReturnValue(mockedLocation);
+
+    renderWithRouter(
       <SearchData>
         <FacetListBase
           {...propsWithItems}
         />
       </SearchData>,
-      { route: '/search?subjects=Communication&page=3' },
     );
 
     // assert the refinements appear
@@ -142,7 +161,7 @@ describe('<FacetListBase />', () => {
     });
 
     // assert page was deleted and subjects were not
-    expect(history.location.search).toEqual('?subjects=Communication&showAll=1');
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'subjects=Communication&showAll=1' });
   });
 
   test('renders a typeahead dropdown', async () => {

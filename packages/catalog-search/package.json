@@ -45,7 +45,7 @@
   "devDependencies": {
     "@edx/browserslist-config": "1.1.0",
     "@edx/frontend-build": "12.7.0",
-    "@edx/frontend-platform": "4.6.0",
+    "@edx/frontend-platform": "5.0.0",
     "@edx/paragon": "20.45.0",
     "@fortawesome/free-solid-svg-icons": "5.8.1",
     "@fortawesome/react-fontawesome": "0.2.0",
@@ -56,17 +56,17 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-instantsearch-dom": "6.8.3",
-    "react-router-dom": "5.2.0",
+    "react-router-dom": "6.14.2",
     "react-test-renderer": "17.0.2"
   },
   "peerDependencies": {
-    "@edx/frontend-platform": "^4.0.1",
+    "@edx/frontend-platform": "^5.0.0",
     "@edx/paragon": "^19.15.0 || ^20.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "react": "^16.12.0 || ^17.0.0",
     "react-dom": "^16.12.0 || ^17.0.0",
     "react-instantsearch-dom": "^6.8.3",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^6.0.0"
   }
 }
