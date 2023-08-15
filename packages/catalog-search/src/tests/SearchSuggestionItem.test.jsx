@@ -77,14 +77,14 @@ describe('<SeachSuggestionItem />', () => {
       },
     };
 
-    const { container, history } = renderWithRouter(<SearchSuggestionItem
+    const { container } = renderWithRouter(<SearchSuggestionItem
       url={mockData.program.url}
       suggestionItemHandler={mockData.program.suggestionItemHandler}
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
-    expect(history.location.pathname).toBe(mockData.program.url);
+    expect(window.location.pathname).toBe(mockData.program.url);
   });
 
   test('fires callback on click if disableSuggestionRedirect is true', () => {

@@ -14,6 +14,7 @@ const SearchSuggestionItem = ({
       suggestionItemHandler(hit);
     }
   };
+
   return (
     <Link to={url} key={hit.title} className="suggestion-item" onClick={handleLinkDisable}>
       <div>

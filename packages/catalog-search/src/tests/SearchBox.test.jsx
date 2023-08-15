@@ -18,6 +18,16 @@ import {
 
 jest.mock('@edx/frontend-platform/analytics');
 
+const mockedNavigator = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedNavigator,
+  useLocation: () => ({
+    pathname: '/',
+  }),
+}));
+
 const TEST_QUERY = 'test query';
 const HEADER_TITLE = 'Search Courses and Programs';
 
@@ -90,15 +100,14 @@ describe('<SearchBox />', () => {
     );
   });
   test('handles submit and clear', async () => {
-    const { history } = renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
+    renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // fill in search input and submit the search
     userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
     userEvent.type(screen.getByRole('searchbox'), '{enter}');
 
     // assert url is updated with the query
-    await waitFor(() => expect(history).toHaveLength(2));
-    expect(history.location.search).toEqual('?q=test%20query');
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'q=test%20query' });
     // check tracking is not invoked due to absent trackingName in context
     expect(sendTrackEvent).not.toHaveBeenCalled();
 
@@ -106,8 +115,7 @@ describe('<SearchBox />', () => {
     userEvent.click(screen.getByText('clear search'));
 
     // assert query no longer exists in url
-    await waitFor(() => expect(history).toHaveLength(3));
-    expect(history.location.search).toEqual('');
+    await waitFor(() => expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: '' }));
   });
   test('tracking event when search initiated with trackingName present in context', () => {
     renderWithSearchContextAndTracking(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />, 'aProduct');

@@ -12,6 +12,17 @@ import {
 } from '../data/tests/constants';
 import SearchData from '../SearchContext';
 
+const mockedNavigator = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedNavigator,
+  useLocation: () => ({
+    pathname: '/',
+    search: 'subjects=Computer Science&subjects=Communication',
+  }),
+}));
+
 describe('<CurrentRefinements />', () => {
   const items = [
     {
@@ -60,19 +71,19 @@ describe('<CurrentRefinements />', () => {
   });
 
   test('supports removing an active refinement from the url by clicking on it', async () => {
-    const { history } = renderWithRouter(
+    renderWithRouter(
       <SearchData>
         <CurrentRefinementsBase items={items} />
       </SearchData>,
-      {
-        route: `/?subjects=${SUBJECTS.COMPUTER_SCIENCE}&subjects=${SUBJECTS.COMMUNICATION}`,
-      },
     );
 
     // click a specific refinement to remove it
     fireEvent.click(screen.queryByText(SUBJECTS.COMMUNICATION));
 
     // assert the clicked refinement in the url is removed but others stay put
-    expect(history.location.search).toEqual('?subjects=Computer%20Science');
+    expect(mockedNavigator.mock.calls[mockedNavigator.mock.calls.length - 1][0]).toStrictEqual({
+      pathname: '/',
+      search: 'subjects=Computer%20Science',
+    });
   });
 });
