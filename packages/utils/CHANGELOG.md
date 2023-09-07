@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@4.0.0...@edx/frontend-enterprise-utils@4.0.1) (2023-09-07)
+
+**Note:** Version bump only for package @edx/frontend-enterprise-utils
+
+
+
+
+
 ## [4.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@2.2.0...@edx/frontend-enterprise-utils@4.0.0) (2023-08-15)
 
 

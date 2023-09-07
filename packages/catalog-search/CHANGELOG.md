@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@5.1.0) (2023-09-07)
+
+
+### Features
+
+* allow Paragon v21 in catalog-search ([#356](https://github.com/openedx/frontend-enterprise/issues/356)) ([75005f5](https://github.com/openedx/frontend-enterprise/commit/75005f5e27304e3147fc141ef5dc1bc6ac64a834))
+
+
+
 ## [5.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@5.0.0) (2023-08-15)
 
 
