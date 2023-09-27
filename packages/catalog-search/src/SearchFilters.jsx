@@ -20,18 +20,6 @@ export const FREE_ALL_TITLE = 'Free / All';
 
 const SearchFilters = ({ variant }) => {
   const { refinements, searchFacetFilters } = useContext(SearchContext);
-  const freeAllItems = useMemo(() => [
-    {
-      label: 'Free to me',
-      // flip the 1 to 0 or vice versa using boolean logic
-      // eslint-disable-next-line no-bitwise
-      value: refinements[SHOW_ALL_NAME] ^ 1,
-    },
-    {
-      label: 'All courses',
-      value: refinements[SHOW_ALL_NAME],
-    },
-  ], [refinements[SHOW_ALL_NAME]]);
 
   const searchFacets = useMemo(
     () => {
@@ -60,17 +48,6 @@ const SearchFilters = ({ variant }) => {
       ));
       return (
         <>
-          {features.ENROLL_WITH_CODES && (
-            <FacetListBase
-              attribute={SHOW_ALL_NAME}
-              facetValueType="bool"
-              isBold
-              items={freeAllItems}
-              key={SHOW_ALL_NAME}
-              title={FREE_ALL_TITLE}
-              variant={variant}
-            />
-          )}
           {filtersFromRefinements}
           {features.LEARNING_TYPE_FACET && (<LearningTypeRadioFacet />)}
         </>
