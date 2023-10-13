@@ -45,7 +45,7 @@
   "devDependencies": {
     "@edx/browserslist-config": "1.1.0",
     "@edx/frontend-build": "12.7.0",
-    "@edx/frontend-platform": "5.0.0",
+    "@edx/frontend-platform": "5.5.4",
     "@edx/paragon": "21.1.6",
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "12.1.4",
