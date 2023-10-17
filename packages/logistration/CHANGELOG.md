@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@4.0.0...@edx/frontend-enterprise-logistration@4.0.4) (2023-10-17)
+
+
+### Bug Fixes
+
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+
+
+
 ## [4.0.3](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@4.0.0...@edx/frontend-enterprise-logistration@4.0.3) (2023-09-28)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-logistration
