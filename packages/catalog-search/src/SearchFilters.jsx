@@ -17,7 +17,7 @@ import LearningTypeRadioFacet from './LearningTypeRadioFacet';
 
 export const FREE_ALL_TITLE = 'Free / All';
 
-const SearchFilters = ({ variant }) => {
+const SearchFilters = ({ variant, enablePathways }) => {
   const { refinements, searchFacetFilters } = useContext(SearchContext);
 
   const searchFacets = useMemo(
@@ -48,7 +48,7 @@ const SearchFilters = ({ variant }) => {
       return (
         <>
           {filtersFromRefinements}
-          {features.LEARNING_TYPE_FACET && (<LearningTypeRadioFacet />)}
+          {features.LEARNING_TYPE_FACET && (<LearningTypeRadioFacet enablePathways={enablePathways} />)}
         </>
       );
     },
@@ -76,10 +76,12 @@ const SearchFilters = ({ variant }) => {
 
 SearchFilters.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
+  enablePathways: null,
 };
 
 SearchFilters.propTypes = {
   variant: PropTypes.oneOf([STYLE_VARIANTS.default, STYLE_VARIANTS.inverse]),
+  enablePathways: PropTypes.bool,
 };
 
 export default SearchFilters;
