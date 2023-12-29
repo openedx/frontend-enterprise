@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { Dropdown, Input } from '@edx/paragon';
+import { Dropdown, Input } from '@openedx/paragon';
 import { SearchContext } from './SearchContext';
 import {
   setRefinementAction,

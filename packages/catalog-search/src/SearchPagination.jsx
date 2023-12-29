@@ -1,8 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connectPagination } from 'react-instantsearch-dom';
-import { Pagination, Icon } from '@edx/paragon';
-import { ArrowBackIos, ArrowForwardIos } from '@edx/paragon/icons';
+import { Pagination, Icon } from '@openedx/paragon';
+import { ArrowBackIos, ArrowForwardIos } from '@openedx/paragon/icons';
 
 import { SearchContext } from './SearchContext';
 import { setRefinementAction, deleteRefinementAction } from './data/actions';

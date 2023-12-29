@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { breakpoints, ResponsiveContext } from '@edx/paragon';
+import { breakpoints, ResponsiveContext } from '@openedx/paragon';
 import { SEARCH_FACET_FILTERS } from '../data/constants';
 
 import { renderWithSearchContext } from './utils';
