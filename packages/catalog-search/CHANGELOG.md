@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@5.5.0) (2024-01-02)
+
+
+### Features
+
+* allow Paragon v21 in catalog-search ([#356](https://github.com/openedx/frontend-enterprise/issues/356)) ([75005f5](https://github.com/openedx/frontend-enterprise/commit/75005f5e27304e3147fc141ef5dc1bc6ac64a834))
+* removing free/all filter ([#359](https://github.com/openedx/frontend-enterprise/issues/359)) ([f187fbd](https://github.com/openedx/frontend-enterprise/commit/f187fbd89eb8c6b490b8a0fafb7f192ed9dcf24c))
+
+
+### Bug Fixes
+
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+* remove pathways from customers search ([ad9d2a5](https://github.com/openedx/frontend-enterprise/commit/ad9d2a5a5a5b63a62d3a6c1f119e2547c113da63))
+
+
+
 ## [5.4.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@5.4.0) (2023-10-17)
 
 
