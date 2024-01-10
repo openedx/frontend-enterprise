@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-utils",
-  "version": "4.0.5",
+  "version": "4.0.3",
   "description": "Utils and other miscellaneous enterprise things.",
   "repository": {
     "type": "git",
