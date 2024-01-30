@@ -147,7 +147,7 @@ SearchSuggestions.propTypes = {
   handleSubmit: PropTypes.func,
   handleSuggestionClickSubmit: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
-  preQueryHits: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  preQueryHits: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 SearchSuggestions.defaultProps = {
@@ -155,6 +155,7 @@ SearchSuggestions.defaultProps = {
   enterpriseSlug: '',
   handleSuggestionClickSubmit: undefined,
   disableSuggestionRedirect: false,
+  preQueryHits: undefined,
 };
 
 export default SearchSuggestions;

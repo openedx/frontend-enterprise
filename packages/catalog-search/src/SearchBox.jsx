@@ -44,6 +44,7 @@ export const SearchBoxBase = ({
   enterpriseSlug,
   suggestionSubmitOverride,
   disableSuggestionRedirect,
+  isPreQueryEnabled,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
@@ -92,7 +93,6 @@ export const SearchBoxBase = ({
 
   // Track the focused element
   const focusedElement = useActiveElement();
-
   // Function to be called when the user stops typing, will fetch algolia hits for query after `DEBOUNCE_TIME_MS` has
   // elapsed
   const debounceFunc = async (query) => {
@@ -111,8 +111,8 @@ export const SearchBoxBase = ({
         // If there are no results of the suggested search, hide the empty suggestion component
         setShowSuggestions(false);
       }
-    // Display the prequery results when user clicks on search box but has not began typing
-    } else {
+    // If isPreQueryEnabled is true display the prequery results when user clicks on search box but has not began typing
+    } else if (query === '' && isPreQueryEnabled) {
       const { hits } = await index.search(query, {
         filters,
         attributesToHighlight: ['title'],
@@ -133,7 +133,7 @@ export const SearchBoxBase = ({
     if (index !== undefined && focusedElement.classList.contains(SEARCH_BOX_CLASS_NAME)) {
       debounceHandler(searchQuery);
     }
-  // Retry this method if the focused element or the search query changes
+    // Retry this method if the focused element or the search query changes
   }, [searchQuery, focusedElement]);
 
   /**
@@ -152,10 +152,10 @@ export const SearchBoxBase = ({
   return (
     <div className={className}>
       {!hideTitle && (
-      /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
-      <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
-        { headerTitle || searchText }
-      </label>
+        /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
+        <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
+          {headerTitle || searchText}
+        </label>
       )}
       <SearchField.Advanced
         className={classNames('fe__searchfield', {
@@ -181,7 +181,7 @@ export const SearchBoxBase = ({
         <SearchField.ClearButton data-nr-synth-id="catalog-search-clear-button" />
         <SearchField.SubmitButton data-nr-synth-id="catalog-search-submit-button" />
       </SearchField.Advanced>
-      { showSuggestions && (
+      {showSuggestions && (
         <SearchSuggestions
           enterpriseSlug={enterpriseSlug}
           preQueryHits={preQueryHits}
@@ -206,6 +206,7 @@ SearchBoxBase.propTypes = {
   enterpriseSlug: PropTypes.string,
   suggestionSubmitOverride: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
+  isPreQueryEnabled: PropTypes.bool,
 };
 
 SearchBoxBase.defaultProps = {
@@ -219,6 +220,7 @@ SearchBoxBase.defaultProps = {
   index: undefined,
   suggestionSubmitOverride: undefined,
   disableSuggestionRedirect: false,
+  isPreQueryEnabled: false,
 };
 
 export default connectSearchBox(SearchBoxBase);

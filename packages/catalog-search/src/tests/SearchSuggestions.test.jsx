@@ -80,12 +80,13 @@ describe('<SeachSuggestions />', () => {
     expect(screen.getByText('xSeries')).not.toBeNull();
     expect(screen.getByText('View all results')).not.toBeNull();
   });
-  test('renders only prequery suggestions', () => {
+  test('renders only prequery suggestions if isPreQueryEnabled is true', () => {
     renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={[]}
       preQueryHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
+      isPreQueryEnabled
     />);
     expect(screen.getByText('Top-rated courses')).not.toBeNull();
     expect(screen.queryByText('Courses')).toBeNull();

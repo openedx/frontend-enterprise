@@ -23,6 +23,7 @@ const SearchHeader = ({
   suggestionSubmitOverride,
   enterpriseConfig: { slug, enablePathways },
   disableSuggestionRedirect,
+  isPreQueryEnabled,
 }) => {
   const { refinements } = useContext(SearchContext);
   let searchQueryFromRefinements;
@@ -57,6 +58,7 @@ const SearchHeader = ({
               enterpriseSlug={slug}
               suggestionSubmitOverride={suggestionSubmitOverride}
               disableSuggestionRedirect={disableSuggestionRedirect}
+              isPreQueryEnabled={isPreQueryEnabled}
             />
           </Col>
           <Col
@@ -82,6 +84,7 @@ SearchHeader.defaultProps = {
   suggestionSubmitOverride: undefined,
   disableSuggestionRedirect: false,
   index: undefined,
+  isPreQueryEnabled: false,
 };
 
 SearchHeader.propTypes = {
@@ -96,6 +99,7 @@ SearchHeader.propTypes = {
   ),
   suggestionSubmitOverride: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
+  isPreQueryEnabled: PropTypes.bool,
 };
 
 export default SearchHeader;

@@ -73,11 +73,12 @@ SearchSuggestionItem.propTypes = {
     learning_type: PropTypes.string,
   }).isRequired,
   disableSuggestionRedirect: PropTypes.bool.isRequired,
-  isPreQuery: PropTypes.bool.isRequired,
+  isPreQuery: PropTypes.bool,
 };
 
 SearchSuggestionItem.defaultProps = {
   suggestionItemHandler: undefined,
+  isPreQuery: false,
 };
 
 export default SearchSuggestionItem;
