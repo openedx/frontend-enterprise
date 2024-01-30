@@ -13,6 +13,9 @@ const fakeSuggestionsData = {
       key: 'edX+courseX',
       title: 'test-course',
       _highlightResult: { title: { value: 'test-<em>course</em>' } },
+      partners: [{
+        name: 'edx-partner',
+      }],
     },
     {
       learning_type: 'program',
@@ -22,6 +25,9 @@ const fakeSuggestionsData = {
       aggregation_key: '123:456',
       authoring_organizations: [{ key: 'harvard' }],
       program_type: 'xSeries',
+      partners: [{
+        name: 'harvard-partner',
+      }],
     },
   ],
 };
@@ -74,7 +80,17 @@ describe('<SeachSuggestions />', () => {
     expect(screen.getByText('xSeries')).not.toBeNull();
     expect(screen.getByText('View all results')).not.toBeNull();
   });
-
+  test('renders only prequery suggestions', () => {
+    renderWithRouter(<SearchSuggestions
+      enterpriseSlug="test-enterprise"
+      autoCompleteHits={[]}
+      preQueryHits={fakeSuggestionsData.hits}
+      handleSubmit={handleSubmit}
+    />);
+    expect(screen.getByText('Top-rated courses')).not.toBeNull();
+    expect(screen.queryByText('Courses')).toBeNull();
+    expect(screen.queryByText('Programs')).toBeNull();
+  });
   test('renders no errors when no authoring orgs found for programs data', () => {
     renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"

@@ -50,6 +50,7 @@ export const SearchBoxBase = ({
   const [autocompleteHits, setAutocompleteHits] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [preQueryHits, setPreQueryHits] = useState([]);
 
   /**
    * Handles when a search is submitted by adding the user's search
@@ -103,15 +104,23 @@ export const SearchBoxBase = ({
         attributesToRetrieve: ALGOLIA_ATTRIBUTES_TO_RETRIEVE,
       });
       if (nbHits > 0) {
+        setPreQueryHits([]);
         setAutocompleteHits(hits);
         setShowSuggestions(true);
       } else {
         // If there are no results of the suggested search, hide the empty suggestion component
         setShowSuggestions(false);
       }
-    // Hide the results as soon as the user removes the entire query string, instead of waiting a second
+    // Display the prequery results when user clicks on search box but has not began typing
     } else {
-      setShowSuggestions(false);
+      const { hits } = await index.search(query, {
+        filters,
+        attributesToHighlight: ['title'],
+        attributesToRetrieve: ALGOLIA_ATTRIBUTES_TO_RETRIEVE,
+      });
+      setAutocompleteHits([]);
+      setPreQueryHits(hits);
+      setShowSuggestions(true);
     }
   };
   // Since the debounced method is called in a useEffect hook, use `useCallback` to account for repeated invoking of the
@@ -155,6 +164,9 @@ export const SearchBoxBase = ({
         value={defaultRefinement}
         onSubmit={handleSubmit}
         onClear={handleClear}
+        onFocus={(query) => {
+          setSearchQuery(query);
+        }}
         onChange={(query) => {
           setSearchQuery(query);
         }}
@@ -172,6 +184,7 @@ export const SearchBoxBase = ({
       { showSuggestions && (
         <SearchSuggestions
           enterpriseSlug={enterpriseSlug}
+          preQueryHits={preQueryHits}
           autoCompleteHits={autocompleteHits}
           handleSubmit={() => handleSubmit(searchQuery)}
           handleSuggestionClickSubmit={hit => handleSuggestionSubmit(hit)}
