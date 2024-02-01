@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@5.6.0) (2024-02-01)
+
+
+### Features
+
+* add prequery search suggestions ([f8dfe85](https://github.com/openedx/frontend-enterprise/commit/f8dfe85cdbcfd70a290d61ddea8242768e437080))
+* allow Paragon v21 in catalog-search ([#356](https://github.com/openedx/frontend-enterprise/issues/356)) ([75005f5](https://github.com/openedx/frontend-enterprise/commit/75005f5e27304e3147fc141ef5dc1bc6ac64a834))
+* bumped frontend-platform to v6 ([#364](https://github.com/openedx/frontend-enterprise/issues/364)) ([1541b86](https://github.com/openedx/frontend-enterprise/commit/1541b864dc6c351ea595d9f0c5669299af3b64cc))
+* removing free/all filter ([#359](https://github.com/openedx/frontend-enterprise/issues/359)) ([f187fbd](https://github.com/openedx/frontend-enterprise/commit/f187fbd89eb8c6b490b8a0fafb7f192ed9dcf24c))
+
+
+### Bug Fixes
+
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+* refactored to include additional prop for feature flag ([bd600b6](https://github.com/openedx/frontend-enterprise/commit/bd600b624e51f9b8f0eff0b5eb467ec92fa6a828))
+* remove pathways from customers search ([#366](https://github.com/openedx/frontend-enterprise/issues/366)) ([d4625c9](https://github.com/openedx/frontend-enterprise/commit/d4625c92443d088c2319f81ea516c2613b8d3943))
+
+
+
 ## [5.5.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@5.5.0) (2024-01-10)
 
 
