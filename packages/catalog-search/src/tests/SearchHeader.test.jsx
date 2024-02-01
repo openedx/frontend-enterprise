@@ -19,7 +19,12 @@ jest.mock('../SearchFilters', () => ({
   __esModule: true,
   default: () => <div>Filter</div>,
 }));
-const enterpriseConfig = { slug: 'test-enterprise' };
+const enterpriseConfig = { 
+  slug: 'test-enterprise',
+  enterpriseFeatures: {
+    featurePrequerySearchSuggestions: true,
+  },
+};
 describe('SearchHeader', () => {
   test('displays a SearchBox', () => {
     renderWithSearchContext(<SearchHeader enterpriseConfig={enterpriseConfig} />);
