@@ -87,6 +87,7 @@ export const NUM_CURRENT_REFINEMENTS_TO_DISPLAY = 3;
 export const NUM_RESULTS_PER_PAGE = 24;
 
 export const MAX_NUM_SUGGESTIONS = 3;
+export const MAX_NUM_PRE_QUERY_SUGGESTIONS = 5;
 
 export const NO_OPTIONS_FOUND = 'No options found.';
 
