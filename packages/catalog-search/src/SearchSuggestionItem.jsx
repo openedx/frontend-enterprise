@@ -24,8 +24,12 @@ const SearchSuggestionItem = ({
             <div className="d-flex flex-column">
               {/* eslint-disable-next-line react/no-danger, no-underscore-dangle */}
               <div dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }} />
-              <div className="x-small d-flex flex-column">
-                {hit.partners[0]?.name} | {hit.learning_type}
+              <div className="x-small d-flex">
+                <span>
+                  {hit.partners[0]?.name}
+                </span>
+                <span> | </span>
+                <span className="text-capitalize">{hit.learning_type}</span>
               </div>
             </div>
           </div>

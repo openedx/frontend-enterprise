@@ -132,9 +132,11 @@ const SearchSuggestions = ({
           }
         </div>
       )}
-      <button type="button" className="btn btn-light w-100 view-all-btn" onClick={handleSubmit}>
-        View all results
-      </button>
+      {!preQuerySuggestions.length && (
+        <button type="button" className="btn btn-light w-100 view-all-btn" onClick={handleSubmit}>
+          View all results
+        </button>
+      )}
     </div>
   );
 };
