@@ -45,6 +45,7 @@ export const SearchBoxBase = ({
   suggestionSubmitOverride,
   disableSuggestionRedirect,
   isPreQueryEnabled,
+  optimizelyPrequerySuggestionClickHandler,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
@@ -189,6 +190,7 @@ export const SearchBoxBase = ({
           handleSubmit={() => handleSubmit(searchQuery)}
           handleSuggestionClickSubmit={hit => handleSuggestionSubmit(hit)}
           disableSuggestionRedirect={disableSuggestionRedirect}
+          optimizelyPrequerySuggestionClickHandler={optimizelyPrequerySuggestionClickHandler}
         />
       )}
     </div>
@@ -207,6 +209,7 @@ SearchBoxBase.propTypes = {
   suggestionSubmitOverride: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
   isPreQueryEnabled: PropTypes.bool,
+  optimizelyPrequerySuggestionClickHandler: PropTypes.func,
 };
 
 SearchBoxBase.defaultProps = {
@@ -221,6 +224,7 @@ SearchBoxBase.defaultProps = {
   suggestionSubmitOverride: undefined,
   disableSuggestionRedirect: false,
   isPreQueryEnabled: false,
+  optimizelyPrequerySuggestionClickHandler: undefined,
 };
 
 export default connectSearchBox(SearchBoxBase);
