@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@4.0.0...@edx/frontend-enterprise-utils@4.1.0) (2024-02-01)
+
+
+### Features
+
+* bumped frontend-platform to v6 ([#364](https://github.com/openedx/frontend-enterprise/issues/364)) ([1541b86](https://github.com/openedx/frontend-enterprise/commit/1541b864dc6c351ea595d9f0c5669299af3b64cc))
+
+
+### Bug Fixes
+
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+
+
+
+## [4.0.5](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@4.0.0...@edx/frontend-enterprise-utils@4.0.5) (2024-01-10)
+
+
+### Bug Fixes
+
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+
+
+
 ## [4.0.4](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@4.0.0...@edx/frontend-enterprise-utils@4.0.4) (2023-10-17)
 
 

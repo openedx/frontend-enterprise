@@ -21,7 +21,7 @@ const SearchHeader = ({
   index,
   filters,
   suggestionSubmitOverride,
-  enterpriseConfig: { slug },
+  enterpriseConfig: { slug, enablePathways, enterpriseFeatures },
   disableSuggestionRedirect,
 }) => {
   const { refinements } = useContext(SearchContext);
@@ -57,6 +57,7 @@ const SearchHeader = ({
               enterpriseSlug={slug}
               suggestionSubmitOverride={suggestionSubmitOverride}
               disableSuggestionRedirect={disableSuggestionRedirect}
+              isPreQueryEnabled={enterpriseFeatures.featurePrequerySearchSuggestions}
             />
           </Col>
           <Col
@@ -64,7 +65,7 @@ const SearchHeader = ({
             className={classNames('fe__searchbox-col', { 'fe__searchbox-col--default': variant === STYLE_VARIANTS.default })}
             xs={12}
           >
-            <SearchFilters className="mb-3" variant={variant} />
+            <SearchFilters className="mb-3" variant={variant} enablePathways={enablePathways} />
           </Col>
         </Row>
       </Container>
@@ -78,7 +79,7 @@ SearchHeader.defaultProps = {
   headerTitle: undefined,
   hideTitle: false,
   filters: '',
-  enterpriseConfig: { slug: undefined },
+  enterpriseConfig: { slug: undefined, enablePathways: undefined },
   suggestionSubmitOverride: undefined,
   disableSuggestionRedirect: false,
   index: undefined,
@@ -91,7 +92,15 @@ SearchHeader.propTypes = {
   hideTitle: PropTypes.bool,
   index: PropTypes.shape({ search: PropTypes.func.isRequired }),
   filters: PropTypes.string,
-  enterpriseConfig: PropTypes.shape({ slug: PropTypes.string }),
+  enterpriseConfig: PropTypes.shape(
+    {
+      slug: PropTypes.string,
+      enablePathways: PropTypes.bool,
+      enterpriseFeatures: PropTypes.shape({
+        featurePrequerySearchSuggestions: PropTypes.bool,
+      }),
+    },
+  ),
   suggestionSubmitOverride: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
 };

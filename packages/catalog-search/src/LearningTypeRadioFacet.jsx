@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Dropdown, Input } from '@openedx/paragon';
 import { SearchContext } from './SearchContext';
@@ -8,7 +9,7 @@ import {
 import { features } from './config';
 import { LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY } from './data/constants';
 
-const LearningTypeRadioFacet = () => {
+const LearningTypeRadioFacet = ({ enablePathways }) => {
   const { refinements, dispatch } = useContext(SearchContext);
   // only bold the dropdown title if the learning type is Course or Program
   const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
@@ -72,7 +73,9 @@ const LearningTypeRadioFacet = () => {
             </span>
           </Dropdown.Item>
           {
-            features.ENABlE_PATHWAYS && (
+            // the first check is a global feature flag and the second is a check to see if
+            // the individual customer itself has enabled pathways
+            features.ENABlE_PATHWAYS && enablePathways && (
               <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
                 <Input
                   type="radio"
@@ -91,6 +94,14 @@ const LearningTypeRadioFacet = () => {
       </Dropdown>
     </div>
   );
+};
+
+LearningTypeRadioFacet.defaultProps = {
+  enablePathways: null,
+};
+
+LearningTypeRadioFacet.propTypes = {
+  enablePathways: PropTypes.bool,
 };
 
 export default LearningTypeRadioFacet;
