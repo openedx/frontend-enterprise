@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from '@edx/paragon';
+import { Image } from '@openedx/paragon';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 

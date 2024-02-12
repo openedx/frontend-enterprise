@@ -3,8 +3,8 @@ import React, { useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Badge, Button } from '@edx/paragon';
-import { CloseSmall } from '@edx/paragon/icons';
+import { Badge, Button } from '@openedx/paragon';
+import { CloseSmall } from '@openedx/paragon/icons';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 
 import ClearCurrentRefinements from './ClearCurrentRefinements';

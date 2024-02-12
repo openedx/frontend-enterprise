@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@edx/paragon';
+import { Button } from '@openedx/paragon';
 import { SearchContext } from './SearchContext';
 import { clearRefinementsAction } from './data/actions';
 

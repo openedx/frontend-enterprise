@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Badge, Input, Dropdown } from '@edx/paragon';
+import { Badge, Input, Dropdown } from '@openedx/paragon';
 import classNames from 'classnames';
 
 import { STYLE_VARIANTS } from './data/constants';
