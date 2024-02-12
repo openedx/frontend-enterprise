@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@3.1.5...@edx/frontend-enterprise-catalog-search@6.0.0) (2024-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* consuming applications must now provide paragon from the @openedx scope
+
+* refactor: replace @edx/paragon and @edx/frontend-build
+
+* fix: fixed package issues
+
+* fix: updated dependency
+
+* fix: updated package lock file to fix ci issue
+
+* refactor: updated frontend-platform to v7 along with peer Dependencies
+* Upgrade react-router-dom from v5 to v6.
+Upgrade frontend-platform from v4 to v5.
+
+### Features
+
+* Add .npmrc file to more .gitignore files ([#303](https://github.com/openedx/frontend-enterprise/issues/303)) ([d890c21](https://github.com/openedx/frontend-enterprise/commit/d890c212c3f8c5ec81e6dee63f68029ad0b00552))
+* add prequery search suggestions ([#371](https://github.com/openedx/frontend-enterprise/issues/371)) ([3651ee0](https://github.com/openedx/frontend-enterprise/commit/3651ee0f0e77e461956175d98aaa4addb38a1762))
+* adding exec ed compatibility to suggested search ([#288](https://github.com/openedx/frontend-enterprise/issues/288)) ([21d608c](https://github.com/openedx/frontend-enterprise/commit/21d608ce49b764e62101b5f696b463f6800ddcb0))
+* allow Paragon v21 in catalog-search ([#356](https://github.com/openedx/frontend-enterprise/issues/356)) ([75005f5](https://github.com/openedx/frontend-enterprise/commit/75005f5e27304e3147fc141ef5dc1bc6ac64a834))
+* bumped frontend-platform to v6 ([#364](https://github.com/openedx/frontend-enterprise/issues/364)) ([1541b86](https://github.com/openedx/frontend-enterprise/commit/1541b864dc6c351ea595d9f0c5669299af3b64cc))
+* removing free/all filter ([#359](https://github.com/openedx/frontend-enterprise/issues/359)) ([f187fbd](https://github.com/openedx/frontend-enterprise/commit/f187fbd89eb8c6b490b8a0fafb7f192ed9dcf24c))
+* update react & react-dom to v17 ([#338](https://github.com/openedx/frontend-enterprise/issues/338)) ([b1b548c](https://github.com/openedx/frontend-enterprise/commit/b1b548c0ec27572d639f276507a1495b78db9497))
+* Updated course link for executive4 education courses. ([#336](https://github.com/openedx/frontend-enterprise/issues/336)) ([4212580](https://github.com/openedx/frontend-enterprise/commit/4212580f4fd6c2de4696f25e81f50f2714db1672))
+* upgrade react router to v6 ([#344](https://github.com/openedx/frontend-enterprise/issues/344)) ([54f6340](https://github.com/openedx/frontend-enterprise/commit/54f6340f764a9120bebd654564e0d61918a3cffa))
+* upgraded to node v18, added .nvmrc and updated workflows ([#306](https://github.com/openedx/frontend-enterprise/issues/306)) ([0508783](https://github.com/openedx/frontend-enterprise/commit/050878307ff5f8a94385b7f41070dec19c7e84cc))
+
+
+### Bug Fixes
+
+* Bump all versions one final time I hope.... ([#297](https://github.com/openedx/frontend-enterprise/issues/297)) ([3452d81](https://github.com/openedx/frontend-enterprise/commit/3452d810bad4b7292ce342ac96bec500809b532d))
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+* manully bump versions after failed automation run ([#301](https://github.com/openedx/frontend-enterprise/issues/301)) ([f1e8616](https://github.com/openedx/frontend-enterprise/commit/f1e8616996c46ffda1c7596be6fc323136ac34c2))
+* missing space in search ([#333](https://github.com/openedx/frontend-enterprise/issues/333)) ([c604834](https://github.com/openedx/frontend-enterprise/commit/c604834d2efcfeba5d692e0f8dc7bb1681e72262))
+* remove pathways from customers search ([#366](https://github.com/openedx/frontend-enterprise/issues/366)) ([d4625c9](https://github.com/openedx/frontend-enterprise/commit/d4625c92443d088c2319f81ea516c2613b8d3943))
+
+
+### Miscellaneous Chores
+
+* move paragon to peer dependency using [@openedx](https://github.com/openedx) scope and upgrade frontend-platform ([#367](https://github.com/openedx/frontend-enterprise/issues/367)) ([d121d67](https://github.com/openedx/frontend-enterprise/commit/d121d67efa6e84de86a7f3eb84acb674f2d4a380))
+
+
+
 ## [5.6.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@5.6.0) (2024-02-01)
 
 
