@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
-import { Button } from '@edx/paragon';
-import { ArrowDropDown, Close } from '@edx/paragon/icons';
+import { Button } from '@openedx/paragon';
+import { ArrowDropDown, Close } from '@openedx/paragon/icons';
 
 import ClearCurrentRefinements from './ClearCurrentRefinements';
 

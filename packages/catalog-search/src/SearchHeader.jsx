@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from '@edx/paragon';
+import { Container, Row, Col } from '@openedx/paragon';
 import classNames from 'classnames';
 
 import SearchBox from './SearchBox';
