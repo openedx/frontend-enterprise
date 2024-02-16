@@ -61,10 +61,9 @@ const SearchSuggestions = ({
                   }
                   return getLinkToProgram(course);
                 };
-
                 return (
                   <PrequerySearchSuggestionItem
-                    key={hit.title}
+                    key={hit.key}
                     url={getUrl(hit)}
                     hit={hit}
                     optimizelyPrequerySuggestionClickHandler={optimizelyPrequerySuggestionClickHandler}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from '@edx/paragon';
+import { Image } from '@openedx/paragon';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ const PrequerySearchSuggestionItem = ({
     to={url}
     key={hit.title}
     className="prequery-item pr-4 d-flex flex-column"
-    onClick={() => optimizelyPrequerySuggestionClickHandler(hit.title)}
+    onClick={() => optimizelyPrequerySuggestionClickHandler(hit.key)}
   >
     <div className="d-flex align-items-center justify-content-start">
       <Image className="prequery-image mr-2" src={hit.card_image_url} />
