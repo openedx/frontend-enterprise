@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/extend-expect';
 import PrequerySearchSuggestionItem from '../PrequerySearchSuggestionItem';
 
 describe('<PrequerySearchSuggestionItem />', () => {
-  test('renders course data', () => {
+  test('sends optimizely event on prequery click', () => {
     const mockData = {
       url: '/test-enterprise/course/edX+courseX',
       optimizelyPrequerySuggestionClickHandler: jest.fn(),
