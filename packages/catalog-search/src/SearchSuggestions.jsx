@@ -6,6 +6,7 @@ import {
   LEARNING_TYPE_EXECUTIVE_EDUCATION, COURSE_TYPE_EXECUTIVE_EDUCATION,
   MAX_NUM_PRE_QUERY_SUGGESTIONS,
 } from './data/constants';
+import PrequerySearchSuggestionItem from './PrequerySearchSuggestionItem';
 import SearchSuggestionItem from './SearchSuggestionItem';
 
 const SearchSuggestions = ({
@@ -15,6 +16,7 @@ const SearchSuggestions = ({
   handleSubmit,
   handleSuggestionClickSubmit,
   disableSuggestionRedirect,
+  optimizelyPrequerySuggestionClickHandler,
 }) => {
   const getLinkToCourse = (course) => {
     const { learning_type: learningType } = course;
@@ -59,15 +61,12 @@ const SearchSuggestions = ({
                   }
                   return getLinkToProgram(course);
                 };
-
                 return (
-                  <SearchSuggestionItem
-                    key={hit.title}
+                  <PrequerySearchSuggestionItem
+                    key={hit.key}
                     url={getUrl(hit)}
                     hit={hit}
-                    isPreQuery={preQuerySuggestions.length > 0}
-                    disableSuggestionRedirect={disableSuggestionRedirect}
-                    suggestionItemHandler={handleSuggestionClickSubmit}
+                    optimizelyPrequerySuggestionClickHandler={optimizelyPrequerySuggestionClickHandler}
                   />
                 );
               })
@@ -86,7 +85,6 @@ const SearchSuggestions = ({
                   key={hit.title}
                   url={getLinkToCourse(hit)}
                   hit={hit}
-                  isPreQuery={preQuerySuggestions.length > 0}
                   disableSuggestionRedirect={disableSuggestionRedirect}
                   suggestionItemHandler={handleSuggestionClickSubmit}
                 />
@@ -150,6 +148,7 @@ SearchSuggestions.propTypes = {
   handleSuggestionClickSubmit: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
   preQueryHits: PropTypes.arrayOf(PropTypes.shape()),
+  optimizelyPrequerySuggestionClickHandler: PropTypes.func,
 };
 
 SearchSuggestions.defaultProps = {
@@ -158,6 +157,7 @@ SearchSuggestions.defaultProps = {
   handleSuggestionClickSubmit: undefined,
   disableSuggestionRedirect: false,
   preQueryHits: undefined,
+  optimizelyPrequerySuggestionClickHandler: undefined,
 };
 
 export default SearchSuggestions;
