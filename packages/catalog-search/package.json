@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-catalog-search",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Components related to Enterprise catalog search.",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@edx/frontend-enterprise-utils": "^5.0.0",
+    "@edx/frontend-enterprise-utils": "^6.0.0",
     "classnames": "2.2.5",
     "lodash.debounce": "4.0.8",
     "prop-types": "15.7.2"
