@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-hotjar",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Utils for Hotjar.",
   "repository": {
     "type": "git",
