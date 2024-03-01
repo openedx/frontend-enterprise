@@ -16,7 +16,7 @@ const SearchSuggestions = ({
   handleSubmit,
   handleSuggestionClickSubmit,
   disableSuggestionRedirect,
-  optimizelyPrequerySuggestionClickHandler,
+  optimizelySuggestionClickHandler,
 }) => {
   const getLinkToCourse = (course) => {
     const { learning_type: learningType } = course;
@@ -63,10 +63,10 @@ const SearchSuggestions = ({
                 };
                 return (
                   <PrequerySearchSuggestionItem
-                    key={hit.key}
+                    key={hit.title}
                     url={getUrl(hit)}
                     hit={hit}
-                    optimizelyPrequerySuggestionClickHandler={optimizelyPrequerySuggestionClickHandler}
+                    optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                   />
                 );
               })
@@ -87,6 +87,7 @@ const SearchSuggestions = ({
                   hit={hit}
                   disableSuggestionRedirect={disableSuggestionRedirect}
                   suggestionItemHandler={handleSuggestionClickSubmit}
+                  optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                 />
               ))
           }
@@ -106,6 +107,7 @@ const SearchSuggestions = ({
                   hit={hit}
                   disableSuggestionRedirect={disableSuggestionRedirect}
                   suggestionItemHandler={handleSuggestionClickSubmit}
+                  optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                 />
               ))
           }
@@ -125,6 +127,7 @@ const SearchSuggestions = ({
                   hit={hit}
                   disableSuggestionRedirect={disableSuggestionRedirect}
                   suggestionItemHandler={handleSuggestionClickSubmit}
+                  optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                 />
               ))
           }
@@ -148,7 +151,7 @@ SearchSuggestions.propTypes = {
   handleSuggestionClickSubmit: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
   preQueryHits: PropTypes.arrayOf(PropTypes.shape()),
-  optimizelyPrequerySuggestionClickHandler: PropTypes.func,
+  optimizelySuggestionClickHandler: PropTypes.func,
 };
 
 SearchSuggestions.defaultProps = {
@@ -157,7 +160,7 @@ SearchSuggestions.defaultProps = {
   handleSuggestionClickSubmit: undefined,
   disableSuggestionRedirect: false,
   preQueryHits: undefined,
-  optimizelyPrequerySuggestionClickHandler: undefined,
+  optimizelySuggestionClickHandler: undefined,
 };
 
 export default SearchSuggestions;

@@ -17,6 +17,7 @@ describe('<SeachSuggestionItem />', () => {
           title: 'test-course',
           _highlightResult: { title: { value: '<em>course</em> <em>catalog</em>' } },
         },
+        optimizelySuggestionClickHandler: jest.fn(),
       },
     };
 
@@ -25,6 +26,7 @@ describe('<SeachSuggestionItem />', () => {
       suggestionItemHandler={mockData.course.suggestionItemHandler}
       hit={mockData.course.hit}
       disableSuggestionRedirect={mockData.course.disableSuggestionRedirect}
+      optimizelySuggestionClickHandler={mockData.optimizelySuggestionClickHandler}
     />);
     expect(screen.getByRole('link', { name: 'course catalog edX' })).not.toBeNull();
     expect(screen.getByText('course')).not.toBeNull();
@@ -46,6 +48,7 @@ describe('<SeachSuggestionItem />', () => {
           _highlightResult: { title: { value: '<em>program</em> <em>catalog</em>' } },
         },
       },
+      optimizelySuggestionClickHandler: jest.fn(),
     };
 
     renderWithRouter(<SearchSuggestionItem
@@ -53,6 +56,7 @@ describe('<SeachSuggestionItem />', () => {
       suggestionItemHandler={mockData.program.suggestionItemHandler}
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
+      optimizelySuggestionClickHandler={mockData.optimizelySuggestionClickHandler}
     />);
     expect(screen.getByRole('link', { name: 'program catalog edX Professional Program' })).not.toBeNull();
     expect(screen.getByText('program')).not.toBeNull();
@@ -75,6 +79,7 @@ describe('<SeachSuggestionItem />', () => {
           _highlightResult: { title: { value: '<em>program</em> <em>catalog</em>' } },
         },
       },
+      optimizelySuggestionClickHandler: jest.fn(),
     };
 
     const { container } = renderWithRouter(<SearchSuggestionItem
@@ -82,9 +87,11 @@ describe('<SeachSuggestionItem />', () => {
       suggestionItemHandler={mockData.program.suggestionItemHandler}
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
+      optimizelySuggestionClickHandler={mockData.optimizelySuggestionClickHandler}
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(window.location.pathname).toBe(mockData.program.url);
+    expect(mockData.optimizelySuggestionClickHandler.mock.calls.length).toBe(1);
   });
 
   test('fires callback on click if disableSuggestionRedirect is true', () => {
@@ -101,6 +108,7 @@ describe('<SeachSuggestionItem />', () => {
           _highlightResult: { title: { value: '<em>program</em> <em>catalog</em>' } },
         },
       },
+      optimizelySuggestionClickHandler: jest.fn(),
     };
 
     const { container } = renderWithRouter(<SearchSuggestionItem
@@ -108,8 +116,10 @@ describe('<SeachSuggestionItem />', () => {
       suggestionItemHandler={mockData.program.suggestionItemHandler}
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
+      optimizelySuggestionClickHandler={mockData.optimizelySuggestionClickHandler}
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(mockData.program.suggestionItemHandler).toHaveBeenCalledWith(mockData.program.hit);
+    expect(mockData.optimizelySuggestionClickHandler.mock.calls.length).toBe(1);
   });
 });

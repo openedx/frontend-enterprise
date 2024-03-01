@@ -62,6 +62,7 @@ const fakeSuggestionsDataEmptyAuthoringOrgs = {
 };
 
 const handleSubmit = jest.fn();
+const optimizelySuggestionClickHandler = jest.fn();
 
 describe('<SeachSuggestions />', () => {
   test('renders all data', () => {
@@ -69,6 +70,7 @@ describe('<SeachSuggestions />', () => {
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
     expect(screen.getByText('Courses')).not.toBeNull();
     expect(screen.getByText('Programs')).not.toBeNull();
@@ -86,7 +88,7 @@ describe('<SeachSuggestions />', () => {
       autoCompleteHits={[]}
       preQueryHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
-      isPreQueryEnabled
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
     expect(screen.getByText('Top-rated courses')).not.toBeNull();
     expect(screen.queryByText('Courses')).toBeNull();
@@ -97,6 +99,7 @@ describe('<SeachSuggestions />', () => {
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsDataEmptyAuthoringOrgs.hits}
       handleSubmit={handleSubmit}
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
     expect(screen.getByText('Programs')).not.toBeNull();
     expect(screen.getAllByText('test-').length).toBe(1);
@@ -110,6 +113,7 @@ describe('<SeachSuggestions />', () => {
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
 
     userEvent.click(screen.getByText('View all results'));
@@ -121,10 +125,12 @@ describe('<SeachSuggestions />', () => {
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
 
     userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(window.location.pathname).toBe('/test-enterprise/course/edX+courseX');
+    expect(optimizelySuggestionClickHandler).toHaveBeenCalled();
   });
 
   test('redirects to correct page on program click', () => {
@@ -132,9 +138,11 @@ describe('<SeachSuggestions />', () => {
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
     userEvent.click(container.getElementsByClassName('suggestion-item')[1]);
     expect(window.location.pathname).toBe('/test-enterprise/program/456');
+    expect(optimizelySuggestionClickHandler).toHaveBeenCalled();
   });
   test('properly handles exec ed content', () => {
     const { container } = renderWithRouter(<SearchSuggestions
@@ -142,16 +150,19 @@ describe('<SeachSuggestions />', () => {
       autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
       handleSubmit={handleSubmit}
       disableSuggestionRedirect
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
     expect(screen.getByText('Executive Education')).not.toBeNull();
     expect(container.getElementsByClassName('suggestion-item')[0].href)
       .toMatch(`http://localhost/test-enterprise/${COURSE_TYPE_EXECUTIVE_EDUCATION}/course/harvard+programX`);
+    expect(optimizelySuggestionClickHandler).toHaveBeenCalled();
   });
   test('does not display containers it does not have results for', () => {
     renderWithRouter(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
       handleSubmit={handleSubmit}
+      optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
     />);
     expect(() => { screen.getByText('Programs'); }).toThrow();
   });

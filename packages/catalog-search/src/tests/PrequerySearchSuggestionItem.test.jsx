@@ -9,7 +9,7 @@ describe('<PrequerySearchSuggestionItem />', () => {
   test('sends optimizely event on prequery click', () => {
     const mockData = {
       url: '/test-enterprise/course/edX+courseX',
-      optimizelyPrequerySuggestionClickHandler: jest.fn(),
+      optimizelySuggestionClickHandler: jest.fn(),
       hit: {
         partners: [{
           name: 'edX',
@@ -25,12 +25,12 @@ describe('<PrequerySearchSuggestionItem />', () => {
 
     renderWithRouter(<PrequerySearchSuggestionItem
       url={mockData.url}
-      optimizelyPrequerySuggestionClickHandler={mockData.optimizelyPrequerySuggestionClickHandler}
+      optimizelySuggestionClickHandler={mockData.optimizelySuggestionClickHandler}
       hit={mockData.hit}
     />);
     expect(screen.getByRole('link', { name: 'basket weaving edX | course' }))
       .toHaveAttribute('href', '/test-enterprise/course/edX+courseX');
     userEvent.click(screen.getByText('basket weaving'));
-    expect(mockData.optimizelyPrequerySuggestionClickHandler.mock.calls.length).toBe(1);
+    expect(mockData.optimizelySuggestionClickHandler.mock.calls.length).toBe(1);
   });
 });
