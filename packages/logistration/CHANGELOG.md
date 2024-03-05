@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@4.0.0...@edx/frontend-enterprise-logistration@7.0.0) (2024-03-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* consuming applications must now provide paragon from the @openedx scope
+
+* refactor: replace @edx/paragon and @edx/frontend-build
+
+* fix: fixed package issues
+
+* fix: updated dependency
+
+* fix: updated package lock file to fix ci issue
+
+* refactor: updated frontend-platform to v7 along with peer Dependencies
+
+### Features
+
+* bumped frontend-platform to v6 ([#364](https://github.com/openedx/frontend-enterprise/issues/364)) ([1541b86](https://github.com/openedx/frontend-enterprise/commit/1541b864dc6c351ea595d9f0c5669299af3b64cc))
+
+
+### Bug Fixes
+
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+
+
+### Miscellaneous Chores
+
+* move paragon to peer dependency using [@openedx](https://github.com/openedx) scope and upgrade frontend-platform ([#367](https://github.com/openedx/frontend-enterprise/issues/367)) ([d121d67](https://github.com/openedx/frontend-enterprise/commit/d121d67efa6e84de86a7f3eb84acb674f2d4a380))
+
+
+
 ## [6.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@4.0.0...@edx/frontend-enterprise-logistration@6.0.0) (2024-02-20)
 
 
