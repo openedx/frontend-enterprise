@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const SearchSuggestionItem = ({
-  url, suggestionItemHandler, hit, disableSuggestionRedirect,
+  url, suggestionItemHandler, hit, disableSuggestionRedirect, optimizelySuggestionClickHandler,
 }) => {
   const authoringOrganization = hit.key && hit.key.split('+')[0];
   // If the disable redirect bool is provided, prevent the redirect from happening and instead call the provided submit
@@ -13,6 +13,7 @@ const SearchSuggestionItem = ({
       e.preventDefault();
       suggestionItemHandler(hit);
     }
+    optimizelySuggestionClickHandler(hit.key || hit.course_keys);
   };
   return (
     <Link to={url} key={hit.title} className="suggestion-item" onClick={handleLinkDisable}>
@@ -43,6 +44,7 @@ SearchSuggestionItem.propTypes = {
   suggestionItemHandler: PropTypes.func,
   hit: PropTypes.shape({
     key: PropTypes.string,
+    course_keys: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
     program_type: PropTypes.string,
     _highlightResult: PropTypes.shape({ title: PropTypes.shape({ value: PropTypes.string }) }),
@@ -55,10 +57,12 @@ SearchSuggestionItem.propTypes = {
     learning_type: PropTypes.string,
   }).isRequired,
   disableSuggestionRedirect: PropTypes.bool.isRequired,
+  optimizelySuggestionClickHandler: PropTypes.func,
 };
 
 SearchSuggestionItem.defaultProps = {
   suggestionItemHandler: undefined,
+  optimizelySuggestionClickHandler: undefined,
 };
 
 export default SearchSuggestionItem;
