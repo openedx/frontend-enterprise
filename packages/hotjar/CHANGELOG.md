@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@2.0.0...@edx/frontend-enterprise-hotjar@6.0.0) (2024-03-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* consuming applications must now provide paragon from the @openedx scope
+
+* refactor: replace @edx/paragon and @edx/frontend-build
+
+* fix: fixed package issues
+
+* fix: updated dependency
+
+* fix: updated package lock file to fix ci issue
+
+* refactor: updated frontend-platform to v7 along with peer Dependencies
+
+### Miscellaneous Chores
+
+* move paragon to peer dependency using [@openedx](https://github.com/openedx) scope and upgrade frontend-platform ([#367](https://github.com/openedx/frontend-enterprise/issues/367)) ([d121d67](https://github.com/openedx/frontend-enterprise/commit/d121d67efa6e84de86a7f3eb84acb674f2d4a380))
+
+
+
 ## [5.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@2.0.0...@edx/frontend-enterprise-hotjar@5.0.0) (2024-03-05)
 
 
