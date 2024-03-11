@@ -24,7 +24,7 @@
     "lerna:version": "npx lerna@6 version --conventional-commits --create-release github --no-push"
   },
   "devDependencies": {
-      "@commitlint/config-conventional": "17.6.0",
+      "@commitlint/config-conventional": "17.8.1",
       "conventional-changelog-conventionalcommits": "^5.0.0",
       "husky": "6.0.0",
       "lerna": "6.6.1"
