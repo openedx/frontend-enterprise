@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@10.0.0) (2024-03-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* consuming applications must now provide paragon from the @openedx scope
+
+* refactor: replace @edx/paragon and @edx/frontend-build
+
+* fix: fixed package issues
+
+* fix: updated dependency
+
+* fix: updated package lock file to fix ci issue
+
+* refactor: updated frontend-platform to v7 along with peer Dependencies
+
+### Features
+
+* add prequery search suggestions ([#371](https://github.com/openedx/frontend-enterprise/issues/371)) ([3651ee0](https://github.com/openedx/frontend-enterprise/commit/3651ee0f0e77e461956175d98aaa4addb38a1762))
+* add subtitle facet to SearchHeader ([#382](https://github.com/openedx/frontend-enterprise/issues/382)) ([047844f](https://github.com/openedx/frontend-enterprise/commit/047844fc32df30a09fddcefdc436a951bc821849))
+* added prequery event handler to search ([#373](https://github.com/openedx/frontend-enterprise/issues/373)) ([5705327](https://github.com/openedx/frontend-enterprise/commit/5705327b5aac701cf5288a697071ed48980b9859))
+* allow Paragon v21 in catalog-search ([#356](https://github.com/openedx/frontend-enterprise/issues/356)) ([75005f5](https://github.com/openedx/frontend-enterprise/commit/75005f5e27304e3147fc141ef5dc1bc6ac64a834))
+* bumped frontend-platform to v6 ([#364](https://github.com/openedx/frontend-enterprise/issues/364)) ([1541b86](https://github.com/openedx/frontend-enterprise/commit/1541b864dc6c351ea595d9f0c5669299af3b64cc))
+* enable prequery suggestions only for variant group ([#377](https://github.com/openedx/frontend-enterprise/issues/377)) ([fbee42a](https://github.com/openedx/frontend-enterprise/commit/fbee42a8b2a7a3111a83bf34b1917fc96454ba01))
+* fix prequery suggestion highlight container ([#380](https://github.com/openedx/frontend-enterprise/issues/380)) ([d54a0c7](https://github.com/openedx/frontend-enterprise/commit/d54a0c765def9850e37296e3fd8d7709664d08b4))
+* removing free/all filter ([#359](https://github.com/openedx/frontend-enterprise/issues/359)) ([f187fbd](https://github.com/openedx/frontend-enterprise/commit/f187fbd89eb8c6b490b8a0fafb7f192ed9dcf24c))
+
+
+### Bug Fixes
+
+* bump frontend-platform ([#363](https://github.com/openedx/frontend-enterprise/issues/363)) ([1413ef2](https://github.com/openedx/frontend-enterprise/commit/1413ef21a1736d572bddb770352f33d505242bef))
+* remove pathways from customers search ([#366](https://github.com/openedx/frontend-enterprise/issues/366)) ([d4625c9](https://github.com/openedx/frontend-enterprise/commit/d4625c92443d088c2319f81ea516c2613b8d3943))
+
+
+### Miscellaneous Chores
+
+* move paragon to peer dependency using [@openedx](https://github.com/openedx) scope and upgrade frontend-platform ([#367](https://github.com/openedx/frontend-enterprise/issues/367)) ([d121d67](https://github.com/openedx/frontend-enterprise/commit/d121d67efa6e84de86a7f3eb84acb674f2d4a380))
+
+
+
 ## [9.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@5.0.0...@edx/frontend-enterprise-catalog-search@9.0.0) (2024-03-11)
 
 
