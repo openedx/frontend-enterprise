@@ -5,6 +5,7 @@ export const FEATURE_LANGUAGE_FACET = 'LANGUAGE_FACET';
 export const FEATURE_PROGRAM_TITLES_FACET = 'PROGRAM_TITLES_FACET';
 export const LEARNING_TYPE_FACET = 'LEARNING_TYPE_FACET';
 export const FEATURE_ENABLE_PATHWAYS = 'ENABLE_PATHWAYS';
+export const FEATURE_SUBTITLE_FACET = 'SUBTITLE_FACET';
 
 // eslint-disable-next-line import/prefer-default-export
 export const features = {
@@ -18,5 +19,8 @@ export const features = {
   ),
   ENABlE_PATHWAYS: (
     process.env.FEATURE_ENABLE_PATHWAYS || hasFeatureFlagEnabled(FEATURE_ENABLE_PATHWAYS)
+  ),
+  SUBTITLE_FACET: (
+    process.env.FEATURE_SUBTITLE_FACET || hasFeatureFlagEnabled(FEATURE_SUBTITLE_FACET)
   ),
 };
