@@ -12,15 +12,11 @@
     }
   },
   "ignoreChanges": [
-    "CHANGELOG.md",
-    "node_modules/**",
-    "package.json",
     "*.md",
-    "perf/**",
+    "*.rst",
     ".github/**",
-    "packages/**/.eslintrc.js",
-    "packages/**/.gitignore",
-    "packages/**/*.rst"
+    ".eslintrc.js",
+    ".gitignore"
   ],
   "changelogPreset": {
     "name": "conventionalcommits",
