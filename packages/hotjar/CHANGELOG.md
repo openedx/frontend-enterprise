@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@7.0.0...@edx/frontend-enterprise-hotjar@7.1.0) (2024-04-29)
+
+
+### Features
+
+* updated frontend-build & frontend-platform major versions ([#387](https://github.com/openedx/frontend-enterprise/issues/387)) ([e9da78e](https://github.com/openedx/frontend-enterprise/commit/e9da78e264c6e5b590eff351b5c1477c0716f928))
+
+
+
 ## [7.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@2.0.0...@edx/frontend-enterprise-hotjar@7.0.0) (2024-03-29)
 
 
