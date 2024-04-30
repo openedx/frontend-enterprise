@@ -13,7 +13,7 @@ frontend-enterprise
 Each of these packages is published to NPM and have their own README files. The packages can be found in the ``packages/*`` folder.
 
 Getting started with development
-*****
+********************************
 
 To get started with ``frontend-enterprise`` local development, clone the repo and run the following commands:
 
@@ -43,7 +43,7 @@ To clean your local monorepo of any installed ``node_modules`` and symlinked pac
   npm run clean
 
 Installing new NPM modules in the workspace packages
------
+----------------------------------------------------
 
 To install a new NPM module in all workspace packages, use the `--workspaces` argument, e.g.:
 
@@ -59,7 +59,7 @@ To install a new NPM module in one or more specific workspace package(s), use th
 
 
 Installing local monorepo package(s) into an Open edX micro-frontend
------
+--------------------------------------------------------------------
 
 For any micro-frontend using `@openedx/frontend-build <https://github.com/openedx/frontend-build>` that consumes any packages from this monorepo may want to use a local copy of one or more packages during development rather than relying solely on the published NPM packages. To do this, you may modify your module.config.js file (create module.config.js if it does not already exist) to create Webpack aliases to your local checkout of the monorepo packages:
 
@@ -82,14 +82,14 @@ Note that the ``dist`` configuration option in the above example is set to ``src
 Conversely, if this option is ``dist``, it expects a ``dist`` directory to exist in the package. To ensure these ``dist`` directories exist, you may run ``npm run dev`` in another terminal window/tab to watch for changes in any package source files and re-transpile them into ``dist`` such that the consuming micro-frontend will always be using the build with the latest source file changes.
 
 Considerations for updating existing packages or adding a new package
-*****
+*********************************************************************
 
 When making updates in this monorepo, be sure to consider whether your changes should belong in an existing NPM package or a brand new NPM package. The purpose of the monorepo is to keep clear separation of concerns between packages so that each package owns a smaller domain of functionality or components to avoid package bloat.
 
 However, we do run the risk of packages becoming a "catch-all" package (e.g., ``@edx/frontend-enterprise-utils``) for anything that doesn't fit in existing packages. Contributors to the monorepo should consider whether any new functionality is related to the domains established in existing packages.
 
 Managing package dependencies
-*****
+*****************************
 
 Each package in the monorepo contains its own package.json file and unique set of dependencies depending on their needs. However, issues may arise when importing conflicting versions of external packages (e.g., React) in multiple monorepo packages. This is because some dependencies only properly work when there is a single copy of the dependency to ensure the same version is used throughout an application. For example, ``react`` and ``react-dom`` are common offenders here as there can only be one copy of React used at any given time. If a library/app attempts to use more than one copy or differening versions of React, there will be unintended behavior and warnings.
 
@@ -98,7 +98,7 @@ To get around this issue of common/shared dependencies, we can rely on how NPM f
 NPM workspaces helps with this by hoisting installed packages to the root `node_modules` folder where they will be accessible to any package in the monorepo to ensure there is only one copy used throughout. These dependencies are still noted in each individual package.json file as both a peer dependency and a dev dependency.
 
 Writing a commit
------
+----------------
 
 There is a precommit plugin (commitlint) which requires commit messages formatted using conventional commits. See https://github.com/conventional-changelog/commitlint#what-is-commitlint for more details. In general you need something like the following:
 
@@ -109,7 +109,7 @@ where type must be one of ``[build, ci, docs, feat, fix, perf, refactor, revert,
 Note: only `fix`, `feat`, and `perf` will trigger a new NPM release, as this is the default behavior for semantic-release.
 
 Versioning and releases
-*****
+***********************
 
 This library has its version automatically updated by Lerna (i.e., ``lerna version``) using semantic-versioning under-the-hood when the release is published to npm. Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
 
@@ -126,7 +126,7 @@ Once your contribution's PR is approved/merged:
 #. Finally, we also recommend creating a GitHub release for the recently pushed Git tags to document the releases.
 
 Preview changed packages in CI with Github Actions
------
+--------------------------------------------------
 
 As a convenience, a dry run of the ``lerna version`` command is run for each push to determine which packages in the monorepo will be published should a PR get merged.
 
