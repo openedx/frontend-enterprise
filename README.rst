@@ -111,7 +111,7 @@ Note: only `fix`, `feat`, and `perf` will trigger a new NPM release, as this is 
 Versioning and releases
 ***********************
 
-This library has its version automatically updated by Lerna using semantic versioning under-the-hood when the release is published to NPM. Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
+This library has its version automatically updated by Lerna using semantic versioning under-the-hood when publishing to NPM. Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
 
 When your contribution's PR is approved/merged, you'll need to instruct Lerna to create a new release commit (i.e., ``chore(release): publish new versions``), as outlined in the steps below. In this release commit, Lerna increments the versions in the appropriate package.json files for any changed packages, creates Git tags, and updates the CHANGELOG file(s).
 
