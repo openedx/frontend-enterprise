@@ -3,21 +3,30 @@ import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
+import { IntlProvider } from '@edx/frontend-platform/i18n';
 import ClearCurrentRefinements, { CLEAR_ALL_TEXT } from '../ClearCurrentRefinements';
 
 import * as actions from '../data/actions';
 import SearchData from '../SearchContext';
 
+const ClearCurrentRefinementsWrapper = () => (
+  <IntlProvider locale="en">
+    <SearchData>
+      <ClearCurrentRefinements variant="primary" />
+    </SearchData>
+  </IntlProvider>
+);
+
 describe('<ClearCurrentRefinements />', () => {
   test('renders the clear all button', () => {
-    renderWithRouter(<SearchData><ClearCurrentRefinements variant="primary" /></SearchData>);
+    renderWithRouter(<ClearCurrentRefinementsWrapper />);
 
     expect(screen.queryByText(CLEAR_ALL_TEXT)).toBeInTheDocument();
   });
 
   test('dispatches the clear refinements action on click', async () => {
     const spy = jest.spyOn(actions, 'clearRefinementsAction');
-    renderWithRouter(<SearchData><ClearCurrentRefinements variant="primary" /></SearchData>);
+    renderWithRouter(<ClearCurrentRefinementsWrapper />);
 
     // click a specific refinement to remove it
     fireEvent.click(screen.queryByText(CLEAR_ALL_TEXT));

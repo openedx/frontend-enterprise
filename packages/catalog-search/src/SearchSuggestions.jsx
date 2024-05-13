@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import {
   MAX_NUM_SUGGESTIONS, LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM,
   LEARNING_TYPE_EXECUTIVE_EDUCATION, COURSE_TYPE_EXECUTIVE_EDUCATION,
@@ -49,7 +50,11 @@ const SearchSuggestions = ({
       {preQuerySuggestions.length > 0 && (
         <div>
           <div className="mb-2 ml-2 mt-1 font-weight-bold suggestions-section">
-            Top-rated courses
+            <FormattedMessage
+              id="search.suggestions.topRatedCourses"
+              defaultMessage="Top-rated courses"
+              description="Top-rated courses suggestion section title"
+            />
           </div>
           {
             preQuerySuggestions.slice(0, MAX_NUM_PRE_QUERY_SUGGESTIONS)
@@ -76,7 +81,11 @@ const SearchSuggestions = ({
       {courses.length > 0 && (
         <div>
           <div className="mb-2 ml-2 mt-1 font-weight-bold suggestions-section">
-            Courses
+            <FormattedMessage
+              id="search.suggestions.courses"
+              defaultMessage="Courses"
+              description="Courses suggestion section title"
+            />
           </div>
           {
             courses.slice(0, MAX_NUM_SUGGESTIONS)
@@ -96,7 +105,11 @@ const SearchSuggestions = ({
       {programs.length > 0 && (
         <div>
           <div className="mb-2 mt-5 ml-2 font-weight-bold suggestions-section">
-            Programs
+            <FormattedMessage
+              id="search.suggestions.programs"
+              defaultMessage="Programs"
+              description="Programs suggestion section title"
+            />
           </div>
           {
             programs.slice(0, MAX_NUM_SUGGESTIONS)
@@ -116,7 +129,11 @@ const SearchSuggestions = ({
       {execEdCourses.length > 0 && (
         <div>
           <div className="mb-2 mt-5 ml-2 font-weight-bold suggestions-section">
-            Executive Education
+            <FormattedMessage
+              id="search.suggestions.execEd"
+              defaultMessage="Executive Education"
+              description="Executive Education suggestion section title"
+            />
           </div>
           {
             execEdCourses.slice(0, MAX_NUM_SUGGESTIONS)
@@ -135,7 +152,11 @@ const SearchSuggestions = ({
       )}
       {!preQuerySuggestions.length && (
         <button type="button" className="btn btn-light w-100 view-all-btn" onClick={handleSubmit}>
-          View all results
+          <FormattedMessage
+            id="search.suggestions.viewAllResults"
+            defaultMessage="View all results"
+            description="View all results button text"
+          />
         </button>
       )}
     </div>

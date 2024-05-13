@@ -2,6 +2,7 @@ import React from 'react';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import { IntlProvider } from '@edx/frontend-platform/i18n';
 
 import { MobileFilterMenuBase } from '../MobileFilterMenu';
 import SearchData from '../SearchContext';
@@ -10,11 +11,13 @@ import { SUBJECTS, AVAILABLILITY, FACET_ATTRIBUTES } from '../data/tests/constan
 
 // eslint-disable-next-line react/prop-types
 const MobileFilterMenuWrapper = ({ items }) => (
-  <SearchData>
-    <MobileFilterMenuBase items={items}>
-      <span data-testid="did-i-render" />
-    </MobileFilterMenuBase>
-  </SearchData>
+  <IntlProvider locale="en">
+    <SearchData>
+      <MobileFilterMenuBase items={items}>
+        <span data-testid="did-i-render" />
+      </MobileFilterMenuBase>
+    </SearchData>
+  </IntlProvider>
 );
 
 describe('<MobileFilterMenu />', () => {

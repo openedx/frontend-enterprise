@@ -1,14 +1,13 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { act, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { FREE_ALL_TITLE } from '../SearchFilters';
 import FacetListBase from '../FacetListBase';
 import { FACET_ATTRIBUTES, SUBJECTS } from '../data/tests/constants';
-import { NO_OPTIONS_FOUND, SHOW_ALL_NAME } from '../data/constants';
-import SearchData from '../SearchContext';
+import { SHOW_ALL_NAME } from '../data/constants';
+import { renderWithSearchContext } from './utils';
 
 const mockedNavigator = jest.fn();
 
@@ -68,7 +67,7 @@ describe('<FacetListBase />', () => {
   });
 
   test('renders with no options', async () => {
-    renderWithRouter(<SearchData><FacetListBase {...propsForNoItems} /></SearchData>);
+    renderWithSearchContext(<FacetListBase {...propsForNoItems} />);
 
     // assert facet title exists
     expect(screen.queryByText(FREE_ALL_TITLE)).toBeInTheDocument();
@@ -77,14 +76,14 @@ describe('<FacetListBase />', () => {
     await act(async () => {
       fireEvent.click(screen.queryByText(FREE_ALL_TITLE));
     });
-    expect(screen.queryByText(NO_OPTIONS_FOUND)).toBeInTheDocument();
+    expect(screen.queryByText('No options found.')).toBeInTheDocument();
   });
 
   test('renders with options', async () => {
-    renderWithRouter(<SearchData><FacetListBase {...propsWithItems} /></SearchData>);
+    renderWithSearchContext(<FacetListBase {...propsWithItems} />);
 
     // assert the "no options" message does not show
-    expect(screen.queryByText(NO_OPTIONS_FOUND)).not.toBeInTheDocument();
+    expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // assert the refinements appear with appropriate counts
     await act(async () => {
@@ -94,17 +93,17 @@ describe('<FacetListBase />', () => {
     expect(screen.queryByText(NOT_FREE_LABEL)).toBeInTheDocument();
   });
   test('does not render if noDisplay is set to True', () => {
-    renderWithRouter(<SearchData><FacetListBase {...propsWithItems} noDisplay /></SearchData>);
+    renderWithSearchContext(<FacetListBase {...propsWithItems} noDisplay />);
     expect(screen.queryByText(propsWithItems.title)).not.toBeInTheDocument();
   });
   test('renders with options', async () => {
-    renderWithRouter(<SearchData><FacetListBase {...propsWithItems} /></SearchData>);
+    renderWithSearchContext(<FacetListBase {...propsWithItems} />);
 
     // assert the "no options" message does not show
     await act(async () => {
       fireEvent.click(screen.queryByText(FREE_ALL_TITLE));
     });
-    expect(screen.queryByText(NO_OPTIONS_FOUND)).not.toBeInTheDocument();
+    expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // assert the refinements appear with appropriate styles
     expect(screen.queryByText(FREE_LABEL)).toBeInTheDocument();
@@ -115,12 +114,10 @@ describe('<FacetListBase />', () => {
   });
 
   test('supports clicking on a refinement', async () => {
-    renderWithRouter(
-      <SearchData>
-        <FacetListBase
-          {...propsWithItems}
-        />
-      </SearchData>,
+    renderWithSearchContext(
+      <FacetListBase
+        {...propsWithItems}
+      />,
     );
 
     // assert the refinements appear
@@ -143,12 +140,10 @@ describe('<FacetListBase />', () => {
     };
     useLocation.mockReturnValue(mockedLocation);
 
-    renderWithRouter(
-      <SearchData>
-        <FacetListBase
-          {...propsWithItems}
-        />
-      </SearchData>,
+    renderWithSearchContext(
+      <FacetListBase
+        {...propsWithItems}
+      />,
     );
 
     // assert the refinements appear
@@ -165,14 +160,12 @@ describe('<FacetListBase />', () => {
   });
 
   test('renders a typeahead dropdown', async () => {
-    const { container } = renderWithRouter((
-      <SearchData>
-        <FacetListBase {...searchableDropdownProps} />
-      </SearchData>
+    const { container } = renderWithSearchContext((
+      <FacetListBase {...searchableDropdownProps} />
     ));
 
     // assert the "no options" message does not show
-    expect(screen.queryByText(NO_OPTIONS_FOUND)).not.toBeInTheDocument();
+    expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // open the typeahead dropdown menu
     await act(async () => {
@@ -186,7 +179,7 @@ describe('<FacetListBase />', () => {
   });
 
   test('typeahead dropdown calls searchForItems with correct arguments', async () => {
-    renderWithRouter(<SearchData><FacetListBase {...searchableDropdownProps} /></SearchData>);
+    renderWithSearchContext(<FacetListBase {...searchableDropdownProps} />);
 
     // open the typeahead dropdown menu
     await act(async () => {

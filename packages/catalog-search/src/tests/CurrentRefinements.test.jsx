@@ -1,5 +1,4 @@
 import React from 'react';
-import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -10,7 +9,7 @@ import {
   AVAILABLILITY,
   FACET_ATTRIBUTES,
 } from '../data/tests/constants';
-import SearchData from '../SearchContext';
+import { renderWithSearchContext } from './utils';
 
 const mockedNavigator = jest.fn();
 
@@ -42,7 +41,7 @@ describe('<CurrentRefinements />', () => {
   ];
 
   test('renders refinements and supports viewing all active refinements', () => {
-    renderWithRouter(<SearchData><CurrentRefinementsBase items={items} /></SearchData>);
+    renderWithSearchContext(<CurrentRefinementsBase items={items} />);
 
     // assert first 3 active refinements are visible
     expect(screen.queryByText(SUBJECTS.COMPUTER_SCIENCE)).toBeInTheDocument();
@@ -55,7 +54,7 @@ describe('<CurrentRefinements />', () => {
   });
 
   test('supports viewing all active refinements at once', () => {
-    renderWithRouter(<SearchData><CurrentRefinementsBase items={items} /></SearchData>);
+    renderWithSearchContext(<CurrentRefinementsBase items={items} />);
 
     // click the "+1" button to show all refinements
     fireEvent.click(screen.queryByText('+1', { exact: false }));
@@ -71,10 +70,8 @@ describe('<CurrentRefinements />', () => {
   });
 
   test('supports removing an active refinement from the url by clicking on it', async () => {
-    renderWithRouter(
-      <SearchData>
-        <CurrentRefinementsBase items={items} />
-      </SearchData>,
+    renderWithSearchContext(
+      <CurrentRefinementsBase items={items} />,
     );
 
     // click a specific refinement to remove it
