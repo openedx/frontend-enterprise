@@ -111,11 +111,11 @@ Note: only `fix`, `feat`, and `perf` will trigger a new NPM release, as this is 
 Versioning and releases
 ***********************
 
-This library has its version automatically updated by Lerna (i.e., ``lerna version``) using semantic-versioning under-the-hood when the release is published to npm. Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
+This library has its version automatically updated by Lerna using semantic versioning under-the-hood when publishing to NPM. Lerna is configured to use independent versioning with conventional commits, as opposed to keeping all package versions in sync.
 
-When a PR is merged, you must manually run ``lerna version`` to create a release commit (e.g., ``chore(release): publish new versions``). In this commit, Lerna increments the versions in the appropriate package.json files for any changed packages, creates Git tags, and updates the CHANGELOG file(s).
+When your contribution's PR is approved/merged, you'll need to instruct Lerna to create a new release commit (i.e., ``chore(release): publish new versions``), as outlined in the steps below. In this release commit, Lerna increments the versions in the appropriate package.json files for any changed packages, creates Git tags, and updates the CHANGELOG file(s).
 
-Once your contribution's PR is approved/merged:
+To create the Lerna release commit once your contribution's PR is approved/merged, please perform the following steps:
 
 #. Pull latest changes on your local checkout of ``master``, ensuring your merged commit is included. It's also recommended to ensure you have the latest Git tags (i.e., ``git fetch --tags``).
 #. Checkout a new branch and execute ``npm run lerna:version``. Verify the recognized changed packages and their associated versions are correct. Once confirmed, Lerna will create a release commit and Git tags.
