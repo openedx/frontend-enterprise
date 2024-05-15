@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.1.0...@edx/frontend-enterprise-catalog-search@10.2.0) (2024-05-15)
+
+
+### Features
+
+* control visibility of search box via flag prop ([#394](https://github.com/openedx/frontend-enterprise/issues/394)) ([30d8f49](https://github.com/openedx/frontend-enterprise/commit/30d8f49151d7fb8ca9d98dc0d487bfea2f63c482))
+
+
+
 ## [10.1.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.0.0...@edx/frontend-enterprise-catalog-search@10.1.0) (2024-04-29)
 
 
