@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.2.0...@edx/frontend-enterprise-catalog-search@10.3.0) (2024-05-21)
+
+
+### Features
+
+* Added scripts and marked strings for i18n. ([#396](https://github.com/openedx/frontend-enterprise/issues/396)) ([a0fb639](https://github.com/openedx/frontend-enterprise/commit/a0fb639c34f7907ac8d0ef41ffff730065b27662))
+
+
+
 ## [10.2.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.1.0...@edx/frontend-enterprise-catalog-search@10.2.0) (2024-05-15)
 
 
