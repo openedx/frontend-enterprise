@@ -1,9 +1,9 @@
-import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchSuggestions from '../SearchSuggestions';
 import { COURSE_TYPE_EXECUTIVE_EDUCATION } from '../data/constants';
+import { renderWithIntlProvider } from './utils';
 
 const fakeSuggestionsData = {
   nbHits: 2,
@@ -66,7 +66,7 @@ const optimizelySuggestionClickHandler = jest.fn();
 
 describe('<SeachSuggestions />', () => {
   test('renders all data', () => {
-    renderWithRouter(<SearchSuggestions
+    renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
@@ -83,7 +83,7 @@ describe('<SeachSuggestions />', () => {
     expect(screen.getByText('View all results')).not.toBeNull();
   });
   test('renders only prequery suggestions if isPreQueryEnabled is true', () => {
-    renderWithRouter(<SearchSuggestions
+    renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={[]}
       preQueryHits={fakeSuggestionsData.hits}
@@ -95,7 +95,7 @@ describe('<SeachSuggestions />', () => {
     expect(screen.queryByText('Programs')).toBeNull();
   });
   test('renders no errors when no authoring orgs found for programs data', () => {
-    renderWithRouter(<SearchSuggestions
+    renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsDataEmptyAuthoringOrgs.hits}
       handleSubmit={handleSubmit}
@@ -109,7 +109,7 @@ describe('<SeachSuggestions />', () => {
   });
 
   test('calls click handler on view all results', () => {
-    renderWithRouter(<SearchSuggestions
+    renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
@@ -121,7 +121,7 @@ describe('<SeachSuggestions />', () => {
   });
 
   test('redirects to correct page on course click', () => {
-    const { container } = renderWithRouter(<SearchSuggestions
+    const { container } = renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
@@ -134,7 +134,7 @@ describe('<SeachSuggestions />', () => {
   });
 
   test('redirects to correct page on program click', () => {
-    const { container } = renderWithRouter(<SearchSuggestions
+    const { container } = renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
@@ -145,7 +145,7 @@ describe('<SeachSuggestions />', () => {
     expect(optimizelySuggestionClickHandler).toHaveBeenCalled();
   });
   test('properly handles exec ed content', () => {
-    const { container } = renderWithRouter(<SearchSuggestions
+    const { container } = renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
       handleSubmit={handleSubmit}
@@ -158,7 +158,7 @@ describe('<SeachSuggestions />', () => {
     expect(optimizelySuggestionClickHandler).toHaveBeenCalled();
   });
   test('does not display containers it does not have results for', () => {
-    renderWithRouter(<SearchSuggestions
+    renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsDataOnlyExecEd.hits}
       handleSubmit={handleSubmit}

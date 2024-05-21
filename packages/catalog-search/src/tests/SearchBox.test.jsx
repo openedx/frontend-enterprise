@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -155,10 +155,14 @@ describe('<SearchBox />', () => {
     );
 
     // fill in search input and submit the search
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await act(async () => {
+      userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    });
     await waitFor(() => expect(screen.queryByTestId('suggestions')).not.toBeNull());
     await waitFor(() => expect(screen.getByText('test-title')).toBeInTheDocument());
-    userEvent.click(screen.getByText('test-title'));
+    await act(async () => {
+      userEvent.click(screen.getByText('test-title'));
+    });
     expect(optimizelySuggestionClickHandler).toHaveBeenCalled();
     expect(suggestionSubmitOverride).toHaveBeenCalledWith(
       { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },

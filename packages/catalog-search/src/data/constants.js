@@ -97,8 +97,6 @@ export const NUM_RESULTS_PER_PAGE = 24;
 export const MAX_NUM_SUGGESTIONS = 3;
 export const MAX_NUM_PRE_QUERY_SUGGESTIONS = 5;
 
-export const NO_OPTIONS_FOUND = 'No options found.';
-
 export const STYLE_VARIANTS = {
   default: 'default',
   inverse: 'inverse',

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@openedx/paragon';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { SearchContext } from './SearchContext';
 import { clearRefinementsAction } from './data/actions';
 
@@ -28,7 +29,11 @@ const ClearCurrentRefinements = ({ className, variant, ...props }) => {
         onClick={handleClearAllRefinementsClick}
         {...props}
       >
-        {CLEAR_ALL_TEXT}
+        <FormattedMessage
+          id="search.facetFilters.clearAll.button"
+          defaultMessage="clear all"
+          description="Button text to clear all filters"
+        />
       </Button>
       ) }
     </span>

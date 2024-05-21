@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { Badge, Button } from '@openedx/paragon';
 import { CloseSmall } from '@openedx/paragon/icons';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
+import { FormattedMessage, defineMessages, useIntl } from '@edx/frontend-platform/i18n';
 
 import ClearCurrentRefinements from './ClearCurrentRefinements';
 
@@ -14,12 +15,32 @@ import {
   NUM_CURRENT_REFINEMENTS_TO_DISPLAY,
   STYLE_VARIANTS,
   LEARNING_TYPE_PATHWAY,
+  LEARNING_TYPE_COURSE,
+  LEARNING_TYPE_PROGRAM,
 } from './data/constants';
 import {
   useActiveRefinementsAsFlatArray,
 } from './data/hooks';
 import { SearchContext } from './SearchContext';
 import { removeFromRefinementArray, deleteRefinementAction } from './data/actions';
+
+const messages = defineMessages({
+  [LEARNING_TYPE_COURSE]: {
+    id: 'search.facetFilters.filterTitle.course',
+    defaultMessage: 'Course',
+    description: 'Title for the course filter.',
+  },
+  [LEARNING_TYPE_PROGRAM]: {
+    id: 'search.facetFilters.filterTitle.program',
+    defaultMessage: 'Program',
+    description: 'Title for the program filter.',
+  },
+  [LEARNING_TYPE_PATHWAY]: {
+    id: 'search.facetFilters.filterTitle.pathway',
+    defaultMessage: 'Pathway',
+    description: 'Title for the pathway filter.',
+  },
+});
 
 export const CurrentRefinementsBase = ({ items, variant }) => {
   if (!items || !items.length) {
@@ -29,6 +50,7 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
   const [showAllRefinements, setShowAllRefinements] = useState(false);
   const { refinements, dispatch } = useContext(SearchContext);
   const activeRefinementsAsFlatArray = useActiveRefinementsAsFlatArray(items);
+  const intl = useIntl();
 
   /**
    * Determines the correct number of active refinements to show at any
@@ -83,10 +105,19 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
             variant="light"
             onClick={() => handleRefinementBadgeClick(item)}
           >
-            {/* Temporary fix : can be removed when learnerpathway content type is changed to pathways */}
-            <span className="mr-2">{item.label === LEARNING_TYPE_PATHWAY ? 'Pathway' : item.label}</span>
+            <span className="mr-2">
+              {messages[item.label] ? intl.formatMessage(messages[item.label]) : item.label}
+            </span>
+
             <CloseSmall />
-            <span className="sr-only">Remove the filter {item.label}</span>
+            <span className="sr-only">
+              <FormattedMessage
+                id="search.facetFilters.removeFilter.button"
+                defaultMessage="Remove the filter {filterTitle}"
+                description="Button text to remove a filter from the search results"
+                values={{ filterTitle: item.label }}
+              />
+            </span>
           </Badge>
         </li>
       ))}
@@ -98,7 +129,14 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
             onClick={() => setShowAllRefinements(true)}
           >
             +{activeRefinementsAsFlatArray.length - NUM_CURRENT_REFINEMENTS_TO_DISPLAY}
-            <span className="sr-only">Show all {activeRefinementsAsFlatArray.length} filters</span>
+            <span className="sr-only">
+              <FormattedMessage
+                id="search.facetFilters.showAll.button"
+                defaultMessage="Show all {activeRefinementsCount} filters"
+                description="Button text to show all filters"
+                values={{ activeRefinementsCount: activeRefinementsAsFlatArray.length }}
+              />
+            </span>
           </Badge>
         </li>
       )}
@@ -113,7 +151,11 @@ export const CurrentRefinementsBase = ({ items, variant }) => {
             variant="link"
             size="inline"
           >
-            show less
+            <FormattedMessage
+              id="search.facetFilters.showLess.button"
+              defaultMessage="show less"
+              description="Button text to show less filters"
+            />
           </Button>
         </li>
       )}

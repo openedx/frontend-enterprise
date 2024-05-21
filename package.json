@@ -21,7 +21,8 @@
     "lint:fix": "npm run lint:fix --workspaces",
     "bootstrap": "npm install conventional-changelog-conventionalcommits",
     "changed": "lerna changed",
-    "lerna:version": "npx lerna@6 version --conventional-commits --create-release github --no-push"
+    "lerna:version": "npx lerna@6 version --conventional-commits --create-release github --no-push",
+    "i18n_extract": "fedx-scripts formatjs extract packages/**/**/*.{js,jsx,ts,tsx}"
   },
   "devDependencies": {
       "@commitlint/config-conventional": "17.6.0",

@@ -21,3 +21,7 @@ export {
   setRefinementAction,
   clearRefinementsAction,
 } from './data/actions';
+
+export {
+  getSearchFacetFilters,
+} from './utils';

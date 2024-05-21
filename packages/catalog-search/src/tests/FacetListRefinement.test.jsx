@@ -1,13 +1,11 @@
 import React from 'react';
-import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { act, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { FacetListRefinementBase } from '../FacetListRefinement';
-import SearchData from '../SearchContext';
 
 import { FACET_ATTRIBUTES, SUBJECTS } from '../data/tests/constants';
-import { NO_OPTIONS_FOUND } from '../data/constants';
+import { renderWithSearchContext } from './utils';
 
 const mockedNavigator = jest.fn();
 
@@ -67,7 +65,7 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('renders with no options', async () => {
-    renderWithRouter(<SearchData><FacetListRefinementBase {...propsForNoRefinements} /></SearchData>);
+    renderWithSearchContext(<FacetListRefinementBase {...propsForNoRefinements} />);
 
     // assert facet title exists
     expect(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS)).toBeInTheDocument();
@@ -76,14 +74,14 @@ describe('<FacetListRefinementBase />', () => {
     await act(async () => {
       fireEvent.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
     });
-    expect(screen.queryByText(NO_OPTIONS_FOUND)).toBeInTheDocument();
+    expect(screen.queryByText('No options found.')).toBeInTheDocument();
   });
 
   test('renders with options', async () => {
-    renderWithRouter(<SearchData><FacetListRefinementBase {...propsForActiveRefinements} /></SearchData>);
+    renderWithSearchContext(<FacetListRefinementBase {...propsForActiveRefinements} />);
 
     // assert the "no options" message does not show
-    expect(screen.queryByText(NO_OPTIONS_FOUND)).not.toBeInTheDocument();
+    expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // assert the refinements appear with appropriate counts
     await act(async () => {
@@ -97,13 +95,13 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('renders with options', async () => {
-    renderWithRouter(<SearchData><FacetListRefinementBase {...propsForActiveRefinements} /></SearchData>);
+    renderWithSearchContext(<FacetListRefinementBase {...propsForActiveRefinements} />);
 
     // assert the "no options" message does not show
     await act(async () => {
       fireEvent.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
     });
-    expect(screen.queryByText(NO_OPTIONS_FOUND)).not.toBeInTheDocument();
+    expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // assert the refinements appear with appropriate counts
     expect(screen.queryByText(SUBJECTS.COMPUTER_SCIENCE)).toBeInTheDocument();
@@ -116,7 +114,7 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('supports clicking on a refinement', async () => {
-    renderWithRouter(<SearchData><FacetListRefinementBase {...propsForRefinements} /></SearchData>);
+    renderWithSearchContext(<FacetListRefinementBase {...propsForRefinements} />);
 
     // assert the refinements appear
     await act(async () => {
@@ -134,13 +132,11 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('clears pagination when clicking on a refinement', async () => {
-    renderWithRouter(
-      <SearchData>
-        <FacetListRefinementBase
-          {...propsForActiveRefinements}
-          refinements={{ ...propsForActiveRefinements.refinements, page: 3 }}
-        />
-      </SearchData>,
+    renderWithSearchContext(
+      <FacetListRefinementBase
+        {...propsForActiveRefinements}
+        refinements={{ ...propsForActiveRefinements.refinements, page: 3 }}
+      />,
     );
 
     // assert the refinements appear

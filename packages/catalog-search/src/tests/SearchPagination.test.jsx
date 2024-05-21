@@ -1,11 +1,10 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { SearchPaginationBase } from '../SearchPagination';
-import SearchData from '../SearchContext';
+import { renderWithSearchContext } from './utils';
 
 const mockedNavigator = jest.fn();
 
@@ -22,7 +21,7 @@ describe('<SearchPagination />', () => {
   });
 
   test('updates url when navigating right', () => {
-    renderWithRouter(<SearchData><SearchPaginationBase nbPages={3} /></SearchData>);
+    renderWithSearchContext(<SearchPaginationBase nbPages={3} />);
 
     // assert no initial page query parameter
     expect(window.location.search).toEqual('');
@@ -38,10 +37,8 @@ describe('<SearchPagination />', () => {
     };
     useLocation.mockReturnValue(mockedLocation);
 
-    renderWithRouter(
-      <SearchData>
-        <SearchPaginationBase nbPages={3} currentRefinement={2} />
-      </SearchData>,
+    renderWithSearchContext(
+      <SearchPaginationBase nbPages={3} currentRefinement={2} />,
     );
     // assert SearchData does not modify the page
     expect(mockedNavigator.mock.calls[0][0]).toEqual({ pathname: '/', search: 'page=2' });
@@ -57,10 +54,8 @@ describe('<SearchPagination />', () => {
     };
     useLocation.mockReturnValue(mockedLocation);
 
-    renderWithRouter(
-      <SearchData>
-        <SearchPaginationBase nbPages={4} currentRefinement={3} />
-      </SearchData>,
+    renderWithSearchContext(
+      <SearchPaginationBase nbPages={4} currentRefinement={3} />,
     );
 
     // assert SearchData adds showAll

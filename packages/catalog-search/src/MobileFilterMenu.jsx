@@ -5,6 +5,7 @@ import { connectCurrentRefinements } from 'react-instantsearch-dom';
 import { Button } from '@openedx/paragon';
 import { ArrowDropDown, Close } from '@openedx/paragon/icons';
 
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import ClearCurrentRefinements from './ClearCurrentRefinements';
 
 import { useActiveRefinementsAsFlatArray } from './data/hooks';
@@ -22,10 +23,19 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
           onClick={() => setIsOpen(true)}
         >
           <div className="mr-2">
-            Filters
+            <FormattedMessage
+              id="catalog.search.filters"
+              defaultMessage="Filters"
+              description="Label for the filters button."
+            />
             {activeRefinementsAsFlatArray && activeRefinementsAsFlatArray.length > 0 && (
               <span className="ml-1">
-                ({activeRefinementsAsFlatArray.length} selected)
+                <FormattedMessage
+                  id="catalog.search.filters.selected"
+                  defaultMessage="({count} selected)"
+                  description="Label for the number of selected filters."
+                  values={{ count: activeRefinementsAsFlatArray.length }}
+                />
               </span>
             )}
           </div>
@@ -45,10 +55,19 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
           <div className="modal-content">
             <div className="modal-header d-flex align-items-center">
               <h5 className="modal-title text-center w-100">
-                All Filters
+                <FormattedMessage
+                  id="catalog.search.filters.all"
+                  defaultMessage="All Filters"
+                  description="Label for the all filters button."
+                />
                 {activeRefinementsAsFlatArray && activeRefinementsAsFlatArray.length > 0 && (
                   <span className="ml-1">
-                    ({activeRefinementsAsFlatArray.length} selected)
+                    <FormattedMessage
+                      id="catalog.search.filters.all.selected"
+                      defaultMessage="({count} selected)"
+                      description="Label for the number of selected filters."
+                      values={{ count: activeRefinementsAsFlatArray.length }}
+                    />
                   </span>
                 )}
               </h5>
@@ -60,7 +79,13 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
                 <Close
                   id="icon-close-mobile-filter-menu"
                 />
-                <span className="sr-only">close filter menu</span>
+                <span className="sr-only">
+                  <FormattedMessage
+                    id="catalog.search.filters.close"
+                    defaultMessage="close filter menu"
+                    description="Label for the close filter menu button."
+                  />
+                </span>
               </Button>
             </div>
             <div className="modal-body p-0">
@@ -75,7 +100,11 @@ export const MobileFilterMenuBase = ({ children, className, items }) => {
                   className="btn-brand-primary btn-block py-2 m-0"
                   onClick={() => setIsOpen(false)}
                 >
-                  Done
+                  <FormattedMessage
+                    id="catalog.search.filters.done"
+                    defaultMessage="Done"
+                    description="Label for the done button."
+                  />
                 </Button>
               </div>
             </div>
