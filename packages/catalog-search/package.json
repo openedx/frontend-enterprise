@@ -38,7 +38,7 @@
   "sideEffects": false,
   "dependencies": {
     "@edx/frontend-enterprise-utils": "^9.1.0",
-    "classnames": "2.2.5",
+    "classnames": "2.5.1",
     "lodash.debounce": "4.0.8",
     "prop-types": "15.7.2"
   },
