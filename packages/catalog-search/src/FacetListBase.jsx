@@ -2,7 +2,8 @@
 import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { NO_OPTIONS_FOUND, STYLE_VARIANTS } from './data/constants';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { STYLE_VARIANTS } from './data/constants';
 import FacetDropdown from './FacetDropdown';
 import TypeaheadFacetDropdown from './TypeaheadFacetDropdown';
 import FacetItem from './FacetItem';
@@ -62,7 +63,15 @@ const FacetListBase = ({
   const renderItems = useCallback(
     () => {
       if (!items?.length) {
-        return <span className="p-2 d-block">{NO_OPTIONS_FOUND}</span>;
+        return (
+          <span className="p-2 d-block">
+            <FormattedMessage
+              id="search.facetFilters.noOptionsFound"
+              defaultMessage="No options found."
+              description="Message displayed when no options are found for a facet filter."
+            />
+          </span>
+        );
       }
 
       return items.map((item) => {

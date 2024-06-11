@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { createConfig } = require('@edx/frontend-build');
+const { createConfig } = require('@openedx/frontend-build');
 const extendESLintConfig = require('../../common/extendESLintConfig');
 
 const config = createConfig('eslint');

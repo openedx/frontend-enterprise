@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Dropdown, Input } from '@edx/paragon';
+import { Dropdown, Input } from '@openedx/paragon';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { SearchContext } from './SearchContext';
 import {
   setRefinementAction,
@@ -11,6 +12,7 @@ import { LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY } fr
 
 const LearningTypeRadioFacet = ({ enablePathways }) => {
   const { refinements, dispatch } = useContext(SearchContext);
+
   // only bold the dropdown title if the learning type is Course or Program
   const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
   const typeProgramSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_PROGRAM);
@@ -33,7 +35,11 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
           variant="inverse-primary"
           className={classNames({ 'font-weight-bold': boldTitle })}
         >
-          Learning Type
+          <FormattedMessage
+            id="search.facetFilters.learningType.title"
+            defaultMessage="Learning Type"
+            description="Title for the learning type facet filter"
+          />
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
@@ -45,7 +51,11 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
               data-testid="learning-type-any"
             />
             <span className={classNames('facet-item-label', {})}>
-              Any
+              <FormattedMessage
+                id="search.facetFilters.learningType.any"
+                defaultMessage="Any"
+                description="Title for the learning type facet filter to return all types of learning content"
+              />
             </span>
           </Dropdown.Item>
           <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
@@ -57,7 +67,11 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
               data-testid="learning-type-courses"
             />
             <span className={classNames('facet-item-label', { 'is-refined': typeCourseSelected })}>
-              Courses
+              <FormattedMessage
+                id="search.facetFilters.learningType.courses"
+                defaultMessage="Courses"
+                description="Title for the learning type facet filter to return courses only"
+              />
             </span>
           </Dropdown.Item>
           <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
@@ -69,7 +83,11 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
               data-testid="learning-type-programs"
             />
             <span className={classNames('facet-item-label', { 'is-refined': typeProgramSelected })}>
-              Programs
+              <FormattedMessage
+                id="search.facetFilters.learningType.programs"
+                defaultMessage="Programs"
+                description="Title for the learning type facet filter to return programs only"
+              />
             </span>
           </Dropdown.Item>
           {
@@ -85,7 +103,11 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
                   data-testid="learning-type-pathways"
                 />
                 <span className={classNames('facet-item-label', { 'is-refined': typePathwaySelected })}>
-                  Pathways
+                  <FormattedMessage
+                    id="search.facetFilters.learningType.pathways"
+                    defaultMessage="Pathways"
+                    description="Title for the learning type facet filter to return pathways only"
+                  />
                 </span>
               </Dropdown.Item>
             )

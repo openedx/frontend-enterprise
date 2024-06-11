@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from '@edx/paragon';
+import { Container, Row, Col } from '@openedx/paragon';
 import classNames from 'classnames';
 
 import SearchBox from './SearchBox';
@@ -21,8 +21,11 @@ const SearchHeader = ({
   index,
   filters,
   suggestionSubmitOverride,
-  enterpriseConfig: { slug, enablePathways, enterpriseFeatures },
+  enterpriseConfig: { slug, enablePathways },
   disableSuggestionRedirect,
+  optimizelySuggestionClickHandler,
+  isPreQueryEnabled,
+  hideSearchBox,
 }) => {
   const { refinements } = useContext(SearchContext);
   let searchQueryFromRefinements;
@@ -46,19 +49,22 @@ const SearchHeader = ({
             xs={12}
             md={8}
           >
-            <SearchBox
-              className="mb-4"
-              defaultRefinement={searchQueryFromRefinements}
-              variant={variant}
-              headerTitle={headerTitle}
-              hideTitle={hideTitle}
-              index={index}
-              filters={filters}
-              enterpriseSlug={slug}
-              suggestionSubmitOverride={suggestionSubmitOverride}
-              disableSuggestionRedirect={disableSuggestionRedirect}
-              isPreQueryEnabled={enterpriseFeatures.featurePrequerySearchSuggestions}
-            />
+            {!hideSearchBox && (
+              <SearchBox
+                className="mb-4"
+                defaultRefinement={searchQueryFromRefinements}
+                variant={variant}
+                headerTitle={headerTitle}
+                hideTitle={hideTitle}
+                index={index}
+                filters={filters}
+                enterpriseSlug={slug}
+                suggestionSubmitOverride={suggestionSubmitOverride}
+                disableSuggestionRedirect={disableSuggestionRedirect}
+                isPreQueryEnabled={isPreQueryEnabled}
+                optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
+              />
+            )}
           </Col>
           <Col
             data-testid={filtersColTestId}
@@ -83,6 +89,9 @@ SearchHeader.defaultProps = {
   suggestionSubmitOverride: undefined,
   disableSuggestionRedirect: false,
   index: undefined,
+  optimizelySuggestionClickHandler: undefined,
+  isPreQueryEnabled: false,
+  hideSearchBox: false,
 };
 
 SearchHeader.propTypes = {
@@ -103,6 +112,9 @@ SearchHeader.propTypes = {
   ),
   suggestionSubmitOverride: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
+  optimizelySuggestionClickHandler: PropTypes.func,
+  isPreQueryEnabled: PropTypes.bool,
+  hideSearchBox: PropTypes.bool,
 };
 
 export default SearchHeader;

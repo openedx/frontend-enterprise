@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
-import { Input } from '@edx/paragon';
+import { Input } from '@openedx/paragon';
 
 import FacetDropdown from './FacetDropdown';
 

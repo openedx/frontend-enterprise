@@ -5,16 +5,17 @@ import React, {
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useIsFirstRender } from '@edx/frontend-enterprise-utils';
+import { useIntl } from '@edx/frontend-platform/i18n';
 
 import {
   BOOLEAN_FILTERS,
-  SEARCH_FACET_FILTERS,
   ADDITIONAL_FACET_FILTERS,
   URL_FILTERS,
 } from './data/constants';
 import { refinementsReducer } from './data/reducer';
 import { setMultipleRefinementsAction } from './data/actions';
 import { searchParamsToObject, stringifyRefinements } from './data/utils';
+import { getSearchFacetFilters } from './utils';
 
 export const SearchContext = createContext();
 
@@ -42,6 +43,8 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
     refinementsReducer,
     {},
   );
+  const intl = useIntl();
+  const searchFilters = searchFacetFilters || getSearchFacetFilters(intl);
 
   const { pathname, search } = useLocation();
   const navigate = useNavigate();
@@ -57,7 +60,7 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
    */
   useEffect(() => {
     const initialQueryParams = searchParamsToObject(new URLSearchParams(search));
-    const activeFacetAttributes = searchFacetFilters.map(filter => filter.attribute);
+    const activeFacetAttributes = searchFilters.map(filter => filter.attribute);
     const refinementsToSet = getRefinementsToSet(initialQueryParams, activeFacetAttributes);
     dispatch(setMultipleRefinementsAction(refinementsToSet));
   }, []);
@@ -78,10 +81,10 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
     () => ({
       refinements,
       dispatch,
-      searchFacetFilters,
+      searchFacetFilters: searchFilters,
       trackingName,
     }),
-    [JSON.stringify(refinements), dispatch, searchFacetFilters, trackingName],
+    [JSON.stringify(refinements), dispatch, searchFilters, trackingName],
   );
 
   return (
@@ -90,7 +93,7 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
 };
 
 SearchData.defaultProps = {
-  searchFacetFilters: SEARCH_FACET_FILTERS,
+  searchFacetFilters: null,
   trackingName: null,
 };
 

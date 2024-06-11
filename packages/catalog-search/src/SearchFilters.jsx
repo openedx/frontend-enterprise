@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { breakpoints, MediaQuery } from '@edx/paragon';
+import { breakpoints, MediaQuery } from '@openedx/paragon';
 
 import FacetListRefinement from './FacetListRefinement';
 import CurrentRefinements from './CurrentRefinements';

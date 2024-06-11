@@ -7,9 +7,10 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { SearchField } from '@edx/paragon';
+import { SearchField } from '@openedx/paragon';
 import debounce from 'lodash.debounce';
 import { connectSearchBox } from 'react-instantsearch-dom';
+import { useIntl, defineMessages } from '@edx/frontend-platform/i18n';
 
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 
@@ -26,7 +27,15 @@ import {
 } from './data/constants';
 import SearchSuggestions from './SearchSuggestions';
 
-export const searchText = 'Search courses';
+const messages = defineMessages({
+  searchCoursesText: {
+    id: 'header.search.input.box.placeholder',
+    description: 'Placeholder text for the search input box',
+    defaultMessage: 'Search courses',
+  },
+});
+
+export const searchText = messages.searchCoursesText.defaultMessage;
 // this prefix will be combined with one of the SearchBox props to create a full tracking event name
 // only if event name prop is provided by user. In the absence of the tracking name prop,
 // no tracking event will be sent.
@@ -45,6 +54,7 @@ export const SearchBoxBase = ({
   suggestionSubmitOverride,
   disableSuggestionRedirect,
   isPreQueryEnabled,
+  optimizelySuggestionClickHandler,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
@@ -52,6 +62,7 @@ export const SearchBoxBase = ({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [preQueryHits, setPreQueryHits] = useState([]);
+  const intl = useIntl();
 
   /**
    * Handles when a search is submitted by adding the user's search
@@ -154,7 +165,7 @@ export const SearchBoxBase = ({
       {!hideTitle && (
         /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
         <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
-          {headerTitle || searchText}
+          {headerTitle || intl.formatMessage(messages.searchCoursesText)}
         </label>
       )}
       <SearchField.Advanced
@@ -189,6 +200,7 @@ export const SearchBoxBase = ({
           handleSubmit={() => handleSubmit(searchQuery)}
           handleSuggestionClickSubmit={hit => handleSuggestionSubmit(hit)}
           disableSuggestionRedirect={disableSuggestionRedirect}
+          optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
         />
       )}
     </div>
@@ -207,6 +219,7 @@ SearchBoxBase.propTypes = {
   suggestionSubmitOverride: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
   isPreQueryEnabled: PropTypes.bool,
+  optimizelySuggestionClickHandler: PropTypes.func,
 };
 
 SearchBoxBase.defaultProps = {
@@ -221,6 +234,7 @@ SearchBoxBase.defaultProps = {
   suggestionSubmitOverride: undefined,
   disableSuggestionRedirect: false,
   isPreQueryEnabled: false,
+  optimizelySuggestionClickHandler: undefined,
 };
 
 export default connectSearchBox(SearchBoxBase);

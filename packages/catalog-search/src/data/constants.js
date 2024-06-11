@@ -73,6 +73,14 @@ if (features.LEARNING_TYPE_FACET) {
   });
 }
 
+if (features.SUBTITLE_FACET) {
+  SEARCH_FACET_FILTERS.push({
+    attribute: 'transcript_languages',
+    title: 'Subtitle',
+    isSortedAlphabetical: true,
+  });
+}
+
 export const BOOLEAN_FILTERS = [SHOW_ALL_NAME];
 export const QUERY_PARAM_FOR_SEARCH_QUERY = 'q';
 export const QUERY_PARAM_FOR_PAGE = 'page';
@@ -88,8 +96,6 @@ export const NUM_RESULTS_PER_PAGE = 24;
 
 export const MAX_NUM_SUGGESTIONS = 3;
 export const MAX_NUM_PRE_QUERY_SUGGESTIONS = 5;
-
-export const NO_OPTIONS_FOUND = 'No options found.';
 
 export const STYLE_VARIANTS = {
   default: 'default',

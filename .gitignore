@@ -7,3 +7,7 @@ lerna-debug.log
 coverage/
 dist/
 packages/*/package-lock.json
+
+# Transifex
+i18n/transifex_input.json
+temp
