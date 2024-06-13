@@ -44,4 +44,7 @@ jobs:
         git switch -c "actual-branch-not-detached-head"
         npx lerna@6 version --allow-branch actual-branch-not-detached-head --no-git-tag-version --no-changelog --no-push --yes
     - name: Coverage Report
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: true
