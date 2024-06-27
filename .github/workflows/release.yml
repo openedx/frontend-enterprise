@@ -37,7 +37,10 @@ jobs:
       - name: Test
         run: npm run test
       - name: Coverage Report
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
       - name: Update automation/lerna/version branch
         run: |
           git switch -C automation/lerna/version
