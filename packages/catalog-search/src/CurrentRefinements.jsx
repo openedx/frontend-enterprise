@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Badge, Button } from '@openedx/paragon';
 import { CloseSmall } from '@openedx/paragon/icons';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
-import { FormattedMessage, defineMessages, useIntl } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
 
 import ClearCurrentRefinements from './ClearCurrentRefinements';
 
@@ -14,33 +14,13 @@ import {
   QUERY_PARAMS_TO_IGNORE,
   NUM_CURRENT_REFINEMENTS_TO_DISPLAY,
   STYLE_VARIANTS,
-  LEARNING_TYPE_PATHWAY,
-  LEARNING_TYPE_COURSE,
-  LEARNING_TYPE_PROGRAM,
 } from './data/constants';
 import {
   useActiveRefinementsAsFlatArray,
 } from './data/hooks';
 import { SearchContext } from './SearchContext';
 import { removeFromRefinementArray, deleteRefinementAction } from './data/actions';
-
-const messages = defineMessages({
-  [LEARNING_TYPE_COURSE]: {
-    id: 'search.facetFilters.filterTitle.course',
-    defaultMessage: 'Course',
-    description: 'Title for the course filter.',
-  },
-  [LEARNING_TYPE_PROGRAM]: {
-    id: 'search.facetFilters.filterTitle.program',
-    defaultMessage: 'Program',
-    description: 'Title for the program filter.',
-  },
-  [LEARNING_TYPE_PATHWAY]: {
-    id: 'search.facetFilters.filterTitle.pathway',
-    defaultMessage: 'Pathway',
-    description: 'Title for the pathway filter.',
-  },
-});
+import messages from './messages';
 
 export const CurrentRefinementsBase = ({ items, variant }) => {
   if (!items || !items.length) {

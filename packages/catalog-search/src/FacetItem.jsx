@@ -3,22 +3,27 @@ import PropTypes from 'prop-types';
 import { Badge, Input, Dropdown } from '@openedx/paragon';
 import classNames from 'classnames';
 
+import { useIntl } from '@edx/frontend-platform/i18n';
 import { STYLE_VARIANTS } from './data/constants';
+import messages from './messages';
 
 const FacetItem = ({
   handleInputOnChange, item, isChecked, variant, showBadge,
-}) => (
-  <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
-    <Input
-      type="checkbox"
-      checked={isChecked}
-      onChange={() => handleInputOnChange(item)}
-      className="facet-item position-relative mr-2 mb-2"
-    />
-    <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
-      {item.label}
-    </span>
-    {showBadge && (
+}) => {
+  const intl = useIntl();
+
+  return (
+    <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
+      <Input
+        type="checkbox"
+        checked={isChecked}
+        onChange={() => handleInputOnChange(item)}
+        className="facet-item position-relative mr-2 mb-2"
+      />
+      <span className={classNames('facet-item-label', { 'is-refined': isChecked })}>
+        {messages[item.label] ? intl.formatMessage(messages[item.label]) : item.label}
+      </span>
+      {showBadge && (
       <Badge
         pill
         className={classNames(
@@ -28,9 +33,10 @@ const FacetItem = ({
       >
         {item.count}
       </Badge>
-    )}
-  </Dropdown.Item>
-);
+      )}
+    </Dropdown.Item>
+  );
+};
 
 FacetItem.defaultProps = {
   variant: STYLE_VARIANTS.inverse,
