@@ -105,6 +105,7 @@ export const STYLE_VARIANTS = {
 export const LEARNING_TYPE_COURSE = 'course';
 export const LEARNING_TYPE_PROGRAM = 'program';
 export const LEARNING_TYPE_PATHWAY = 'learnerpathway';
+export const LEARNING_TYPE_VIDEO = 'video';
 export const LEARNING_TYPE_EXECUTIVE_EDUCATION = 'Executive Education';
 
 export const COURSE_TYPE_EXECUTIVE_EDUCATION = 'executive-education-2u';

@@ -3,6 +3,7 @@ import {
   LEARNING_TYPE_PATHWAY,
   LEARNING_TYPE_COURSE,
   LEARNING_TYPE_PROGRAM,
+  LEARNING_TYPE_VIDEO,
 } from './data/constants';
 
 const AVAILABILITY_AVAILABLE_NOW = 'Available Now';
@@ -51,6 +52,11 @@ const messages = defineMessages({
     id: 'search.facetFilters.filterTitle.pathway',
     defaultMessage: 'Pathway',
     description: 'Title for the pathway filter.',
+  },
+  [LEARNING_TYPE_VIDEO]: {
+    id: 'search.facetFilters.filterTitle.video',
+    defaultMessage: 'Video',
+    description: 'Title for the video filter.',
   },
   [AVAILABILITY_AVAILABLE_NOW]: {
     id: 'search.facetFilters.availability.availableNow',
