@@ -8,7 +8,9 @@ import {
   setRefinementAction,
 } from './data/actions';
 import { features } from './config';
-import { LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY } from './data/constants';
+import {
+  LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY, LEARNING_TYPE_VIDEO,
+} from './data/constants';
 
 const LearningTypeRadioFacet = ({ enablePathways }) => {
   const { refinements, dispatch } = useContext(SearchContext);
@@ -17,7 +19,8 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
   const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
   const typeProgramSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_PROGRAM);
   const typePathwaySelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_PATHWAY);
-  const boldTitle = typeCourseSelected || typeProgramSelected || typePathwaySelected;
+  const typeVideoSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_VIDEO);
+  const boldTitle = typeCourseSelected || typeProgramSelected || typePathwaySelected || typeVideoSelected;
 
   const handleInputOnChange = (type) => {
     if (type === '') {
@@ -112,6 +115,25 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
               </Dropdown.Item>
             )
           }
+          {features.ENABLE_VIDEO_CATALOG
+            && (
+              <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
+                <Input
+                  type="radio"
+                  checked={typeVideoSelected}
+                  className="facet-item position-relative mr-2 mb-2"
+                  onChange={() => handleInputOnChange(LEARNING_TYPE_VIDEO)}
+                  data-testid="learning-type-videos"
+                />
+                <span className={classNames('facet-item-label', { 'is-refined': typeVideoSelected })}>
+                  <FormattedMessage
+                    id="search.facetFilters.learningType.videos"
+                    defaultMessage="Videos"
+                    description="Title for the learning type facet filter to return videos only"
+                  />
+                </span>
+              </Dropdown.Item>
+            )}
         </Dropdown.Menu>
       </Dropdown>
     </div>
