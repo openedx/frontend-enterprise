@@ -38,7 +38,9 @@ export const getRefinementsToSet = (queryParams, activeFacetAttributes) => {
   return refinementsToSet;
 };
 
-const SearchData = ({ children, searchFacetFilters, trackingName }) => {
+const SearchData = ({
+  children, searchFacetFilters, trackingName, enableVideos,
+}) => {
   const [refinements, dispatch] = useReducer(
     refinementsReducer,
     {},
@@ -83,8 +85,9 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
       dispatch,
       searchFacetFilters: searchFilters,
       trackingName,
+      enableVideos,
     }),
-    [JSON.stringify(refinements), dispatch, searchFilters, trackingName],
+    [JSON.stringify(refinements), dispatch, searchFilters, trackingName, enableVideos],
   );
 
   return (
@@ -95,6 +98,7 @@ const SearchData = ({ children, searchFacetFilters, trackingName }) => {
 SearchData.defaultProps = {
   searchFacetFilters: null,
   trackingName: null,
+  enableVideos: false,
 };
 
 SearchData.propTypes = {
@@ -105,6 +109,7 @@ SearchData.propTypes = {
     isSortedAlphabetical: PropTypes.bool,
   })),
   trackingName: PropTypes.string,
+  enableVideos: PropTypes.bool,
 };
 
 export default SearchData;
