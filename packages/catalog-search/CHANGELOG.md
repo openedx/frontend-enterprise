@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.6.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.5.0...@edx/frontend-enterprise-catalog-search@10.6.0) (2024-08-07)
+
+
+### Features
+
+* show video learning type to learners with active subscription ([#404](https://github.com/openedx/frontend-enterprise/issues/404)) ([0207bb9](https://github.com/openedx/frontend-enterprise/commit/0207bb9ee4a9951377964364b4b4f7f07eb6ab1b))
+
+
+
 ## [10.5.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.4.0...@edx/frontend-enterprise-catalog-search@10.5.0) (2024-07-12)
 
 
