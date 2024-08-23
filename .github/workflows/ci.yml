@@ -7,21 +7,24 @@ jobs:
     if: "!(github.actor == 'github-actions[bot]') "
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20]
+    continue-on-error: ${{ matrix.node == 20 }}
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
         # pulls all commits (needed for lerna / semantic release to correctly version)
         fetch-depth: 0
-    - name: Setup Nodejs Env
-      run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
     # pulls all tags (needed for lerna / semantic release to correctly version)
     - name: Pull All Git Tags
       run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
     - name: Setup Nodejs
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ env.NODE_VER }}
+        node-version: ${{ matrix.node }}
     # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not
     # authenticated, even though this build does _not_ attempt to publish, as an extra check before merge
     # that Lerna is set to publish.
