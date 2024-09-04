@@ -13,7 +13,7 @@ import {
 } from './data/constants';
 
 const LearningTypeRadioFacet = ({ enablePathways }) => {
-  const { refinements, dispatch } = useContext(SearchContext);
+  const { refinements, dispatch, enableVideos } = useContext(SearchContext);
 
   // only bold the dropdown title if the learning type is Course or Program
   const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
@@ -115,25 +115,24 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
               </Dropdown.Item>
             )
           }
-          {features.ENABLE_VIDEO_CATALOG
-            && (
-              <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
-                <Input
-                  type="radio"
-                  checked={typeVideoSelected}
-                  className="facet-item position-relative mr-2 mb-2"
-                  onChange={() => handleInputOnChange(LEARNING_TYPE_VIDEO)}
-                  data-testid="learning-type-videos"
-                />
-                <span className={classNames('facet-item-label', { 'is-refined': typeVideoSelected })}>
-                  <FormattedMessage
-                    id="search.facetFilters.learningType.videos"
-                    defaultMessage="Videos"
-                    description="Title for the learning type facet filter to return videos only"
-                  />
-                </span>
-              </Dropdown.Item>
-            )}
+          {enableVideos && (
+          <Dropdown.Item as="label" className="mb-0 py-3 d-flex align-items-center">
+            <Input
+              type="radio"
+              checked={typeVideoSelected}
+              className="facet-item position-relative mr-2 mb-2"
+              onChange={() => handleInputOnChange(LEARNING_TYPE_VIDEO)}
+              data-testid="learning-type-videos"
+            />
+            <span className={classNames('facet-item-label', { 'is-refined': typeVideoSelected })}>
+              <FormattedMessage
+                id="search.facetFilters.learningType.videos"
+                defaultMessage="Videos"
+                description="Title for the learning type facet filter to return videos only"
+              />
+            </span>
+          </Dropdown.Item>
+          )}
         </Dropdown.Menu>
       </Dropdown>
     </div>
