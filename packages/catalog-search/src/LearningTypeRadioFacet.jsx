@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Dropdown, Input } from '@openedx/paragon';
+import { Dropdown, Input, Badge } from '@openedx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { SearchContext } from './SearchContext';
 import {
@@ -131,6 +131,15 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
                 description="Title for the learning type facet filter to return videos only"
               />
             </span>
+            <Badge className="ml-2" variant="info">
+              <span>
+                <FormattedMessage
+                  id="search.facetFilters.learningType.videos.betaBadge"
+                  defaultMessage="Beta"
+                  description="Beta label that indicates a new learning type, videos, has been added"
+                />
+              </span>
+            </Badge>
           </Dropdown.Item>
           )}
         </Dropdown.Menu>
