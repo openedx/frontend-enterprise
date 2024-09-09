@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.7.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.6.0...@edx/frontend-enterprise-catalog-search@10.7.0) (2024-09-09)
+
+
+### Features
+
+* Add Beta label to videos in the learning type facet ([#409](https://github.com/openedx/frontend-enterprise/issues/409)) ([776e35e](https://github.com/openedx/frontend-enterprise/commit/776e35e5d9fd35cfa521527e8c00f5a9249a4ef2))
+
+
+
 ## [10.6.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.5.0...@edx/frontend-enterprise-catalog-search@10.6.0) (2024-08-07)
 
 
