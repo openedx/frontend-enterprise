@@ -131,7 +131,6 @@ describe('<SearchBox />', () => {
   });
   test('search box renders search suggestion and can override redirect', async () => {
     const suggestionSubmitOverride = jest.fn();
-    const optimizelySuggestionClickHandler = jest.fn();
     SearchBoxBase.handleSuggestionSubmit = jest.fn();
     const hits = [
       { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
@@ -150,7 +149,6 @@ describe('<SearchBox />', () => {
         index={index}
         suggestionSubmitOverride={suggestionSubmitOverride}
         disableSuggestionRedirect
-        optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
       />,
     );
 
@@ -163,7 +161,6 @@ describe('<SearchBox />', () => {
     await act(async () => {
       userEvent.click(screen.getByText('test-title'));
     });
-    expect(optimizelySuggestionClickHandler).toHaveBeenCalled();
     expect(suggestionSubmitOverride).toHaveBeenCalledWith(
       { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
     );
