@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.7.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.7.0...@edx/frontend-enterprise-catalog-search@10.7.1) (2024-09-16)
+
+
+### Bug Fixes
+
+* removing prequery optimizely code ([#413](https://github.com/openedx/frontend-enterprise/issues/413)) ([68d3497](https://github.com/openedx/frontend-enterprise/commit/68d3497511f953a46cf1dfc4fadd639f001b6a3f))
+
+
+
 ## [10.7.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.6.0...@edx/frontend-enterprise-catalog-search@10.7.0) (2024-09-09)
 
 
