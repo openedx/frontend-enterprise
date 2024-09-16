@@ -53,8 +53,6 @@ export const SearchBoxBase = ({
   enterpriseSlug,
   suggestionSubmitOverride,
   disableSuggestionRedirect,
-  isPreQueryEnabled,
-  optimizelySuggestionClickHandler,
 }) => {
   const { dispatch, trackingName } = useContext(SearchContext);
 
@@ -122,8 +120,8 @@ export const SearchBoxBase = ({
         // If there are no results of the suggested search, hide the empty suggestion component
         setShowSuggestions(false);
       }
-    // If isPreQueryEnabled is true display the prequery results when user clicks on search box but has not began typing
-    } else if (query === '' && isPreQueryEnabled) {
+    // Display the prequery results when user clicks on search box but has not began typing
+    } else if (query === '') {
       const { hits } = await index.search(query, {
         filters,
         attributesToHighlight: ['title'],
@@ -200,7 +198,6 @@ export const SearchBoxBase = ({
           handleSubmit={() => handleSubmit(searchQuery)}
           handleSuggestionClickSubmit={hit => handleSuggestionSubmit(hit)}
           disableSuggestionRedirect={disableSuggestionRedirect}
-          optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
         />
       )}
     </div>
@@ -218,8 +215,6 @@ SearchBoxBase.propTypes = {
   enterpriseSlug: PropTypes.string,
   suggestionSubmitOverride: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
-  isPreQueryEnabled: PropTypes.bool,
-  optimizelySuggestionClickHandler: PropTypes.func,
 };
 
 SearchBoxBase.defaultProps = {
@@ -233,8 +228,6 @@ SearchBoxBase.defaultProps = {
   index: undefined,
   suggestionSubmitOverride: undefined,
   disableSuggestionRedirect: false,
-  isPreQueryEnabled: false,
-  optimizelySuggestionClickHandler: undefined,
 };
 
 export default connectSearchBox(SearchBoxBase);

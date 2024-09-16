@@ -21,9 +21,6 @@ jest.mock('../SearchFilters', () => ({
 }));
 const enterpriseConfig = {
   slug: 'test-enterprise',
-  enterpriseFeatures: {
-    featurePrequerySearchSuggestions: true,
-  },
 };
 describe('SearchHeader', () => {
   test('displays a SearchBox', () => {

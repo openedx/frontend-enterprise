@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PrequerySearchSuggestionItem = ({
-  url, hit, optimizelySuggestionClickHandler,
+  url, hit,
 }) => (
   <Link
     to={url}
     key={hit.title}
     className="prequery-item pr-4 d-flex flex-column"
-    onClick={() => optimizelySuggestionClickHandler(hit.key)}
   >
     <div className="d-flex align-items-center justify-content-start">
       <Image className="prequery-image mr-2" src={hit.card_image_url} />
@@ -43,7 +42,6 @@ PrequerySearchSuggestionItem.propTypes = {
     ),
     learning_type: PropTypes.string,
   }).isRequired,
-  optimizelySuggestionClickHandler: PropTypes.func.isRequired,
 };
 
 export default PrequerySearchSuggestionItem;

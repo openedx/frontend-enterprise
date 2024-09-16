@@ -17,7 +17,6 @@ const SearchSuggestions = ({
   handleSubmit,
   handleSuggestionClickSubmit,
   disableSuggestionRedirect,
-  optimizelySuggestionClickHandler,
 }) => {
   const getLinkToCourse = (course) => {
     const { learning_type: learningType } = course;
@@ -71,7 +70,6 @@ const SearchSuggestions = ({
                     key={hit.title}
                     url={getUrl(hit)}
                     hit={hit}
-                    optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                   />
                 );
               })
@@ -96,7 +94,6 @@ const SearchSuggestions = ({
                   hit={hit}
                   disableSuggestionRedirect={disableSuggestionRedirect}
                   suggestionItemHandler={handleSuggestionClickSubmit}
-                  optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                 />
               ))
           }
@@ -120,7 +117,6 @@ const SearchSuggestions = ({
                   hit={hit}
                   disableSuggestionRedirect={disableSuggestionRedirect}
                   suggestionItemHandler={handleSuggestionClickSubmit}
-                  optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                 />
               ))
           }
@@ -144,7 +140,6 @@ const SearchSuggestions = ({
                   hit={hit}
                   disableSuggestionRedirect={disableSuggestionRedirect}
                   suggestionItemHandler={handleSuggestionClickSubmit}
-                  optimizelySuggestionClickHandler={optimizelySuggestionClickHandler}
                 />
               ))
           }
@@ -172,7 +167,6 @@ SearchSuggestions.propTypes = {
   handleSuggestionClickSubmit: PropTypes.func,
   disableSuggestionRedirect: PropTypes.bool,
   preQueryHits: PropTypes.arrayOf(PropTypes.shape()),
-  optimizelySuggestionClickHandler: PropTypes.func,
 };
 
 SearchSuggestions.defaultProps = {
@@ -181,7 +175,6 @@ SearchSuggestions.defaultProps = {
   handleSuggestionClickSubmit: undefined,
   disableSuggestionRedirect: false,
   preQueryHits: undefined,
-  optimizelySuggestionClickHandler: undefined,
 };
 
 export default SearchSuggestions;
