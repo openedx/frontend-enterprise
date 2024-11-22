@@ -3,17 +3,25 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Dropdown, Input, Badge } from '@openedx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { SearchContext } from './SearchContext';
+import { SEARCH_EVENT_NAME_PREFIX } from './SearchBox';
 import {
   setRefinementAction,
 } from './data/actions';
 import { features } from './config';
 import {
-  LEARNING_TYPE_COURSE, LEARNING_TYPE_PROGRAM, LEARNING_TYPE_PATHWAY, LEARNING_TYPE_VIDEO,
+  LEARNING_TYPE_COURSE,
+  LEARNING_TYPE_PROGRAM,
+  LEARNING_TYPE_PATHWAY,
+  LEARNING_TYPE_VIDEO,
+  LEARNING_TYPE_SELECTED_EVENT,
 } from './data/constants';
 
 const LearningTypeRadioFacet = ({ enablePathways }) => {
-  const { refinements, dispatch, enableVideos } = useContext(SearchContext);
+  const {
+    refinements, dispatch, enableVideos, trackingName,
+  } = useContext(SearchContext);
 
   // only bold the dropdown title if the learning type is Course or Program
   const typeCourseSelected = refinements.content_type && refinements.content_type.includes(LEARNING_TYPE_COURSE);
@@ -27,6 +35,12 @@ const LearningTypeRadioFacet = ({ enablePathways }) => {
       dispatch(setRefinementAction('content_type', []));
     } else {
       dispatch(setRefinementAction('content_type', [type]));
+    }
+    if (trackingName) {
+      const learningType = type || 'any';
+      sendTrackEvent(`${SEARCH_EVENT_NAME_PREFIX}.${trackingName}.${LEARNING_TYPE_SELECTED_EVENT}`, {
+        learningType,
+      });
     }
   };
 

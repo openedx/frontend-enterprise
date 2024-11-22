@@ -107,6 +107,7 @@ export const LEARNING_TYPE_PROGRAM = 'program';
 export const LEARNING_TYPE_PATHWAY = 'learnerpathway';
 export const LEARNING_TYPE_VIDEO = 'video';
 export const LEARNING_TYPE_EXECUTIVE_EDUCATION = 'Executive Education';
+export const LEARNING_TYPE_SELECTED_EVENT = 'catalog_search.learning_type_selected';
 
 export const COURSE_TYPE_EXECUTIVE_EDUCATION = 'executive-education-2u';
 
