@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.8.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.7.1...@edx/frontend-enterprise-catalog-search@10.8.0) (2024-11-25)
+
+
+### Features
+
+* add segment event to track the selected value for learning type dropdown ([#415](https://github.com/openedx/frontend-enterprise/issues/415)) ([10e2c35](https://github.com/openedx/frontend-enterprise/commit/10e2c35b17da40191b58d0d41977ac47f2b6157e))
+
+
+
 ## [10.7.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.7.0...@edx/frontend-enterprise-catalog-search@10.7.1) (2024-09-16)
 
 
