@@ -35,7 +35,10 @@ jobs:
       - name: Test
         run: npm run test
       - name: Coverage Report
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
       - name: Publish to NPM from package.json versions
         run: npx lerna@6 publish from-package --yes
         env:
