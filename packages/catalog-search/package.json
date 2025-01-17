@@ -40,7 +40,7 @@
     "@edx/frontend-enterprise-utils": "^9.1.0",
     "classnames": "2.2.5",
     "lodash.debounce": "4.0.8",
-    "prop-types": "15.7.2"
+    "prop-types": "15.8.1"
   },
   "devDependencies": {
     "@edx/browserslist-config": "1.1.0",
