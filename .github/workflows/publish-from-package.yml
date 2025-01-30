@@ -17,7 +17,7 @@ jobs:
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - uses: fregante/setup-git-user@v1
       - name: Setup Nodejs
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16
       # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not authenticated
