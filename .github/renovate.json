@@ -1,37 +1,65 @@
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     "group:allNonMajor"
   ],
   "packageRules": [
     {
-      "matchFileNames": ["packages/catalog-search/**"],
+      "matchFileNames": [
+        "packages/catalog-search/**"
+      ],
       "groupName": "catalog-search Dependencies",
-      "extends": ["group:allNonMajor"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "extends": [
+        "group:allNonMajor"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
-      "matchFileNames": ["packages/hotjar/**"],
+      "matchFileNames": [
+        "packages/hotjar/**"
+      ],
       "groupName": "hotjar Dependencies",
-      "extends": ["group:allNonMajor"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "extends": [
+        "group:allNonMajor"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
-      "matchFileNames": ["packages/logistration/**"],
+      "matchFileNames": [
+        "packages/logistration/**"
+      ],
       "groupName": "logistration Dependencies",
-      "extends": ["group:allNonMajor"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "extends": [
+        "group:allNonMajor"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
-      "matchFileNames": ["packages/utils/**"],
+      "matchFileNames": [
+        "packages/utils/**"
+      ],
       "groupName": "utils Dependencies",
-      "extends": ["group:allNonMajor"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "extends": [
+        "group:allNonMajor"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     }
   ],
-  "rebaseStalePrs": true
+  "rebaseWhen": "behind-base-branch"
 }
