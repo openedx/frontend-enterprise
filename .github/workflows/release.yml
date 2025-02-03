@@ -17,7 +17,7 @@ jobs:
       # pulls all tags (needed for lerna / semantic release to correctly version)
       - name: Pull All Git Tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      - uses: fregante/setup-git-user@v1
+      - uses: fregante/setup-git-user@v2
       - name: Setup Nodejs
         uses: actions/setup-node@v4
         with:
