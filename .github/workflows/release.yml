@@ -37,7 +37,7 @@ jobs:
       - name: Test
         run: npm run test
       - name: Coverage Report
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
       - name: Update automation/lerna/version branch
         run: |
           git switch -C automation/lerna/version
