@@ -21,11 +21,6 @@ import { SearchContext } from './SearchContext';
 import { removeFromRefinementArray, deleteRefinementAction } from './data/actions';
 import messages from './messages';
 
-require('react-dom');
-window.React2 = require('react');
-
-console.log('DEBUG: React 1 === React 2?: ', window.React1 === window.React2);
-
 export const CurrentRefinementsBase = ({ items, variant }) => {
   const [showAllRefinements, setShowAllRefinements] = useState(false);
   const { refinements, dispatch } = useContext(SearchContext);
