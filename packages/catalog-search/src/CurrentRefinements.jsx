@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -22,14 +21,15 @@ import { SearchContext } from './SearchContext';
 import { removeFromRefinementArray, deleteRefinementAction } from './data/actions';
 import messages from './messages';
 
-export const CurrentRefinementsBase = ({ items, variant }) => {
-  if (!items || !items.length) {
-    return null;
-  }
+require('react-dom');
+window.React2 = require('react');
 
+console.log('DEBUG: React 1 === React 2?: ', window.React1 === window.React2);
+
+export const CurrentRefinementsBase = ({ items, variant }) => {
   const [showAllRefinements, setShowAllRefinements] = useState(false);
   const { refinements, dispatch } = useContext(SearchContext);
-  const activeRefinementsAsFlatArray = useActiveRefinementsAsFlatArray(items);
+  const activeRefinementsAsFlatArray = useActiveRefinementsAsFlatArray(items || []);
   const intl = useIntl();
 
   /**
