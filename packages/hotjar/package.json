@@ -1,5 +1,5 @@
 {
-  "name": "@edx/frontend-enterprise-hotjar",
+  "name": "@adamstankiewicz/openedx-frontend-enterprise-hotjar",
   "version": "7.1.0",
   "description": "Utils for Hotjar.",
   "repository": {
@@ -11,7 +11,7 @@
       "patterns": [
         "src"
       ],
-      "extensions": "js,jsx"
+      "extensions": "js,jsx,ts,tsx"
     }
   },
   "scripts": {

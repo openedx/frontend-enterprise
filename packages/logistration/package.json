@@ -1,6 +1,6 @@
 {
-  "name": "@edx/frontend-enterprise-logistration",
-  "version": "9.1.0",
+  "name": "@adamstankiewicz/openedx-frontend-enterprise-logistration",
+  "version": "9.2.0",
   "description": "Enterprise-specific component(s) to ensure enterprise users are redirected to branded enterprise logistration flow.",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
       "patterns": [
         "src"
       ],
-      "extensions": "js,jsx"
+      "extensions": "js,jsx,ts,tsx"
     }
   },
   "scripts": {
