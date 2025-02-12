@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -23,13 +22,9 @@ import { removeFromRefinementArray, deleteRefinementAction } from './data/action
 import messages from './messages';
 
 export const CurrentRefinementsBase = ({ items, variant }) => {
-  if (!items || !items.length) {
-    return null;
-  }
-
   const [showAllRefinements, setShowAllRefinements] = useState(false);
   const { refinements, dispatch } = useContext(SearchContext);
-  const activeRefinementsAsFlatArray = useActiveRefinementsAsFlatArray(items);
+  const activeRefinementsAsFlatArray = useActiveRefinementsAsFlatArray(items || []);
   const intl = useIntl();
 
   /**
