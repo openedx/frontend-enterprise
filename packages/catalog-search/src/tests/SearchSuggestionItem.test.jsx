@@ -61,7 +61,7 @@ describe('<SeachSuggestionItem />', () => {
     expect(screen.getByText('Professional Program')).not.toBeNull();
   });
 
-  test('redirects on click if disableSuggestionRedirect is false', () => {
+  test('redirects on click if disableSuggestionRedirect is false', async () => {
     const mockData = {
       program: {
         url: '/test-enterprise/program/456',
@@ -83,11 +83,11 @@ describe('<SeachSuggestionItem />', () => {
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
     />);
-    userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(window.location.pathname).toBe(mockData.program.url);
   });
 
-  test('fires callback on click if disableSuggestionRedirect is true', () => {
+  test('fires callback on click if disableSuggestionRedirect is true', async () => {
     const mockData = {
       program: {
         url: '/test-enterprise/program/456',
@@ -109,7 +109,7 @@ describe('<SeachSuggestionItem />', () => {
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
     />);
-    userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(mockData.program.suggestionItemHandler).toHaveBeenCalledWith(mockData.program.hit);
   });
 });

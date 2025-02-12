@@ -88,7 +88,9 @@ describe('<SearchBox />', () => {
     });
 
     renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await act(async () => {
+      await userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    });
     await waitFor(() => expect(index.search.mock.calls.length).toBe(1));
     expect(index.search).toHaveBeenCalledWith(
       'test query',
@@ -103,8 +105,10 @@ describe('<SearchBox />', () => {
     renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // fill in search input and submit the search
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.type(screen.getByRole('searchbox'), '{enter}');
+    await act(async () => {
+      await userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+      await userEvent.type(screen.getByRole('searchbox'), '{enter}');
+    });
 
     // assert url is updated with the query
     expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'q=test%20query' });
@@ -112,17 +116,21 @@ describe('<SearchBox />', () => {
     expect(sendTrackEvent).not.toHaveBeenCalled();
 
     // clear the input
-    userEvent.click(screen.getByText('clear search'));
+    await act(async () => {
+      await userEvent.click(screen.getByRole('button', { name: 'clear search' }));
+    });
 
     // assert query no longer exists in url
     await waitFor(() => expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: '' }));
   });
-  test('tracking event when search initiated with trackingName present in context', () => {
+  test('tracking event when search initiated with trackingName present in context', async () => {
     renderWithSearchContextAndTracking(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />, 'aProduct');
 
     // fill in search input and submit the search
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.type(screen.getByRole('searchbox'), '{enter}');
+    await act(async () => {
+      await userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+      await userEvent.type(screen.getByRole('searchbox'), '{enter}');
+    });
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(
       `${SEARCH_EVENT_NAME_PREFIX}.aProduct.${QUERY_SUBMITTED_EVENT}`,
@@ -154,12 +162,12 @@ describe('<SearchBox />', () => {
 
     // fill in search input and submit the search
     await act(async () => {
-      userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+      await userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
     });
     await waitFor(() => expect(screen.queryByTestId('suggestions')).not.toBeNull());
     await waitFor(() => expect(screen.getByText('test-title')).toBeInTheDocument());
     await act(async () => {
-      userEvent.click(screen.getByText('test-title'));
+      await userEvent.click(screen.getByText('test-title'));
     });
     expect(suggestionSubmitOverride).toHaveBeenCalledWith(
       { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },

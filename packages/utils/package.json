@@ -19,8 +19,8 @@
     "clean": "make clean",
     "build": "make build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
-    "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
-    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx .",
+    "lint": "fedx-scripts eslint --ext .js --ext .jsx --ext .ts --ext .tsx .",
+    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx --ext .ts --ext .tsx .",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "test": "fedx-scripts jest --coverage --passWithNoTests",
     "test:watch": "npm run test -- --watch"
@@ -37,7 +37,8 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@testing-library/react": "13.1.0",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.2.0",
     "history": "4.10.1"
   },
   "devDependencies": {
