@@ -1,6 +1,6 @@
 {
   "name": "@adamstankiewicz/openedx-frontend-enterprise-catalog-search",
-  "version": "10.9.0",
+  "version": "10.9.1",
   "description": "Components related to Enterprise catalog search.",
   "repository": {
     "type": "git",
