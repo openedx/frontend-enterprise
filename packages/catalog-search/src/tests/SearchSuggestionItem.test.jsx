@@ -1,6 +1,6 @@
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchSuggestionItem from '../SearchSuggestionItem';
 
@@ -83,7 +83,9 @@ describe('<SeachSuggestionItem />', () => {
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
     />);
-    await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await act(async () => {
+      await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    });
     expect(window.location.pathname).toBe(mockData.program.url);
   });
 
@@ -109,7 +111,9 @@ describe('<SeachSuggestionItem />', () => {
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
     />);
-    await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await act(async () => {
+      await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    });
     expect(mockData.program.suggestionItemHandler).toHaveBeenCalledWith(mockData.program.hit);
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchSuggestions from '../SearchSuggestions';
 import { COURSE_TYPE_EXECUTIVE_EDUCATION } from '../data/constants';
@@ -100,8 +100,9 @@ describe('<SeachSuggestions />', () => {
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
-
-    await userEvent.click(screen.getByText('View all results'));
+    await act(async () => {
+      await userEvent.click(screen.getByText('View all results'));
+    });
     expect(handleSubmit.mock.calls.length).toBe(1);
   });
 
@@ -111,8 +112,9 @@ describe('<SeachSuggestions />', () => {
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
-
-    await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await act(async () => {
+      await userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    });
     expect(window.location.pathname).toBe('/test-enterprise/course/edX+courseX');
   });
 
@@ -122,7 +124,9 @@ describe('<SeachSuggestions />', () => {
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
-    await userEvent.click(container.getElementsByClassName('suggestion-item')[1]);
+    await act(async () => {
+      await userEvent.click(container.getElementsByClassName('suggestion-item')[1]);
+    });
     expect(window.location.pathname).toBe('/test-enterprise/program/456');
   });
   test('properly handles exec ed content', () => {

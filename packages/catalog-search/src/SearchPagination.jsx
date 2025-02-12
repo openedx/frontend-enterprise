@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connectPagination } from 'react-instantsearch-dom';
 import { Pagination } from '@openedx/paragon';
@@ -17,8 +17,16 @@ export const SearchPaginationBase = ({
   const intl = useIntl();
 
   const buttonLabels = {
-    previous: '',
-    next: '',
+    previous: intl.formatMessage({
+      id: 'catalog.search.pagination.previous',
+      defaultMessage: 'Previous',
+      description: 'Label for the previous button in the pagination component',
+    }),
+    next: intl.formatMessage({
+      id: 'catalog.search.pagination.next',
+      defaultMessage: 'Next',
+      description: 'Label for the next button in the pagination component',
+    }),
     page: intl.formatMessage({
       id: 'catalog.search.pagination.page',
       defaultMessage: 'Page',
