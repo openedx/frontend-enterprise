@@ -1,6 +1,6 @@
 {
   "name": "@adamstankiewicz/openedx-frontend-enterprise-catalog-search",
-  "version": "10.9.2",
+  "version": "10.9.3",
   "description": "Components related to Enterprise catalog search.",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@edx/frontend-enterprise-utils": "npm:@adamstankiewicz/openedx-frontend-enterprise-utils@^9.2.0",
+    "@edx/frontend-enterprise-utils": "npm:@adamstankiewicz/openedx-frontend-enterprise-utils@^9.2.1",
     "classnames": "2.5.1",
     "lodash.debounce": "4.0.8",
     "prop-types": "15.8.1"
