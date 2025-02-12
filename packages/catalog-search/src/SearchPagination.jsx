@@ -1,7 +1,7 @@
-import React, { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connectPagination } from 'react-instantsearch-dom';
-import { Pagination, Icon } from '@openedx/paragon';
+import { Pagination } from '@openedx/paragon';
 import { ArrowBackIos, ArrowForwardIos } from '@openedx/paragon/icons';
 
 import { useIntl } from '@edx/frontend-platform/i18n';
@@ -15,24 +15,6 @@ export const SearchPaginationBase = ({
 }) => {
   const { dispatch } = useContext(SearchContext);
   const intl = useIntl();
-
-  const icons = useMemo(
-    () => ({
-      left: (
-        <>
-          <Icon src={ArrowBackIos} />
-          <div className="sr-only">Navigate Left</div>
-        </>
-      ),
-      right: (
-        <>
-          <Icon src={ArrowForwardIos} />
-          <div className="sr-only">Navigate Right</div>
-        </>
-      ),
-    }),
-    [],
-  );
 
   const buttonLabels = {
     previous: '',
@@ -77,8 +59,8 @@ export const SearchPaginationBase = ({
       maxPagesDisplayed={maxPagesDisplayed}
       buttonLabels={buttonLabels}
       icons={{
-        leftIcon: icons.left,
-        rightIcon: icons.right,
+        leftIcon: ArrowBackIos,
+        rightIcon: ArrowForwardIos,
       }}
     />
   );
