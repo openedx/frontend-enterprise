@@ -33,6 +33,8 @@ jobs:
     # build must come before running linting and tests for the `dist` directory to exist.
     - name: Build
       run: npm run build
+    - name: Debug Dependencies
+      run: npm ls @testing-library/react
     - name: Lint
       run: npm run lint
     - name: Test
