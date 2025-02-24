@@ -19,7 +19,7 @@
     "clean": "make clean",
     "build": "make build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
-    "lint": "fedx-scripts eslint --ext .js --ext .jsx --ext .ts -ext .tsx .",
+    "lint": "fedx-scripts eslint --ext .js --ext .jsx --ext .ts --ext .tsx .",
     "lint:fix": "npm run lint -- --fix",
     "test": "fedx-scripts jest --coverage --passWithNoTests",
     "snapshot": "npm run test -- --updateSnapshot",
