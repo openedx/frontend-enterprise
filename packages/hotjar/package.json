@@ -1,6 +1,6 @@
 {
-  "name": "@adamstankiewicz/openedx-frontend-enterprise-hotjar",
-  "version": "7.2.3",
+  "name": "@edx/frontend-enterprise-hotjar",
+  "version": "7.1.0",
   "description": "Utils for Hotjar.",
   "repository": {
     "type": "git",
@@ -20,9 +20,9 @@
     "build": "make build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx --ext .ts --ext .tsx .",
-    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx --ext .ts --ext .tsx .",
-    "snapshot": "fedx-scripts jest --updateSnapshot",
+    "lint:fix": "npm run lint -- --fix",
     "test": "fedx-scripts jest --coverage --passWithNoTests",
+    "snapshot": "npm run test -- --updateSnapshot",
     "test:watch": "npm run test -- --watch"
   },
   "author": "edX",
@@ -37,11 +37,11 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@edx/browserslist-config": "1.5.0",
-    "@openedx/frontend-build": "npm:@adamstankiewicz/openedx-frontend-build@^14",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-router-dom": "6.29.0"
+    "@edx/browserslist-config": "^1.5.0",
+    "@openedx/frontend-build": "^14.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.29.0"
   },
   "peerDependencies": {
     "react": "^16.12.0 || ^17.0.0 || ^18.0.0",

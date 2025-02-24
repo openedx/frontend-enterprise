@@ -1,6 +1,6 @@
 {
-  "name": "@adamstankiewicz/openedx-frontend-enterprise-logistration",
-  "version": "9.2.3",
+  "name": "@edx/frontend-enterprise-logistration",
+  "version": "9.1.0",
   "description": "Enterprise-specific component(s) to ensure enterprise users are redirected to branded enterprise logistration flow.",
   "repository": {
     "type": "git",
@@ -20,9 +20,9 @@
     "build": "make build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx --ext .ts --ext .tsx .",
-    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx --ext .ts --ext .tsx .",
-    "snapshot": "fedx-scripts jest --updateSnapshot",
+    "lint:fix": "npm run lint -- --fix",
     "test": "fedx-scripts jest --coverage --passWithNoTests",
+    "snapshot": "npm run test -- --updateSnapshot",
     "test:watch": "npm run test -- --watch"
   },
   "author": "edX",
@@ -37,20 +37,20 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@edx/frontend-enterprise-utils": "npm:@adamstankiewicz/openedx-frontend-enterprise-utils@^9.2.1",
-    "prop-types": "15.8.1"
+    "@edx/frontend-enterprise-utils": "^9.2.1",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@edx/browserslist-config": "1.5.0",
-    "@edx/frontend-platform": "npm:@adamstankiewicz/openedx-frontend-platform@^8.2.1",
-    "@openedx/frontend-build": "npm:@adamstankiewicz/openedx-frontend-build@^14.3.0",
-    "@testing-library/dom": "10.4.0",
-    "@testing-library/jest-dom": "5.17.0",
-    "@testing-library/react": "16.2.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-router-dom": "6.29.0",
-    "react-test-renderer": "18.3.1"
+    "@edx/browserslist-config": "^1.5.0",
+    "@edx/frontend-platform": "^8.2.1",
+    "@openedx/frontend-build": "^14.3.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^16.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.29.0",
+    "react-test-renderer": "^18.3.1"
   },
   "peerDependencies": {
     "@edx/frontend-platform": "^7.0.0 || ^8.0.0",
