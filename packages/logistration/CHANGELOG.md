@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@9.1.0...@edx/frontend-enterprise-logistration@9.1.1) (2025-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#419](https://github.com/openedx/frontend-enterprise/issues/419)) ([2958977](https://github.com/openedx/frontend-enterprise/commit/2958977042b774b3753034c2ade895c44514f99c))
+
+
+
 ## [9.1.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@9.0.0...@edx/frontend-enterprise-logistration@9.1.0) (2024-04-29)
 
 

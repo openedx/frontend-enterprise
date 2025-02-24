@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.8.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.8.0...@edx/frontend-enterprise-catalog-search@10.8.1) (2025-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#419](https://github.com/openedx/frontend-enterprise/issues/419)) ([2958977](https://github.com/openedx/frontend-enterprise/commit/2958977042b774b3753034c2ade895c44514f99c))
+
+
+
 ## [10.8.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.7.1...@edx/frontend-enterprise-catalog-search@10.8.0) (2024-11-25)
 
 
