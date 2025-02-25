@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@7.1.0...@edx/frontend-enterprise-hotjar@7.2.0) (2025-02-24)
+
+
+### Features
+
+* support React 18 in `@edx/frontend-enterprise-hotjar` ([#435](https://github.com/openedx/frontend-enterprise/issues/435)) ([8b2d8f8](https://github.com/openedx/frontend-enterprise/commit/8b2d8f83d646d71882137235518e34f8740c2113))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#419](https://github.com/openedx/frontend-enterprise/issues/419)) ([2958977](https://github.com/openedx/frontend-enterprise/commit/2958977042b774b3753034c2ade895c44514f99c))
+
+
+
 ## [7.1.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-hotjar@7.0.0...@edx/frontend-enterprise-hotjar@7.1.0) (2024-04-29)
 
 
