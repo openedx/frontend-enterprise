@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@9.1.1...@edx/frontend-enterprise-logistration@9.2.0) (2025-02-25)
+
+
+### Features
+
+* support React 18 in `@edx/frontend-enterprise-logistration` ([#437](https://github.com/openedx/frontend-enterprise/issues/437)) ([b932760](https://github.com/openedx/frontend-enterprise/commit/b93276084f0784330fd5cf50491948eb87843794))
+
+
+
 ## [9.1.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-logistration@9.1.0...@edx/frontend-enterprise-logistration@9.1.1) (2025-02-24)
 
 
