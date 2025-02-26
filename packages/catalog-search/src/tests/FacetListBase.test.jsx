@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -179,7 +179,9 @@ describe('<FacetListBase />', () => {
     // input some search text
     await user.type(screen.getByPlaceholderText('Find a skill...'), 'Blockchain');
 
-    expect(searchableDropdownProps.searchForItems).toHaveBeenCalledTimes(1);
-    expect(searchableDropdownProps.searchForItems).toHaveBeenCalledWith('Blockchain');
+    await waitFor(() => {
+      expect(searchableDropdownProps.searchForItems).toHaveBeenCalledTimes(1);
+      expect(searchableDropdownProps.searchForItems).toHaveBeenCalledWith('Blockchain');
+    });
   });
 });
