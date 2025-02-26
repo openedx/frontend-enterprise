@@ -54,13 +54,12 @@ export const SearchPaginationBase = ({
 
   return (
     <Pagination
-      paginationLabel={
-        intl.formatMessage({
-          id: 'catalog.search.pagination.label',
-          defaultMessage: 'search results navigation',
-          description: 'Label for the pagination component',
-        })
-      }
+      variant="secondary"
+      paginationLabel={intl.formatMessage({
+        id: 'catalog.search.pagination.label',
+        defaultMessage: 'search results navigation',
+        description: 'Label for the pagination component',
+      })}
       pageCount={nbPages}
       currentPage={currentRefinement}
       onPageSelect={handlePageSelect}
