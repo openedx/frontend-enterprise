@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-utils",
-  "version": "9.1.1",
+  "version": "10.0.0",
   "description": "Utils and other miscellaneous enterprise things.",
   "repository": {
     "type": "git",
@@ -43,8 +43,8 @@
     "@edx/browserslist-config": "^1.5.0",
     "@edx/frontend-platform": "^8.2.1",
     "@openedx/frontend-build": "^14.3.1",
-    "@testing-library/react": "^16.2.0",
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.29.0",

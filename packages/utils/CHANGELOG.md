@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@9.1.1...@edx/frontend-enterprise-utils@10.0.0) (2025-02-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Requires @testing-library/react as a peer dependency (>11.0.0 <17.0.0)
+feat: support React 18
+
+### Features
+
+* support react 18 and move RTL to peerDep vs regular dep ([#439](https://github.com/openedx/frontend-enterprise/issues/439)) ([ee48b25](https://github.com/openedx/frontend-enterprise/commit/ee48b25431ef3b2432b817e7664938054612dc82))
+
+
+
 ## [9.1.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-utils@9.1.0...@edx/frontend-enterprise-utils@9.1.1) (2025-02-24)
 
 
