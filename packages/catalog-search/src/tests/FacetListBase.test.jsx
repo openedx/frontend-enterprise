@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { act, screen, fireEvent } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import { FREE_ALL_TITLE } from '../SearchFilters';
@@ -67,6 +68,7 @@ describe('<FacetListBase />', () => {
   });
 
   test('renders with no options', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListBase {...propsForNoItems} />);
 
     // assert facet title exists
@@ -74,12 +76,13 @@ describe('<FacetListBase />', () => {
 
     // assert there are no options
     await act(async () => {
-      fireEvent.click(screen.queryByText(FREE_ALL_TITLE));
+      await user.click(screen.queryByText(FREE_ALL_TITLE));
     });
     expect(screen.queryByText('No options found.')).toBeInTheDocument();
   });
 
   test('renders with options', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListBase {...propsWithItems} />);
 
     // assert the "no options" message does not show
@@ -87,7 +90,7 @@ describe('<FacetListBase />', () => {
 
     // assert the refinements appear with appropriate counts
     await act(async () => {
-      fireEvent.click(screen.queryByText(FREE_ALL_TITLE));
+      await user.click(screen.queryByText(FREE_ALL_TITLE));
     });
     expect(screen.queryByText(FREE_LABEL)).toBeInTheDocument();
     expect(screen.queryByText(NOT_FREE_LABEL)).toBeInTheDocument();
@@ -97,11 +100,12 @@ describe('<FacetListBase />', () => {
     expect(screen.queryByText(propsWithItems.title)).not.toBeInTheDocument();
   });
   test('renders with options', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListBase {...propsWithItems} />);
 
     // assert the "no options" message does not show
     await act(async () => {
-      fireEvent.click(screen.queryByText(FREE_ALL_TITLE));
+      await user.click(screen.queryByText(FREE_ALL_TITLE));
     });
     expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
@@ -114,6 +118,7 @@ describe('<FacetListBase />', () => {
   });
 
   test('supports clicking on a refinement', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(
       <FacetListBase
         {...propsWithItems}
@@ -122,18 +127,19 @@ describe('<FacetListBase />', () => {
 
     // assert the refinements appear
     await act(async () => {
-      fireEvent.click(screen.queryByText(FREE_ALL_TITLE));
+      await user.click(screen.queryByText(FREE_ALL_TITLE));
     });
     expect(screen.queryByText(FREE_LABEL)).toBeInTheDocument();
 
     // click a refinement option
     await act(async () => {
-      fireEvent.click(screen.queryByText(NOT_FREE_LABEL));
+      await user.click(screen.queryByText(NOT_FREE_LABEL));
     });
 
     expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'showAll=1' });
   });
   test('clears pagination when clicking on a refinement', async () => {
+    const user = userEvent.setup();
     const mockedLocation = {
       pathname: '/',
       search: '?subjects=Communication&page=3',
@@ -148,11 +154,11 @@ describe('<FacetListBase />', () => {
 
     // assert the refinements appear
     await act(async () => {
-      fireEvent.click(screen.queryByText(FREE_ALL_TITLE));
+      await user.click(screen.queryByText(FREE_ALL_TITLE));
     });
     // click a refinement option
     await act(async () => {
-      fireEvent.click(screen.queryByText(NOT_FREE_LABEL));
+      await user.click(screen.queryByText(NOT_FREE_LABEL));
     });
 
     // assert page was deleted and subjects were not
@@ -160,6 +166,7 @@ describe('<FacetListBase />', () => {
   });
 
   test('renders a typeahead dropdown', async () => {
+    const user = userEvent.setup();
     const { container } = renderWithSearchContext((
       <FacetListBase {...searchableDropdownProps} />
     ));
@@ -169,7 +176,7 @@ describe('<FacetListBase />', () => {
 
     // open the typeahead dropdown menu
     await act(async () => {
-      fireEvent.click(screen.queryByText('Skills'));
+      await user.click(screen.queryByText('Skills'));
     });
     expect(screen.queryByPlaceholderText('Find a skill...')).toBeInTheDocument();
     expect(screen.queryByText('Blockchain')).toBeInTheDocument();
@@ -179,16 +186,17 @@ describe('<FacetListBase />', () => {
   });
 
   test('typeahead dropdown calls searchForItems with correct arguments', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListBase {...searchableDropdownProps} />);
 
     // open the typeahead dropdown menu
     await act(async () => {
-      fireEvent.click(screen.queryByText('Skills'));
+      await user.click(screen.getByText('Skills'));
     });
 
     // input some search text
     await act(async () => {
-      fireEvent.change(screen.queryByPlaceholderText('Find a skill...'), { target: { value: 'Blockchain' } });
+      await user.type(screen.getByPlaceholderText('Find a skill...'), 'Blockchain');
     });
 
     await new Promise((r) => { setTimeout(r, 210); });

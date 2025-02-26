@@ -61,7 +61,8 @@ describe('<SeachSuggestionItem />', () => {
     expect(screen.getByText('Professional Program')).not.toBeNull();
   });
 
-  test('redirects on click if disableSuggestionRedirect is false', () => {
+  test('redirects on click if disableSuggestionRedirect is false', async () => {
+    const user = userEvent.setup();
     const mockData = {
       program: {
         url: '/test-enterprise/program/456',
@@ -76,18 +77,18 @@ describe('<SeachSuggestionItem />', () => {
         },
       },
     };
-
     const { container } = renderWithRouter(<SearchSuggestionItem
       url={mockData.program.url}
       suggestionItemHandler={mockData.program.suggestionItemHandler}
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
     />);
-    userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await user.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(window.location.pathname).toBe(mockData.program.url);
   });
 
-  test('fires callback on click if disableSuggestionRedirect is true', () => {
+  test('fires callback on click if disableSuggestionRedirect is true', async () => {
+    const user = userEvent.setup();
     const mockData = {
       program: {
         url: '/test-enterprise/program/456',
@@ -109,7 +110,7 @@ describe('<SeachSuggestionItem />', () => {
       hit={mockData.program.hit}
       disableSuggestionRedirect={mockData.program.disableSuggestionRedirect}
     />);
-    userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await user.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(mockData.program.suggestionItemHandler).toHaveBeenCalledWith(mockData.program.hit);
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { act, screen, fireEvent } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import { FacetListRefinementBase } from '../FacetListRefinement';
@@ -65,6 +66,7 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('renders with no options', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListRefinementBase {...propsForNoRefinements} />);
 
     // assert facet title exists
@@ -72,12 +74,13 @@ describe('<FacetListRefinementBase />', () => {
 
     // assert there are no options
     await act(async () => {
-      fireEvent.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
+      await user.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
     });
     expect(screen.queryByText('No options found.')).toBeInTheDocument();
   });
 
   test('renders with options', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListRefinementBase {...propsForActiveRefinements} />);
 
     // assert the "no options" message does not show
@@ -85,7 +88,7 @@ describe('<FacetListRefinementBase />', () => {
 
     // assert the refinements appear with appropriate counts
     await act(async () => {
-      fireEvent.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
+      await user.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
     });
 
     expect(screen.queryByText(SUBJECTS.COMPUTER_SCIENCE)).toBeInTheDocument();
@@ -95,11 +98,12 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('renders with options', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListRefinementBase {...propsForActiveRefinements} />);
 
     // assert the "no options" message does not show
     await act(async () => {
-      fireEvent.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
+      await user.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
     });
     expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
@@ -114,17 +118,18 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('supports clicking on a refinement', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<FacetListRefinementBase {...propsForRefinements} />);
 
     // assert the refinements appear
     await act(async () => {
-      fireEvent.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
+      await user.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
     });
     expect(screen.queryByText(SUBJECTS.COMMUNICATION)).toBeInTheDocument();
 
     // click a refinement option
     await act(async () => {
-      fireEvent.click(screen.queryByText(SUBJECTS.COMMUNICATION));
+      await user.click(screen.queryByText(SUBJECTS.COMMUNICATION));
     });
 
     // assert the clicked refinement was added to the url
@@ -132,6 +137,7 @@ describe('<FacetListRefinementBase />', () => {
   });
 
   test('clears pagination when clicking on a refinement', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(
       <FacetListRefinementBase
         {...propsForActiveRefinements}
@@ -141,11 +147,11 @@ describe('<FacetListRefinementBase />', () => {
 
     // assert the refinements appear
     await act(async () => {
-      fireEvent.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
+      await user.click(screen.queryByText(FACET_ATTRIBUTES.SUBJECTS));
     });
     // click a refinement option
     await act(async () => {
-      fireEvent.click(screen.queryByText(SUBJECTS.COMMUNICATION));
+      await user.click(screen.queryByText(SUBJECTS.COMMUNICATION));
     });
 
     // assert page was deleted and subjects were not
