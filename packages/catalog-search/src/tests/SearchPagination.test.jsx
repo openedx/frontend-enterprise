@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import { SearchPaginationBase } from '../SearchPagination';
@@ -20,17 +21,19 @@ describe('<SearchPagination />', () => {
     jest.clearAllMocks();
   });
 
-  test('updates url when navigating right', () => {
+  test('updates url when navigating right', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<SearchPaginationBase nbPages={3} />);
 
     // assert no initial page query parameter
     expect(window.location.search).toEqual('');
 
     // click on next button and assert page query parameter exists and is accurate
-    fireEvent.click(screen.queryByText('Navigate Right'));
+    await user.click(screen.getByLabelText('Next, Page 2'));
     expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'page=2' });
   });
-  test('deletes page query when navigating to the first page', () => {
+  test('deletes page query when navigating to the first page', async () => {
+    const user = userEvent.setup();
     const mockedLocation = {
       pathname: '/',
       search: '?page=2',
@@ -41,13 +44,14 @@ describe('<SearchPagination />', () => {
       <SearchPaginationBase nbPages={3} currentRefinement={2} />,
     );
     // assert SearchData does not modify the page
-    expect(mockedNavigator.mock.calls[0][0]).toEqual({ pathname: '/', search: 'page=2' });
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'page=2' });
 
     // click on prev button and assert page disappears
-    fireEvent.click(screen.queryByText('Navigate Left'));
-    expect(mockedNavigator.mock.calls[1][0]).toEqual({ pathname: '/', search: '' });
+    await user.click(screen.getByLabelText('Previous, Page 1'));
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: '' });
   });
-  test('updates page query when navigating left to a previous page', () => {
+  test('updates page query when navigating left to a previous page', async () => {
+    const user = userEvent.setup();
     const mockedLocation = {
       pathname: '/',
       search: '?page=3',
@@ -59,10 +63,10 @@ describe('<SearchPagination />', () => {
     );
 
     // assert SearchData adds showAll
-    expect(mockedNavigator.mock.calls[0][0]).toEqual({ pathname: '/', search: 'page=3' });
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'page=3' });
 
     // click on prev button and assert page disappears
-    fireEvent.click(screen.queryByText('Navigate Left'));
-    expect(mockedNavigator.mock.calls[1][0]).toEqual({ pathname: '/', search: 'page=2' });
+    await user.click(screen.getByLabelText('Previous, Page 2'));
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'page=2' });
   });
 });

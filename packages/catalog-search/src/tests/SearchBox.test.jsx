@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -76,6 +76,7 @@ describe('<SearchBox />', () => {
   });
 
   test('makes algolia call with correct parameters on typing in searchbox', async () => {
+    const user = userEvent.setup();
     const hits = [
       { content_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
       { content_type: 'course', _highlightResult: { title: { value: 'test-title2' } } },
@@ -88,7 +89,7 @@ describe('<SearchBox />', () => {
     });
 
     renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
     await waitFor(() => expect(index.search.mock.calls.length).toBe(1));
     expect(index.search).toHaveBeenCalledWith(
       'test query',
@@ -100,11 +101,12 @@ describe('<SearchBox />', () => {
     );
   });
   test('handles submit and clear', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // fill in search input and submit the search
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.type(screen.getByRole('searchbox'), '{enter}');
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await user.type(screen.getByRole('searchbox'), '{enter}');
 
     // assert url is updated with the query
     expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'q=test%20query' });
@@ -112,17 +114,18 @@ describe('<SearchBox />', () => {
     expect(sendTrackEvent).not.toHaveBeenCalled();
 
     // clear the input
-    userEvent.click(screen.getByText('clear search'));
+    await user.click(screen.getByLabelText('clear search'));
 
     // assert query no longer exists in url
     await waitFor(() => expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: '' }));
   });
-  test('tracking event when search initiated with trackingName present in context', () => {
+  test('tracking event when search initiated with trackingName present in context', async () => {
+    const user = userEvent.setup();
     renderWithSearchContextAndTracking(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />, 'aProduct');
 
     // fill in search input and submit the search
-    userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    userEvent.type(screen.getByRole('searchbox'), '{enter}');
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await user.type(screen.getByRole('searchbox'), '{enter}');
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(
       `${SEARCH_EVENT_NAME_PREFIX}.aProduct.${QUERY_SUBMITTED_EVENT}`,
@@ -130,6 +133,7 @@ describe('<SearchBox />', () => {
     );
   });
   test('search box renders search suggestion and can override redirect', async () => {
+    const user = userEvent.setup();
     const suggestionSubmitOverride = jest.fn();
     SearchBoxBase.handleSuggestionSubmit = jest.fn();
     const hits = [
@@ -153,14 +157,10 @@ describe('<SearchBox />', () => {
     );
 
     // fill in search input and submit the search
-    await act(async () => {
-      userEvent.type(screen.getByRole('searchbox'), TEST_QUERY);
-    });
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
     await waitFor(() => expect(screen.queryByTestId('suggestions')).not.toBeNull());
     await waitFor(() => expect(screen.getByText('test-title')).toBeInTheDocument());
-    await act(async () => {
-      userEvent.click(screen.getByText('test-title'));
-    });
+    await user.click(screen.getByText('test-title'));
     expect(suggestionSubmitOverride).toHaveBeenCalledWith(
       { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
     );

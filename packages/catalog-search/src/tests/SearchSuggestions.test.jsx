@@ -94,35 +94,36 @@ describe('<SeachSuggestions />', () => {
     expect(screen.getByText('View all results')).not.toBeNull();
   });
 
-  test('calls click handler on view all results', () => {
+  test('calls click handler on view all results', async () => {
+    const user = userEvent.setup();
     renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
-
-    userEvent.click(screen.getByText('View all results'));
+    await user.click(screen.getByText('View all results'));
     expect(handleSubmit.mock.calls.length).toBe(1);
   });
 
-  test('redirects to correct page on course click', () => {
+  test('redirects to correct page on course click', async () => {
+    const user = userEvent.setup();
     const { container } = renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
-
-    userEvent.click(container.getElementsByClassName('suggestion-item')[0]);
+    await user.click(container.getElementsByClassName('suggestion-item')[0]);
     expect(window.location.pathname).toBe('/test-enterprise/course/edX+courseX');
   });
 
-  test('redirects to correct page on program click', () => {
+  test('redirects to correct page on program click', async () => {
+    const user = userEvent.setup();
     const { container } = renderWithIntlProvider(<SearchSuggestions
       enterpriseSlug="test-enterprise"
       autoCompleteHits={fakeSuggestionsData.hits}
       handleSubmit={handleSubmit}
     />);
-    userEvent.click(container.getElementsByClassName('suggestion-item')[1]);
+    await user.click(container.getElementsByClassName('suggestion-item')[1]);
     expect(window.location.pathname).toBe('/test-enterprise/program/456');
   });
   test('properly handles exec ed content', () => {

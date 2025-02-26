@@ -1,8 +1,9 @@
 import React from 'react';
-import { renderWithRouter } from '@edx/frontend-enterprise-utils';
-import { screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import { IntlProvider } from '@edx/frontend-platform/i18n';
+import { renderWithRouter } from '@edx/frontend-enterprise-utils';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom/extend-expect';
 
 import { MobileFilterMenuBase } from '../MobileFilterMenu';
 import SearchData from '../SearchContext';
@@ -21,7 +22,8 @@ const MobileFilterMenuWrapper = ({ items }) => (
 );
 
 describe('<MobileFilterMenu />', () => {
-  test('renders the modal initially closed, but opens on Filters button click', () => {
+  test('renders the modal initially closed, but opens on Filters button click', async () => {
+    const user = userEvent.setup();
     renderWithRouter(
       <MobileFilterMenuWrapper items={[]} />,
     );
@@ -30,7 +32,7 @@ describe('<MobileFilterMenu />', () => {
     expect(screen.getByRole('dialog')).toHaveClass('d-none');
     expect(screen.getByRole('dialog')).not.toHaveClass('d-block show');
 
-    fireEvent.click(screen.getByText('Filters'));
+    await user.click(screen.getByText('Filters'));
 
     // assert modal is now visible after clicking the Filters button
     expect(screen.getByRole('dialog')).not.toHaveClass('d-none');

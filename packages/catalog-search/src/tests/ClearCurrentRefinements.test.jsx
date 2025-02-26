@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderWithRouter } from '@edx/frontend-enterprise-utils';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import { IntlProvider } from '@edx/frontend-platform/i18n';
@@ -25,11 +26,12 @@ describe('<ClearCurrentRefinements />', () => {
   });
 
   test('dispatches the clear refinements action on click', async () => {
+    const user = userEvent.setup();
     const spy = jest.spyOn(actions, 'clearRefinementsAction');
     renderWithRouter(<ClearCurrentRefinementsWrapper />);
 
     // click a specific refinement to remove it
-    fireEvent.click(screen.queryByText(CLEAR_ALL_TEXT));
+    await user.click(screen.queryByText(CLEAR_ALL_TEXT));
 
     // assert the clicked refinement in the url is removed but others stay put
     expect(spy).toHaveBeenCalledTimes(1);

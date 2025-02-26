@@ -1,9 +1,9 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import { CurrentRefinementsBase } from '../CurrentRefinements';
-
 import {
   SUBJECTS,
   AVAILABLILITY,
@@ -53,34 +53,33 @@ describe('<CurrentRefinements />', () => {
     expect(screen.queryByText('+1', { exact: false })).toBeInTheDocument();
   });
 
-  test('supports viewing all active refinements at once', () => {
+  test('supports viewing all active refinements at once', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(<CurrentRefinementsBase items={items} />);
 
     // click the "+1" button to show all refinements
-    fireEvent.click(screen.queryByText('+1', { exact: false }));
+    await user.click(screen.queryByText('+1', { exact: false }));
 
     // assert additional refinement now shows and the "+1" button disappears
     expect(screen.queryByText(AVAILABLILITY.UPCOMING)).toBeInTheDocument();
     expect(screen.queryByText('+1', { exact: false })).not.toBeInTheDocument();
 
     // click the "show less" button to show only 3 active refinements again
-    fireEvent.click(screen.queryByText('show less'));
+    await user.click(screen.queryByText('show less'));
     expect(screen.queryByText(AVAILABLILITY.UPCOMING)).not.toBeInTheDocument();
     expect(screen.queryByText('+1', { exact: false })).toBeInTheDocument();
   });
 
   test('supports removing an active refinement from the url by clicking on it', async () => {
+    const user = userEvent.setup();
     renderWithSearchContext(
       <CurrentRefinementsBase items={items} />,
     );
 
     // click a specific refinement to remove it
-    fireEvent.click(screen.queryByText(SUBJECTS.COMMUNICATION));
+    await user.click(screen.queryByText(SUBJECTS.COMMUNICATION));
 
     // assert the clicked refinement in the url is removed but others stay put
-    expect(mockedNavigator.mock.calls[mockedNavigator.mock.calls.length - 1][0]).toStrictEqual({
-      pathname: '/',
-      search: 'subjects=Computer%20Science',
-    });
+    expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'subjects=Computer%20Science' });
   });
 });

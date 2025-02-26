@@ -11,7 +11,7 @@
       "patterns": [
         "src"
       ],
-      "extensions": "js,jsx"
+      "extensions": "js,jsx,ts,tsx"
     }
   },
   "scripts": {
@@ -19,9 +19,9 @@
     "clean": "make clean",
     "build": "make build",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
-    "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
-    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx .",
-    "snapshot": "fedx-scripts jest --updateSnapshot",
+    "lint": "fedx-scripts eslint --ext .js --ext .jsx --ext .ts --ext .tsx .",
+    "lint:fix": "npm run lint -- --fix",
+    "snapshot": "npm run test -- --updateSnapshot",
     "test": "fedx-scripts jest --coverage --passWithNoTests",
     "test:watch": "npm run test -- --watch"
   },
@@ -38,30 +38,30 @@
   "sideEffects": false,
   "dependencies": {
     "@edx/frontend-enterprise-utils": "^10.0.0",
-    "classnames": "2.5.1",
-    "lodash.debounce": "4.0.8",
-    "prop-types": "15.8.1"
+    "classnames": "^2.5.1",
+    "lodash.debounce": "^4.0.8",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@edx/browserslist-config": "1.5.0",
-    "@edx/frontend-platform": "8.2.1",
-    "@openedx/frontend-build": "14.3.1",
-    "@openedx/paragon": "21.13.1",
-    "@testing-library/jest-dom": "5.17.0",
-    "@testing-library/react": "12.1.5",
-    "@testing-library/react-hooks": "3.7.0",
-    "@testing-library/user-event": "13.5.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-instantsearch-dom": "6.40.4",
-    "react-router-dom": "6.29.0",
-    "react-test-renderer": "17.0.2"
+    "@edx/browserslist-config": "^1.5.0",
+    "@edx/frontend-platform": "^8.2.1",
+    "@openedx/frontend-build": "^14.3.1",
+    "@openedx/paragon": "^22.15.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/react-hooks": "^3.7.0",
+    "@testing-library/user-event": "^14.6.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-instantsearch-dom": "^6.40.4",
+    "react-router-dom": "^6.29.0",
+    "react-test-renderer": "^18.3.1"
   },
   "peerDependencies": {
     "@edx/frontend-platform": "^7.0.0 || ^8.0.0",
-    "@openedx/paragon": "^21.0.0",
-    "react": "^16.12.0 || ^17.0.0",
-    "react-dom": "^16.12.0 || ^17.0.0",
+    "@openedx/paragon": "^22.0.0",
+    "react": "^16.12.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.12.0 || ^17.0.0 || ^18.0.0",
     "react-instantsearch-dom": "^6.8.3",
     "react-router-dom": "^6.0.0"
   }
