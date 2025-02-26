@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { act, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -75,9 +75,7 @@ describe('<FacetListBase />', () => {
     expect(screen.queryByText(FREE_ALL_TITLE)).toBeInTheDocument();
 
     // assert there are no options
-    await act(async () => {
-      await user.click(screen.queryByText(FREE_ALL_TITLE));
-    });
+    await user.click(screen.queryByText(FREE_ALL_TITLE));
     expect(screen.queryByText('No options found.')).toBeInTheDocument();
   });
 
@@ -89,9 +87,7 @@ describe('<FacetListBase />', () => {
     expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // assert the refinements appear with appropriate counts
-    await act(async () => {
-      await user.click(screen.queryByText(FREE_ALL_TITLE));
-    });
+    await user.click(screen.queryByText(FREE_ALL_TITLE));
     expect(screen.queryByText(FREE_LABEL)).toBeInTheDocument();
     expect(screen.queryByText(NOT_FREE_LABEL)).toBeInTheDocument();
   });
@@ -104,9 +100,7 @@ describe('<FacetListBase />', () => {
     renderWithSearchContext(<FacetListBase {...propsWithItems} />);
 
     // assert the "no options" message does not show
-    await act(async () => {
-      await user.click(screen.queryByText(FREE_ALL_TITLE));
-    });
+    await user.click(screen.queryByText(FREE_ALL_TITLE));
     expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // assert the refinements appear with appropriate styles
@@ -126,15 +120,11 @@ describe('<FacetListBase />', () => {
     );
 
     // assert the refinements appear
-    await act(async () => {
-      await user.click(screen.queryByText(FREE_ALL_TITLE));
-    });
+    await user.click(screen.queryByText(FREE_ALL_TITLE));
     expect(screen.queryByText(FREE_LABEL)).toBeInTheDocument();
 
     // click a refinement option
-    await act(async () => {
-      await user.click(screen.queryByText(NOT_FREE_LABEL));
-    });
+    await user.click(screen.queryByText(NOT_FREE_LABEL));
 
     expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'showAll=1' });
   });
@@ -153,13 +143,9 @@ describe('<FacetListBase />', () => {
     );
 
     // assert the refinements appear
-    await act(async () => {
-      await user.click(screen.queryByText(FREE_ALL_TITLE));
-    });
+    await user.click(screen.queryByText(FREE_ALL_TITLE));
     // click a refinement option
-    await act(async () => {
-      await user.click(screen.queryByText(NOT_FREE_LABEL));
-    });
+    await user.click(screen.queryByText(NOT_FREE_LABEL));
 
     // assert page was deleted and subjects were not
     expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'subjects=Communication&showAll=1' });
@@ -175,9 +161,7 @@ describe('<FacetListBase />', () => {
     expect(screen.queryByText('No options found.')).not.toBeInTheDocument();
 
     // open the typeahead dropdown menu
-    await act(async () => {
-      await user.click(screen.queryByText('Skills'));
-    });
+    await user.click(screen.queryByText('Skills'));
     expect(screen.queryByPlaceholderText('Find a skill...')).toBeInTheDocument();
     expect(screen.queryByText('Blockchain')).toBeInTheDocument();
     expect(screen.queryByText('Cryptocurrency')).toBeInTheDocument();
@@ -190,16 +174,10 @@ describe('<FacetListBase />', () => {
     renderWithSearchContext(<FacetListBase {...searchableDropdownProps} />);
 
     // open the typeahead dropdown menu
-    await act(async () => {
-      await user.click(screen.getByText('Skills'));
-    });
+    await user.click(screen.getByText('Skills'));
 
     // input some search text
-    await act(async () => {
-      await user.type(screen.getByPlaceholderText('Find a skill...'), 'Blockchain');
-    });
-
-    await new Promise((r) => { setTimeout(r, 210); });
+    await user.type(screen.getByPlaceholderText('Find a skill...'), 'Blockchain');
 
     expect(searchableDropdownProps.searchForItems).toHaveBeenCalledTimes(1);
     expect(searchableDropdownProps.searchForItems).toHaveBeenCalledWith('Blockchain');

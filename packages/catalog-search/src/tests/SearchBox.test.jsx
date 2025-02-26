@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -89,9 +89,7 @@ describe('<SearchBox />', () => {
     });
 
     renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
-    await act(async () => {
-      await user.type(screen.getByRole('searchbox'), TEST_QUERY);
-    });
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
     await waitFor(() => expect(index.search.mock.calls.length).toBe(1));
     expect(index.search).toHaveBeenCalledWith(
       'test query',
@@ -107,10 +105,8 @@ describe('<SearchBox />', () => {
     renderWithSearchContext(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />);
 
     // fill in search input and submit the search
-    await act(async () => {
-      await user.type(screen.getByRole('searchbox'), TEST_QUERY);
-      await user.type(screen.getByRole('searchbox'), '{enter}');
-    });
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await user.type(screen.getByRole('searchbox'), '{enter}');
 
     // assert url is updated with the query
     expect(mockedNavigator).toHaveBeenCalledWith({ pathname: '/', search: 'q=test%20query' });
@@ -128,10 +124,8 @@ describe('<SearchBox />', () => {
     renderWithSearchContextAndTracking(<SearchBoxBase enterpriseSlug="test-enterprise" index={index} />, 'aProduct');
 
     // fill in search input and submit the search
-    await act(async () => {
-      await user.type(screen.getByRole('searchbox'), TEST_QUERY);
-      await user.type(screen.getByRole('searchbox'), '{enter}');
-    });
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
+    await user.type(screen.getByRole('searchbox'), '{enter}');
     // check tracking is invoked due to trackingName in context
     expect(sendTrackEvent).toHaveBeenCalledWith(
       `${SEARCH_EVENT_NAME_PREFIX}.aProduct.${QUERY_SUBMITTED_EVENT}`,
@@ -163,14 +157,10 @@ describe('<SearchBox />', () => {
     );
 
     // fill in search input and submit the search
-    await act(async () => {
-      await user.type(screen.getByRole('searchbox'), TEST_QUERY);
-    });
+    await user.type(screen.getByRole('searchbox'), TEST_QUERY);
     await waitFor(() => expect(screen.queryByTestId('suggestions')).not.toBeNull());
     await waitFor(() => expect(screen.getByText('test-title')).toBeInTheDocument());
-    await act(async () => {
-      await user.click(screen.getByText('test-title'));
-    });
+    await user.click(screen.getByText('test-title'));
     expect(suggestionSubmitOverride).toHaveBeenCalledWith(
       { learning_type: 'course', _highlightResult: { title: { value: 'test-title' } } },
     );
