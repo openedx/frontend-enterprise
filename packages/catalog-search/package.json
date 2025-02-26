@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-enterprise-catalog-search",
-  "version": "10.8.2",
+  "version": "11.0.0",
   "description": "Components related to Enterprise catalog search.",
   "repository": {
     "type": "git",
