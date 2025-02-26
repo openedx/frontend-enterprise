@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.8.2...@edx/frontend-enterprise-catalog-search@11.0.0) (2025-02-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for Paragon v21 in `@edx/frontend-enterprise-catalog-search`
+
+* fix: use secondary pagination variant
+
+### Features
+
+* support React 18; drop support for Paragon v21 in favor of v22 ([#441](https://github.com/openedx/frontend-enterprise/issues/441)) ([7046540](https://github.com/openedx/frontend-enterprise/commit/70465404bf8d9fc1a426639d8ce1a3cc18fee3db))
+
+
+
 ## [10.8.2](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.8.1...@edx/frontend-enterprise-catalog-search@10.8.2) (2025-02-26)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
