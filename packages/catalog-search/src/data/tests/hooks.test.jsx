@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { SUBJECTS, AVAILABLILITY, FACET_ATTRIBUTES } from './constants';
