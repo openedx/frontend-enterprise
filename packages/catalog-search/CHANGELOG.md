@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@11.0.0...@edx/frontend-enterprise-catalog-search@11.0.1) (2025-03-02)
+
+**Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
+
+
+
+
+
 ## [11.0.0](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@10.8.2...@edx/frontend-enterprise-catalog-search@11.0.0) (2025-02-26)
 
 
