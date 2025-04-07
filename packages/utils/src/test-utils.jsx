@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
+// eslint-disable-next-line import/no-unresolved
 import { render } from '@testing-library/react';
 
 // eslint-disable-next-line import/prefer-default-export
