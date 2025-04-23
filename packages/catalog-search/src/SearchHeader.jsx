@@ -34,6 +34,12 @@ const SearchHeader = ({
     searchQueryFromRefinements = refinements.q;
   }
 
+  // Add filter to only include course and program content_types
+  // as we are currently not supporting videos and pathways
+  const modifiedFilters = filters
+    ? `${filters} AND (content_type:"course" OR content_type:"program")`
+    : '(content_type:"course" OR content_type:"program")';
+
   return (
     <div
       data-testid={searchHeaderTestId}
@@ -55,7 +61,7 @@ const SearchHeader = ({
                 headerTitle={headerTitle}
                 hideTitle={hideTitle}
                 index={index}
-                filters={filters}
+                filters={modifiedFilters}
                 enterpriseSlug={slug}
                 suggestionSubmitOverride={suggestionSubmitOverride}
                 disableSuggestionRedirect={disableSuggestionRedirect}
