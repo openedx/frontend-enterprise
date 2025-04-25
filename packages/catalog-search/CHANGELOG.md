@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.2](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@11.0.1...@edx/frontend-enterprise-catalog-search@11.0.2) (2025-04-25)
+
+
+### Bug Fixes
+
+* removes content type video from search suggestions ([#462](https://github.com/openedx/frontend-enterprise/issues/462)) ([807ece5](https://github.com/openedx/frontend-enterprise/commit/807ece576bab2647751530943c1c4a07c09d6e47))
+
+
+
 ## [11.0.1](https://github.com/openedx/frontend-enterprise/compare/@edx/frontend-enterprise-catalog-search@11.0.0...@edx/frontend-enterprise-catalog-search@11.0.1) (2025-03-02)
 
 **Note:** Version bump only for package @edx/frontend-enterprise-catalog-search
