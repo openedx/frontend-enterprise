@@ -27,13 +27,13 @@ jobs:
           npm whoami
       - name: Install and Setup Dependencies
         run: npm ci
-      # build must come before running linting and tests for the `dist` directory to exist.
-      - name: Build
-        run: npm run build
       - name: Lint
         run: npm run lint
       - name: Test
         run: npm run test
+      # switched build step to run after lint and test to fix failing lint errors
+      - name: Build
+        run: npm run build
       - name: Coverage Report
         uses: codecov/codecov-action@v5
       - name: Publish to NPM from package.json versions
