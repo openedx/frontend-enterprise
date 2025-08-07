@@ -59,7 +59,7 @@
   },
   "peerDependencies": {
     "@edx/frontend-platform": "^7.0.0 || ^8.0.0",
-    "@openedx/paragon": "^22.0.0",
+    "@openedx/paragon": "^22.0.0 || ^23.14.1",
     "react": "^16.12.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.12.0 || ^17.0.0 || ^18.0.0",
     "react-instantsearch-dom": "^6.8.3",
