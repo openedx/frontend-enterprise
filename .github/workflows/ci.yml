@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       with:
         # pulls all commits (needed for lerna / semantic release to correctly version)
         fetch-depth: 0
@@ -18,7 +18,7 @@ jobs:
     - name: Pull All Git Tags
       run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
     - name: Setup Nodejs
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       with:
         node-version-file: '.nvmrc'
     # lerna expects to be authenticated for publishing to NPM. This step will fail CI if NPM is not
@@ -43,4 +43,4 @@ jobs:
         git switch -c "actual-branch-not-detached-head"
         npx lerna@6 version --allow-branch actual-branch-not-detached-head --no-git-tag-version --no-changelog --no-push --yes
     - name: Coverage Report
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@75cd11691c0faa626561e295848008c8a7dddffe # v5.5.4
